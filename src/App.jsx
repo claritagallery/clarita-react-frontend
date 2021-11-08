@@ -1,23 +1,17 @@
 import {Container, Row, Col} from 'react-bootstrap';
-import {Link, Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import './App.css';
-import AlbumListPage from './components/AlbumList'
-import AlbumDetailPage from './components/AlbumDetail'
+import AlbumListPage from './components/AlbumList';
+import AlbumDetailPage from './components/AlbumDetail';
+import Footer from './components/Footer';
+import Header from './components/Header';
 import {PhotoInAlbumPage} from './components/Photo';
-import NotFound from './components/NotFound'
+import NotFound from './components/NotFound';
 
 function App() {
   return (
     <Container className="App" fluid>
-      <Row>
-        <Col>
-          <header className="App-header">
-            <nav>
-              <Link to="/">Home</Link>
-            </nav>
-          </header>
-        </Col>
-      </Row>
+      <Header/>
       <Row>
         <Col>
           <main>
@@ -33,6 +27,7 @@ function App() {
           </main>
         </Col>
       </Row>
+      <Footer/>
     </Container>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-import {AlbumThumb} from './Thumb';
+import {Container, Row} from 'react-bootstrap';
+import AlbumThumb from './AlbumThumb';
 
 class AlbumListPage extends React.Component {
   constructor(props) {
@@ -50,12 +51,14 @@ class AlbumListPage extends React.Component {
   }
 }
 
-class AlbumList extends React.Component {
-  render() {
-    return this.props.albums.map(album =>
-      <AlbumThumb album={album} key={album.id} />
-    );
-  }
-}
+const AlbumList = ({albums}) => (
+  <Container>
+    <Row>
+      {albums.map(album =>
+        <AlbumThumb key={album.id} album={album} />
+      )}
+    </Row>
+  </Container>
+)
 
 export default AlbumListPage;

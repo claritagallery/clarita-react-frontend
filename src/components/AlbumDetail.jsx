@@ -1,6 +1,7 @@
 import {useState} from 'react';
-import {Link} from 'react-router-dom';
-import {PhotoThumb} from './Thumb';
+import {Container, Row} from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap';
+import PhotoThumb from './PhotoThumb';
 
 const ALBUM = {
   "id": "10617",
@@ -687,15 +688,20 @@ function AlbumDetailPage({match}) {
 }
 
 const AlbumDetail = ({album}) => (
-  <Link to={`/albums/${album.id}`}>
-    <div>
-      <img src={album.thumb_url} alt={"Thumbnail for album " + album.name} />
-      <span>{album.name}</span>
-      <span>{album.date}</span>
-      <p>{album.description}</p>
-      { album.photos.map((photo) => <PhotoThumb photo={photo} album={album} />) }
-    </div>
-  </Link>
+  <>
+    <LinkContainer to={`/albums/${album.id}`}>
+      <Container>
+        <h2>{album.name}</h2>
+        <span>{album.date}</span>
+        <p>{album.description}</p>
+      </Container>
+    </LinkContainer>
+    <Container>
+      <Row xs={1} s={2} md={4} xl={6}>
+        { album.photos.map((photo) => <PhotoThumb key={photo.id} photo={photo} album_id={album.id} />) }
+      </Row>
+    </Container>
+  </>
 );
 
 export default AlbumDetailPage;

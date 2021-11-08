@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {Image} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import {PhotoThumb} from './Thumb';
+import PhotoThumb from './PhotoThumb';
 
 const PHOTO = {
   id: "579349",
