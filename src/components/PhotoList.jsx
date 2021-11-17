@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Row, Spinner } from 'react-bootstrap';
-import AlbumThumb from './AlbumThumb';
+import PhotoThumb from './PhotoThumb';
 
-const AlbumList = ({data, error, isError, isLoading}) => {
+const PhotoList = ({albumId, data, error, isError, isLoading}) => {
   if(isLoading) {
     return <Spinner/>;
   }
@@ -11,16 +11,16 @@ const AlbumList = ({data, error, isError, isLoading}) => {
     return <div>{ error.message }</div>;
   }
 
-  const albums = data.results;
+  const photos = data.results;
   return (
     <Container>
       <Row>
-        {albums.map(album =>
-          <AlbumThumb key={album.id} album={album} />
+        {photos.map(photo =>
+          <PhotoThumb key={photo.id} photo={photo} albumId={albumId} />
         )}
       </Row>
     </Container>
   );
 }
 
-export default AlbumList;
+export default PhotoList;

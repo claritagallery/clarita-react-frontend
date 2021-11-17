@@ -1,34 +1,43 @@
-import {Container, Row, Col} from 'react-bootstrap';
-import {Route, Switch} from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import AlbumListPage from './components/AlbumList';
-import AlbumDetailPage from './components/AlbumDetail';
+import AlbumListPage from './components/AlbumListPage';
+import AlbumDetailPage from './components/AlbumDetailPage';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import {PhotoInAlbumPage} from './components/Photo';
+import PhotoInAlbumPage from './components/PhotoInAlbumPage';
 import NotFound from './components/NotFound';
+
+const queryClient = new QueryClient({
+  defaultOptions: {},
+});
 
 function App() {
   return (
-    <Container className="App" fluid>
-      <Header/>
-      <Row className="Main">
-        <Col>
-          <main>
-            <div>
-              <Switch>
-                <Route exact path="/" component={AlbumListPage} />
-                <Route path="/albums/:albumid/photos/:photoid" component={PhotoInAlbumPage} />
-                <Route path="/albums/:id" component={AlbumDetailPage} />
-                <Route exact path="/albums" component={AlbumListPage} />
-                <Route component={NotFound} />
-              </Switch>
-            </div>
-          </main>
-        </Col>
-      </Row>
-      <Footer/>
-    </Container>
+    <QueryClientProvider client={queryClient}>
+      <Container className="App" fluid>
+        <Header/>
+        <Row className="Main">
+          <Col>
+            <main>
+              <div>
+                <Switch>
+                  <Route exact path="/" component={AlbumListPage} />
+                  <Route path="/albums/:albumId/photos/:photoId" component={PhotoInAlbumPage} />
+                  <Route path="/albums/:albumId" component={AlbumDetailPage} />
+                  <Route exact path="/albums" component={AlbumListPage} />
+                  <Route component={NotFound} />
+                </Switch>
+              </div>
+            </main>
+          </Col>
+        </Row>
+        <Footer/>
+      </Container>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 

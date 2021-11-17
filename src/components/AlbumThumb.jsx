@@ -2,10 +2,9 @@ import {Card, Col} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
 const AlbumThumb = ({album}) => (
-  <Col>
+  <Col xs={6} sm={4} md={3} xl={2}>
     <LinkContainer to={`/albums/${album.id}`}>
       <Card>
-        <Card.Img src={album.thumb_url} alt={`Thumbnail for album ${album.name}`} thumbnail />
         <Card.Body>
           <Card.Text>
             {album.name}
