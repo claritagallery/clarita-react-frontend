@@ -12,7 +12,7 @@ function App() {
   return (
     <Container className="App" fluid>
       <Header/>
-      <Row>
+      <Row className="Main">
         <Col>
           <main>
             <div>

@@ -17,3 +17,7 @@
 .App-link {
   color: #61dafb;
 }
+
+.Main {
+  min-height: 80vh;
+}
