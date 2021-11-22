@@ -1,15 +1,20 @@
 import {Button, Container, Form, FormControl, Nav, Navbar} from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap';
 
 const Header = () => (
   <Navbar bg="light" expand="md">
     <Container>
-      <Navbar.Brand href="/">Clarita</Navbar.Brand>
+      <LinkContainer to="/">
+        <Navbar.Brand href="/">Clarita</Navbar.Brand>
+      </LinkContainer>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link to="/">
-            Home
-          </Nav.Link>
+          <LinkContainer to="/">
+            <Nav.Link>
+              Home
+            </Nav.Link>
+          </LinkContainer>
         </Nav>
       </Navbar.Collapse>
       <Form className="d-flex">
