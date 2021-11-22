@@ -4,7 +4,7 @@ import {LinkContainer} from 'react-router-bootstrap';
 const PhotoThumb = ({photo, albumId}) => {
   const link = albumId ? `/albums/${albumId}/photos/${photo.id}` : `/photos/${photo.id}`;
   return (
-    <Col>
+    <Col xs={6} s={4} md={3} xl={2}>
       <LinkContainer to={link}>
         <Card>
           <Card.Body>
