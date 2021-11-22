@@ -6,7 +6,10 @@ import AlbumList from './AlbumList';
 
 function fetchAlbums() {
   return axios(
-    {url: `http://localhost:8000/api/v1/albums`}
+    {
+      url: `http://localhost:8000/api/v1/albums`,
+      params: {limit: 100},
+    }
   ).then((res) => res.data);
 }
 
