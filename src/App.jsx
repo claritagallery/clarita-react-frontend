@@ -8,6 +8,8 @@ import AlbumDetailPage from './components/AlbumDetailPage';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import PhotoInAlbumPage from './components/PhotoInAlbumPage';
+import PhotoListPage from './components/PhotoListPage';
+import PhotoPage from './components/PhotoPage';
 import NotFound from './components/NotFound';
 
 const queryClient = new QueryClient({
@@ -28,6 +30,8 @@ function App() {
                   <Route path="/albums/:albumId/photos/:photoId" component={PhotoInAlbumPage} />
                   <Route path="/albums/:albumId" component={AlbumDetailPage} />
                   <Route exact path="/albums" component={AlbumListPage} />
+                  <Route exact path="/photos/:photoId" component={PhotoPage} />
+                  <Route exact path="/photos" component={PhotoListPage} />
                   <Route component={NotFound} />
                 </Switch>
               </div>

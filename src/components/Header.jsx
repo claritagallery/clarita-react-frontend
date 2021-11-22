@@ -10,9 +10,14 @@ const Header = () => (
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-          <LinkContainer to="/">
+          <LinkContainer to="/albums">
             <Nav.Link>
-              Home
+              Albums
+            </Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/photos">
+            <Nav.Link>
+              Photos
             </Nav.Link>
           </LinkContainer>
         </Nav>
