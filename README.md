@@ -25,3 +25,8 @@ Run the tests:
 Build the project for release:
 
     $ yarn build
+
+## License
+
+Clarita is licensed under the GNU Affero General Public License v3 (AGPLv3) or later.
+See [LICENSE](LICENSE) for the full licensing text.
