@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { Spinner } from 'react-bootstrap';
-import PhotoList from './PhotoList';
+import PhotoList from '../components/PhotoList';
 
 function fetchPhotos() {
   return axios(

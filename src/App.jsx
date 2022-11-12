@@ -3,14 +3,14 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import AlbumListPage from './components/AlbumListPage';
-import AlbumDetailPage from './components/AlbumDetailPage';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import PhotoInAlbumPage from './components/PhotoInAlbumPage';
-import PhotoListPage from './components/PhotoListPage';
-import PhotoPage from './components/PhotoPage';
-import NotFound from './components/NotFound';
+import AlbumListPage from './pages/AlbumListPage';
+import AlbumDetailPage from './pages/AlbumDetailPage';
+import PhotoInAlbumPage from './pages/PhotoInAlbumPage';
+import PhotoListPage from './pages/PhotoListPage';
+import PhotoPage from './pages/PhotoPage';
+import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient({
   defaultOptions: {},

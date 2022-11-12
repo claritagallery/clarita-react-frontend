@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { Spinner } from 'react-bootstrap';
-import AlbumList from './AlbumList';
+import AlbumList from '../components/AlbumList';
 
 function fetchAlbums() {
   return axios(
@@ -15,7 +15,7 @@ function fetchAlbums() {
 
 const AlbumListPage = () => {
   const albumsQuery = useQuery('albums', fetchAlbums);
-  return <AlbumList { ...albumsQuery } />
+  return <AlbumList { ...albumsQuery } />;
 }
 
 export default AlbumListPage;

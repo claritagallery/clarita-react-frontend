@@ -2,21 +2,20 @@ import axios from 'axios';
 import { Image, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import Photo from './Photo';
-import PhotoThumb from './PhotoThumb';
+import Photo from '../components/Photo';
+import PhotoThumb from '../components/PhotoThumb';
 
-function fetchPhotoInAlbum(albumId, photoId) {
+function fetchPhoto(photoId) {
   return axios(
-    {url: `http://localhost:8000/api/v1/album/${albumId}/photo/${photoId}`}
+    {url: `http://localhost:8000/api/v1/photo/${photoId}`}
   ).then((res) => res.data);
 }
 
-function PhotoInAlbumPage({match}) {
-  const albumId = match.params.albumId;
+function PhotoPage({match}) {
   const photoId = match.params.photoId;
   const {data, error, isError, isLoading} = useQuery(
-    ['photo-in-album', albumId, photoId],
-    () => fetchPhotoInAlbum(albumId, photoId)
+    ['photo', photoId],
+    () => fetchPhoto(photoId)
   );
 
   if(isLoading) {
@@ -28,8 +27,8 @@ function PhotoInAlbumPage({match}) {
   }
 
   return (
-    <Photo photo={data} albumId={albumId} />
+    <Photo photo={data} />
   );
 }
 
-export default PhotoInAlbumPage;
+export default PhotoPage;

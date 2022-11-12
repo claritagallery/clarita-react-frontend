@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { Spinner } from 'react-bootstrap';
 import { useQuery } from 'react-query';
-import AlbumDetail from './AlbumDetail';
-import AlbumList from './AlbumList';
-import PhotoList from './PhotoList';
+import AlbumDetail from '../components/AlbumDetail';
+import AlbumList from '../components/AlbumList';
+import PhotoList from '../components/PhotoList';
 
 function fetchAlbum(albumId) {
   return axios(
