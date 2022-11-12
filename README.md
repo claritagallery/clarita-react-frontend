@@ -4,27 +4,31 @@ This projects is a React-based frontend for the Clarita Web Gallery.
 
 ## Development
 
+Copy *.env*:
+
+    cp .env.sample .env
+
 Install dependencies:
 
-    $ yarn
+    yarn
 
 Run the development server:
 
-    $ yarn start
+    yarn start
 
 Run the tests:
 
-    $ yarn test
+    yarn test
 
 ### Using Docker for development
 
-    $ docker-compose up client
+    docker-compose up client
 
 ## Release
 
 Build the project for release:
 
-    $ yarn build
+    yarn build
 
 ## License
 
