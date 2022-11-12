@@ -6,11 +6,11 @@ This projects is a React-based frontend for the Clarita Web Gallery.
 
 Install dependencies:
 
-    $ yarn install
+    $ yarn
 
 Run the development server:
 
-    $ yarn run
+    $ yarn start
 
 Run the tests:
 
