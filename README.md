@@ -4,7 +4,7 @@ This projects is a React-based frontend for the Clarita Web Gallery.
 
 ## Development
 
-Copy *.env*:
+Copy _.env_:
 
     cp .env.sample .env
 
