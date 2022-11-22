@@ -1,5 +1,12 @@
-import {Button, Container, Form, FormControl, Nav, Navbar} from 'react-bootstrap';
-import {LinkContainer} from 'react-router-bootstrap';
+import {
+  Button,
+  Container,
+  Form,
+  FormControl,
+  Nav,
+  Navbar,
+} from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 const Header = () => (
   <Navbar bg="light" expand="md">
@@ -11,14 +18,10 @@ const Header = () => (
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
           <LinkContainer to="/albums">
-            <Nav.Link>
-              Albums
-            </Nav.Link>
+            <Nav.Link>Albums</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/photos">
-            <Nav.Link>
-              Photos
-            </Nav.Link>
+            <Nav.Link>Photos</Nav.Link>
           </LinkContainer>
         </Nav>
       </Navbar.Collapse>
@@ -30,11 +33,12 @@ const Header = () => (
           aria-label="Search (coming soon!)"
           disabled
         />
-        <Button disabled variant="outline-success">Search</Button>
+        <Button disabled variant="outline-success">
+          Search
+        </Button>
       </Form>
     </Container>
   </Navbar>
 );
-
 
 export default Header;

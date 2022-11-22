@@ -1,14 +1,14 @@
-import {Container, Spinner} from 'react-bootstrap';
-import Breadcrumbs from './Breadcrumbs';
-import PhotoThumb from './PhotoThumb';
+import { Container, Spinner } from "react-bootstrap";
+import Breadcrumbs from "./Breadcrumbs";
+import PhotoThumb from "./PhotoThumb";
 
-const AlbumDetail = ({data, error, isError, isLoading}) => {
-  if(isLoading) {
-    return <Spinner/>;
+const AlbumDetail = ({ data, error, isError, isLoading }) => {
+  if (isLoading) {
+    return <Spinner />;
   }
 
-  if(isError) {
-    return <div>{ error.message }</div>;
+  if (isError) {
+    return <div>{error.message}</div>;
   }
 
   return (
@@ -20,7 +20,7 @@ const AlbumDetail = ({data, error, isError, isLoading}) => {
         <p>{data.description}</p>
       </Container>
     </>
-  )
-}
+  );
+};
 
 export default AlbumDetail;
