@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -25,18 +25,18 @@ function App() {
           <Col>
             <main>
               <div>
-                <Switch>
-                  <Route exact path="/" component={AlbumListPage} />
+                <Routes>
+                  <Route path="/" element={<AlbumListPage />} />
                   <Route
                     path="/albums/:albumId/photos/:photoId"
-                    component={PhotoInAlbumPage}
+                    element={<PhotoInAlbumPage />}
                   />
-                  <Route path="/albums/:albumId" component={AlbumDetailPage} />
-                  <Route exact path="/albums" component={AlbumListPage} />
-                  <Route exact path="/photos/:photoId" component={PhotoPage} />
-                  <Route exact path="/photos" component={PhotoListPage} />
-                  <Route component={NotFound} />
-                </Switch>
+                  <Route path="/albums/:albumId" element={<AlbumDetailPage />} />
+                  <Route path="/albums" element={<AlbumListPage />} />
+                  <Route path="/photos/:photoId" element={<PhotoPage />} />
+                  <Route path="/photos" element={<PhotoListPage />} />
+                  {/* <Route component={NotFound} /> */}
+                </Routes>
               </div>
             </main>
           </Col>

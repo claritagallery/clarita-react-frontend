@@ -1,19 +1,18 @@
 import { Card, Col } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+
+import { Link } from "react-router-dom";
 
 const PhotoThumb = ({ photo, albumId }) => {
-  const link = albumId
-    ? `/albums/${albumId}/photos/${photo.id}`
-    : `/photos/${photo.id}`;
+  const link = albumId ? `/albums/${albumId}/photos/${photo.id}` : `/photos/${photo.id}`;
   return (
     <Col xs={6} s={4} md={3} xl={2}>
-      <LinkContainer to={link}>
+      <Link to={link}>
         <Card>
           <Card.Body>
             <Card.Text>{photo.name}</Card.Text>
           </Card.Body>
         </Card>
-      </LinkContainer>
+      </Link>
     </Col>
   );
 };

@@ -1,17 +1,15 @@
-import { Card, Col } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const AlbumThumb = ({ album }) => (
-  <Col xs={6} sm={4} md={3} xl={2}>
-    <LinkContainer to={`/albums/${album.id}`}>
-      <Card>
-        <Card.Body>
-          <Card.Text>{album.name}</Card.Text>
-        </Card.Body>
-        <Card.Footer className="text-muted">{album.date}</Card.Footer>
-      </Card>
-    </LinkContainer>
-  </Col>
-);
+function AlbumThumb({ album }) {
+  return (
+    <div>
+      <h2>{album.name}</h2>
+      <Link to={`/albums/${album.id}`}>Take me to that album</Link>
+      <h5>{album.date}</h5>
+      <h3>claro que llego {album.name}</h3>
+    </div>
+  );
+}
 
 export default AlbumThumb;
