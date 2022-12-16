@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import { Image, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -16,7 +17,7 @@ function PhotoInAlbumPage({ match }) {
   const photoId = match.params.photoId;
   const { data, error, isError, isLoading } = useQuery(
     ["photo-in-album", albumId, photoId],
-    () => fetchPhotoInAlbum(albumId, photoId)
+    () => fetchPhotoInAlbum(albumId, photoId),
   );
 
   if (isLoading) {

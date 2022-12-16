@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import { Image, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -14,7 +15,7 @@ function fetchPhoto(photoId) {
 function PhotoPage({ match }) {
   const photoId = match.params.photoId;
   const { data, error, isError, isLoading } = useQuery(["photo", photoId], () =>
-    fetchPhoto(photoId)
+    fetchPhoto(photoId),
   );
 
   if (isLoading) {

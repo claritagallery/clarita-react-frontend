@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import { useQuery } from "react-query";
@@ -40,10 +41,10 @@ function AlbumDetailPage() {
   const { albumId } = useParams();
   const albumQuery = useQuery(["album", albumId], () => fetchAlbum(albumId!));
   const childAlbumsQuery = useQuery(["albums", { parent: albumId }], () =>
-    fetchAlbums({ parent: albumId!, limit: 100 })
+    fetchAlbums({ parent: albumId!, limit: 100 }),
   );
   const photosQuery = useQuery(["photos", { album: albumId }], () =>
-    fetchPhotos({ album: albumId!, limit: 50 })
+    fetchPhotos({ album: albumId!, limit: 50 }),
   );
 
   return (
