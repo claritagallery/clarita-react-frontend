@@ -1,16 +1,19 @@
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import AlbumListPage from "./pages/AlbumListPage";
-import AlbumDetailPage from "./pages/AlbumDetailPage";
-import PhotoInAlbumPage from "./pages/PhotoInAlbumPage";
-import PhotoListPage from "./pages/PhotoListPage";
-import PhotoPage from "./pages/PhotoPage";
-import NotFound from "./pages/NotFound";
+
+import { Footer, Header } from "./components";
+import {
+  AlbumDetailPage,
+  AlbumListPage,
+  PhotoInAlbumPage,
+  PhotoListPage,
+  PhotoPage,
+  NotFound,
+} from "./pages";
 
 const queryClient = new QueryClient({
   defaultOptions: {},
