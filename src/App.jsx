@@ -38,7 +38,7 @@ function App() {
                   <Route path="/albums" element={<AlbumListPage />} />
                   <Route path="/photos/:photoId" element={<PhotoPage />} />
                   <Route path="/photos" element={<PhotoListPage />} />
-                  {/* <Route component={NotFound} /> */}
+                  <Route component={NotFound} />
                 </Routes>
               </div>
             </main>

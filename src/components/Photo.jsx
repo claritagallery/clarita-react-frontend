@@ -3,7 +3,7 @@ import { Container, Image, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "./Breadcrumbs";
 import PhotoThumb from "./PhotoThumb";
-
+import React from "react";
 function Photo({ photo, albumId }) {
   return (
     <>

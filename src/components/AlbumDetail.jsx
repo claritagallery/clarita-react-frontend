@@ -1,3 +1,4 @@
+import React from "react";
 import { Container, Spinner } from "react-bootstrap";
 import Breadcrumbs from "./Breadcrumbs";
 import PhotoThumb from "./PhotoThumb";
