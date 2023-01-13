@@ -14,7 +14,7 @@ function fetchAlbum(albumId: string) {
 }
 
 type fetchAlbumsParams = {
-  parent: string;
+  parent?: string;
   limit: number;
 };
 
@@ -26,7 +26,7 @@ function fetchAlbums(params: fetchAlbumsParams) {
 }
 
 type fetchPhotosParams = {
-  album: string;
+  album?: string;
   limit: number;
 };
 
@@ -41,10 +41,10 @@ function AlbumDetailPage() {
   const { albumId } = useParams();
   const albumQuery = useQuery(["album", albumId], () => fetchAlbum(albumId!));
   const childAlbumsQuery = useQuery(["albums", { parent: albumId }], () =>
-    fetchAlbums({ parent: albumId!, limit: 100 }),
+    fetchAlbums({ parent: albumId, limit: 100 }),
   );
   const photosQuery = useQuery(["photos", { album: albumId }], () =>
-    fetchPhotos({ album: albumId!, limit: 50 }),
+    fetchPhotos({ album: albumId, limit: 50 }),
   );
 
   return (

@@ -13,6 +13,7 @@ function fetchPhotos() {
 
 const PhotoListPage = () => {
   const photosQuery = useQuery("photos", fetchPhotos);
+  console.log(photosQuery);
   return <PhotoList {...photosQuery} />;
 };
 

@@ -16,9 +16,9 @@ const AlbumDetail = ({ data, error, isError, isLoading }) => {
     <>
       <Container>
         <Breadcrumbs crumbs={data.breadcrumbs} current={data.name} />
-        <h2>{data.name}</h2>
+        <h1>{data.name}</h1>
         <span>{data.date}</span>
-        <p>{data.description}</p>
+        <h1>{data.description}</h1>
       </Container>
     </>
   );
