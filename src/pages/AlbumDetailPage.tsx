@@ -1,11 +1,12 @@
 import React from "react";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
-import { useQuery } from "react-query";
+import { useQuery, UseQueryResult } from "react-query";
 import AlbumDetail from "../components/AlbumDetail";
 import AlbumList from "../components/AlbumList";
 import PhotoList from "../components/PhotoList";
 import { useParams } from "react-router-dom";
+import { Data } from "ws";
 
 function fetchAlbum(albumId: string) {
   return axios({
@@ -32,7 +33,7 @@ type fetchPhotosParams = {
 
 function fetchPhotos(params: fetchPhotosParams) {
   return axios({
-    url: `${process.env.REACT_APP_API_BASE_URL}/api/v1/photos`,
+    url: `${process.env.REACT_APP_API_BASE_URL}/apa/v1/photos`,
     params: params,
   }).then((res) => res.data);
 }
@@ -43,10 +44,16 @@ function AlbumDetailPage() {
   const childAlbumsQuery = useQuery(["albums", { parent: albumId }], () =>
     fetchAlbums({ parent: albumId, limit: 100 }),
   );
+
   const photosQuery = useQuery(["photos", { album: albumId }], () =>
     fetchPhotos({ album: albumId, limit: 50 }),
   );
 
+  // const photosQuery = useQuery<Data, Error>(["photos", { album: albumId }], () =>
+  //   fetchPhotos({ album: albumId, limit: 50 }),
+  // );
+
+  //console.dir(photosQuery.error);
   return (
     <>
       <AlbumDetail {...albumQuery} />
