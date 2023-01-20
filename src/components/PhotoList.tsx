@@ -1,25 +1,19 @@
 import React from "react";
 import { Container, Row, Spinner } from "react-bootstrap";
+import { APIError, PhotoListItem } from "../pages/AlbumDetailPage";
 import PhotoThumb from "./PhotoThumb";
 
-type PhotoListItem = {
-  id: string;
-  filename: string;
-  name: string;
-  date_and_time: string;
-};
-
-type PhotoListParams = {
+export interface PhotoListParams {
   albumId?: string;
   data?: {
     next: boolean | null | string;
     total: number;
     results: PhotoListItem[];
   };
-  error: unknown; //gotta fix this
+  error: APIError;
   isError: boolean;
   isLoading: boolean;
-};
+}
 
 const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams) => {
   console.log(data);
@@ -28,7 +22,7 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
   }
 
   if (isError) {
-    return <div>{error?.message}</div>;
+    return <div>{error ? error.message : "Unknown error"}</div>;
   }
 
   if (data) {

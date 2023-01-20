@@ -1,12 +1,30 @@
 import React from "react";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
-import { useQuery, UseQueryResult } from "react-query";
+import { useQuery } from "react-query";
 import AlbumDetail from "../components/AlbumDetail";
 import AlbumList from "../components/AlbumList";
 import PhotoList from "../components/PhotoList";
 import { useParams } from "react-router-dom";
-import { Data } from "ws";
+
+export type APIError = {
+  message: string;
+} | null;
+
+export interface ListData<T> {
+  next: boolean | null | string;
+  total: number;
+  results: T[];
+}
+
+export interface PhotoListItem {
+  id: string;
+  filename: string;
+  name: string;
+  date_and_time: string;
+}
+
+export type PhotoListData = ListData<PhotoListItem>;
 
 function fetchAlbum(albumId: string) {
   return axios({
@@ -33,7 +51,7 @@ type fetchPhotosParams = {
 
 function fetchPhotos(params: fetchPhotosParams) {
   return axios({
-    url: `${process.env.REACT_APP_API_BASE_URL}/apa/v1/photos`,
+    url: `${process.env.REACT_APP_API_BASE_URL}/api/v1/photos`,
     params: params,
   }).then((res) => res.data);
 }
@@ -45,20 +63,17 @@ function AlbumDetailPage() {
     fetchAlbums({ parent: albumId, limit: 100 }),
   );
 
-  const photosQuery = useQuery(["photos", { album: albumId }], () =>
-    fetchPhotos({ album: albumId, limit: 50 }),
+  const photosQuery = useQuery<PhotoListData, APIError>(
+    ["photos", { album: albumId }],
+    () => fetchPhotos({ album: albumId, limit: 50 }),
   );
+  //////////////////////////
 
-  // const photosQuery = useQuery<Data, Error>(["photos", { album: albumId }], () =>
-  //   fetchPhotos({ album: albumId, limit: 50 }),
-  // );
-
-  //console.dir(photosQuery.error);
   return (
     <>
       <AlbumDetail {...albumQuery} />
       <AlbumList {...childAlbumsQuery} />
-      <PhotoList {...photosQuery} albumId={albumId} />
+      <PhotoList albumId={albumId} {...photosQuery} />
     </>
   );
 }

@@ -3,6 +3,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import { Spinner } from "react-bootstrap";
 import PhotoList from "../components/PhotoList";
+import { APIError, PhotoListData } from "./AlbumDetailPage";
 
 function fetchPhotos() {
   return axios({
@@ -12,8 +13,7 @@ function fetchPhotos() {
 }
 
 const PhotoListPage = () => {
-  const photosQuery = useQuery("photos", fetchPhotos);
-  console.log(photosQuery);
+  const photosQuery = useQuery<PhotoListData, APIError>("photos", fetchPhotos);
   return <PhotoList {...photosQuery} />;
 };
 
