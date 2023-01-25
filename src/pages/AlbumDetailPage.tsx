@@ -14,7 +14,7 @@ export type APIError = {
 export interface ListData<T> {
   next: boolean | null | string;
   total: number;
-  results: T[];
+  results: T[]; //sustituye la t por lo que se ponga adentro de las cunas
 }
 
 export interface PhotoListItem {
@@ -24,7 +24,20 @@ export interface PhotoListItem {
   date_and_time: string;
 }
 
+export interface AlbumDetailItem {
+  id: string;
+  name: string;
+  date: string;
+  description: string;
+  breadcrumbs: {
+    id: string;
+    name: string;
+    date: string;
+  }[];
+}
+
 export type PhotoListData = ListData<PhotoListItem>;
+export type AlbumDetailData = AlbumDetailItem;
 
 function fetchAlbum(albumId: string) {
   return axios({
@@ -58,16 +71,22 @@ function fetchPhotos(params: fetchPhotosParams) {
 
 function AlbumDetailPage() {
   const { albumId } = useParams();
-  const albumQuery = useQuery(["album", albumId], () => fetchAlbum(albumId!));
+  const albumQuery = useQuery<AlbumDetailData, APIError>(["album", albumId], () =>
+    fetchAlbum(albumId!),
+  );
   const childAlbumsQuery = useQuery(["albums", { parent: albumId }], () =>
     fetchAlbums({ parent: albumId, limit: 100 }),
   );
-
+  ////////////////////////////////
+  console.log(albumQuery);
+  if (albumQuery) {
+    console.log(albumQuery.data);
+  }
+  ////////////////////////////////////
   const photosQuery = useQuery<PhotoListData, APIError>(
     ["photos", { album: albumId }],
     () => fetchPhotos({ album: albumId, limit: 50 }),
   );
-  //////////////////////////
 
   return (
     <>
