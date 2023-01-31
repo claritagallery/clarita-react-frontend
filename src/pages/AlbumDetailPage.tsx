@@ -24,6 +24,12 @@ export interface PhotoListItem {
   date_and_time: string;
 }
 
+export interface AlbumListItem {
+  id: string;
+  name: string;
+  date: string;
+}
+
 export interface AlbumDetailItem {
   id: string;
   name: string;
@@ -38,7 +44,7 @@ export interface AlbumDetailItem {
 
 export type PhotoListData = ListData<PhotoListItem>;
 export type AlbumDetailData = AlbumDetailItem;
-
+export type AlbumListData = ListData<AlbumListItem>; //cambiar el nombre de esto porque es lo mismo que PhotoListData, un nombre que sirva para los dos;
 function fetchAlbum(albumId: string) {
   return axios({
     url: `${process.env.REACT_APP_API_BASE_URL}/api/v1/album/${albumId}`,
@@ -74,19 +80,19 @@ function AlbumDetailPage() {
   const albumQuery = useQuery<AlbumDetailData, APIError>(["album", albumId], () =>
     fetchAlbum(albumId!),
   );
-  const childAlbumsQuery = useQuery(["albums", { parent: albumId }], () =>
-    fetchAlbums({ parent: albumId, limit: 100 }),
+  const childAlbumsQuery = useQuery<AlbumListData, APIError>(
+    ["albums", { parent: albumId }],
+    () => fetchAlbums({ parent: albumId, limit: 100 }),
   );
-  ////////////////////////////////
-  console.log(albumQuery);
-  if (albumQuery) {
-    console.log(albumQuery.data);
-  }
-  ////////////////////////////////////
+
   const photosQuery = useQuery<PhotoListData, APIError>(
     ["photos", { album: albumId }],
     () => fetchPhotos({ album: albumId, limit: 50 }),
   );
+
+  if (childAlbumsQuery) {
+    console.log(childAlbumsQuery);
+  }
 
   return (
     <>

@@ -3,7 +3,8 @@ import React from "react";
 import { useQuery } from "react-query";
 import { Spinner } from "react-bootstrap";
 import PhotoList from "../components/PhotoList";
-import { APIError, PhotoListData } from "./AlbumDetailPage";
+import { APIError } from "./AlbumDetailPage";
+import { PhotoListData } from "./PhotoListData";
 
 function fetchPhotos() {
   return axios({

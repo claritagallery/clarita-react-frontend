@@ -3,6 +3,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import { Spinner } from "react-bootstrap";
 import AlbumList from "../components/AlbumList";
+import { APIError, AlbumListData } from "./AlbumDetailPage";
 
 function fetchAlbums() {
   return axios({
@@ -12,7 +13,8 @@ function fetchAlbums() {
 }
 
 const AlbumListPage = () => {
-  const albumsQuery = useQuery("albums", fetchAlbums);
+  const albumsQuery = useQuery<AlbumListData, APIError>("albums", fetchAlbums);
+  console.log(albumsQuery);
   return <AlbumList {...albumsQuery} />;
 };
 
