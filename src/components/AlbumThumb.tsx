@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { AlbumListItem } from "../pages/AlbumDetailPage";
 
-function AlbumThumb({ album }) {
+interface AlbumParams {
+  album: AlbumListItem;
+}
+
+function AlbumThumb({ album }: AlbumParams) {
+  console.log(album);
   return (
     <div>
       <h1>{album.name} popo</h1>

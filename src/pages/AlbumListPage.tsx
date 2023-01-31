@@ -14,7 +14,7 @@ function fetchAlbums() {
 
 const AlbumListPage = () => {
   const albumsQuery = useQuery<AlbumListData, APIError>("albums", fetchAlbums);
-  console.log(albumsQuery);
+
   return <AlbumList {...albumsQuery} />;
 };
 
