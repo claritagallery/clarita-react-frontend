@@ -3,9 +3,10 @@ import React from "react";
 import { useQuery } from "react-query";
 import { Spinner } from "react-bootstrap";
 import PhotoList from "../components/PhotoList";
-import { APIError } from "./AlbumDetailPage";
-import { PhotoListData } from "./PhotoListData";
+import { APIError } from "../types";
 
+import { ListData, PhotoListItem } from "../types";
+export type PhotoListData = ListData<PhotoListItem>;
 function fetchPhotos() {
   return axios({
     url: `${process.env.REACT_APP_API_BASE_URL}/api/v1/photos`,

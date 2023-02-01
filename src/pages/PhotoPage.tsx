@@ -6,39 +6,7 @@ import { useQuery } from "react-query";
 import Photo from "../components/Photo";
 import PhotoThumb from "../components/PhotoThumb";
 import { useParams } from "react-router-dom";
-import { APIError } from "../pages/AlbumDetailPage"; //TODO// ORGANIZE ALL TYPESCRIPT VARIABLES SEPARATE FILE
-
-type PhotoId = string | undefined;
-
-type Caption = {
-  language?: string;
-  text?: string;
-};
-
-type BreadCrumbs = {
-  id: string;
-  name: string;
-  date?: string;
-};
-
-export type PreviousOrNext = {
-  id: string;
-  filename: string;
-  name: string;
-  date_and_time: string;
-};
-export type Next = PreviousOrNext | null;
-export interface PhotoData {
-  id: PhotoId;
-  filename: string;
-  name: string;
-  date_and_time: null;
-  image_url: string;
-  caption: Caption[];
-  breadcrumbs: BreadCrumbs[];
-  prev: PreviousOrNext;
-  next: Next;
-}
+import { APIError, PhotoId, PhotoData } from "../types";
 
 function fetchPhoto(photoId: PhotoId) {
   return axios({

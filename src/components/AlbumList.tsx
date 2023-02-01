@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Row, Spinner } from "react-bootstrap";
 import AlbumThumb from "./AlbumThumb";
-import { AlbumListData, APIError } from "../pages/AlbumDetailPage"; //corregir
 
+import { APIError, AlbumListData } from "../types";
 export interface AlbumListParams {
   data?: AlbumListData;
   error: APIError;

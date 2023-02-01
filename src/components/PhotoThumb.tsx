@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Col } from "react-bootstrap";
-import { PreviousOrNext } from "../pages/PhotoPage";
+import { PreviousOrNext } from "../types";
 
 import { Link } from "react-router-dom";
 

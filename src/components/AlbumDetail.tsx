@@ -2,8 +2,8 @@ import React from "react";
 import { Container, Spinner } from "react-bootstrap";
 import Breadcrumbs from "./Breadcrumbs";
 import PhotoThumb from "./PhotoThumb";
-import { APIError, AlbumDetailItem } from "../pages/AlbumDetailPage";
 
+import { APIError, AlbumDetailItem } from "../types";
 export interface AlbumDetailParams {
   data?: AlbumDetailItem;
   error: APIError;
