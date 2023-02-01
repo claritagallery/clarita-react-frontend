@@ -21,6 +21,13 @@ type BreadCrumbs = {
   date?: string;
 };
 
+export type PreviousOrNext = {
+  id: string;
+  filename: string;
+  name: string;
+  date_and_time: string;
+};
+export type Next = PreviousOrNext | null;
 export interface PhotoData {
   id: PhotoId;
   filename: string;
@@ -29,13 +36,8 @@ export interface PhotoData {
   image_url: string;
   caption: Caption[];
   breadcrumbs: BreadCrumbs[];
-  prev: {
-    id: string;
-    filename: string;
-    name: string;
-    date_and_time: string;
-  };
-  next: string | null;
+  prev: PreviousOrNext;
+  next: Next;
 }
 
 function fetchPhoto(photoId: PhotoId) {

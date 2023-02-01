@@ -27,6 +27,7 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
 
   if (data) {
     const photos = data.results;
+    console.log(photos);
     return (
       <div>
         <Container>

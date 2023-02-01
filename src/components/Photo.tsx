@@ -12,7 +12,6 @@ interface PhotoParams {
 }
 
 function Photo({ photo, albumId }: PhotoParams) {
-  console.log(photo);
   return (
     <>
       <Container>

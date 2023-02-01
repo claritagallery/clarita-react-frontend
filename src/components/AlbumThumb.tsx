@@ -7,7 +7,6 @@ interface AlbumParams {
 }
 
 function AlbumThumb({ album }: AlbumParams) {
-  console.log(album);
   return (
     <div>
       <h1>{album.name} popo</h1>
