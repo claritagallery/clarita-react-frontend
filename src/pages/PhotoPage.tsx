@@ -62,6 +62,13 @@ function PhotoPage() {
     return <div>{error ? error.message : "Unknown error"}</div>;
   }
 
-  return data ? <Photo photo={data} /> : "No Photos here";
+  return data ? (
+    <>
+      {" "}
+      <Photo photo={data} />{" "}
+    </>
+  ) : (
+    <h1>No Photos here</h1>
+  );
 }
 export default PhotoPage;
