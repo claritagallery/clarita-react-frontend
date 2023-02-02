@@ -54,7 +54,7 @@ function AlbumDetailPage() {
   );
 
   if (childAlbumsQuery) {
-    console.log(childAlbumsQuery);
+    childAlbumsQuery;
   }
 
   return (

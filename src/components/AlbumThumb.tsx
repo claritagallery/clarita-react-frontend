@@ -9,7 +9,7 @@ interface AlbumParams {
 function AlbumThumb({ album }: AlbumParams) {
   return (
     <div>
-      <h1>{album.name} popo</h1>
+      <h1>{album.name}</h1>
       <Link to={`/albums/${album.id}`}>Take me to that album</Link>
       <h5>{album.date}</h5>
       <h3>claro que llego {album.name}</h3>

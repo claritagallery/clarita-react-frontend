@@ -17,7 +17,7 @@ export interface PhotoListParams {
 }
 
 const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams) => {
-  console.log(data);
+  data;
   if (isLoading) {
     return <h1>its charging boy</h1>;
   }
@@ -28,7 +28,7 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
 
   if (data) {
     const photos = data.results;
-    console.log(photos);
+    photos;
     return (
       <div>
         <Container>

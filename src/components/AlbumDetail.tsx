@@ -20,7 +20,7 @@ const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => 
     return <div>{error ? error.message : "Unknown error"}</div>;
   }
   if (data) {
-    console.log(data);
+    data;
     return (
       <>
         <Container>
