@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { Spinner } from "react-bootstrap";
 import AlbumList from "../components/AlbumList";
 
-import { APIError, AlbumListData } from "../types";
+import { APIError, AlbumListData } from "../data/types";
 function fetchAlbums() {
   return axios({
     url: `${process.env.REACT_APP_API_BASE_URL}/api/v1/albums`,

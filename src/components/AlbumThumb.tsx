@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AlbumListItem } from "../types";
+import { AlbumListItem } from "../data/types";
 
 interface AlbumParams {
   album: AlbumListItem;

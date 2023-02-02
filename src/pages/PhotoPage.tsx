@@ -6,7 +6,7 @@ import { useQuery } from "react-query";
 import Photo from "../components/Photo";
 import PhotoThumb from "../components/PhotoThumb";
 import { useParams } from "react-router-dom";
-import { APIError, PhotoId, PhotoData } from "../types";
+import { APIError, PhotoId, PhotoData } from "../data/types";
 
 function fetchPhoto(photoId: PhotoId) {
   return axios({

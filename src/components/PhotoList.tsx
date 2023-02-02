@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Spinner } from "react-bootstrap";
-import { PhotoListItem, APIError } from "../types";
+import { PhotoListItem, APIError } from "../data/types";
 
 import PhotoThumb from "./PhotoThumb";
 

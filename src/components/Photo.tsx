@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Breadcrumbs from "./Breadcrumbs";
 import PhotoThumb from "./PhotoThumb";
 import React from "react";
-import { PhotoData } from "../types";
+import { PhotoData } from "../data/types";
 
 interface PhotoParams {
   photo: PhotoData;

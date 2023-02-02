@@ -6,13 +6,8 @@ import AlbumDetail from "../components/AlbumDetail";
 import AlbumList from "../components/AlbumList";
 import PhotoList from "../components/PhotoList";
 import { useParams } from "react-router-dom";
-import { APIError, PhotoListData, AlbumDetailData, AlbumListData } from "../types";
-
-function fetchAlbum(albumId: string | undefined) {
-  return axios({
-    url: `${process.env.REACT_APP_API_BASE_URL}/api/v1/album/${albumId}`,
-  }).then((res) => res.data);
-}
+import { APIError, PhotoListData, AlbumDetailData, AlbumListData } from "../data/types";
+import useApi from "../data";
 
 type fetchAlbumsParams = {
   parent?: string;
@@ -40,9 +35,8 @@ function fetchPhotos(params: fetchPhotosParams) {
 
 function AlbumDetailPage() {
   const { albumId } = useParams();
-  const albumQuery = useQuery<AlbumDetailData, APIError>(["album", albumId], () =>
-    fetchAlbum(albumId),
-  );
+  const { albumQuery } = useApi();
+  const singleAlbum = albumId ? albumQuery(albumId) : null;
   const childAlbumsQuery = useQuery<AlbumListData, APIError>(
     ["albums", { parent: albumId }],
     () => fetchAlbums({ parent: albumId, limit: 100 }),
@@ -59,7 +53,7 @@ function AlbumDetailPage() {
 
   return (
     <>
-      <AlbumDetail {...albumQuery} />
+      {singleAlbum && <AlbumDetail {...singleAlbum} />}
       <AlbumList {...childAlbumsQuery} />
       <PhotoList albumId={albumId} {...photosQuery} />
     </>
