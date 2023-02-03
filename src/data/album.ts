@@ -6,12 +6,23 @@ function album() {
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
   const albumQuery = (albumId: string) => {
-    return useQuery<AlbumDetailData, APIError>(["album", albumId], () => {
-      return axios({
+    return useQuery<AlbumDetailData, APIError>(["album", albumId], async () => {
+      const res = await axios({
         url: `${baseUrl}/api/v1/album/${albumId}`,
-      }).then((res) => res.data);
+      });
+      return res.data;
     });
   };
-  return { albumQuery };
+
+  const albumsQuery = () => {
+    return useQuery<AlbumListData, APIError>("albums", async () => {
+      const res = await axios({
+        url: `${baseUrl}/api/v1/albums`,
+        params: { limit: 100 },
+      });
+      return res.data;
+    });
+  };
+  return { albumQuery, albumsQuery };
 }
 export default album;

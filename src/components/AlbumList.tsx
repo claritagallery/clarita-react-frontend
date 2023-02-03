@@ -3,12 +3,9 @@ import { Container, Row, Spinner } from "react-bootstrap";
 import AlbumThumb from "./AlbumThumb";
 
 import { APIError, AlbumListData } from "../data/types";
-export interface AlbumListParams {
-  data?: AlbumListData;
-  error: APIError;
-  isError: boolean;
-  isLoading: boolean;
-}
+import { UseQueryResult } from "react-query";
+
+type AlbumListParams = UseQueryResult<AlbumListData, APIError>;
 
 const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
   if (isLoading) {
