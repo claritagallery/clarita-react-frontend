@@ -1,9 +1,17 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { APIError, AlbumDetailData, AlbumListData } from "./types";
+import { APIError, AlbumDetailData, AlbumListData, fetchAlbumsParams } from "./types";
 
 function album() {
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
+
+  const fetchAlbums = async (params: fetchAlbumsParams) => {
+    const res = await axios({
+      url: `${baseUrl}/api/v1/albums`,
+      params: params,
+    });
+    return res.data;
+  };
 
   const albumQuery = (albumId: string) => {
     return useQuery<AlbumDetailData, APIError>(["album", albumId], async () => {
@@ -15,14 +23,21 @@ function album() {
   };
 
   const albumsQuery = () => {
-    return useQuery<AlbumListData, APIError>("albums", async () => {
-      const res = await axios({
-        url: `${baseUrl}/api/v1/albums`,
-        params: { limit: 100 },
-      });
-      return res.data;
-    });
+    return useQuery<AlbumListData, APIError>("albums", () => fetchAlbums({ limit: 100 }));
   };
+
+  // function fetchAlbums(params: fetchAlbumsParams) {
+  //   return axios({
+  //     url: `${process.env.REACT_APP_API_BASE_URL}/api/v1/albums`,
+  //     params: params,
+  //   }).then((res) => res.data);
+  // }
+
+  // const childAlbumsQuery = useQuery<AlbumListData, APIError>(
+  //   ["albums", { parent: albumId }],
+  //   () => fetchAlbums({ parent: albumId, limit: 100 }),
+  // );
+
   return { albumQuery, albumsQuery };
 }
 export default album;

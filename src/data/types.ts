@@ -63,6 +63,12 @@ export interface PhotoData {
   next: Next;
 }
 
+export interface fetchAlbumsParams {
+  ///////aqui toy
+
+  limit: number;
+  parent?: string;
+}
 export type PhotoListData = ListData<PhotoListItem>;
 export type AlbumDetailData = AlbumDetailItem;
 export type AlbumListData = ListData<AlbumListItem>;
