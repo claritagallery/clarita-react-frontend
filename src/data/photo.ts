@@ -4,6 +4,7 @@ import {
   PhotoListData,
   FetchPhotoInAlbumParams,
   PhotoData,
+  PhotoId,
 } from "./types";
 import axios from "axios";
 import { useQuery } from "react-query";
@@ -24,6 +25,12 @@ function photo() {
     }).then((res) => res.data);
   }
 
+  function fetchPhoto(photoId: PhotoId) {
+    return axios({
+      url: `${baseUrl}/api/v1/photo/${photoId}`,
+    }).then((res) => res.data);
+  }
+
   const photosQuery = (album: fetchPhotosParams) => {
     return useQuery<PhotoListData, APIError>(["photos", { album: album }], () =>
       fetchPhotos({ album: album.album, limit: 50 }),
@@ -36,7 +43,13 @@ function photo() {
     );
   };
 
-  return { photosQuery, photoInAlbum };
+  const photoQuery = (photoId: PhotoId) => {
+    return useQuery<PhotoData, APIError>(["photo", photoId], () => {
+      return fetchPhoto(photoId);
+    });
+  };
+
+  return { photosQuery, photoInAlbum, photoQuery };
 }
 
 export default photo;

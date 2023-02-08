@@ -62,7 +62,7 @@ export interface PhotoData {
   prev: PreviousOrNext;
   next: Next;
 }
-///////////////
+
 export type FetchPhotoInAlbumParams = {
   albumId: string;
   photoId: string;
@@ -77,6 +77,7 @@ export interface fetchAlbumsParams {
   limit: number;
   parent?: string;
 }
+
 export type PhotoListData = ListData<PhotoListItem>;
 export type AlbumDetailData = AlbumDetailItem;
 export type AlbumListData = ListData<AlbumListItem>;

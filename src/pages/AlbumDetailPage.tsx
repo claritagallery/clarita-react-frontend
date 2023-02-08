@@ -4,7 +4,6 @@ import AlbumDetail from "../components/AlbumDetail";
 import AlbumList from "../components/AlbumList";
 import PhotoList from "../components/PhotoList";
 import { useParams } from "react-router-dom";
-
 import useApi from "../data";
 
 function AlbumDetailPage() {
