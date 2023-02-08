@@ -22,21 +22,9 @@ function album() {
     });
   };
 
-  const albumsQuery = () => {
-    return useQuery<AlbumListData, APIError>("albums", () => fetchAlbums({ limit: 100 }));
+  const albumsQuery = (params: fetchAlbumsParams) => {
+    return useQuery<AlbumListData, APIError>("albums", () => fetchAlbums(params));
   };
-
-  // function fetchAlbums(params: fetchAlbumsParams) {
-  //   return axios({
-  //     url: `${process.env.REACT_APP_API_BASE_URL}/api/v1/albums`,
-  //     params: params,
-  //   }).then((res) => res.data);
-  // }
-
-  // const childAlbumsQuery = useQuery<AlbumListData, APIError>(
-  //   ["albums", { parent: albumId }],
-  //   () => fetchAlbums({ parent: albumId, limit: 100 }),
-  // );
 
   return { albumQuery, albumsQuery };
 }
