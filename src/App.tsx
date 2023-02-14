@@ -22,7 +22,7 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <div>
+    <div className="all">
       <QueryClientProvider client={queryClient}>
         <Container className="App" fluid>
           <Header />

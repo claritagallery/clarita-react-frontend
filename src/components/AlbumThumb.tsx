@@ -10,11 +10,15 @@ interface AlbumParams {
 function AlbumThumb({ album }: AlbumParams) {
   console.log(album);
   return (
-    <div>
-      <h1>{album.name}</h1>
-      <Link to={`/albums/${album.id}`}>Take me to that album</Link>
+    <div className="singleAlbum stacked">
       <img src={photoTemporal} alt="fidel" />
-      <h5>{album.date}</h5>
+      <div className="content">
+        <h1>{album.name}</h1>
+        <Link className="link" to={`/albums/${album.id}`}>
+          Take me to that album
+        </Link>
+        <h5>{album.date}</h5>
+      </div>
     </div>
   );
 }
