@@ -9,6 +9,9 @@
     .icon-close {
       display: none;
     }
+    .show-close-button {
+      display: block;
+    }
 
     .icon-hamburguer {
       cursor: pointer;
@@ -16,8 +19,12 @@
       border: 0;
       padding: 0.5rem;
     }
+    .hide-hamburguer {
+      display: none;
+    }
   }
-  .primary-navigation {
+
+  .not-active {
     display: none;
   }
 }

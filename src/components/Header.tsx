@@ -7,7 +7,7 @@ import close from "../assets/x.svg";
 import { Link } from "react-router-dom";
 
 function Header() {
-  const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
   const [closeButton, setCloseButton] = useState(false);
 
   return (
@@ -17,23 +17,25 @@ function Header() {
 
         <button className="hamburguer-botton">
           <img
-            onClick={() => setOpen((prev) => !prev)}
+            onClick={() => setOpenMenu((prev) => !prev)}
             src={hamburguer}
-            className="icon-hamburguer"
+            className={`icon-hamburguer ${openMenu ? "hide-hamburguer" : ""}`}
           />
           <img
-            onClick={() =>
+            onClick={() => {
+              setOpenMenu(false);
               setCloseButton((prev) => {
                 console.log(prev);
                 return !prev;
-              })
-            }
+                //return false;
+              });
+            }}
             src={close}
-            className="icon-close"
+            className={!openMenu ? "icon-close" : "show-close-button"}
           />
           <span className="visually-hidden">Menu</span>
         </button>
-        <nav className="primary-navigation">
+        <nav className={`primary-navigation ${openMenu ? "active" : "not-active"}`}>
           <ul className="nav-list">
             <li>Albums</li>
             <li>Photos</li>
