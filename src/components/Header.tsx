@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 function Header() {
   const [openMenu, setOpenMenu] = useState(false);
-  const [closeButton, setCloseButton] = useState(false);
 
   return (
     <header className="primary-header">
@@ -23,12 +22,7 @@ function Header() {
           />
           <img
             onClick={() => {
-              setOpenMenu(false);
-              setCloseButton((prev) => {
-                console.log(prev);
-                return !prev;
-                //return false;
-              });
+              return setOpenMenu(false);
             }}
             src={close}
             className={!openMenu ? "icon-close" : "show-close-button"}
