@@ -1,5 +1,15 @@
+//#00908a
+
+.active-header {
+  content: "";
+  position: fixed;
+  background-image: linear-gradient(rgb(0 0 0 /0), rgb(0 0 0 / 0.8));
+}
+.logo {
+  margin-right: auto;
+  margin-left: 2rem;
+}
 .nav-container {
-  color: orangered;
   margin-top: 2%;
   display: flex;
   align-items: center;
@@ -18,9 +28,35 @@
       background: transparent;
       border: 0;
       padding: 0.5rem;
+      margin-left: 1rem;
     }
     .hide-hamburguer {
       display: none;
+    }
+  }
+  .active {
+    display: block;
+    //position: fixed;
+    inset: 8rem 1rem auto;
+    background-color: white;
+    border-radius: 5px;
+    padding: 1.5rem;
+    box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
+  }
+  .nav-list {
+    margin-right: 2rem;
+    display: grid;
+    gap: 1rem;
+    text-align: center;
+    .links {
+      color: black;
+      text-decoration: none;
+      font-size: 1.2rem;
+      list-style-type: none;
+    }
+    .links:hover,
+    .links:focus {
+      color: pink;
     }
   }
 
@@ -28,14 +64,34 @@
     display: none;
   }
 }
+
 @media (min-width: 50em) {
+  .primary-header {
+    background-image: none;
+    position: fixed;
+    background-color: white;
+    //border: 1px solid black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100vw;
+    box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
+  }
   .nav-container .primary-navigation {
+    //position: fixed;
+    box-shadow: none;
     display: block;
     cursor: pointer;
-    background: transparent;
     border: 0;
     padding: 0.5rem;
+    //background-color: rebeccapurple;
+    margin-right: 1rem;
+    .nav-list {
+      display: flex;
+      gap: 2rem;
+    }
   }
+
   .hamburguer-botton {
     display: none;
   }

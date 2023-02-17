@@ -10,10 +10,10 @@ function Header() {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <header className="primary-header">
+    <header className={`primary-header ${openMenu ? "active-header" : ""}`}>
+      <img className="logo" src={logoAzul} alt="gallery-logo" width={60} height={60} />
+      <input type="text" placeholder="search coming soon" />
       <div className="nav-container">
-        <img src={logoAzul} alt="gallery-logo" width={80} height={80} />
-
         <button className="hamburguer-botton">
           <img
             onClick={() => setOpenMenu((prev) => !prev)}
@@ -27,16 +27,20 @@ function Header() {
             src={close}
             className={!openMenu ? "icon-close" : "show-close-button"}
           />
-          <span className="visually-hidden">Menu</span>
         </button>
         <nav className={`primary-navigation ${openMenu ? "active" : "not-active"}`}>
           <ul className="nav-list">
-            <li>Albums</li>
-            <li>Photos</li>
+            <Link className="links" to="/albums">
+              {" "}
+              <li>Albums</li>
+            </Link>
+            <Link className="links" to="/photos">
+              {" "}
+              <li>Photos</li>
+            </Link>
           </ul>
         </nav>
       </div>
-      <input type="text" placeholder="search coming soon" />
     </header>
   );
 }
