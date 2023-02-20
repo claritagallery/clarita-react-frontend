@@ -10,9 +10,12 @@ function Header() {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <header className={`primary-header ${openMenu ? "active-header" : ""}`}>
+    <header
+      className={`primary-header ${openMenu ? "active-header" : "not-active-header"}`}
+    >
       <img className="logo" src={logoAzul} alt="gallery-logo" width={60} height={60} />
-      <input type="text" placeholder="search coming soon" />
+      <p className="greeting">Hello gorgeous!</p>
+      <input className="search-box" type="text" placeholder="search coming soon" />
       <div className="nav-container">
         <button className="hamburguer-botton">
           <img

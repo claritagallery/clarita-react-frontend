@@ -1,12 +1,34 @@
-//#00908a
+@use "./mixins.scss" as mix;
 
 .active-header {
   content: "";
   position: fixed;
   background-image: linear-gradient(rgb(0 0 0 /0), rgb(0 0 0 / 0.8));
 }
+.not-active-header {
+  display: flex;
+  border: 1px solid blue;
+  height: 20vh;
+
+  .search-box {
+    align-self: flex-end;
+  }
+}
+.primary-header {
+  //display: flex;
+  //margin: 1rem auto;
+  .greeting {
+    margin-right: auto;
+    font-size: 1.5rem;
+    align-self: center;
+  }
+  .search-box {
+    @include mix.input-styles(0.3rem);
+  }
+}
 .logo {
-  margin-right: auto;
+  //margin-right: auto;
+  margin-right: 1rem;
   margin-left: 2rem;
 }
 .nav-container {
@@ -34,15 +56,15 @@
       display: none;
     }
   }
-  .active {
-    display: block;
-    //position: fixed;
-    inset: 8rem 1rem auto;
-    background-color: white;
-    border-radius: 5px;
-    padding: 1.5rem;
-    box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
-  }
+  // .active {
+  //   display: block;
+  //   //position: fixed;
+  //   inset: 8rem 1rem auto;
+  //   background-color: white;
+  //   border-radius: 5px;
+  //   padding: 1.5rem;
+  //   box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
+  // }
   .nav-list {
     margin-right: 2rem;
     display: grid;
@@ -76,6 +98,10 @@
     align-items: center;
     width: 100vw;
     box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
+    border: none;
+    .search-box {
+      align-self: center;
+    }
   }
   .nav-container .primary-navigation {
     //position: fixed;

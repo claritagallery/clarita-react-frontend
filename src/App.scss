@@ -1,12 +1,14 @@
-@use "../src/styles/albumList.scss";
+@use "./src/styles/mixins.scss";
+@use "./src/styles/albumList.scss";
 @use "./src/styles/navigation.scss";
 * {
   margin: 0;
   padding: 0;
 }
-input {
-  padding: 0.3rem;
-  box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
-  border: 2px solid #00908a;
-  border-radius: 10px;
-}
+// input {
+//   padding: 0.3rem;
+//   box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
+//   border: 2px solid #00908a;
+//   border-radius: 10px;
+// }
+// ////////////////////////////

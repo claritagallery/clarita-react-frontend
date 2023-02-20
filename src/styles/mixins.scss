@@ -1,0 +1,6 @@
+@mixin input-styles($padding) {
+  padding: $padding;
+  box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
+  border: 2px solid #00908a;
+  border-radius: 10px;
+}
