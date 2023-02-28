@@ -1,24 +1,43 @@
 @use "./mixins.scss" as mix;
 
 .active-header {
-  content: "";
   position: fixed;
-  background-image: linear-gradient(rgb(0 0 0 /0), rgb(0 0 0 / 0.8));
-}
-.not-active-header {
-  display: flex;
-  border: 1px solid blue;
-  height: 20vh;
+  background-image: linear-gradient(#24282f00, #00908a);
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: auto;
+  align-items: center;
+  margin-right: inherit;
+  .show-close-button {
+    position: absolute;
+    top: -6.5vh;
+    left: 52vw;
+  }
 
-  .search-box {
-    align-self: flex-end;
+  .logo {
+    margin-top: 3rem; //problem
   }
 }
+
+.not-active-header {
+  display: flex;
+  //border: 1px solid blue;
+  height: 20vh;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  .search-box {
+    align-self: center;
+    width: fit-content;
+  }
+}
+
 .primary-header {
-  //display: flex;
-  //margin: 1rem auto;
   .greeting {
-    margin-right: auto;
     font-size: 1.5rem;
     align-self: center;
   }
@@ -27,9 +46,7 @@
   }
 }
 .logo {
-  //margin-right: auto;
   margin-right: 1rem;
-  margin-left: 2rem;
 }
 .nav-container {
   margin-top: 2%;
@@ -38,6 +55,13 @@
   justify-content: space-between;
 
   .hamburguer-botton {
+    position: absolute;
+    top: 15%;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 0.5rem;
+
     .icon-close {
       display: none;
     }
@@ -45,26 +69,11 @@
       display: block;
     }
 
-    .icon-hamburguer {
-      cursor: pointer;
-      background: transparent;
-      border: 0;
-      padding: 0.5rem;
-      margin-left: 1rem;
-    }
     .hide-hamburguer {
       display: none;
     }
   }
-  // .active {
-  //   display: block;
-  //   //position: fixed;
-  //   inset: 8rem 1rem auto;
-  //   background-color: white;
-  //   border-radius: 5px;
-  //   padding: 1.5rem;
-  //   box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
-  // }
+
   .nav-list {
     margin-right: 2rem;
     display: grid;
@@ -92,25 +101,31 @@
     background-image: none;
     position: fixed;
     background-color: white;
-    //border: 1px solid black;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 100vw;
+    height: fit-content;
     box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
+    flex-direction: row;
     border: none;
     .search-box {
       align-self: center;
+      width: fit-content;
+    }
+    .greeting {
+      margin-right: auto;
+    }
+    .logo {
+      margin-top: 0;
     }
   }
   .nav-container .primary-navigation {
-    //position: fixed;
     box-shadow: none;
     display: block;
     cursor: pointer;
     border: 0;
     padding: 0.5rem;
-    //background-color: rebeccapurple;
     margin-right: 1rem;
     .nav-list {
       display: flex;
@@ -120,5 +135,29 @@
 
   .hamburguer-botton {
     display: none;
+  }
+}
+
+@media (min-width: 530px) and (max-width: 800px) {
+  .logo {
+    border: 1px solid red;
+  }
+  .primary-header {
+    .greeting {
+      font-size: 1.2rem;
+      margin-left: 1rem;
+    }
+    .search-box {
+      margin-left: 1rem;
+    }
+  }
+
+  .hamburguer-botton {
+    right: 1rem;
+    top: 1rem;
+    display: block;
+    .show-close-button {
+      display: block;
+    }
   }
 }
