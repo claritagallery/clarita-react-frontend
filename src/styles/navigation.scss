@@ -1,5 +1,11 @@
 @use "./mixins.scss" as mix;
 
+// input::placehoder {
+//   color: green;
+// }
+// .search-box {
+//   color: black;
+// }
 .active-header {
   position: fixed;
   background-image: linear-gradient(#24282f00, #00908a);
@@ -18,7 +24,7 @@
   }
 
   .logo {
-    margin-top: 3rem; //problem
+    margin-top: 3rem;
   }
 }
 
@@ -43,6 +49,10 @@
   }
   .search-box {
     @include mix.input-styles(0.3rem);
+  }
+  input:focus {
+    color: black;
+    background-color: #e0f4f4;
   }
 }
 .logo {
@@ -139,9 +149,6 @@
 }
 
 @media (min-width: 530px) and (max-width: 800px) {
-  .logo {
-    border: 1px solid red;
-  }
   .primary-header {
     .greeting {
       font-size: 1.2rem;
