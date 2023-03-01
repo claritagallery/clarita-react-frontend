@@ -14,7 +14,7 @@ function Header() {
       className={`primary-header ${openMenu ? "active-header" : "not-active-header"}`}
     >
       <img className="logo" src={logoAzul} alt="gallery-logo" width={60} height={60} />
-      <p className="greeting">Hello gorgeous!</p>
+      {/* <p className="greeting">Hello gorgeous!</p> */}
       <input className="search-box" type="text" placeholder="search coming soon" />
       <div className="nav-container">
         <button className="hamburguer-botton">
@@ -28,7 +28,8 @@ function Header() {
               return setOpenMenu(false);
             }}
             src={close}
-            className={!openMenu ? "icon-close" : "show-close-button"}
+            // className={!openMenu ? "icon-close" : "show-close-button"}
+            className={openMenu ? "show-close-button" : "hide-close-button"}
           />
         </button>
         <nav className={`primary-navigation ${openMenu ? "active" : "not-active"}`}>
