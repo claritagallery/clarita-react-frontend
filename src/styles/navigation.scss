@@ -18,11 +18,16 @@
   margin-left: auto;
   align-items: center;
   margin-right: inherit;
-  // .show-close-button {//HOY
-  //   position: absolute;
-  //   top: -6.5vh;
-  //   left: 52vw;
-  // }
+  .logo-background {
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 1.2rem;
+    height: min-content;
+    box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
+  }
   .nav-container {
     margin-top: 10%;
   }
@@ -43,8 +48,8 @@
   .show-close-button {
     display: block;
     position: absolute;
-    top: 2%;
-    right: 80%;
+    top: 7%;
+    right: 7%;
   }
 }
 

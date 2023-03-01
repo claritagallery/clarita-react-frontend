@@ -13,8 +13,10 @@ function Header() {
     <header
       className={`primary-header ${openMenu ? "active-header" : "not-active-header"}`}
     >
-      <img className="logo" src={logoAzul} alt="gallery-logo" width={60} height={60} />
-      {/* <p className="greeting">Hello gorgeous!</p> */}
+      <div className="logo-background">
+        <img className="logo" src={logoAzul} alt="gallery-logo" width={60} height={60} />
+        {/* <p className="greeting">Hello gorgeous!</p> */}
+      </div>
       <input className="search-box" type="text" placeholder="search coming soon" />
       <div className="nav-container">
         <button className="hamburguer-botton">
