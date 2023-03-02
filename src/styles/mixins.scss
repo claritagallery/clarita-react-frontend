@@ -1,6 +1,21 @@
-@mixin input-styles($padding) {
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee&family=Indie+Flower&family=Inter:wght@200;300&family=Libre+Franklin:wght@300&family=Lora:wght@600&family=Poppins:wght@200;300&family=Press+Start+2P&family=Roboto:wght@500&family=Ubuntu:wght@300&display=swap");
+
+@mixin input-styles($padding, $max-width) {
   padding: $padding;
   box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
-  border: 2px solid #00908a;
+  border: 2px solid $third-color;
   border-radius: 10px;
+  max-width: $max-width;
+  color: black;
+  text-align: center;
 }
+
+//VARIABLES
+
+//COLORS
+$main-color: #82dbd8;
+$secondary-color: #2f8f9d;
+$third-color: #222020;
+
+//FONTS
+$main-titles: "Roboto", sans-serif;
