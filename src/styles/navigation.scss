@@ -14,7 +14,7 @@ h2 {
 }
 .links:hover,
 .links:focus {
-  color: rgb(227, 194, 200);
+  color: #fff;
 }
 
 .container-fluid {
@@ -22,7 +22,7 @@ h2 {
   padding: 0;
 }
 .search-box {
-  @include mix.input-styles(0.2rem, 60%);
+  @include mix.input-styles(0.2rem, 60%, 15vw);
 }
 .top-nav {
   background-color: mix.$main-color;
@@ -100,6 +100,9 @@ h2 {
 }
 
 @media (max-width: 700px) {
+  .search-box {
+    @include mix.input-styles(0.2rem, 60%, 60%);
+  }
   .links {
     color: whitesmoke;
   }
@@ -121,17 +124,18 @@ h2 {
     width: 100%;
     justify-content: center;
     align-items: center;
+    z-index: 1;
   }
   #menu-toggle ~ .menu li {
     display: none;
   }
   #menu-toggle:checked ~ .menu li {
-    border-top: 1px solid #333;
+    //border-top: 1px solid #333;
     width: 100vw;
     text-align: center;
     text-decoration: none;
     display: block;
-    //border: 1px solid #333;
+    border: 1px solid #333;
     height: 2.5em;
     padding: 0.5em;
     transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);

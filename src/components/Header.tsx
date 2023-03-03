@@ -11,7 +11,7 @@ function Header() {
     <section className="top-nav">
       <img className="logo" src={logoAzul} alt="gallery-logo" width={60} height={60} />
       <input className="search-box" type="text" placeholder="search coming soon" />
-      <input id="menu-toggle" type="checkbox"></input>
+      <input id="menu-toggle" type="checkbox" />
       <label className="menu-button-container" htmlFor="menu-toggle">
         <div className="menu-button"></div>
       </label>
