@@ -2,13 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { AlbumListItem } from "../data/types";
 import photoTemporal from "../assets/fide.jpg";
+import randomPic from "../data/apiFoto";
 
 interface AlbumParams {
   album: AlbumListItem;
 }
+//const { albumQuery, albumsQuery, photosQuery } = useApi();
 
 function AlbumThumb({ album }: AlbumParams) {
-  console.log(album);
+  const { randomQuery } = randomPic();
+  console.log(randomQuery());
+  //const placeHolder = randomQuery().data;
   return (
     <div className="singleAlbum stacked">
       <Link className="link" to={`/albums/${album.id}`}>
