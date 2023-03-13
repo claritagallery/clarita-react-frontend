@@ -1,20 +1,28 @@
 @use "./mixins.scss" as mix;
 
+::placeholder {
+  color: mix.$secondary-color;
+  opacity: 1;
+}
 h2 {
   vertical-align: center;
   text-align: center;
 }
-
+.logo {
+  margin-left: 1rem;
+}
 .links {
+  font-family: mix.$main-font;
+  font-weight: 800;
   text-decoration: none;
   font-size: 1.2rem;
   list-style-type: none;
   padding: 0 2rem;
-  color: black;
+  color: mix.$secondary-color;
 }
 .links:hover,
 .links:focus {
-  color: #fff;
+  color: mix.$hovered-color;
 }
 
 .container-fluid {
@@ -22,7 +30,7 @@ h2 {
   padding: 0;
 }
 .search-box {
-  @include mix.input-styles(0.2rem, 60%, 15vw);
+  @include mix.input-styles(0.2rem, 60%, 18vw);
 }
 .top-nav {
   background-color: mix.$main-color;
@@ -34,6 +42,7 @@ h2 {
   height: 5rem;
   padding: 1em;
   box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
+  font-family: mix.$main-font;
 }
 
 .menu {
@@ -101,15 +110,15 @@ h2 {
 
 @media (max-width: 700px) {
   .search-box {
-    @include mix.input-styles(0.2rem, 60%, 60%);
+    @include mix.input-styles(0.2rem, 80%, 60%);
   }
   .links {
-    color: whitesmoke;
+    color: mix.$main-color;
   }
 
   .links:hover,
   .links:focus {
-    color: #82dbd8;
+    color: mix.$hovered-color;
   }
   .menu-button-container {
     display: flex;
@@ -151,5 +160,10 @@ h2 {
   }
   .menu > li:not(:last-child) {
     border-bottom: 1px solid #444;
+  }
+}
+@media only screen and (min-device-width: 650px) and (max-device-width: 1200px) {
+  .search-box {
+    @include mix.input-styles(0.2rem, 80%, 30vw);
   }
 }

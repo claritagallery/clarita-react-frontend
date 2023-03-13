@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { Route, Routes } from "react-router-dom";
@@ -19,15 +19,22 @@ import {
 const queryClient = new QueryClient({
   defaultOptions: {},
 });
+// const queryClient = new QueryClient({
+//   defaultOptions: {
+//     queries: {
+//       refetchOnWindowFocus: false,
+//     },
+//   },
+// });
 
 function App() {
   return (
     <div className="all">
       <QueryClientProvider client={queryClient}>
-        <Container className="App" fluid>
+        <div className="App">
           <Header />
-          <Row className="Main">
-            <Col>
+          <div className="Main">
+            <div>
               <main>
                 <div>
                   <Routes>
@@ -44,10 +51,10 @@ function App() {
                   </Routes>
                 </div>
               </main>
-            </Col>
-          </Row>
+            </div>
+          </div>
           <Footer />
-        </Container>
+        </div>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </div>

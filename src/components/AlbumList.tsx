@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Spinner } from "react-bootstrap";
+
 import AlbumThumb from "./AlbumThumb";
 import { APIError, AlbumListData } from "../data/types";
 import { UseQueryResult } from "react-query";
@@ -8,7 +8,7 @@ type AlbumListParams = UseQueryResult<AlbumListData, APIError>;
 
 const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
   if (isLoading) {
-    return <Spinner />;
+    return <h2>Its loading</h2>;
   }
 
   if (isError) {
@@ -18,11 +18,9 @@ const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
     const albums = data.results;
     return (
       <div className="main-container">
-        <div className="row">
-          {albums.map((album) => (
-            <AlbumThumb key={album.id} album={album} />
-          ))}
-        </div>
+        {albums.map((album) => (
+          <AlbumThumb key={album.id} album={album} />
+        ))}
       </div>
     );
   } else {

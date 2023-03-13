@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Spinner } from "react-bootstrap";
+
 import { PhotoListItem, APIError } from "../data/types";
 
 import PhotoThumb from "./PhotoThumb";
@@ -31,8 +31,8 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
     photos;
     return (
       <div>
-        <Container>
-          <Row>
+        <div>
+          <div>
             <h2>Aqui van fotos</h2>
 
             {photos.map((photo) => {
@@ -42,8 +42,8 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
                 </div>
               );
             })}
-          </Row>
-        </Container>
+          </div>
+        </div>
       </div>
     );
   } else {

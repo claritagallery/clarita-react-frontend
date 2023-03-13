@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Image, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Photo from "../components/Photo";
 import PhotoThumb from "../components/PhotoThumb";

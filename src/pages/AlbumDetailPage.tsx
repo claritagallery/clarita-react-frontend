@@ -1,5 +1,5 @@
 import React from "react";
-import { Spinner } from "react-bootstrap";
+
 import AlbumDetail from "../components/AlbumDetail";
 import AlbumList from "../components/AlbumList";
 import PhotoList from "../components/PhotoList";

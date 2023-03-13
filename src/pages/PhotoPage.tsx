@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Spinner } from "react-bootstrap";
+
 import Photo from "../components/Photo";
 import PhotoThumb from "../components/PhotoThumb";
 import { useParams } from "react-router-dom";
@@ -13,7 +13,7 @@ function PhotoPage() {
   console.log(data);
 
   if (isLoading) {
-    return <Spinner />;
+    return <h1>Its loading</h1>;
   }
 
   if (isError) {

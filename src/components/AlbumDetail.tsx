@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Spinner } from "react-bootstrap";
 import Breadcrumbs from "./Breadcrumbs";
 import PhotoThumb from "./PhotoThumb";
 
@@ -13,7 +12,7 @@ export interface AlbumDetailParams {
 
 const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => {
   if (isLoading) {
-    return <Spinner />;
+    return <h2>Its loading</h2>;
   }
 
   if (isError) {
@@ -23,12 +22,12 @@ const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => 
     data;
     return (
       <>
-        <Container>
-          <Breadcrumbs crumbs={data.breadcrumbs} current={data.name} />
+        <div>
+          {/* <span>{data.breadcrumbs}</span> <span>{data.name}</span>
           <h1>{data.name}</h1>
           <span>{data.date}</span>
-          <h1>{data.description}</h1>
-        </Container>
+          <h1>{data.description}</h1> */}
+        </div>
       </>
     );
   } else {

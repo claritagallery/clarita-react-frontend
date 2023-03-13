@@ -1,5 +1,4 @@
 import React from "react";
-import { Card, Col } from "react-bootstrap";
 import { PreviousOrNext } from "../data/types";
 
 import { Link } from "react-router-dom";
@@ -12,15 +11,15 @@ interface PhotoThumbParams {
 const PhotoThumb = ({ photo, albumId }: PhotoThumbParams) => {
   const link = albumId ? `/albums/${albumId}/photos/${photo.id}` : `/photos/${photo.id}`;
   return (
-    <Col xs={6} s={4} md={3} xl={2}>
+    <div>
       <Link to={link}>
-        <Card>
-          <Card.Body>
-            <Card.Text>{photo.name}</Card.Text>
-          </Card.Body>
-        </Card>
+        <div>
+          <div>
+            <div>{photo.name}</div>
+          </div>
+        </div>
       </Link>
-    </Col>
+    </div>
   );
 };
 
