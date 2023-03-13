@@ -1,19 +1,10 @@
-import axios from "axios";
-import { useQuery } from "react-query";
-
-const fetchRandomPic = async () => {
-  const res = await axios({
-    url: "http://placekitten.com/200/300",
-  });
-  return res.data;
-};
-
-const randomQuery = () => {
-  return useQuery("random", () => fetchRandomPic());
-};
-
 function getRandomPic() {
-  return { randomQuery };
+  const imgSrc =
+    "https://source.unsplash.com/random/3000x3000" +
+    Math.floor(Math.random() * 3000) +
+    2800;
+
+  return imgSrc;
 }
 
 export default getRandomPic;
