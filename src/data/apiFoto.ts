@@ -1,8 +1,7 @@
 function getRandomPic() {
-  const imgSrc =
-    "https://source.unsplash.com/random/3000x3000" +
-    Math.floor(Math.random() * 3000) +
-    2800;
+  const height = Math.floor(Math.random() * 300) + 100;
+  const width = Math.floor(Math.random() * 300) + 100;
+  const imgSrc = `https://source.unsplash.com/random/${width}x${height}`;
 
   return imgSrc;
 }

@@ -12,6 +12,7 @@ export interface PhotoListItem {
   filename: string;
   name: string;
   date_and_time: string;
+  index?: number; //esto puede fallar
 }
 
 export interface AlbumListItem {

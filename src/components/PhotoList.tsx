@@ -31,15 +31,12 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
     photos;
     return (
       <div>
-        <div>
-          <div>
-            <h2>Aqui van fotos</h2>
-
-            {photos.map((photo) => {
+        <h2>Aqui van fotos</h2>
+        <div className="pictures-wrapper">
+          <div className="gallery">
+            {photos.map((photo, ind) => {
               return (
-                <div key={photo.id}>
-                  <PhotoThumb key={photo.id} photo={photo} albumId={albumId} />
-                </div>
+                <PhotoThumb key={photo.id} photo={photo} albumId={albumId} index={ind} />
               );
             })}
           </div>

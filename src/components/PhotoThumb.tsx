@@ -6,22 +6,32 @@ import getRandomPic from "../data/apiFoto";
 interface PhotoThumbParams {
   photo: PreviousOrNext;
   albumId?: string;
+  index: number;
 }
 
-const PhotoThumb = ({ photo, albumId }: PhotoThumbParams) => {
+const PhotoThumb = ({ photo, albumId, index }: PhotoThumbParams) => {
   const placeHolderPic = getRandomPic();
-  console.log(placeHolderPic);
+  console.log(photo);
+  console.log(index);
   const link = albumId ? `/albums/${albumId}/photos/${photo.id}` : `/photos/${photo.id}`;
   return (
-    <div>
-      <Link to={link}>
-        <div>
-          {/* <div>
-            <div>{photo.name}</div>
-          </div> */}
-          <img src={placeHolderPic} width={100} height={80} />
-        </div>
-      </Link>
+    <div
+      className={`gallery-item ${
+        index === 0
+          ? "first-item"
+          : index === 1
+          ? "second-item"
+          : index === 2
+          ? "third-item"
+          : ""
+      }`}
+    >
+      <img className="picture-gallery" src={placeHolderPic} />
+      <div className="gallery-info">
+        <h3>{photo.name}</h3>
+        <h4>{photo.date_and_time}</h4>
+      </div>
+      <Link to={link}> </Link>
     </div>
   );
 };
