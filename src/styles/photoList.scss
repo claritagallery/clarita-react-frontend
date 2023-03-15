@@ -1,82 +1,115 @@
-// .gallery-item {
-//   border: 3px solid red;
-// }
-//grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-
 .pictures-wrapper {
-  // max-width: 80rem;
   width: 80vw;
   padding: 2rem;
   margin: 0 auto;
   border: 1px solid orange;
   .gallery {
-    display: grid;
-    // grid-template-columns: repeat(3, 1fr);
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: repeat(4, 13.5rem);
-    border: 2px solid blue;
-    gap: 0.5rem;
-    width: 100%;
     height: 100%;
-
+    border: 1px solid blue;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-auto-rows: 1fr; //problema!
+    gap: 0.5rem;
     .gallery-item {
-      border: 4px solid pink;
-      width: 100%;
-      // width: auto;
-      display: flex;
-      flex-direction: column;
-      height: 13.5rem;
-      //height: 100%;
+      border: 1px solid red;
+      height: 12rem;
+      overflow: hidden;
+      position: relative;
       .gallery-info {
         position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
       .picture-gallery {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: top;
+        object-position: center;
       }
     }
   }
 }
 
-@media (min-width: 1025px) {
-  /* big landscape tablets, laptops, and desktops */
-  .pictures-wrapper {
-    .gallery {
-      .gallery-item {
-        height: 24rem;
-      }
-    }
-  }
-  .pictures-wrapper {
-    .gallery {
-      .first-item {
-        // border: 5px dotted red;
-        grid-column: 1 / span 1;
-        grid-row: 1 / span 1;
-      }
-      .second-item {
-        // border: 5px dotted blue;
-        grid-column: 1 / span 1;
-        grid-row: 2 / span 1;
-      }
-      .third-item {
-        // border: 5px dotted orangered;
-        grid-column: 2 / span 1;
-        grid-row: 1 / span 2;
-        height: auto;
-      }
-    }
-  }
-}
+// .pictures-wrapper {
+//   // max-width: 80rem;
+//   width: 80vw;
+//   padding: 2rem;
+//   margin: 0 auto;
+//   border: 1px solid orange;
+//   .gallery {
+//     display: grid;
+//     // grid-template-columns: repeat(3, 1fr);
+//     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+//     grid-template-rows: repeat(auto-fit, 5vw);
+//     grid-auto-rows: fit-content(5vw);
+//     border: 2px solid blue;
+//     gap: 0.5rem;
+//     width: 100%;
+//     height: 100%;
 
-@media only screen and (min-device-width: 650px) and (max-device-width: 1200px) {
-  .pictures-wrapper {
-    .gallery {
-      .gallery-item {
-        height: 26rem;
-      }
-    }
-  }
-}
+//     .gallery-item {
+//       border: 4px solid pink;
+//       width: 100%;
+//       // width: auto;
+//       display: flex;
+//       flex-direction: column;
+//       height: 13.5rem;
+//       //height: 100%;
+
+//       .gallery-info {
+//         position: absolute;
+//       }
+//       .picture-gallery {
+//         width: 100%;
+//         height: 100%;
+//         object-fit: cover;
+//         object-position: top;
+//       }
+//     }
+//   }
+// }
+
+// @media (min-width: 1025px) {
+//   /* big landscape tablets, laptops, and desktops */
+//   .pictures-wrapper {
+//     .gallery {
+//       //   grid-template-rows: repeat(6, 18rem);
+//       //   grid-auto-rows: fit-content(18rem);
+//       .gallery-item {
+//         height: 24rem;
+//         // height: auto;
+//       }
+//     }
+//   }
+//   .pictures-wrapper {
+//     .gallery {
+//       .first-item {
+//         border: 5px dotted red;
+//         grid-column: 1 / span 1;
+//         grid-row: 1 / span 1;
+//       }
+//       .second-item {
+//         // border: 5px dotted blue;
+//         grid-column: 1 / span 1;
+//         grid-row: 2 / span 1;
+//       }
+//       .third-item {
+//         // border: 5px dotted orangered;
+//         grid-column: 2 / span 1;
+//         grid-row: 1 / span 2;
+//         height: auto;
+//       }
+//     }
+//   }
+// }
+
+// @media only screen and (min-device-width: 650px) and (max-device-width: 1200px) {
+//   .pictures-wrapper {
+//     .gallery {
+//       .gallery-item {
+//         height: 26rem;
+//       }
+//     }
+//   }
+// }
