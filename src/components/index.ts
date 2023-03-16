@@ -6,4 +6,3 @@ export { default as Footer } from "./Footer";
 export { default as Header } from "./Header";
 export { default as Photo } from "./Photo";
 export { default as PhotoList } from "./PhotoList";
-export { default as PhotoThumb } from "./PhotoThumb";

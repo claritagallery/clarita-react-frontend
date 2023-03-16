@@ -1,35 +1,73 @@
-.pictures-wrapper {
-  width: 80vw;
-  padding: 2rem;
-  margin: 0 auto;
-  border: 1px solid orange;
-  .gallery {
-    height: 100%;
-    border: 1px solid blue;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    grid-auto-rows: 1fr; //problema!
-    gap: 0.5rem;
-    .gallery-item {
-      border: 1px solid red;
-      height: 12rem;
-      overflow: hidden;
-      position: relative;
-      .gallery-info {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-      .picture-gallery {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
-    }
-  }
-}
+// .pictures-wrapper {
+//   width: 80vw;
+//   padding: 2rem;
+//   margin: 0 auto;
+//   border: 1px solid orange;
+//   .gallery {
+//     height: 100%;
+//     border: 1px solid blue;
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+//     grid-auto-rows: 1fr; //problema!
+//     gap: 0.5rem;
+//     //////////////////
+//     .gallery-item {
+//       // border: 1px solid red;
+//       height: 12rem;
+//       overflow: hidden;
+//       position: relative;
+//       .gallery-info {
+//         position: absolute;
+//         top: 50%;
+//         left: 50%;
+//         transform: translate(-50%, -50%);
+//       }
+//       .picture-gallery {
+//         width: 100%;
+//         height: 100%;
+//         object-fit: cover;
+//         object-position: center;
+//       }
+//     }
+//     // .first-item {
+//     //   border: 5px dotted pink;
+//     //   grid-column: 1 / span 1;
+//     //   grid-row: 1 / span 1;
+//     // }
+//     // .second-item {
+//     //   border: 5px dotted blue;
+//     //   grid-column: 1 / span 1;
+//     //   grid-row: 2 / span 1;
+//     // }
+//     .third-item {
+//       border: 5px dotted orangered;
+//       grid-column: 2 / span 1;
+//       grid-row: 1 / span 2;
+//       //height: auto;
+//     }
+//     .fourth-item {
+//       grid-column: 3 / span 1;
+//       grid-row: 1 / span 3;
+//       border: 4px solid blueviolet;
+//       //height: auto;
+//     }
+
+//     .fifth-item {
+//       grid-column: 1 / span 2;
+//       grid-row: 3 / span 2;
+//       border: 4px solid blueviolet;
+//       // height: 24rem;
+//       // height: auto;
+//     }
+
+//     .sixth-item {
+//       grid-column: 3 / span 1;
+//       grid-row: 4 / span 1;
+//       border: 4px solid yellow;
+//     }
+//     //////////////////////////////
+//   }
+// }
 
 // .pictures-wrapper {
 //   // max-width: 80rem;

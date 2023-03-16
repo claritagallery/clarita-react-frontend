@@ -7677,6 +7677,11 @@ react-is@^18.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
+react-photo-album@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-photo-album/-/react-photo-album-2.0.3.tgz#fd1a9bbb57d75c29c5b47ddf9e28f050132bd55d"
+  integrity sha512-LI3Ttg6BF/MtMVeaSAGaSxFJ6ihN+vxPHF1yb8Y/5y785Fpz1akzsG5Ti9/r9oYnL5XRNOuWC/OKGMZzLociGg==
+
 react-query@^3.33.2:
   version "3.39.2"
   resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.39.2.tgz#9224140f0296f01e9664b78ed6e4f69a0cc9216f"

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import Photo from "../components/Photo";
-import PhotoThumb from "../components/PhotoThumb";
+//import PhotoThumb from "../components/PhotoThumb";
 import { useParams } from "react-router-dom";
 import useApi from "../data";
 

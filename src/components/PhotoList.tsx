@@ -1,9 +1,8 @@
 import React from "react";
-
 import { PhotoListItem, APIError } from "../data/types";
-
-import PhotoThumb from "./PhotoThumb";
-
+//import PhotoThumb from "./PhotoThumb";
+import getRandomPic from "../data/apiFoto";
+import PhotoAlbum from "react-photo-album";
 export interface PhotoListParams {
   albumId?: string;
   data?: {
@@ -28,19 +27,46 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
 
   if (data) {
     const photos = data.results;
-    photos;
+    const photosParameters = photos.map((photo) => {
+      const { imgSrc, height, width } = getRandomPic();
+      return { src: imgSrc, width: width, height: height, title: photo.name };
+    });
+
     return (
       <div>
-        <h2>Aqui van fotos</h2>
-        <div className="pictures-wrapper">
-          <div className="gallery">
-            {photos.map((photo, ind) => {
-              return (
-                <PhotoThumb key={photo.id} photo={photo} albumId={albumId} index={ind} />
-              );
-            })}
-          </div>
-        </div>
+        <h2>Photos</h2>
+        <PhotoAlbum
+          layout="rows"
+          photos={photosParameters}
+          spacing={2}
+          padding={2}
+          rowConstraints={(containerWidth) => {
+            console.log("Current containerWidth=", containerWidth);
+            if (containerWidth < 300) {
+              return {
+                minPhotos: 1,
+                maxPhotos: 1,
+              };
+            }
+            if (containerWidth > 300 && containerWidth < 600) {
+              return {
+                minPhotos: 1,
+                maxPhotos: 2,
+              };
+            }
+            if (containerWidth > 600 && containerWidth < 1000) {
+              return {
+                minPhotos: 3,
+                maxPhotos: 4,
+              };
+            }
+
+            return {
+              minPhotos: 8,
+              maxPhotos: 10,
+            };
+          }}
+        />
       </div>
     );
   } else {

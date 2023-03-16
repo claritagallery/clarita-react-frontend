@@ -3,7 +3,7 @@ function getRandomPic() {
   const width = Math.floor(Math.random() * 300) + 100;
   const imgSrc = `https://source.unsplash.com/random/${width}x${height}`;
 
-  return imgSrc;
+  return { imgSrc, height, width };
 }
 
 export default getRandomPic;

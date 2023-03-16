@@ -1,6 +1,5 @@
 import React from "react";
 import Breadcrumbs from "./Breadcrumbs";
-import PhotoThumb from "./PhotoThumb";
 
 import { APIError, AlbumDetailItem } from "../data/types";
 export interface AlbumDetailParams {
