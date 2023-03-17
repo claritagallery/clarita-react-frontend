@@ -33,11 +33,12 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
     });
 
     return (
-      <div>
-        <h2>Photos</h2>
+      <div className="gallery-container">
+        <h2 className="subtitle">Photos</h2>
         <PhotoAlbum
           layout="rows"
           photos={photosParameters}
+          defaultContainerWidth={50}
           spacing={2}
           padding={2}
           rowConstraints={(containerWidth) => {

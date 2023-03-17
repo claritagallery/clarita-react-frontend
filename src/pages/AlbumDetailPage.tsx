@@ -15,7 +15,7 @@ function AlbumDetailPage() {
 
   return (
     <>
-      <h2>Detalles del album</h2>
+      <h2 className="subtitle">Detalles del album</h2>
       {singleAlbum && <AlbumDetail {...singleAlbum} />}
       <AlbumList {...childAlbumsQuery} />
       <PhotoList albumId={albumId} {...photos} />
