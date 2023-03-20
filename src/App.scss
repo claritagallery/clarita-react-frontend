@@ -14,12 +14,23 @@
   padding: 0;
 }
 .Main {
-  margin-left: 3rem;
-  margin-right: 3rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 1.5rem;
+
   box-sizing: border-box;
 }
 .subtitle {
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
+}
+@media only screen and (max-width: 500px) {
+  // .Main {
+  //   margin-left: 1rem;
+  //   margin-right: 1rem;
+  // }
+  .main-container {
+    margin: 0 auto;
+  }
 }

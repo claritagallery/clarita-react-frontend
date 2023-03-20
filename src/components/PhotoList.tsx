@@ -43,21 +43,20 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
       <div className="gallery-container">
         <h2 className="subtitle">Photos</h2>
         <PhotoAlbum
-          renderPhoto={({ photo, wrapperStyle, renderDefaultPhoto, layout }) => (
+          renderPhoto={({ photo, wrapperStyle, renderDefaultPhoto }) => (
             <div
               className="picture-cell"
               style={{
                 position: "relative",
                 ...wrapperStyle,
-                border: "1px solid orange",
               }}
             >
               {renderDefaultPhoto({ wrapped: true })}
 
               {photo.title && (
                 <div className="picture-info">
-                  <h4> {photo.title}</h4>
-                  <h5>{photo.date}</h5>
+                  <h4 className="picture-title"> {photo.title}</h4>
+                  <h5 className="picture-date">{photo.date}</h5>
                 </div>
               )}
             </div>
@@ -70,8 +69,8 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
           rowConstraints={(containerWidth) => {
             if (containerWidth < 300) {
               return {
-                minPhotos: 1,
-                maxPhotos: 1,
+                minPhotos: 2,
+                maxPhotos: 2,
               };
             }
             if (containerWidth > 300 && containerWidth < 600) {
@@ -86,10 +85,15 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
                 maxPhotos: 4,
               };
             }
-
+            if (containerWidth > 1000 && containerWidth < 1400) {
+              return {
+                minPhotos: 3,
+                maxPhotos: 5,
+              };
+            }
             return {
-              minPhotos: 8,
-              maxPhotos: 9,
+              minPhotos: 7,
+              maxPhotos: 8,
             };
           }}
           onClick={({ photo, event }) => {
