@@ -22,7 +22,15 @@ function photo() {
     return axios({
       url: `${baseUrl}/api/v1/photos`,
       params: params,
-    }).then((res) => res.data);
+    }).then((res) => {
+      const data = res.data as PhotoListData;
+      const parsedResults = data.results.map((obj) => ({
+        ...obj,
+        date_and_time: new Date(obj.date_and_time).toISOString().substring(0, 10),
+      }));
+      console.log(parsedResults);
+      return { ...res.data, results: parsedResults };
+    });
   }
 
   function fetchPhoto(photoId: PhotoId) {
