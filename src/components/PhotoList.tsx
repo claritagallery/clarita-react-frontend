@@ -66,39 +66,17 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
           defaultContainerWidth={50}
           spacing={2}
           padding={2}
-          rowConstraints={(containerWidth) => {
-            if (containerWidth < 300) {
-              return {
-                minPhotos: 2,
-                maxPhotos: 2,
-              };
+          targetRowHeight={(containerWidth) => {
+            if (containerWidth >= 300 && containerWidth < 600) {
+              return containerWidth / 2;
             }
-            if (containerWidth > 300 && containerWidth < 600) {
-              return {
-                minPhotos: 1,
-                maxPhotos: 2,
-              };
+            if (containerWidth >= 600 && containerWidth < 1200) {
+              return containerWidth / 4;
             }
-            if (containerWidth > 600 && containerWidth < 1000) {
-              return {
-                minPhotos: 3,
-                maxPhotos: 4,
-              };
+            if (containerWidth >= 1200) {
+              return containerWidth / 8;
             }
-            if (containerWidth > 1000 && containerWidth < 1400) {
-              return {
-                minPhotos: 3,
-                maxPhotos: 5,
-              };
-            }
-            return {
-              minPhotos: 7,
-              maxPhotos: 8,
-            };
-          }}
-          onClick={({ photo, event }) => {
-            // console.log(photo);
-            console.log(event);
+            return containerWidth / 4;
           }}
         />
       </div>
