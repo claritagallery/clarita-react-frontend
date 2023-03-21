@@ -1,6 +1,5 @@
 import React from "react";
 import { PhotoListItem, APIError } from "../data/types";
-//import PhotoThumb from "./PhotoThumb";
 import getRandomPic from "../data/apiFoto";
 import PhotoAlbum from "react-photo-album";
 export interface PhotoListParams {
