@@ -1,0 +1,47 @@
+.full-photo-container {
+  width: 100vw;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  .full-photo {
+    max-inline-size: 100%;
+    object-fit: contain;
+    object-position: top center;
+    width: 100%;
+    height: auto;
+  }
+}
+////mobile landscape///
+// @media only screen and (max-height: 575.98px) and (orientation: landscape) {
+//   //enter code here
+//   .full-photo {
+//     width: 100vw;
+//     height: 100vh;
+//   }
+// }
+
+//Tablets//////////////////////////////////////////////////////////////////
+// ##Device = Tablets, Ipads (portrait)
+//   ##Screen = B/w 768px to 1024px
+// */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* CSS */
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  /* CSS */
+}
+//Laptops/////////////////////////////////////////////////////////////////
+// @media screen
+//   and (min-device-width: 1200px)
+//   and (max-device-width: 1600px)
+//   and (-webkit-min-device-pixel-ratio: 1) {
+// }
