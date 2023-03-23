@@ -25,7 +25,10 @@ function Drawer({ photo }: DrawerProps) {
       <div className={`title-container ${toggleDrawer ? "drawer-is-open-title" : ""}`}>
         <h4>{photo.name}</h4>
         <button onClick={drawerTogglerClickHandler} className="toggle-drawer">
-          <div className="open-drawer-symbol"></div>
+          {/* <div className={`open-drawer-symbol ${toggleDrawer && "close-drawer-symbol"}`}></div> */}
+          <div
+            className={`${!toggleDrawer ? "open-drawer-symbol" : "close-drawer-symbol"}`}
+          ></div>
         </button>
       </div>
       {toggleDrawer && openDrawer}

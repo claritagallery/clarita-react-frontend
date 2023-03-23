@@ -44,6 +44,14 @@
           transform: rotate(-135deg);
           -webkit-transform: rotate(-135deg);
         }
+        .close-drawer-symbol {
+          border: solid black;
+          border-width: 0 3px 3px 0;
+          display: inline-block;
+          padding: 5px;
+          transform: rotate(45deg);
+          -webkit-transform: rotate(45deg);
+        }
       }
       .toggle-drawer:focus {
         outline: none;
@@ -72,8 +80,7 @@
   .full-photo-container {
     .drawer-container {
       .title-container {
-        height: 12vh;
-        padding-bottom: 0;
+        height: 15vh;
         background-color: rgba(210, 228, 225, 0.6);
       }
     }
