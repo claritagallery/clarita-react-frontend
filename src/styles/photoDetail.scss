@@ -1,3 +1,5 @@
+@use "./mixins.scss" as mix;
+
 .full-photo-container {
   width: 100vw;
   margin-left: -2rem;
@@ -10,17 +12,63 @@
     object-fit: contain;
     object-position: top center;
     width: 100%;
-    height: auto;
+    // height: auto;
+  }
+  .drawer-container {
+    //padding: 1rem;
+    bottom: 0rem;
+    position: fixed;
+    width: 100%;
+    //background-color: #d2e4e1;
+    // height: 30%;
+    line-height: 1.5rem;
+    text-align: center;
+    .title-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #bae0d9;
+      height: 10vh;
+      .toggle-drawer {
+        position: relative;
+        left: 1rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+
+        .open-drawer-symbol {
+          border: solid black;
+          border-width: 0 3px 3px 0;
+          display: inline-block;
+          padding: 5px;
+          transform: rotate(-135deg);
+          -webkit-transform: rotate(-135deg);
+        }
+      }
+      .toggle-drawer:focus {
+        outline: none;
+      }
+    }
+    .info-open-drawer {
+      height: 30vh;
+      background-color: rgba(210, 228, 225, 0.5);
+    }
+  }
+  .toggle-drawer:hover {
+    color: blue;
   }
 }
+.footer-container {
+  display: none;
+}
 ////mobile landscape///
-// @media only screen and (max-height: 575.98px) and (orientation: landscape) {
-//   //enter code here
-//   .full-photo {
-//     width: 100vw;
-//     height: 100vh;
-//   }
-// }
+@media only screen and (max-height: 575.98px) and (orientation: landscape) {
+  //enter code here
+
+  .footer-container {
+    display: none;
+  }
+}
 
 //Tablets//////////////////////////////////////////////////////////////////
 // ##Device = Tablets, Ipads (portrait)

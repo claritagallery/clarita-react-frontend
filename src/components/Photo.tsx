@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Breadcrumbs from "./Breadcrumbs";
 //import PhotoThumb from "./PhotoThumb";
+import Drawer from "./Drawer";
 import React from "react";
 import { PhotoData } from "../data/types";
 import { useParams } from "react-router-dom";
@@ -11,8 +12,7 @@ interface PhotoParams {
 }
 
 function Photo({ photo, albumId }: PhotoParams) {
-  const { photoId } = useParams();
-  console.log(photoId);
+  console.log(photo);
 
   if (photo) {
     const width = 6000;
@@ -21,7 +21,7 @@ function Photo({ photo, albumId }: PhotoParams) {
     const temporary_pic_url_vertical = `https://source.unsplash.com/random/${height}x${width}`;
     const { id, filename, name, date_and_time, image_url, breadcrumbs, prev, next } =
       photo;
-    console.log(breadcrumbs);
+
     return (
       <div className="full-photo-container">
         <img
@@ -29,6 +29,7 @@ function Photo({ photo, albumId }: PhotoParams) {
           src={temporary_pic_url_horizontal}
           srcSet={temporary_pic_url_horizontal}
         />
+        <Drawer photo={photo} />
       </div>
     );
   }
