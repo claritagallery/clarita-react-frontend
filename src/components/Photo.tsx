@@ -4,7 +4,7 @@ import Breadcrumbs from "./Breadcrumbs";
 import Drawer from "./Drawer";
 import React from "react";
 import { PhotoData } from "../data/types";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 interface PhotoParams {
   photo?: PhotoData;
@@ -12,7 +12,10 @@ interface PhotoParams {
 }
 
 function Photo({ photo, albumId }: PhotoParams) {
-  console.log(photo);
+  const [toggleDrawer, toggleDrawerHandler] = useState(false);
+  function onToggleClickHandler() {
+    toggleDrawerHandler((prev) => !prev);
+  }
 
   if (photo) {
     const width = 6000;
@@ -23,13 +26,13 @@ function Photo({ photo, albumId }: PhotoParams) {
       photo;
 
     return (
-      <div className="full-photo-container">
+      <div className="full-photo-container" onClick={onToggleClickHandler}>
         <img
           className="full-photo"
           src={temporary_pic_url_horizontal}
           srcSet={temporary_pic_url_horizontal}
         />
-        <Drawer photo={photo} />
+        <Drawer photo={photo} toggleDrawer={toggleDrawer} />
       </div>
     );
   }
