@@ -12,23 +12,23 @@
     object-fit: contain;
     object-position: top center;
     width: 100%;
-    // height: auto;
   }
   .drawer-container {
-    //padding: 1rem;
     bottom: 0rem;
     position: fixed;
     width: 100%;
-    //background-color: #d2e4e1;
-    // height: 30%;
+
+    transform: translateY(30%);
+    transition: transform 0.6s ease-out;
     line-height: 1.5rem;
     text-align: center;
     .title-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #bae0d9;
-      height: 10vh;
+      background-color: rgba(210, 228, 225);
+      height: 8vh;
+      padding-bottom: 0.6rem;
       .toggle-drawer {
         position: relative;
         left: 1rem;
@@ -49,13 +49,18 @@
         outline: none;
       }
     }
+
     .info-open-drawer {
-      height: 30vh;
-      background-color: rgba(210, 228, 225, 0.5);
+      height: 33.4vh;
+      background-color: rgba(210, 228, 225, 0.4);
+      padding-top: 1rem;
+      .photo-drawer-date {
+        font-size: 1rem;
+      }
     }
   }
-  .toggle-drawer:hover {
-    color: blue;
+  .drawer-is-open-container {
+    transform: translateY(0);
   }
 }
 .footer-container {
@@ -64,7 +69,15 @@
 ////mobile landscape///
 @media only screen and (max-height: 575.98px) and (orientation: landscape) {
   //enter code here
-
+  .full-photo-container {
+    .drawer-container {
+      .title-container {
+        height: 12vh;
+        padding-bottom: 0;
+        background-color: rgba(210, 228, 225, 0.6);
+      }
+    }
+  }
   .footer-container {
     display: none;
   }

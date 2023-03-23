@@ -15,14 +15,14 @@ function Drawer({ photo }: DrawerProps) {
   }
   const openDrawer = (
     <div className="info-open-drawer" onClick={() => toggleDrawerHandler(false)}>
-      <h5>Photo date</h5>
+      <h5 className="photo-drawer-date">Photo date</h5>
       <p>This picture is soo super amazing and beautiful</p>
     </div>
   );
 
   return (
-    <div className="drawer-container">
-      <div className="title-container">
+    <div className={`drawer-container ${toggleDrawer ? "drawer-is-open-container" : ""}`}>
+      <div className={`title-container ${toggleDrawer ? "drawer-is-open-title" : ""}`}>
         <h4>{photo.name}</h4>
         <button onClick={drawerTogglerClickHandler} className="toggle-drawer">
           <div className="open-drawer-symbol"></div>
