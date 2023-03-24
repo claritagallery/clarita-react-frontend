@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Breadcrumbs from "./Breadcrumbs";
 import PhotoThumb from "./PhotoThumb";
 import Drawer from "./Drawer";
@@ -17,6 +17,33 @@ interface PhotoParams {
 
 function Photo({ photo, albumId }: PhotoParams) {
   const [toggleDrawer, toggleDrawerHandler] = useState(false);
+  const [touchPosition, setTouchPosition] = useState(null);
+  const navigate = useNavigate();
+
+  function handleTouchStart(e: any) {
+    const touchDown = e.touches[0].clientX;
+    setTouchPosition(touchDown);
+  }
+
+  function handleTouchMove(e: any) {
+    const touchDown = touchPosition;
+    if (touchDown === null) {
+      return;
+    }
+    if (!photo) {
+      console.warn("photo not defined");
+      return;
+    }
+    const currentTouch = e.touches[0].clientX;
+    const diff = touchDown - currentTouch;
+    if (diff > 5 && photo.next) {
+      navigate(`/photos/${photo.next.id}`);
+    }
+    if (diff < -5 && photo.prev) {
+      navigate(`/photos/${photo.prev.id}`);
+    }
+    setTouchPosition(null);
+  }
 
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation();
@@ -35,7 +62,12 @@ function Photo({ photo, albumId }: PhotoParams) {
       photo;
     console.log(photo.next);
     return (
-      <div className="full-photo-container" onClick={onToggleClickHandler}>
+      <div
+        className="full-photo-container"
+        onClick={onToggleClickHandler}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+      >
         {photo.next && (
           <div onClick={(e) => stopPropagation(e)}>
             <Link to={`/photos/${photo.next.id}`}>
