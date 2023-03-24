@@ -35,8 +35,9 @@
         background: transparent;
         border: none;
         cursor: pointer;
+        margin-bottom: 0.5rem;
 
-        .open-drawer-symbol {
+        .arrow {
           border: solid black;
           border-width: 0 3px 3px 0;
           display: inline-block;
@@ -44,13 +45,21 @@
           transform: rotate(-135deg);
           -webkit-transform: rotate(-135deg);
         }
-        .close-drawer-symbol {
-          border: solid black;
-          border-width: 0 3px 3px 0;
-          display: inline-block;
-          padding: 5px;
+
+        .up {
           transform: rotate(45deg);
           -webkit-transform: rotate(45deg);
+        }
+        .down {
+          transform: rotate(45deg);
+          -webkit-transform: rotate(45deg);
+        }
+        .right {
+          position: absolute;
+          top: 1rem;
+        }
+        .left {
+          position: absolute;
         }
       }
       .toggle-drawer:focus {
@@ -59,7 +68,7 @@
     }
 
     .info-open-drawer {
-      height: 33.4vh;
+      height: 34vh;
       background-color: rgba(210, 228, 225, 0.4);
       padding-top: 1rem;
       .photo-drawer-date {
@@ -99,7 +108,7 @@
   /* CSS */
 }
 
-/* 
+/*
   ##Device = Tablets, Ipads (landscape)
   ##Screen = B/w 768px to 1024px
 */

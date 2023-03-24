@@ -1,8 +1,11 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "./Breadcrumbs";
 //import PhotoThumb from "./PhotoThumb";
 import Drawer from "./Drawer";
-import React from "react";
+import LeftArrow from "../assets/LeftArrow";
+import RigthArrow from "../assets/Rightarrow";
+
 import { PhotoData } from "../data/types";
 import { useState } from "react";
 
@@ -18,6 +21,7 @@ function Photo({ photo, albumId }: PhotoParams) {
   }
 
   if (photo) {
+    console.log(photo.prev);
     const width = 6000;
     const height = 4000;
     const temporary_pic_url_horizontal = `https://source.unsplash.com/random/${width}x${height}`;
@@ -27,6 +31,8 @@ function Photo({ photo, albumId }: PhotoParams) {
 
     return (
       <div className="full-photo-container" onClick={onToggleClickHandler}>
+        {photo.next && <RigthArrow />}
+        {photo.prev && <LeftArrow />}
         <img
           className="full-photo"
           src={temporary_pic_url_horizontal}
