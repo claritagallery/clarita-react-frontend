@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "./Breadcrumbs";
-//import PhotoThumb from "./PhotoThumb";
+import PhotoThumb from "./PhotoThumb";
 import Drawer from "./Drawer";
 import LeftArrow from "../assets/LeftArrow";
 import RigthArrow from "../assets/Rightarrow";
 
 import { PhotoData } from "../data/types";
+import { PreviousOrNext } from "../data/types";
 import { useState } from "react";
 
 interface PhotoParams {
@@ -16,23 +17,39 @@ interface PhotoParams {
 
 function Photo({ photo, albumId }: PhotoParams) {
   const [toggleDrawer, toggleDrawerHandler] = useState(false);
+
+  function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    e.stopPropagation();
+  }
+
   function onToggleClickHandler() {
     toggleDrawerHandler((prev) => !prev);
   }
 
   if (photo) {
-    console.log(photo.prev);
     const width = 6000;
     const height = 4000;
     const temporary_pic_url_horizontal = `https://source.unsplash.com/random/${width}x${height}`;
     const temporary_pic_url_vertical = `https://source.unsplash.com/random/${height}x${width}`;
     const { id, filename, name, date_and_time, image_url, breadcrumbs, prev, next } =
       photo;
-
+    console.log(photo.next);
     return (
       <div className="full-photo-container" onClick={onToggleClickHandler}>
-        {photo.next && <RigthArrow />}
-        {photo.prev && <LeftArrow />}
+        {photo.next && (
+          <div onClick={(e) => stopPropagation(e)}>
+            <Link to={`/photos/${photo.next.id}`}>
+              <RigthArrow />
+            </Link>
+          </div>
+        )}
+        {photo.prev && (
+          <div onClick={(e) => stopPropagation(e)}>
+            <Link to={`/photos/${photo.prev.id}`}>
+              <LeftArrow />
+            </Link>
+          </div>
+        )}
         <img
           className="full-photo"
           src={temporary_pic_url_horizontal}

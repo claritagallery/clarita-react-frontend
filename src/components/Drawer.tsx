@@ -7,7 +7,6 @@ type DrawerProps = {
 };
 
 function Drawer({ photo, toggleDrawer }: DrawerProps) {
-  console.log(photo);
   const openDrawer = (
     <div className="info-open-drawer">
       <h5 className="photo-drawer-date">Photo date</h5>
