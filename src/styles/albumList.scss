@@ -3,19 +3,19 @@
 .main-container {
   font-family: mix.$main-font;
   display: grid;
-  column-gap: 4rem;
-  grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
+  column-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, max-content));
   row-gap: 1rem;
   justify-content: center;
 
   .singleAlbum {
-    height: 17rem;
+    height: 16rem;
     padding: 0;
     transition: transform 0.5s;
     transform-origin: center top;
     margin: auto;
     position: relative;
-    width: 12.5em;
+    width: 10rem;
     // box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
     background-color: rgba(167 210 203 / 0.2);
     .wrapper {
@@ -69,6 +69,11 @@
   .main-container {
     margin-right: 3rem;
     justify-content: left;
+    column-gap: 3rem;
+    row-gap: 3rem;
+    // .singleAlbum {
+    //   width: 12rem;
+    // }
   }
 }
 @media only screen and (min-width: 700px) {

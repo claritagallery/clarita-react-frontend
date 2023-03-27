@@ -5,7 +5,6 @@ import PhotoThumb from "./PhotoThumb";
 import Drawer from "./Drawer";
 import LeftArrow from "../assets/LeftArrow";
 import RigthArrow from "../assets/Rightarrow";
-
 import { PhotoData } from "../data/types";
 import { PreviousOrNext } from "../data/types";
 import { useState } from "react";
@@ -52,15 +51,13 @@ function Photo({ photo, albumId }: PhotoParams) {
   function onToggleClickHandler() {
     toggleDrawerHandler((prev) => !prev);
   }
-
-  if (photo) {
-    const width = 6000;
-    const height = 4000;
-    const temporary_pic_url_horizontal = `https://source.unsplash.com/random/${width}x${height}`;
-    const temporary_pic_url_vertical = `https://source.unsplash.com/random/${height}x${width}`;
+  if (photo && albumId) {
+    console.log("estan los dos parametros");
     const { id, filename, name, date_and_time, image_url, breadcrumbs, prev, next } =
       photo;
-    console.log(photo.next);
+
+    const realPhotoLink = `http://192.168.1.133:8000/api/v1/photo/${id}/file`;
+
     return (
       <div
         className="full-photo-container"
@@ -68,30 +65,48 @@ function Photo({ photo, albumId }: PhotoParams) {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
       >
-        {photo.next && (
+        {prev && (
           <div onClick={(e) => stopPropagation(e)}>
-            <Link to={`/photos/${photo.next.id}`}>
-              <RigthArrow />
-            </Link>
-          </div>
-        )}
-        {photo.prev && (
-          <div onClick={(e) => stopPropagation(e)}>
-            <Link to={`/photos/${photo.prev.id}`}>
+            <Link to={`/albums/${albumId}/photos/${prev.id}`}>
               <LeftArrow />
             </Link>
           </div>
         )}
-        <img
-          className="full-photo"
-          src={temporary_pic_url_horizontal}
-          srcSet={temporary_pic_url_horizontal}
-        />
+        <img className="full-photo" src={realPhotoLink} />
+        {next && (
+          <div onClick={(e) => stopPropagation(e)}>
+            <Link to={`/albums/${albumId}/photos/${next.id}`}>
+              <RigthArrow />
+            </Link>
+          </div>
+        )}
         <Drawer photo={photo} toggleDrawer={toggleDrawer} />
       </div>
     );
   }
 
+  if (photo) {
+    const { id } = photo;
+    console.log("solo llego la foto");
+    const realPhotoLink = `http://192.168.1.133:8000/api/v1/photo/${id}/file`;
+    return (
+      <div
+        className="full-photo-container"
+        onClick={onToggleClickHandler}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+      >
+        <img className="full-photo" src={realPhotoLink} />
+        <Drawer photo={photo} toggleDrawer={toggleDrawer} />
+      </div>
+    );
+  }
+  return <h1>No photos in this album</h1>;
+}
+
+{
+  /* /////////////////////////////////HARINA DE OTRO COSTAL//////////////////
+  //////////////////////////////////////////////////////////////////////
   // if (photo) {
   //   return (
   //     <>
@@ -109,6 +124,7 @@ function Photo({ photo, albumId }: PhotoParams) {
   //   );
   // }
   return <h1>No photos in this album</h1>;
+} */
 }
 
 export default Photo;

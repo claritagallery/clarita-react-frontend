@@ -3,6 +3,7 @@ import { PhotoListItem, APIError } from "../data/types";
 import getRandomPic from "../data/apiFoto";
 import PhotoAlbum from "react-photo-album";
 import { Link } from "react-router-dom";
+import photoUrl from "../utils/photoUrl";
 export interface PhotoListParams {
   albumId?: string;
   data?: {
@@ -27,7 +28,6 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
 
   if (data) {
     const photos = data.results;
-    console.log(data);
 
     const photosParameters = photos.map((photo) => {
       const { imgSrc, height, width } = getRandomPic();
@@ -55,14 +55,15 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
             >
               {renderDefaultPhoto({ wrapped: true })}
 
-              {photo.title && (
-                <Link to={`/photos/${photo.id}`}>
-                  <div className="picture-info">
-                    <h4 className="picture-title"> {photo.title}</h4>
-                    <h5 className="picture-date">{photo.date}</h5>
-                  </div>
-                </Link>
-              )}
+              {/* {photo.title && ( */}
+              {/* <Link to={`/photos/${photo.id}`}> */}
+              <Link to={photoUrl(photo.id, albumId)}>
+                <div className="picture-info">
+                  {photo.title && <h4 className="picture-title"> {photo.title}</h4>}
+                  <h5 className="picture-date">{photo.date}</h5>
+                </div>
+              </Link>
+              {/* )} */}
             </div>
           )}
           layout="rows"

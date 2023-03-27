@@ -29,35 +29,33 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <div className="all">
-      <QueryClientProvider client={queryClient}>
-        <div className="App">
-          <Header />
-          <div className="Main">
-            <div>
-              <main>
-                <div>
-                  <Routes>
-                    <Route path="/" element={<AlbumListPage />} />
-                    <Route
-                      path="/albums/:albumId/photos/:photoId"
-                      element={<PhotoInAlbumPage />}
-                    />
-                    <Route path="/albums/:albumId" element={<AlbumDetailPage />} />
-                    <Route path="/albums" element={<AlbumListPage />} />
-                    <Route path="/photos/:photoId" element={<PhotoPage />} />
-                    <Route path="/photos" element={<PhotoListPage />} />
-                    <Route element={<NotFound />} />
-                  </Routes>
-                </div>
-              </main>
-            </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <Header />
+        <div className="Main">
+          <div>
+            <main>
+              <div>
+                <Routes>
+                  <Route path="/" element={<AlbumListPage />} />
+                  <Route
+                    path="/albums/:albumId/photos/:photoId"
+                    element={<PhotoInAlbumPage />}
+                  />
+                  <Route path="/albums/:albumId" element={<AlbumDetailPage />} />
+                  <Route path="/albums" element={<AlbumListPage />} />
+                  <Route path="/photos/:photoId" element={<PhotoPage />} />
+                  <Route path="/photos" element={<PhotoListPage />} />
+                  <Route element={<NotFound />} />
+                </Routes>
+              </div>
+            </main>
           </div>
-          <Footer />
         </div>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </div>
+        <Footer />
+      </div>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 
