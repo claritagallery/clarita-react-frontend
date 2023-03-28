@@ -36,10 +36,10 @@ function Photo({ photo, albumId }: PhotoParams) {
     const currentTouch = e.touches[0].clientX;
     const diff = touchDown - currentTouch;
     if (diff > 5 && photo.next) {
-      navigate(`/photos/${photo.next.id}`);
+      navigate(`/albums/${albumId}/photos/${photo.next.id}`);
     }
     if (diff < -5 && photo.prev) {
-      navigate(`/photos/${photo.prev.id}`);
+      navigate(`/albums/${albumId}/photos/${photo.prev.id}`);
     }
     setTouchPosition(null);
   }
@@ -85,7 +85,7 @@ function Photo({ photo, albumId }: PhotoParams) {
     );
   }
 
-  if (photo) {
+  if (photo && !albumId) {
     const { id } = photo;
     console.log("solo llego la foto");
     const realPhotoLink = `http://192.168.1.133:8000/api/v1/photo/${id}/file`;

@@ -5,7 +5,12 @@ import Photo from "../components/Photo";
 import { useParams } from "react-router-dom";
 import useApi from "../data";
 
-function PhotoPage() {
+type PhotoPageProps = {
+  toggleHeader: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function PhotoPage({ toggleHeader }: PhotoPageProps) {
+  toggleHeader(false);
   const { photoId } = useParams<{ photoId: string }>();
   const { photoQuery } = useApi();
 

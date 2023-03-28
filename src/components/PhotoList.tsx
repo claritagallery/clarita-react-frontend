@@ -55,15 +55,12 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
             >
               {renderDefaultPhoto({ wrapped: true })}
 
-              {/* {photo.title && ( */}
-              {/* <Link to={`/photos/${photo.id}`}> */}
               <Link to={photoUrl(photo.id, albumId)}>
                 <div className="picture-info">
                   {photo.title && <h4 className="picture-title"> {photo.title}</h4>}
                   <h5 className="picture-date">{photo.date}</h5>
                 </div>
               </Link>
-              {/* )} */}
             </div>
           )}
           layout="rows"

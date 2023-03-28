@@ -19,32 +19,32 @@ import {
 const queryClient = new QueryClient({
   defaultOptions: {},
 });
-// const queryClient = new QueryClient({
-//   defaultOptions: {
-//     queries: {
-//       refetchOnWindowFocus: false,
-//     },
-//   },
-// });
 
 function App() {
+  const [showHeader, setShowHeader] = React.useState<boolean>(true);
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        <Header />
+        {showHeader && <Header />}
+
         <div className="Main">
           <div>
             <main>
-              <div>
+              <div className="routes-container">
                 <Routes>
                   <Route path="/" element={<AlbumListPage />} />
                   <Route
                     path="/albums/:albumId/photos/:photoId"
-                    element={<PhotoInAlbumPage />}
+                    element={<PhotoInAlbumPage toggleHeader={setShowHeader} />}
                   />
                   <Route path="/albums/:albumId" element={<AlbumDetailPage />} />
                   <Route path="/albums" element={<AlbumListPage />} />
-                  <Route path="/photos/:photoId" element={<PhotoPage />} />
+
+                  <Route
+                    path="/photos/:photoId"
+                    element={<PhotoPage toggleHeader={setShowHeader} />}
+                  />
+
                   <Route path="/photos" element={<PhotoListPage />} />
                   <Route element={<NotFound />} />
                 </Routes>

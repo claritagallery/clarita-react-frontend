@@ -1,12 +1,20 @@
 import React from "react";
-
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Photo from "../components/Photo";
 //import PhotoThumb from "../components/PhotoThumb";
 import { useParams } from "react-router-dom";
 import useApi from "../data";
 
-function PhotoInAlbumPage() {
+type PhotoInAlbumProps = {
+  toggleHeader: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function PhotoInAlbumPage({ toggleHeader }: PhotoInAlbumProps) {
+  useEffect(() => {
+    toggleHeader(false);
+    return () => toggleHeader(true);
+  }, [toggleHeader]);
   const { albumId, photoId } = useParams();
   const { photoInAlbum } = useApi();
   if (!albumId || !photoId) {
