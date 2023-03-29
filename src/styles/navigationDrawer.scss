@@ -1,3 +1,28 @@
-// .navigation-drawer-container {
-//   height: 20%;
-// }
+.navigation-drawer-container {
+  height: 15vh;
+  position: absolute;
+  color: fuchsia;
+  border: 1px solid fuchsia;
+  width: 100%;
+  top: 0;
+  .photo-thumb-container {
+    border: 1px solid yellow;
+    display: flex;
+    height: 100%;
+    text-align: center;
+    background-color: rgb(228, 217, 215);
+    .thumb {
+      border: 1px solid yellowgreen;
+      width: 50%;
+      //height: 100%;
+    }
+  }
+  .bread-crumbs-container {
+    display: flex;
+    background-color: pink;
+    .bread-crumb-item {
+      color: fuchsia;
+      border: 1px solid fuchsia;
+    }
+  }
+}

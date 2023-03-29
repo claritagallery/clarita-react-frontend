@@ -1,6 +1,5 @@
 import React from "react";
 import { PhotoData } from "../data/types";
-import NavigationDrawer from "./NavigationDrawer";
 
 type DrawerProps = {
   photo: PhotoData;
@@ -9,9 +8,6 @@ type DrawerProps = {
 
 function Drawer({ photo, toggleDrawer }: DrawerProps) {
   console.log(photo);
-  // const openDrawer = (
-
-  // );
 
   return (
     <div className={`drawer-container ${toggleDrawer ? "drawer-is-open-container" : ""}`}>

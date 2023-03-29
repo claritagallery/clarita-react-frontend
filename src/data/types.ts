@@ -37,12 +37,6 @@ export type PhotoId = string | undefined;
 
 export type PreviousOrNext = null | PhotoListItem;
 
-type BreadCrumbs = {
-  id: string;
-  name: string;
-  date?: string;
-};
-
 type Caption = {
   language?: string;
   text?: string;
@@ -55,7 +49,7 @@ export interface PhotoData {
   date_and_time: null;
   image_url: string;
   caption: Caption[];
-  breadcrumbs: BreadCrumbs[];
+  breadcrumbs: AlbumListItem[];
   prev: PreviousOrNext;
   next: PreviousOrNext;
 }

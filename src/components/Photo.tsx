@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Drawer from "./Drawer";
+import NavigationDrawer from "./NavigationDrawer";
 import LeftArrow from "../assets/LeftArrow";
 import RigthArrow from "../assets/Rightarrow";
 import { PhotoData } from "../data/types";
@@ -78,6 +79,7 @@ function Photo({ photo, albumId }: PhotoParams) {
           </div>
         )}
         <Drawer photo={photo} toggleDrawer={toggleDrawer} />
+        <NavigationDrawer photo={photo} toggleDrawer={toggleDrawer} />
       </div>
     );
   }

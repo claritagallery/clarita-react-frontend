@@ -1,13 +1,21 @@
 import React from "react";
 import { PreviousOrNext } from "../data/types";
 
-// interface PhotoThumbParams {
-//   photo: PreviousOrNext;
-//   albumId?: string;
-// }
+interface NavigationDrawerParams {
+  previous: PreviousOrNext;
+  next: PreviousOrNext;
+  albumId?: string;
+}
 
-function PhotoThumb() {
-  return <h6>Photo Thumb aqui</h6>;
+function PhotoThumb({ previous, next }: NavigationDrawerParams) {
+  console.log(next);
+
+  return (
+    <div className="photo-thumb-container">
+      <div className="thumb not-prev-or-next">{previous ? previous.name : null}</div>
+      <div className="thumb not-prev-or-next">{next ? next.name : null}</div>
+    </div>
+  );
 }
 
 export default PhotoThumb;
