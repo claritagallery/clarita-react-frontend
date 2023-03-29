@@ -54,9 +54,34 @@
     .info-open-drawer {
       height: 50vh;
       background-color: mix.$drawerContainer-color;
-      padding: 1rem;
-      display: flex;
-      flex-flow: row wrap;
+      padding: 1.5rem;
+      p,
+      span {
+        text-align: left;
+      }
+      .container-brick-items {
+        display: flex;
+        .date-container {
+          order: -1;
+        }
+        .brick-item {
+          width: 50%;
+          margin: 1rem 8px 8px 1rem;
+
+          .list-tags {
+            text-align: center;
+            span {
+              display: block;
+              text-align: center;
+            }
+          }
+        }
+      }
+      .container-brick-items::before {
+        content: "";
+        border: 1px solid brown;
+        align-self: stretch;
+      }
     }
   }
   .drawer-is-open-container {
@@ -81,6 +106,12 @@
       .title-container {
         height: 15vh;
         background-color: rgba(210, 228, 225, 0.6);
+      }
+      .info-open-drawer {
+        p,
+        span {
+          text-align: center;
+        }
       }
     }
   }

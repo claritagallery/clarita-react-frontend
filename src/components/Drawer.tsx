@@ -10,27 +10,24 @@ function Drawer({ photo, toggleDrawer }: DrawerProps) {
   console.log(photo);
   const openDrawer = (
     <div className="info-open-drawer">
-      <div className="description brick-item">
-        <h4>Description</h4>
+      <div className="description">
         <p>This is the amazing description for this picture</p>
       </div>
-      <div className="date-container brick-item">
-        <h4 className="photo-drawer-date-title">Date</h4>
-        <p>{`${photo.date_and_time} && date goes here`}</p>
-      </div>
-      <div className="tags brick-item">
-        <h4>Tags</h4>
-        <ul className="list-tags">
-          <li>one tag</li>
-          <li>two tag</li>
-          <li>three tag</li>
-          <li>four tag</li>
-          <li>five tag</li>
-        </ul>
-      </div>
-      <div className="exif brick-item">
-        <h4>EXIF</h4>
-        This is the EXIF for this photo
+      <div className="container-brick-items">
+        <div className="date-container brick-item">
+          <h4 className="photo-drawer-date-title">Date</h4>
+          <p>{`${photo.date_and_time} && date goes here`}</p>
+        </div>
+        <div className="tags brick-item">
+          <h4>Tags</h4>
+          <div className="list-tags">
+            <span>one tag</span>
+            <span>two tag</span>
+            <span>three tag</span>
+            <span>four tag</span>
+            <span>five tag</span>
+          </div>
+        </div>
       </div>
     </div>
   );
