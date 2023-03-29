@@ -1,5 +1,6 @@
 import React from "react";
 import { PhotoData } from "../data/types";
+import NavigationDrawer from "./NavigationDrawer";
 
 type DrawerProps = {
   photo: PhotoData;
@@ -37,6 +38,7 @@ function Drawer({ photo, toggleDrawer }: DrawerProps) {
           <div className="toggle-line"></div>
         </button>
       </div>
+
       {toggleDrawer && openDrawer}
     </div>
   );

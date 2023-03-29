@@ -52,7 +52,7 @@
     }
 
     .info-open-drawer {
-      height: 50vh;
+      height: 30vh;
       background-color: mix.$drawerContainer-color;
       padding: 1.5rem;
       p,
@@ -109,6 +109,7 @@
         background-color: rgba(210, 228, 225, 0.6);
       }
       .info-open-drawer {
+        height: 40vh;
         p,
         span {
           text-align: center;

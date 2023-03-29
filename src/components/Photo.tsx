@@ -1,7 +1,5 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Breadcrumbs from "./Breadcrumbs";
-import PhotoThumb from "./PhotoThumb";
 import Drawer from "./Drawer";
 import LeftArrow from "../assets/LeftArrow";
 import RigthArrow from "../assets/Rightarrow";

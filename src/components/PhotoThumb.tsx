@@ -1,13 +1,13 @@
 import React from "react";
 import { PreviousOrNext } from "../data/types";
 
-interface PhotoThumbParams {
-  photo: PreviousOrNext;
-  albumId?: string;
-}
+// interface PhotoThumbParams {
+//   photo: PreviousOrNext;
+//   albumId?: string;
+// }
 
-function PhotoThumb({ photo, albumId }: PhotoThumbParams) {
-  return <h1>Photo Thumb aqui</h1>;
+function PhotoThumb() {
+  return <h6>Photo Thumb aqui</h6>;
 }
 
 export default PhotoThumb;
