@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <section className="top-nav hide-nav">
+    <section className="top-nav">
       <Link to="/">
         {" "}
         <img className="logo" src={logoAzul} alt="gallery-logo" width={60} height={60} />

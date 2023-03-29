@@ -52,7 +52,6 @@ function Photo({ photo, albumId }: PhotoParams) {
     toggleDrawerHandler((prev) => !prev);
   }
   if (photo && albumId) {
-    console.log("estan los dos parametros");
     const { id, filename, name, date_and_time, image_url, breadcrumbs, prev, next } =
       photo;
 

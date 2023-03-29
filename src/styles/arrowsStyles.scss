@@ -18,7 +18,13 @@ svg {
   width: 70px;
   height: 90px;
 }
+.up {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
 
+.down {
+}
 .left {
   left: 5%;
 }
