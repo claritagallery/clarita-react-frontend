@@ -9,7 +9,30 @@ type DrawerProps = {
 
 function Drawer({ photo, toggleDrawer }: DrawerProps) {
   console.log(photo);
-  const openDrawer = (
+  // const openDrawer = (
+
+  // );
+
+  return (
+    <div className={`drawer-container ${toggleDrawer ? "drawer-is-open-container" : ""}`}>
+      <div className={`title-container ${toggleDrawer ? "drawer-is-open-title" : ""}`}>
+        <h4>{photo.name}</h4>
+        <button className="toggle-drawer">
+          <div className="toggle-line"></div>
+        </button>
+      </div>
+
+      {toggleDrawer && <DetailsDrawer photo={photo} />}
+    </div>
+  );
+}
+
+type DetailsDrawerProps = {
+  photo: PhotoData;
+};
+
+function DetailsDrawer({ photo }: DetailsDrawerProps) {
+  return (
     <div className="info-open-drawer">
       <div className="description">
         <p>This is the amazing description for this picture</p>
@@ -27,19 +50,6 @@ function Drawer({ photo, toggleDrawer }: DrawerProps) {
           </div>
         </div>
       </div>
-    </div>
-  );
-
-  return (
-    <div className={`drawer-container ${toggleDrawer ? "drawer-is-open-container" : ""}`}>
-      <div className={`title-container ${toggleDrawer ? "drawer-is-open-title" : ""}`}>
-        <h4>{photo.name}</h4>
-        <button className="toggle-drawer">
-          <div className="toggle-line"></div>
-        </button>
-      </div>
-
-      {toggleDrawer && openDrawer}
     </div>
   );
 }
