@@ -79,8 +79,9 @@
       }
       .container-brick-items::before {
         content: "";
-        border: 1px solid brown;
+        border: 0.5px solid mix.$secondary-color;
         align-self: stretch;
+        border-image: linear-gradient(45deg, #c4859d, #6b3c4e) 1;
       }
     }
   }

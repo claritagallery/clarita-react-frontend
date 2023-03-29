@@ -16,16 +16,13 @@ function Drawer({ photo, toggleDrawer }: DrawerProps) {
       <div className="container-brick-items">
         <div className="date-container brick-item">
           <h4 className="photo-drawer-date-title">Date</h4>
-          <p>{`${photo.date_and_time} && date goes here`}</p>
+          <p>{photo.date_and_time || "date goes here"}</p>
         </div>
         <div className="tags brick-item">
           <h4>Tags</h4>
           <div className="list-tags">
             <span>one tag</span>
             <span>two tag</span>
-            <span>three tag</span>
-            <span>four tag</span>
-            <span>five tag</span>
           </div>
         </div>
       </div>
