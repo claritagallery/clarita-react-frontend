@@ -48,7 +48,7 @@ function Photo({ photo, albumId }: PhotoParams) {
   }
 
   function onToggleClickHandler() {
-    toggleDrawerHandler((prev) => true);
+    toggleDrawerHandler((prev) => !prev);
   }
   if (photo && albumId) {
     const { id, filename, name, date_and_time, image_url, breadcrumbs, prev, next } =

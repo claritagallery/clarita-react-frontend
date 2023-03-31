@@ -20,14 +20,13 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
       <div className="crumb-nav-wrap">
         <nav className="nav">
           {breadcrumbs.map((crumb) => {
-            console.log(crumb);
             return (
               <div key={crumb.id} className="breadcrumb-wrap">
                 <span className="sep">
                   <i className="fa fa-caret-right">&#xf0da;</i>
                 </span>{" "}
                 <span className="breadcrumb">
-                  <Link className="bread-crumb-link" to="/">
+                  <Link className="bread-crumb-link" to={`/albums/${crumb.id}`}>
                     {crumb.name}
                   </Link>
                 </span>
