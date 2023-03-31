@@ -40,7 +40,7 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
         <nav className="nav">
           <div className="breadcrumb-wrap">
             <span className="sep">
-              <i className="fa fa-caret-right"></i>
+              <i className="fa fa-caret-right">&#xf0da;</i>
             </span>{" "}
             <span className="breadcrumb">
               <a href="#">Universe</a>
@@ -48,7 +48,7 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
           </div>
           <div className="breadcrumb-wrap">
             <span className="sep">
-              <i className="fa fa-caret-right"></i>
+              <i className="fa fa-caret-right">&#xf0da;</i>
             </span>{" "}
             <span className="breadcrumb">
               <a href="#">Milky Way</a>
@@ -56,7 +56,7 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
           </div>
           <div className="breadcrumb-wrap">
             <span className="sep">
-              <i className="fa fa-caret-right"></i>
+              <i className="fa fa-caret-right">&#xf0da;</i>
             </span>{" "}
             <span className="breadcrumb">
               <a href="#">Solar System</a>
@@ -64,7 +64,7 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
           </div>
           <div className="breadcrumb-wrap">
             <span className="sep">
-              <i className="fa fa-caret-right"></i>
+              <i className="fa fa-caret-right">&#xf0da;</i>
             </span>{" "}
             <span className="breadcrumb">
               <a href="#">Earth</a>
@@ -72,7 +72,7 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
           </div>
           <div className="breadcrumb-wrap">
             <span className="sep">
-              <i className="fa fa-caret-right"></i>
+              <i className="fa fa-caret-right">&#xf0da;</i>
             </span>{" "}
             <span className="breadcrumb">
               <a href="#">Internet</a>

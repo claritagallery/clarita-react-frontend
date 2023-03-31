@@ -15,15 +15,9 @@
     .thumb {
       border: 1px solid yellowgreen;
       width: 50%;
-      //height: 100%;
     }
   }
 
-  //   .wrapper {
-  //     box-shadow: 0px 0px 10px black;
-  //     // width: 70vw;
-  //     margin: 20px auto;
-  //   } no falta
   a,
   a:visited {
     text-decoration: none;
@@ -34,15 +28,6 @@
   a:hover {
     color: mix.$hovered-color;
   }
-  //   .header {
-  //     margin: 0 auto;
-  //     overflow: hidden;
-  //     border-bottom: 1px solid var(--border-color);
-  //   } //no falta
-
-  //   .body {
-  //     padding-top: 20px;
-  //   } //no falta
 
   .main-crumb-wrapper {
     //era logoandnavwrap la clase
@@ -51,7 +36,6 @@
     background-color: mix.$main-color;
   }
   .crumb-nav-wrap {
-    //era .site-nav-wrap
     padding-left: 1rem;
     font-size: 0.9rem;
     color: mix.$secondary-color;
@@ -63,7 +47,6 @@
     display: flex;
     white-space: nowrap;
     overflow: hidden;
-    //padding-right: 30px;
     padding-right: 1rem;
   }
 
@@ -71,7 +54,7 @@
     content: "";
     position: absolute;
     bottom: 100%;
-    left: 1rem; //era 28px
+    left: 1rem;
     top: 36px;
     width: 100%;
     height: 1px;
@@ -85,7 +68,6 @@
   .breadcrumb-wrap:hover:before {
     transform: scalex(1);
   }
-  /////
 
   .breadcrumb-wrap {
     overflow: hidden;
@@ -99,18 +81,13 @@
     color: var(--main-color);
     position: relative;
     transition: transform ease-in-out 0.3s;
-    ////////////////////////////////////////
+
     &:hover {
       flex: 1 0 auto;
       opacity: 1;
-      // color: mix.$hovered-color;
       transform: translatey(-2px);
       transition: none;
-      .breadcrumb {
-      }
-      a {
-        // color: mix.$hovered-color;
-      }
+
       .sep {
         i {
           transform: translatex(8px);
@@ -125,14 +102,12 @@
         transition: transform ease-in-out 0.4s;
       }
     }
-    /////////////////////////////////////////////
-    ////////////////////////////////////////////
+
     //First Breadcrumb
     &:first-child {
       flex: 0 0 auto;
       flex-shrink: 0.5;
       font-weight: normal;
-      // color: var(--hover-color);
       opacity: 1;
 
       &:after {
@@ -179,17 +154,15 @@
     padding-right: 10px;
 
     i.fa:before {
-      content: var(--icon);
+      //content: var(--icon);
       transition: transform ease-in-out 0.2s;
     }
   }
 }
 .fa {
   display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
+  font: normal normal normal 14px/1 FontAwesome; //This may break.. check on it
   font-size: 14px;
   font-size: inherit;
   text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
