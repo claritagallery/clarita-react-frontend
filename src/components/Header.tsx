@@ -1,28 +1,22 @@
-import {
-  Button,
-  Container,
-  Form,
-  FormControl,
-  Nav,
-  Navbar,
-} from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import React from "react"
+import { Button, Container, Form, FormControl, Nav, Navbar } from "react-bootstrap"
 
+import { Link } from "react-router-dom"
 const Header = () => (
   <Navbar bg="light" expand="md">
     <Container>
-      <LinkContainer to="/">
+      <Link to="/">
         <Navbar.Brand href="/">Clarita</Navbar.Brand>
-      </LinkContainer>
+      </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-          <LinkContainer to="/albums">
+          <Link to="/albums">
             <Nav.Link>Albums</Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="/photos">
+          </Link>
+          <Link to="/photos">
             <Nav.Link>Photos</Nav.Link>
-          </LinkContainer>
+          </Link>
         </Nav>
       </Navbar.Collapse>
       <Form className="d-flex">
@@ -39,6 +33,6 @@ const Header = () => (
       </Form>
     </Container>
   </Navbar>
-);
+)
 
-export default Header;
+export default Header

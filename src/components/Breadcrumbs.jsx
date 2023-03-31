@@ -1,18 +1,20 @@
-import { Breadcrumb } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import React from "react"
+import { Breadcrumb } from "react-bootstrap"
+
+import { Link } from "react-router-dom"
 
 const Breadcrumbs = ({ crumbs, current }) => (
   <Breadcrumb>
-    <LinkContainer to="/">
+    <Link to="/">
       <Breadcrumb.Item>Home</Breadcrumb.Item>
-    </LinkContainer>
+    </Link>
     {crumbs.map((crumb) => (
-      <LinkContainer key={crumb.id} to={`/albums/${crumb.id}`}>
+      <Link key={crumb.id} to={`/albums/${crumb.id}`}>
         <Breadcrumb.Item>{crumb.name}</Breadcrumb.Item>
-      </LinkContainer>
+      </Link>
     ))}
     <Breadcrumb.Item active>{current}</Breadcrumb.Item>
   </Breadcrumb>
-);
+)
 
-export default Breadcrumbs;
+export default Breadcrumbs
