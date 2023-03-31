@@ -19,47 +19,8 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
     <div className="main-crumb-wrapper">
       <div className="crumb-nav-wrap">
         <nav className="nav">
-          {/* <div className="breadcrumb-wrap">
-            <span className="sep">
-              <i className="fa fa-caret-right">&#xf0da;</i>
-            </span>{" "}
-            <span className="breadcrumb">
-              <a href="#">Universe</a>
-            </span>
-          </div>
-          <div className="breadcrumb-wrap">
-            <span className="sep">
-              <i className="fa fa-caret-right">&#xf0da;</i>
-            </span>{" "}
-            <span className="breadcrumb">
-              <a href="#">Milky Way</a>
-            </span>
-          </div>
-          <div className="breadcrumb-wrap">
-            <span className="sep">
-              <i className="fa fa-caret-right">&#xf0da;</i>
-            </span>{" "}
-            <span className="breadcrumb">
-              <a href="#">Solar System</a>
-            </span>
-          </div>
-          <div className="breadcrumb-wrap">
-            <span className="sep">
-              <i className="fa fa-caret-right">&#xf0da;</i>
-            </span>{" "}
-            <span className="breadcrumb">
-              <a href="#">Earth</a>
-            </span>
-          </div>
-          <div className="breadcrumb-wrap">
-            <span className="sep">
-              <i className="fa fa-caret-right">&#xf0da;</i>
-            </span>{" "}
-            <span className="breadcrumb">
-              <a href="#">Internet</a>
-            </span>
-          </div> */}
           {breadcrumbs.map((crumb) => {
+            console.log(crumb);
             return (
               <div key={crumb.id} className="breadcrumb-wrap">
                 <span className="sep">
