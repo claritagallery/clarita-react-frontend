@@ -1,14 +1,14 @@
-import axios from "axios";
-import { Container, Image, Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Breadcrumbs from "./Breadcrumbs";
-import PhotoThumb from "./PhotoThumb";
-import React from "react";
-import { PhotoData } from "../types";
+import axios from "axios"
+import { Container, Image, Spinner } from "react-bootstrap"
+import { Link } from "react-router-dom"
+import Breadcrumbs from "./Breadcrumbs"
+import PhotoThumb from "./PhotoThumb"
+import React from "react"
+import { PhotoData } from "../types"
 
 interface PhotoParams {
-  photo: PhotoData;
-  albumId?: string;
+  photo: PhotoData
+  albumId?: string
 }
 
 function Photo({ photo, albumId }: PhotoParams) {
@@ -25,7 +25,7 @@ function Photo({ photo, albumId }: PhotoParams) {
         fluid
       />
     </>
-  );
+  )
 }
 
-export default Photo;
+export default Photo

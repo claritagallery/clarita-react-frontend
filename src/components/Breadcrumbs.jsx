@@ -1,7 +1,7 @@
-import React from "react";
-import { Breadcrumb } from "react-bootstrap";
+import React from "react"
+import { Breadcrumb } from "react-bootstrap"
 
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 const Breadcrumbs = ({ crumbs, current }) => (
   <Breadcrumb>
@@ -15,6 +15,6 @@ const Breadcrumbs = ({ crumbs, current }) => (
     ))}
     <Breadcrumb.Item active>{current}</Breadcrumb.Item>
   </Breadcrumb>
-);
+)
 
-export default Breadcrumbs;
+export default Breadcrumbs

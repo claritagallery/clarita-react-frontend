@@ -1,26 +1,26 @@
-import React from "react";
-import { Container, Spinner } from "react-bootstrap";
-import Breadcrumbs from "./Breadcrumbs";
-import PhotoThumb from "./PhotoThumb";
+import React from "react"
+import { Container, Spinner } from "react-bootstrap"
+import Breadcrumbs from "./Breadcrumbs"
+import PhotoThumb from "./PhotoThumb"
 
-import { APIError, AlbumDetailItem } from "../types";
+import { APIError, AlbumDetailItem } from "../types"
 export interface AlbumDetailParams {
-  data?: AlbumDetailItem;
-  error: APIError;
-  isError: boolean;
-  isLoading: boolean;
+  data?: AlbumDetailItem
+  error: APIError
+  isError: boolean
+  isLoading: boolean
 }
 
 const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => {
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   if (isError) {
-    return <div>{error ? error.message : "Unknown error"}</div>;
+    return <div>{error ? error.message : "Unknown error"}</div>
   }
   if (data) {
-    data;
+    data
     return (
       <>
         <Container>
@@ -30,11 +30,11 @@ const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => 
           <h1>{data.description}</h1>
         </Container>
       </>
-    );
+    )
   } else {
-    console.warn("empty render on AlbumDetail");
-    return null;
+    console.warn("empty render on AlbumDetail")
+    return null
   }
-};
+}
 
-export default AlbumDetail;
+export default AlbumDetail

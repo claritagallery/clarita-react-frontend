@@ -1,25 +1,25 @@
-import React from "react";
-import { Container, Row, Spinner } from "react-bootstrap";
-import AlbumThumb from "./AlbumThumb";
+import React from "react"
+import { Container, Row, Spinner } from "react-bootstrap"
+import AlbumThumb from "./AlbumThumb"
 
-import { APIError, AlbumListData } from "../types";
+import { APIError, AlbumListData } from "../types"
 export interface AlbumListParams {
-  data?: AlbumListData;
-  error: APIError;
-  isError: boolean;
-  isLoading: boolean;
+  data?: AlbumListData
+  error: APIError
+  isError: boolean
+  isLoading: boolean
 }
 
 const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   if (isError) {
-    return <div>{error ? error.message : "Unknown error"}</div>;
+    return <div>{error ? error.message : "Unknown error"}</div>
   }
   if (data) {
-    const albums = data.results;
+    const albums = data.results
     return (
       <Container>
         <Row>
@@ -28,11 +28,11 @@ const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
           ))}
         </Row>
       </Container>
-    );
+    )
   } else {
-    console.warn("empty render on Album List");
-    return null;
+    console.warn("empty render on Album List")
+    return null
   }
-};
+}
 
-export default AlbumList;
+export default AlbumList

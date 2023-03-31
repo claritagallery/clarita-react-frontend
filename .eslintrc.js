@@ -16,10 +16,10 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint", "prettier", "react-hooks"],
-  rules: { semi: "off", "@typescript-eslint/semi": "warn", "react/prop-types": "off" },
+  rules: { semi: "off", "@typescript-eslint/semi": "off", "react/prop-types": "off" },
   settings: {
     "import/resolver": {
       typescript: {},
     },
   },
-};
+}

@@ -1,11 +1,11 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
+import React from "react"
+import { Container, Row, Col } from "react-bootstrap"
+import { QueryClient, QueryClientProvider } from "react-query"
+import { ReactQueryDevtools } from "react-query/devtools"
+import { Route, Routes } from "react-router-dom"
+import "./App.css"
 
-import { Footer, Header } from "./components";
+import { Footer, Header } from "./components"
 import {
   AlbumDetailPage,
   AlbumListPage,
@@ -13,11 +13,11 @@ import {
   PhotoListPage,
   PhotoPage,
   NotFound,
-} from "./pages";
+} from "./pages"
 
 const queryClient = new QueryClient({
   defaultOptions: {},
-});
+})
 
 function App() {
   return (
@@ -50,7 +50,7 @@ function App() {
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
