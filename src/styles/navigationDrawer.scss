@@ -125,6 +125,9 @@
 
       a {
         color: mix.$important-color;
+        border-bottom: mix.$secondary-color;
+        text-decoration-line: revert;
+        text-underline-offset: 3.5px;
       }
 
       &:hover {

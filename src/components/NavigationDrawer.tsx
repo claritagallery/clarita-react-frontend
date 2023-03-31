@@ -16,29 +16,10 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
   if (!breadcrumbs.length) return null;
 
   return (
-    // <div className="bread-crumbs-container">
-    //   <nav className="bread-crumbs-nav">
-    //     {breadcrumbs.map((crumb) => {
-    //       return (
-    //         <div key={crumb.id} className="bread-crumb-wrap">
-    //           <span className="sep">
-    //             <i className="fa fa-caret-right"></i>
-    //           </span>
-    //           <span className="bread-crumb-item">
-    //             <Link className="breadcrumb-link" to="/">
-    //               {crumb.name}
-    //             </Link>
-    //           </span>
-    //         </div>
-    //       );
-    //     })}
-    //   </nav>
-    // </div>
-
     <div className="main-crumb-wrapper">
       <div className="crumb-nav-wrap">
         <nav className="nav">
-          <div className="breadcrumb-wrap">
+          {/* <div className="breadcrumb-wrap">
             <span className="sep">
               <i className="fa fa-caret-right">&#xf0da;</i>
             </span>{" "}
@@ -77,7 +58,21 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
             <span className="breadcrumb">
               <a href="#">Internet</a>
             </span>
-          </div>
+          </div> */}
+          {breadcrumbs.map((crumb) => {
+            return (
+              <div key={crumb.id} className="breadcrumb-wrap">
+                <span className="sep">
+                  <i className="fa fa-caret-right">&#xf0da;</i>
+                </span>{" "}
+                <span className="breadcrumb">
+                  <Link className="bread-crumb-link" to="/">
+                    {crumb.name}
+                  </Link>
+                </span>
+              </div>
+            );
+          })}
         </nav>
       </div>
     </div>
