@@ -1,7 +1,7 @@
-import React from "react";
-import { Button, Container, Form, FormControl, Nav, Navbar } from "react-bootstrap";
+import React from "react"
+import { Button, Container, Form, FormControl, Nav, Navbar } from "react-bootstrap"
 
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 const Header = () => (
   <Navbar bg="light" expand="md">
     <Container>
@@ -33,6 +33,6 @@ const Header = () => (
       </Form>
     </Container>
   </Navbar>
-);
+)
 
-export default Header;
+export default Header

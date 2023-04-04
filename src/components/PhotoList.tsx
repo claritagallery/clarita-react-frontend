@@ -1,34 +1,34 @@
-import React from "react";
-import { Container, Row, Spinner } from "react-bootstrap";
-import { PhotoListItem, APIError } from "../data/types";
+import React from "react"
+import { Container, Row, Spinner } from "react-bootstrap"
+import { PhotoListItem, APIError } from "../data/types"
 
-import PhotoThumb from "./PhotoThumb";
+import PhotoThumb from "./PhotoThumb"
 
 export interface PhotoListParams {
-  albumId?: string;
+  albumId?: string
   data?: {
-    next: boolean | null | string;
-    total: number;
-    results: PhotoListItem[];
-  };
-  error: APIError;
-  isError: boolean;
-  isLoading: boolean;
+    next: boolean | null | string
+    total: number
+    results: PhotoListItem[]
+  }
+  error: APIError
+  isError: boolean
+  isLoading: boolean
 }
 
 const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams) => {
-  data;
+  data
   if (isLoading) {
-    return <h1>its charging boy</h1>;
+    return <h1>its charging boy</h1>
   }
 
   if (isError) {
-    return <div>{error ? error.message : "Unknown error"}</div>;
+    return <div>{error ? error.message : "Unknown error"}</div>
   }
 
   if (data) {
-    const photos = data.results;
-    photos;
+    const photos = data.results
+    photos
     return (
       <div>
         <Container>
@@ -40,16 +40,16 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
                 <div key={photo.id}>
                   <PhotoThumb key={photo.id} photo={photo} albumId={albumId} />
                 </div>
-              );
+              )
             })}
           </Row>
         </Container>
       </div>
-    );
+    )
   } else {
-    console.warn("empty render on PhotoList");
-    return null;
+    console.warn("empty render on PhotoList")
+    return null
   }
-};
+}
 
-export default PhotoList;
+export default PhotoList

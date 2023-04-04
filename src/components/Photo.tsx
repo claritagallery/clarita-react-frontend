@@ -1,13 +1,13 @@
-import { Container, Image, Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Breadcrumbs from "./Breadcrumbs";
-import PhotoThumb from "./PhotoThumb";
-import React from "react";
-import { PhotoData } from "../data/types";
+import { Container, Image, Spinner } from "react-bootstrap"
+import { Link } from "react-router-dom"
+import Breadcrumbs from "./Breadcrumbs"
+import PhotoThumb from "./PhotoThumb"
+import React from "react"
+import { PhotoData } from "../data/types"
 
 interface PhotoParams {
-  photo?: PhotoData;
-  albumId?: string;
+  photo?: PhotoData
+  albumId?: string
 }
 
 function Photo({ photo, albumId }: PhotoParams) {
@@ -25,9 +25,9 @@ function Photo({ photo, albumId }: PhotoParams) {
           fluid
         />
       </>
-    );
+    )
   }
-  return <h1>No photos in this album</h1>;
+  return <h1>No photos in this album</h1>
 }
 
-export default Photo;
+export default Photo

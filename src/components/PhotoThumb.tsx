@@ -1,16 +1,16 @@
-import React from "react";
-import { Card, Col } from "react-bootstrap";
-import { PreviousOrNext } from "../data/types";
+import React from "react"
+import { Card, Col } from "react-bootstrap"
+import { PreviousOrNext } from "../data/types"
 
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 interface PhotoThumbParams {
-  photo: PreviousOrNext;
-  albumId?: string;
+  photo: PreviousOrNext
+  albumId?: string
 }
 
 const PhotoThumb = ({ photo, albumId }: PhotoThumbParams) => {
-  const link = albumId ? `/albums/${albumId}/photos/${photo.id}` : `/photos/${photo.id}`;
+  const link = albumId ? `/albums/${albumId}/photos/${photo.id}` : `/photos/${photo.id}`
   return (
     <Col xs={6} s={4} md={3} xl={2}>
       <Link to={link}>
@@ -21,7 +21,7 @@ const PhotoThumb = ({ photo, albumId }: PhotoThumbParams) => {
         </Card>
       </Link>
     </Col>
-  );
-};
+  )
+}
 
-export default PhotoThumb;
+export default PhotoThumb
