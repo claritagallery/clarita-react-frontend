@@ -23,7 +23,7 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
             return (
               <div key={crumb.id} className="breadcrumb-wrap">
                 <span className="sep">
-                  <i className="fa fa-caret-right">&#xf0da;</i>
+                  <i className="fa fa-caret-right"></i>
                 </span>{" "}
                 <span className="breadcrumb">
                   <Link className="bread-crumb-link" to={`/albums/${crumb.id}`}>

@@ -163,11 +163,11 @@
   }
 }
 .fa {
+  width: 0;
+  height: 0;
   display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome; //This may break.. check on it
-  font-size: 14px;
-  font-size: inherit;
-  text-rendering: auto;
+  border: 7px solid transparent;
+  border-left-color: mix.$secondary-color;
 }
 
 .is-open {
