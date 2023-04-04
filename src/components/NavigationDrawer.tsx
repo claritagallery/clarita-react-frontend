@@ -40,16 +40,12 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
 }
 
 function NavigationDrawer({ photo, toggleDrawer }: DrawerProps) {
-  if (toggleDrawer) {
-    return (
-      <div className="navigation-drawer-container">
-        <PhotoThumb previous={photo.prev} next={photo.next} />
-        <Breadcrumbs breadcrumbs={photo.breadcrumbs} />
-      </div>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <div className={`navigation-drawer-container ${toggleDrawer ? "is-open" : ""}  `}>
+      <PhotoThumb previous={photo.prev} next={photo.next} />
+      <Breadcrumbs breadcrumbs={photo.breadcrumbs} />
+    </div>
+  );
 }
 
 export default NavigationDrawer;

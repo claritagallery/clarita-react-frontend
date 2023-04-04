@@ -17,6 +17,7 @@ function Photo({ photo, albumId }: PhotoParams) {
   const [toggleDrawer, toggleDrawerHandler] = useState(false);
   const [touchPosition, setTouchPosition] = useState(null);
   const navigate = useNavigate();
+  const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
   function handleTouchStart(e: any) {
     const touchDown = e.touches[0].clientX;
@@ -54,7 +55,7 @@ function Photo({ photo, albumId }: PhotoParams) {
     const { id, filename, name, date_and_time, image_url, breadcrumbs, prev, next } =
       photo;
 
-    const realPhotoLink = `http://192.168.1.133:8000/api/v1/photo/${id}/file`;
+    const realPhotoLink = `${baseUrl}/api/v1/photo/${id}/file`;
 
     return (
       <div
@@ -87,7 +88,7 @@ function Photo({ photo, albumId }: PhotoParams) {
   if (photo && !albumId) {
     const { id } = photo;
     console.log("solo llego la foto");
-    const realPhotoLink = `http://192.168.1.133:8000/api/v1/photo/${id}/file`;
+    const realPhotoLink = `${baseUrl}/api/v1/photo/${id}/file`;
     return (
       <div
         className="full-photo-container"

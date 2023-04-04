@@ -1,11 +1,13 @@
 @use "./mixins.scss" as mix;
 .navigation-drawer-container {
-  height: 15vh;
   position: absolute;
   color: fuchsia;
   border: 1px solid fuchsia;
   width: 100%;
-  top: 0;
+  top: -3vh;
+  transform: translateY(-368px); //New
+  transition: transform 0.9s ease-in-out;
+
   .photo-thumb-container {
     border: 1px solid yellow;
     display: flex;
@@ -15,6 +17,7 @@
     .thumb {
       border: 1px solid yellowgreen;
       width: 50%;
+      height: 15vh;
     }
   }
 
@@ -168,4 +171,10 @@
   font-size: 14px;
   font-size: inherit;
   text-rendering: auto;
+}
+
+.is-open {
+  // display: block;
+  transform: translateY(20%);
+  transition: transform 0.6s ease-out; //New
 }
