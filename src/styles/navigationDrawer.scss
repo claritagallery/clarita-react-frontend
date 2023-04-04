@@ -80,7 +80,7 @@
     display: inline-block;
     padding: 10px 5px 15px 0;
     border-bottom: 1px solid transparent;
-    color: var(--main-color);
+    color: mix.$secondary-color;
     position: relative;
     transition: transform ease-in-out 0.3s;
 
@@ -93,7 +93,7 @@
       .sep {
         i {
           transform: translatex(8px);
-          color: var(--hover-color);
+          color: mix.$hovered-color;
           transition: transform ease-in-out 0.3s;
         }
       }
@@ -123,12 +123,16 @@
     &:last-child {
       flex: 1 0 auto !important;
       font-weight: normal;
+      width: 5%;
 
       .bread-crumb-link {
         color: mix.$important-color;
         border-bottom: mix.$secondary-color;
         text-decoration-line: revert;
         text-underline-offset: 3.5px;
+      }
+      .bread-crumb-link:hover {
+        width: fit-content;
       }
 
       &:hover {
