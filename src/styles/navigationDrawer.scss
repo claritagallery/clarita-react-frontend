@@ -5,8 +5,8 @@
   border: 1px solid fuchsia;
   width: 100%;
   top: -3vh;
-  transform: translateY(-368px); //New
-  transition: transform 0.9s ease-in-out;
+  transform: translateY(-400px);
+  transition: transform 0.6s ease-in-out;
 
   .photo-thumb-container {
     border: 1px solid yellow;
@@ -33,7 +33,6 @@
   }
 
   .main-crumb-wrapper {
-    //era logoandnavwrap la clase
     display: flex;
     align-items: center;
     background-color: mix.$main-color;
@@ -67,7 +66,7 @@
     transition: transform ease-in-out 0.15s 0.1s, opacity ease-in-out 0.25s;
     opacity: 0.5;
   }
-  //hover effect
+
   .breadcrumb-wrap:hover:before {
     transform: scalex(1);
   }
@@ -106,7 +105,6 @@
       }
     }
 
-    //First Breadcrumb
     &:first-child {
       flex: 0 0 auto;
       flex-shrink: 0.5;
@@ -160,7 +158,6 @@
     padding-right: 10px;
 
     i.fa:before {
-      //content: var(--icon);
       transition: transform ease-in-out 0.2s;
     }
   }
@@ -174,7 +171,6 @@
 }
 
 .is-open {
-  // display: block;
   transform: translateY(20%);
   transition: transform 0.6s ease-out; //New
 }
