@@ -1,21 +1,12 @@
-import axios from "axios"
 import React from "react"
-import { useQuery } from "react-query"
 import { Spinner } from "react-bootstrap"
 import AlbumList from "../components/AlbumList"
-
-import { APIError, AlbumListData } from "../types"
-function fetchAlbums() {
-  return axios({
-    url: `${process.env.REACT_APP_API_BASE_URL}/api/v1/albums`,
-    params: { limit: 100 },
-  }).then((res) => res.data)
-}
+import useApi from "../data"
 
 const AlbumListPage = () => {
-  const albumsQuery = useQuery<AlbumListData, APIError>("albums", fetchAlbums)
-
-  return <AlbumList {...albumsQuery} />
+  const { albumsQuery } = useApi()
+  const query = albumsQuery({ limit: 100 })
+  return <AlbumList {...query} />
 }
 
 export default AlbumListPage

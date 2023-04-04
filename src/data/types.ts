@@ -63,6 +63,21 @@ export interface PhotoData {
   next: Next
 }
 
+export type FetchPhotoInAlbumParams = {
+  albumId: string
+  photoId: string
+}
+
+export type fetchPhotosParams = {
+  album?: string
+  limit: number
+}
+
+export interface fetchAlbumsParams {
+  limit: number
+  parent?: string
+}
+
 export type PhotoListData = ListData<PhotoListItem>
 export type AlbumDetailData = AlbumDetailItem
 export type AlbumListData = ListData<AlbumListItem>

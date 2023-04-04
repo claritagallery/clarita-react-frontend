@@ -3,7 +3,7 @@ import { Container, Spinner } from "react-bootstrap"
 import Breadcrumbs from "./Breadcrumbs"
 import PhotoThumb from "./PhotoThumb"
 
-import { APIError, AlbumDetailItem } from "../types"
+import { APIError, AlbumDetailItem } from "../data/types"
 export interface AlbumDetailParams {
   data?: AlbumDetailItem
   error: APIError

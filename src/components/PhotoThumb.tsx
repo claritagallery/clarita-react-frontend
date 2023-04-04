@@ -1,6 +1,6 @@
 import React from "react"
 import { Card, Col } from "react-bootstrap"
-import { PreviousOrNext } from "../types"
+import { PreviousOrNext } from "../data/types"
 
 import { Link } from "react-router-dom"
 
