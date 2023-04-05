@@ -9,12 +9,14 @@ interface NavigationDrawerParams {
 
 function PhotoThumb({ previous, next, albumId }: NavigationDrawerParams) {
   console.log(albumId);
-
+  function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    e.stopPropagation();
+  }
   const previousId = previous ? previous.id : null;
   const nextId = next ? next.id : null;
   return (
     <div className="photo-thumb-container">
-      <div className="thumb not-prev-or-next">
+      <div className="thumb not-prev-or-next" onClick={(e) => stopPropagation(e)}>
         {previousId && (
           <Link to={`/albums/${albumId}/photos/${previousId}`}>
             {" "}
@@ -22,7 +24,7 @@ function PhotoThumb({ previous, next, albumId }: NavigationDrawerParams) {
           </Link>
         )}
       </div>
-      <div className="thumb not-prev-or-next">
+      <div className="thumb not-prev-or-next" onClick={(e) => stopPropagation(e)}>
         {nextId && (
           <Link to={`/albums/${albumId}/photos/${nextId}`}>
             {" "}
@@ -35,34 +37,3 @@ function PhotoThumb({ previous, next, albumId }: NavigationDrawerParams) {
 }
 
 export default PhotoThumb;
-// -import React from "react";
-// -import { PreviousOrNext } from "../data/types";
-// -import { Link } from "react-router-dom";
-// -import getRandomPic from "../data/apiFoto";
-// -
-// -interface PhotoThumbParams {
-// -  photo: PreviousOrNext;
-// -  albumId?: string;
-// -  index: number;
-// -}
-// -
-// -const PhotoThumb = ({ photo, albumId, index }: PhotoThumbParams) => {
-
-// -  const placeHolderPic = getRandomPic();
-// -  console.log(photo);
-// -  console.log(index);
-// -  const link = albumId ? `/albums/${albumId}/photos/${photo.id}` : `/photos/${photo.id}`;
-// -  return (
-// -    <div
-// -
-// -    >
-// -      <img className="picture-gallery" src={placeHolderPic} />
-// -      <div className="gallery-info">
-// -        <Link to={link}>
-// -          <h3>{photo.name}</h3>
-// -          <h4>{photo.date_and_time}</h4>
-// -        </Link>
-// -      </div>
-// -    </div>
-// -  );
-// -};
