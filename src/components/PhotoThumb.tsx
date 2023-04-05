@@ -15,16 +15,20 @@ function PhotoThumb({ previous, next, albumId }: NavigationDrawerParams) {
   return (
     <div className="photo-thumb-container">
       <div className="thumb not-prev-or-next">
-        <Link to={`/albums/${albumId}/photos/${previousId}`}>
-          {" "}
-          <button className="button-thumb">{previous ? previous.name : null}</button>
-        </Link>
+        {previousId && (
+          <Link to={`/albums/${albumId}/photos/${previousId}`}>
+            {" "}
+            <button className="button-thumb">{previous ? previous.name : null}</button>
+          </Link>
+        )}
       </div>
       <div className="thumb not-prev-or-next">
-        <Link to={`/albums/${albumId}/photos/${nextId}`}>
-          {" "}
-          <button className="button-thumb">{next ? next.name : null}</button>
-        </Link>
+        {nextId && (
+          <Link to={`/albums/${albumId}/photos/${nextId}`}>
+            {" "}
+            <button className="button-thumb">{next ? next.name : null}</button>
+          </Link>
+        )}
       </div>
     </div>
   );
