@@ -32,3 +32,21 @@ $visited-color: rgb(22, 59, 53);
 //FONTS
 //$main-titles: "Roboto", sans-serif;
 $main-font: "Verdana", sans-serif;
+///////////////BUTTONS:
+/// HOVER
+
+@mixin button-hover() {
+  background-color: $hovered-color;
+  transition: 0.7s;
+}
+
+@mixin button-focus {
+  outline-color: transparent;
+  outline-style: solid;
+  box-shadow: 0 0 0 4px $secondary-color;
+  transition: 0.7s;
+}
+
+@mixin button-active {
+  background-color: $important-color;
+}

@@ -12,8 +12,12 @@ function PhotoThumb({ previous, next }: NavigationDrawerParams) {
 
   return (
     <div className="photo-thumb-container">
-      <div className="thumb not-prev-or-next">{previous ? previous.name : null}</div>
-      <div className="thumb not-prev-or-next">{next ? next.name : null}</div>
+      <div className="thumb not-prev-or-next">
+        <button className="button-thumb">{previous ? previous.name : null}</button>
+      </div>
+      <div className="thumb not-prev-or-next">
+        <button className="button-thumb">{next ? next.name : null}</button>
+      </div>
     </div>
   );
 }
