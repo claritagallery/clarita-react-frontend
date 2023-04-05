@@ -2,6 +2,7 @@ import React from "react";
 import PhotoThumb from "./PhotoThumb";
 import { PhotoData, AlbumListItem } from "../data/types";
 import { Link } from "react-router-dom";
+import homeIcon from "../assets/icon-color.png";
 
 type DrawerProps = {
   photo: PhotoData;
@@ -19,6 +20,12 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
     <div className="main-crumb-wrapper">
       <div className="crumb-nav-wrap">
         <nav className="nav">
+          <div className="breadcrumb-wrap">
+            <Link to="/">
+              {" "}
+              <img src={homeIcon} alt="home-icon" width={25} height={25} />
+            </Link>
+          </div>
           {breadcrumbs.map((crumb) => {
             return (
               <div key={crumb.id} className="breadcrumb-wrap">
