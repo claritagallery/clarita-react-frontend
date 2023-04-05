@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { AlbumListItem } from "../data/types"
-import photoTemporal from "../assets/fide.jpg"
+import { ImageIcon } from "./Icons"
 
 interface AlbumParams {
   album: AlbumListItem
@@ -11,7 +11,7 @@ function AlbumThumb({ album }: AlbumParams) {
   console.log(album)
   return (
     <div className="singleAlbum stacked">
-      <img src={photoTemporal} alt="fidel" />
+      <ImageIcon className="icon" />
       <div className="content">
         <h1>{album.name}</h1>
         <Link className="link" to={`/albums/${album.id}`}>
