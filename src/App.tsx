@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
-
+import DrawerProvider from "./context/drawersContext";
 import "./styles/albumList.scss";
 import { Footer, Header } from "./components";
 import {
@@ -31,23 +31,23 @@ function App() {
           <div>
             <main>
               <div className="routes-container">
-                <Routes>
-                  <Route path="/" element={<AlbumListPage />} />
-                  <Route
-                    path="/albums/:albumId/photos/:photoId"
-                    element={<PhotoInAlbumPage toggleHeader={setShowHeader} />}
-                  />
-                  <Route path="/albums/:albumId" element={<AlbumDetailPage />} />
-                  <Route path="/albums" element={<AlbumListPage />} />
-
-                  <Route
-                    path="/photos/:photoId"
-                    element={<PhotoPage toggleHeader={setShowHeader} />}
-                  />
-
-                  <Route path="/photos" element={<PhotoListPage />} />
-                  <Route element={<NotFound />} />
-                </Routes>
+                <DrawerProvider>
+                  <Routes>
+                    <Route path="/" element={<AlbumListPage />} />
+                    <Route
+                      path="/albums/:albumId/photos/:photoId"
+                      element={<PhotoInAlbumPage toggleHeader={setShowHeader} />}
+                    />
+                    <Route path="/albums/:albumId" element={<AlbumDetailPage />} />
+                    <Route path="/albums" element={<AlbumListPage />} />
+                    <Route
+                      path="/photos/:photoId"
+                      element={<PhotoPage toggleHeader={setShowHeader} />}
+                    />
+                    <Route path="/photos" element={<PhotoListPage />} />
+                    <Route element={<NotFound />} />
+                  </Routes>
+                </DrawerProvider>
               </div>
             </main>
           </div>

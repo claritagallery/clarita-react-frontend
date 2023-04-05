@@ -5,8 +5,8 @@ import NavigationDrawer from "./NavigationDrawer";
 import LeftArrow from "../assets/LeftArrow";
 import RigthArrow from "../assets/Rightarrow";
 import { PhotoData } from "../data/types";
-import { PreviousOrNext } from "../data/types";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { DrawerContext } from "../context/drawersContext";
 
 interface PhotoParams {
   photo?: PhotoData;
@@ -14,7 +14,7 @@ interface PhotoParams {
 }
 
 function Photo({ photo, albumId }: PhotoParams) {
-  const [toggleDrawer, toggleDrawerHandler] = useState(false);
+  const { isOpen, toggle } = useContext(DrawerContext);
   const [touchPosition, setTouchPosition] = useState(null);
   const navigate = useNavigate();
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
@@ -48,9 +48,6 @@ function Photo({ photo, albumId }: PhotoParams) {
     e.stopPropagation();
   }
 
-  function onToggleClickHandler() {
-    toggleDrawerHandler((prev) => !prev);
-  }
   if (photo && albumId) {
     const { id, filename, name, date_and_time, image_url, breadcrumbs, prev, next } =
       photo;
@@ -60,7 +57,7 @@ function Photo({ photo, albumId }: PhotoParams) {
     return (
       <div
         className="full-photo-container"
-        onClick={onToggleClickHandler}
+        onClick={toggle}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
       >
@@ -79,8 +76,9 @@ function Photo({ photo, albumId }: PhotoParams) {
             </Link>
           </div>
         )}
-        <Drawer photo={photo} toggleDrawer={toggleDrawer} />
-        <NavigationDrawer photo={photo} toggleDrawer={toggleDrawer} albumId={albumId} />
+
+        <Drawer photo={photo} toggleDrawer={isOpen} />
+        <NavigationDrawer photo={photo} toggleDrawer={isOpen} albumId={albumId} />
       </div>
     );
   }
@@ -91,39 +89,16 @@ function Photo({ photo, albumId }: PhotoParams) {
     return (
       <div
         className="full-photo-container"
-        onClick={onToggleClickHandler}
+        onClick={toggle}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
       >
         <img className="full-photo" src={realPhotoLink} />
-        <Drawer photo={photo} toggleDrawer={toggleDrawer} />
+        <Drawer photo={photo} toggleDrawer={isOpen} />
       </div>
     );
   }
   return <h1>No photos in this album</h1>;
-}
-
-{
-  /* /////////////////////////////////HARINA DE OTRO COSTAL//////////////////
-  //////////////////////////////////////////////////////////////////////
-  // if (photo) {
-  //   return (
-  //     <>
-  //       <div>
-  //         <span>{photo.breadcrumbs}</span> <span>{photo.name}</span>
-  //         {photo.prev && <PhotoThumb photo={photo.prev} albumId={albumId} />}
-  //         {photo.next && <PhotoThumb photo={photo.next} albumId={albumId} />}
-  //       </div>
-  //       <Image
-  //         src={`${process.env.REACT_APP_API_BASE_URL}/api/v1/photo/${photo.id}/file`}
-  //         alt={photo.filename}
-  //         fluid
-  //       />
-  //     </>
-  //   );
-  // }
-  return <h1>No photos in this album</h1>;
-} */
 }
 
 export default Photo;
