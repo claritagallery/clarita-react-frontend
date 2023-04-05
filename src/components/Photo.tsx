@@ -80,14 +80,13 @@ function Photo({ photo, albumId }: PhotoParams) {
           </div>
         )}
         <Drawer photo={photo} toggleDrawer={toggleDrawer} />
-        <NavigationDrawer photo={photo} toggleDrawer={toggleDrawer} />
+        <NavigationDrawer photo={photo} toggleDrawer={toggleDrawer} albumId={albumId} />
       </div>
     );
   }
 
   if (photo && !albumId) {
     const { id } = photo;
-    console.log("solo llego la foto");
     const realPhotoLink = `${baseUrl}/api/v1/photo/${id}/file`;
     return (
       <div

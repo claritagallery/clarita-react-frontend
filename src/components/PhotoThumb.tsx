@@ -1,22 +1,30 @@
 import React from "react";
 import { PreviousOrNext } from "../data/types";
-
+import { Link } from "react-router-dom";
 interface NavigationDrawerParams {
   previous: PreviousOrNext;
   next: PreviousOrNext;
   albumId?: string;
 }
 
-function PhotoThumb({ previous, next }: NavigationDrawerParams) {
-  console.log(next);
+function PhotoThumb({ previous, next, albumId }: NavigationDrawerParams) {
+  console.log(albumId);
 
+  const previousId = previous ? previous.id : null;
+  const nextId = next ? next.id : null;
   return (
     <div className="photo-thumb-container">
       <div className="thumb not-prev-or-next">
-        <button className="button-thumb">{previous ? previous.name : null}</button>
+        <Link to={`/albums/${albumId}/photos/${previousId}`}>
+          {" "}
+          <button className="button-thumb">{previous ? previous.name : null}</button>
+        </Link>
       </div>
       <div className="thumb not-prev-or-next">
-        <button className="button-thumb">{next ? next.name : null}</button>
+        <Link to={`/albums/${albumId}/photos/${nextId}`}>
+          {" "}
+          <button className="button-thumb">{next ? next.name : null}</button>
+        </Link>
       </div>
     </div>
   );

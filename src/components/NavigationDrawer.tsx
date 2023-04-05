@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 type DrawerProps = {
   photo: PhotoData;
   toggleDrawer: boolean;
+  albumId: string;
 };
 type BreadcrumbsProps = {
   breadcrumbs: AlbumListItem[];
 };
 
 function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
-  console.log(breadcrumbs);
   if (!breadcrumbs.length) return null;
 
   return (
@@ -39,10 +39,11 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
   );
 }
 
-function NavigationDrawer({ photo, toggleDrawer }: DrawerProps) {
+function NavigationDrawer({ photo, toggleDrawer, albumId }: DrawerProps) {
+  console.log(photo);
   return (
     <div className={`navigation-drawer-container ${toggleDrawer ? "is-open" : ""}  `}>
-      <PhotoThumb previous={photo.prev} next={photo.next} />
+      <PhotoThumb previous={photo.prev} next={photo.next} albumId={albumId} />
       <Breadcrumbs breadcrumbs={photo.breadcrumbs} />
     </div>
   );
