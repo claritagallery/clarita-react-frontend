@@ -1,5 +1,5 @@
 import React from "react";
-import Breadcrumbs from "./Breadcrumbs";
+import BreadCrumbs from "./BreadCrumbs";
 
 import { APIError, AlbumDetailItem } from "../data/types";
 export interface AlbumDetailParams {
@@ -19,13 +19,12 @@ const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => 
   }
   if (data) {
     data;
+    console.log(data);
+
     return (
       <>
-        <div>
-          {/* <span>{data.breadcrumbs}</span> <span>{data.name}</span>
-          <h1>{data.name}</h1>
-          <span>{data.date}</span>
-          <h1>{data.description}</h1> */}
+        <div className="breadcrumbs-album">
+          <BreadCrumbs breadcrumbs={data.breadcrumbs} />
         </div>
       </>
     );

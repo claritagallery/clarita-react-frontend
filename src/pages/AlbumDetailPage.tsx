@@ -1,5 +1,4 @@
 import React from "react";
-
 import AlbumDetail from "../components/AlbumDetail";
 import AlbumList from "../components/AlbumList";
 import PhotoList from "../components/PhotoList";
@@ -15,7 +14,6 @@ function AlbumDetailPage() {
 
   return (
     <>
-      <h2 className="subtitle">Detalles del album</h2>
       {singleAlbum && <AlbumDetail {...singleAlbum} />}
       <AlbumList {...childAlbumsQuery} />
       <PhotoList albumId={albumId} {...photos} />

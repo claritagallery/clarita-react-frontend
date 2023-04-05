@@ -14,6 +14,7 @@ interface PhotoParams {
 }
 
 function Photo({ photo, albumId }: PhotoParams) {
+  console.log(photo);
   const { isOpen, toggle } = useContext(DrawerContext);
   const [touchPosition, setTouchPosition] = useState(null);
   const navigate = useNavigate();
