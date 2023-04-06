@@ -23,7 +23,10 @@ function album() {
   };
 
   const albumsQuery = (params: fetchAlbumsParams) => {
-    return useQuery<AlbumListData, APIError>("albums", () => fetchAlbums(params));
+    return useQuery<AlbumListData, APIError>(
+      ["albums", params.limit, params.parent],
+      () => fetchAlbums(params),
+    );
   };
 
   return { albumQuery, albumsQuery };

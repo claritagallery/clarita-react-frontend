@@ -39,9 +39,9 @@ function photo() {
     }).then((res) => res.data);
   }
 
-  const photosQuery = (album: fetchPhotosParams) => {
-    return useQuery<PhotoListData, APIError>(["photos", { album: album }], () =>
-      fetchPhotos({ album: album.album, limit: 50 }),
+  const photosQuery = (params: fetchPhotosParams) => {
+    return useQuery<PhotoListData, APIError>(["photos", params.limit, params.album], () =>
+      fetchPhotos({ album: params.album, limit: 50 }),
     );
   };
 

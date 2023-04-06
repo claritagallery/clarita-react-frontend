@@ -16,6 +16,7 @@ const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
   }
   if (data) {
     const albums = data.results;
+    console.log(albums);
     return (
       <div className="main-container">
         {albums.map((album) => (
