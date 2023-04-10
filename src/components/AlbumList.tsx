@@ -18,11 +18,13 @@ const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
     const albums = data.results;
     console.log(albums);
     return (
-      <div className="main-container">
-        {albums.map((album) => (
-          <AlbumThumb key={album.id} album={album} />
-        ))}
-      </div>
+      <>
+        <div className="main-container">
+          {albums.map((album) => (
+            <AlbumThumb key={album.id} album={album} />
+          ))}
+        </div>
+      </>
     );
   } else {
     console.warn("empty render on Album List");

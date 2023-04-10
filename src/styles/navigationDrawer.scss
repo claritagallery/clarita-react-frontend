@@ -3,7 +3,7 @@
   position: absolute;
 
   width: 100%;
-  top: -3vh;
+  top: -4vh;
   transform: translateY(-100%);
   transition: transform 0.9s ease-in-out;
 
@@ -15,12 +15,14 @@
     .thumb {
       width: 50%;
       height: 15vh;
-      border-right: 1px solid white;
+      //border-right: 1px solid white;
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+
       .button-thumb {
-        background-color: mix.$main-color;
+        background-color: mix.$darker-background-color;
         color: mix.$secondary-color;
         border: none;
         border-radius: 2px;
@@ -43,6 +45,17 @@
       .button-thumb:active {
         @include mix.button-active;
       }
+    }
+    .thumb:before {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      bottom: 0;
+      right: 0;
+      background-color: mix.$secondary-color;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
     }
   }
   /////////////////////////////

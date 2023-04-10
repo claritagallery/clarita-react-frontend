@@ -30,7 +30,8 @@
   @include mix.input-styles(0.2rem, 60%, 18vw);
 }
 .top-nav {
-  background-color: mix.$main-color;
+  background-color: rgba(101, 185, 171, 0.2);
+  // background-color: mix.$main-color;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -110,7 +111,7 @@
     @include mix.input-styles(0.2rem, 80%, 60%);
   }
   .links {
-    color: mix.$main-color;
+    color: mix.$main-background-color;
   }
 
   .links:hover,

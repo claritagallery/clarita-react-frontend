@@ -155,5 +155,17 @@
 }
 .with-bg {
   //margin-top: -1.5rem;
-  background-color: mix.$main-color;
+  background-color: mix.$darker-background-color;
+}
+@media only screen and (max-height: 575.98px) and (orientation: landscape) {
+  .with-bg {
+    margin-top: 0;
+    .crumb-nav-wrap {
+      .nav {
+        .breadcrumb-wrap {
+          padding: 2px;
+        }
+      }
+    }
+  }
 }

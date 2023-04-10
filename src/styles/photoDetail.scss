@@ -27,10 +27,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: mix.$main-color;
-      height: 7vh;
+      background-color: mix.$darker-background-color;
+      height: 6vh;
       padding-bottom: 1rem;
       flex-direction: column-reverse;
+      h4 {
+        font-size: 0.9rem;
+        color: mix.$secondary-color;
+      }
       .toggle-drawer {
         left: 1rem;
         background: transparent;
@@ -40,7 +44,9 @@
         width: 3rem;
 
         .toggle-line {
-          border-bottom: 3px solid rgb(53, 48, 48);
+          border-bottom: 2px solid mix.$secondary-color;
+          padding-top: 1rem;
+          margin-bottom: 0.5rem;
         }
         .toggle-line:hover {
           border-bottom: 4px solid #754f5d;
@@ -54,10 +60,11 @@
     .info-open-drawer {
       height: 15vh;
       background-color: mix.$drawerContainer-color;
-      padding: 1.5rem;
+      padding: 1rem;
       p,
       span {
-        text-align: left;
+        text-align: center;
+        font-size: 0.9rem;
       }
       .container-brick-items {
         display: flex;
@@ -65,9 +72,13 @@
           order: -1;
         }
         .brick-item {
-          width: 50%;
-          margin: 1rem 8px 8px 1rem;
+          width: 100%;
 
+          margin: 1rem 8px 8px 1rem;
+          h4 {
+            color: mix.$secondary-color;
+            font-size: 0.9rem;
+          }
           .list-tags {
             text-align: center;
             span {
@@ -106,11 +117,16 @@
     }
     .drawer-container {
       .title-container {
-        height: 15vh;
+        height: 10vh;
         background-color: rgba(210, 228, 225, 0.6);
       }
       .info-open-drawer {
-        height: 10vh;
+        .container-brick-items {
+          .brick-item {
+            margin: 0;
+          }
+        }
+        height: 25vh;
         p,
         span {
           text-align: center;

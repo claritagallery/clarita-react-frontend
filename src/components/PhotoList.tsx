@@ -43,7 +43,6 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
 
     return (
       <div className="gallery-container">
-        <h2 className="subtitle">Photos</h2>
         <PhotoAlbum
           renderPhoto={({ photo, wrapperStyle, renderDefaultPhoto }) => (
             <div

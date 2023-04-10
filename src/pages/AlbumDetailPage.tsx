@@ -5,17 +5,23 @@ import PhotoList from "../components/PhotoList";
 import { useParams } from "react-router-dom";
 import useApi from "../data";
 
+type AlbumDetailParams = {
+  albumId: string;
+};
+
 function AlbumDetailPage() {
-  const { albumId } = useParams();
+  const { albumId } = useParams<keyof AlbumDetailParams>() as AlbumDetailParams;
   const { albumQuery, albumsQuery, photosQuery } = useApi();
-  const singleAlbum = albumId ? albumQuery(albumId) : null;
+
+  const singleAlbumQuery = albumQuery(albumId);
   const childAlbumsQuery = albumsQuery({ parent: albumId, limit: 100 });
   const photos = photosQuery({ album: albumId, limit: 50 });
 
   return (
     <>
-      {singleAlbum && <AlbumDetail {...singleAlbum} />}
+      <AlbumDetail {...singleAlbumQuery} />
       <AlbumList {...childAlbumsQuery} />
+      <hr className="separator" />
       <PhotoList albumId={albumId} {...photos} />
     </>
   );

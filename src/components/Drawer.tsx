@@ -42,7 +42,6 @@ function DetailsDrawer({ photo }: DetailsDrawerProps) {
           <h4>Tags</h4>
           <div className="list-tags">
             <span>one tag</span>
-            <span>two tag</span>
           </div>
         </div>
       </div>
