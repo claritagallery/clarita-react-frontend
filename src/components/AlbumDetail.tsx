@@ -19,12 +19,13 @@ const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => 
   }
   if (data) {
     data;
-    console.log(data);
+    console.log(data.name);
 
     return (
       <>
         <div className="breadcrumbs-album">
           <BreadCrumbs breadcrumbs={data.breadcrumbs} />
+          <h2 className="title-detail-album">{data.name}</h2>
         </div>
       </>
     );
