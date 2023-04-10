@@ -4,7 +4,7 @@ import AlbumList from "../components/AlbumList";
 import PhotoList from "../components/PhotoList";
 import { useParams } from "react-router-dom";
 import useApi from "../data";
-
+import { AlbumListData } from "../data/types";
 type AlbumDetailParams = {
   albumId: string;
 };
@@ -21,7 +21,7 @@ function AlbumDetailPage() {
     <>
       <AlbumDetail {...singleAlbumQuery} />
       <AlbumList {...childAlbumsQuery} />
-      <hr className="separator" />
+
       <PhotoList albumId={albumId} {...photos} />
     </>
   );
