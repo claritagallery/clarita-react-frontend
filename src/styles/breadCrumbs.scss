@@ -169,3 +169,9 @@
     }
   }
 }
+
+@media only screen and (min-width: 900px) {
+  .main-crumb-wrapper {
+    display: none;
+  }
+}

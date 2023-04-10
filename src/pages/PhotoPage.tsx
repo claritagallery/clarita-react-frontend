@@ -1,7 +1,6 @@
 import React from "react";
 
 import Photo from "../components/Photo";
-//import PhotoThumb from "../components/PhotoThumb";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useApi from "../data";
@@ -15,6 +14,7 @@ function PhotoPage({ toggleHeader }: PhotoPageProps) {
     toggleHeader(false);
     return () => toggleHeader(true);
   }, [toggleHeader]);
+
   const { photoId } = useParams<{ photoId: string }>();
   const { photoQuery } = useApi();
 

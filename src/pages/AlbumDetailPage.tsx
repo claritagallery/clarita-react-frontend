@@ -21,7 +21,6 @@ function AlbumDetailPage() {
     <>
       <AlbumDetail {...singleAlbumQuery} />
       <AlbumList {...childAlbumsQuery} />
-
       <PhotoList albumId={albumId} {...photos} />
     </>
   );
