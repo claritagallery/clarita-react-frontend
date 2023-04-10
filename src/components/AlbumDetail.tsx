@@ -18,14 +18,12 @@ const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => 
     return <div>{error ? error.message : "Unknown error"}</div>
   }
   if (data) {
-    data
-    console.log(data.name)
-
     return (
       <>
         <div className="breadcrumbs-album">
           <BreadCrumbs breadcrumbs={data.breadcrumbs} />
           <h2 className="title-detail-album">{data.name}</h2>
+          <p className="album-description">{data.description}</p>
         </div>
       </>
     )
