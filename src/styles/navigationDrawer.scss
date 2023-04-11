@@ -64,3 +64,26 @@
   transform: translateY(20%);
   transition: transform 0.6s ease-out; //New
 }
+
+@media only screen and (min-width: 900px) {
+  .is-open {
+    transition: unset;
+    transform: translateY(0);
+  }
+
+  .navigation-drawer-container {
+    transition: unset;
+    transform: translateY(0);
+    .photo-thumb-container {
+      transform: translateY(50vh);
+      background-color: transparent;
+      justify-content: space-between;
+      .thumb {
+        width: 15%;
+        background-color: beige;
+        margin: 2rem;
+        margin-top: 0;
+      }
+    }
+  }
+}

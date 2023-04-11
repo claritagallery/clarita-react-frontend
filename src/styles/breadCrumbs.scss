@@ -182,7 +182,9 @@
 }
 
 @media only screen and (min-width: 900px) {
-  .main-crumb-wrapper {
-    display: none;
+  .photo-thumb-container + .main-crumb-wrapper {
+    position: relative;
+    top: -6rem;
+    background-color: transparent;
   }
 }
