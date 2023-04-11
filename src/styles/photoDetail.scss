@@ -171,14 +171,40 @@
     .drawer-is-open-container {
       transition: unset;
       transform: translateY(0);
+      .title-container {
+        flex-direction: row;
+        padding: 0;
+        height: 4, 5vh;
+        .toggle-drawer {
+          .toggle-line {
+            display: none;
+          }
+        }
+      }
       .info-open-drawer {
-        height: 7vh;
+        //  padding: 5rem; //esto mientrastanto
+        height: 6vh;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: flex-start;
+        .description {
+          margin-right: 2rem;
+        }
         .container-brick-items {
           .brick-item {
             margin: 0;
+            display: flex;
+            width: fit-content;
+            margin-right: 2rem;
+            h4::after {
+              content: ": ";
+            }
+            h4 {
+              margin-right: 0.5rem;
+            }
           }
+        }
+        .container-brick-items::before {
+          display: none;
         }
       }
     }
