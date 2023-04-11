@@ -24,7 +24,11 @@ function Drawer({ photo }: DrawerProps) {
   }, [windWidth]);
 
   return (
-    <div className={`drawer-container ${isOpen ? "drawer-is-open-container" : ""}`}>
+    <div
+      className={`drawer-container ${
+        isOpen || windWidth > 900 ? "drawer-is-open-container" : ""
+      }`}
+    >
       <div className={`title-container ${isOpen ? "drawer-is-open-title" : ""}`}>
         <h4>{photo.name}</h4>
         <button className="toggle-drawer">

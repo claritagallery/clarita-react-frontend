@@ -171,6 +171,16 @@
     .drawer-is-open-container {
       transition: unset;
       transform: translateY(0);
+      .info-open-drawer {
+        height: 7vh;
+        display: flex;
+        justify-content: space-evenly;
+        .container-brick-items {
+          .brick-item {
+            margin: 0;
+          }
+        }
+      }
     }
     .full-photo {
       margin: 0 auto;
