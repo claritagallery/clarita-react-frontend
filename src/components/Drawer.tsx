@@ -1,27 +1,27 @@
-import React from "react";
-import { useContext, useState, useEffect } from "react";
-import { PhotoData } from "../data/types";
-import { DrawerContext } from "../context/drawersContext";
+import React from "react"
+import { useContext, useState, useEffect } from "react"
+import { PhotoData } from "../data/types"
+import { DrawerContext } from "../context/drawersContext"
 
 type DrawerProps = {
-  photo: PhotoData;
-};
+  photo: PhotoData
+}
 
 function Drawer({ photo }: DrawerProps) {
-  const { isOpen } = useContext(DrawerContext);
-  const [windWidth, setWindWidth] = useState(window.innerWidth);
-  console.log(windWidth);
+  const { isOpen } = useContext(DrawerContext)
+  const [windWidth, setWindWidth] = useState(window.innerWidth)
+  console.log(windWidth)
   function isNavShowing() {
-    setWindWidth(window.innerWidth);
-    console.log(windWidth);
+    setWindWidth(window.innerWidth)
+    console.log(windWidth)
   }
   useEffect(() => {
-    window.addEventListener("resize", isNavShowing);
+    window.addEventListener("resize", isNavShowing)
 
     return () => {
-      window.removeEventListener("resize", isNavShowing);
-    };
-  }, [windWidth]);
+      window.removeEventListener("resize", isNavShowing)
+    }
+  }, [windWidth])
 
   return (
     <div
@@ -38,12 +38,12 @@ function Drawer({ photo }: DrawerProps) {
 
       {(isOpen || windWidth > 900) && <DetailsDrawer photo={photo} />}
     </div>
-  );
+  )
 }
 
 type DetailsDrawerProps = {
-  photo: PhotoData;
-};
+  photo: PhotoData
+}
 
 function DetailsDrawer({ photo }: DetailsDrawerProps) {
   return (
@@ -64,7 +64,7 @@ function DetailsDrawer({ photo }: DetailsDrawerProps) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Drawer;
+export default Drawer

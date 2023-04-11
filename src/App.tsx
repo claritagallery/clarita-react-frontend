@@ -1,12 +1,12 @@
-import React from "react";
+import React from "react"
 
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-import { Route, Routes } from "react-router-dom";
-import "./App.scss";
-import DrawerProvider from "./context/drawersContext";
-import "./styles/albumList.scss";
-import { Footer, Header } from "./components";
+import { QueryClient, QueryClientProvider } from "react-query"
+import { ReactQueryDevtools } from "react-query/devtools"
+import { Route, Routes } from "react-router-dom"
+import "./App.scss"
+import DrawerProvider from "./context/drawersContext"
+import "./styles/albumList.scss"
+import { Footer, Header } from "./components"
 import {
   AlbumDetailPage,
   AlbumListPage,
@@ -14,14 +14,14 @@ import {
   PhotoListPage,
   PhotoPage,
   NotFound,
-} from "./pages";
+} from "./pages"
 
 const queryClient = new QueryClient({
   defaultOptions: {},
-});
+})
 
 function App() {
-  const [showHeader, setShowHeader] = React.useState<boolean>(true);
+  const [showHeader, setShowHeader] = React.useState<boolean>(true)
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
@@ -56,7 +56,7 @@ function App() {
       </div>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-  );
+  )
 }
 
-export default App;
+export default App

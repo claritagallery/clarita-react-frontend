@@ -1,15 +1,15 @@
-import React from "react";
-import { AlbumListItem } from "../data/types";
-import { Link } from "react-router-dom";
-import homeIcon from "../assets/icon-color.png";
+import React from "react"
+import { AlbumListItem } from "../data/types"
+import { Link } from "react-router-dom"
+import homeIcon from "../assets/icon-color.png"
 
 type BreadcrumbsProps = {
-  breadcrumbs: AlbumListItem[];
-  bg?: boolean;
-};
+  breadcrumbs: AlbumListItem[]
+  bg?: boolean
+}
 
 function BreadCrumbs({ breadcrumbs, bg }: BreadcrumbsProps) {
-  if (!breadcrumbs.length) return null;
+  if (!breadcrumbs.length) return null
 
   return (
     <div className={`main-crumb-wrapper ${bg && "with-bg"}`}>
@@ -33,11 +33,11 @@ function BreadCrumbs({ breadcrumbs, bg }: BreadcrumbsProps) {
                   </Link>
                 </span>
               </div>
-            );
+            )
           })}
         </nav>
       </div>
     </div>
-  );
+  )
 }
-export default BreadCrumbs;
+export default BreadCrumbs

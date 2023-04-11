@@ -1,12 +1,12 @@
-import React from "react";
+import React from "react"
 
-import PhotoList from "../components/PhotoList";
-import useApi from "../data";
+import PhotoList from "../components/PhotoList"
+import useApi from "../data"
 
 const PhotoListPage = () => {
-  const { photosQuery } = useApi();
-  const photos = photosQuery({ limit: 100 });
-  return <PhotoList {...photos} />;
-};
+  const { photosQuery } = useApi()
+  const photos = photosQuery({ limit: 100 })
+  return <PhotoList {...photos} />
+}
 
-export default PhotoListPage;
+export default PhotoListPage

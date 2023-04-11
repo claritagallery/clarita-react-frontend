@@ -1,36 +1,36 @@
-import React from "react";
-import { PhotoListItem, APIError } from "../data/types";
-import getRandomPic from "../data/apiFoto";
-import PhotoAlbum from "react-photo-album";
-import { Link } from "react-router-dom";
-import photoUrl from "../utils/photoUrl";
+import React from "react"
+import { PhotoListItem, APIError } from "../data/types"
+import getRandomPic from "../data/apiFoto"
+import PhotoAlbum from "react-photo-album"
+import { Link } from "react-router-dom"
+import photoUrl from "../utils/photoUrl"
 export interface PhotoListParams {
-  albumId?: string;
+  albumId?: string
   data?: {
-    next: boolean | null | string;
-    total: number;
-    results: PhotoListItem[];
-  };
-  error: APIError;
-  isError: boolean;
-  isLoading: boolean;
+    next: boolean | null | string
+    total: number
+    results: PhotoListItem[]
+  }
+  error: APIError
+  isError: boolean
+  isLoading: boolean
 }
 
 const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams) => {
-  data;
+  data
   if (isLoading) {
-    return <h1>its charging boy</h1>;
+    return <h1>its charging boy</h1>
   }
 
   if (isError) {
-    return <div>{error ? error.message : "Unknown error"}</div>;
+    return <div>{error ? error.message : "Unknown error"}</div>
   }
 
   if (data) {
-    const photos = data.results;
+    const photos = data.results
 
     const photosParameters = photos.map((photo) => {
-      const { imgSrc, height, width } = getRandomPic();
+      const { imgSrc, height, width } = getRandomPic()
       return {
         src: imgSrc,
         width: width,
@@ -38,8 +38,8 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
         title: photo.name,
         date: photo.date_and_time,
         id: photo.id,
-      };
-    });
+      }
+    })
 
     return (
       <div className="gallery-container">
@@ -69,23 +69,23 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
           padding={2}
           targetRowHeight={(containerWidth) => {
             if (containerWidth >= 300 && containerWidth < 600) {
-              return containerWidth / 2;
+              return containerWidth / 2
             }
             if (containerWidth >= 600 && containerWidth < 1200) {
-              return containerWidth / 4;
+              return containerWidth / 4
             }
             if (containerWidth >= 1200) {
-              return containerWidth / 8;
+              return containerWidth / 8
             }
-            return containerWidth / 4;
+            return containerWidth / 4
           }}
         />
       </div>
-    );
+    )
   } else {
-    console.warn("empty render on PhotoList");
-    return null;
+    console.warn("empty render on PhotoList")
+    return null
   }
-};
+}
 
-export default PhotoList;
+export default PhotoList

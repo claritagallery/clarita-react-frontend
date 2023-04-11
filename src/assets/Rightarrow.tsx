@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import React from "react";
+import React from "react"
 function RigthArrow() {
   return (
     <button className="svg-arrow right">
@@ -20,6 +20,6 @@ function RigthArrow() {
         />
       </svg>
     </button>
-  );
+  )
 }
-export default RigthArrow;
+export default RigthArrow

@@ -1,19 +1,19 @@
-import React from "react";
-import { PreviousOrNext } from "../data/types";
-import { Link } from "react-router-dom";
+import React from "react"
+import { PreviousOrNext } from "../data/types"
+import { Link } from "react-router-dom"
 interface NavigationDrawerParams {
-  previous: PreviousOrNext;
-  next: PreviousOrNext;
-  albumId?: string;
+  previous: PreviousOrNext
+  next: PreviousOrNext
+  albumId?: string
 }
 
 function PhotoThumb({ previous, next, albumId }: NavigationDrawerParams) {
-  console.log(albumId);
+  console.log(albumId)
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    e.stopPropagation();
+    e.stopPropagation()
   }
-  const previousId = previous ? previous.id : null;
-  const nextId = next ? next.id : null;
+  const previousId = previous ? previous.id : null
+  const nextId = next ? next.id : null
   return (
     <div className="photo-thumb-container">
       <div className="thumb not-prev-or-next" onClick={(e) => stopPropagation(e)}>
@@ -33,7 +33,7 @@ function PhotoThumb({ previous, next, albumId }: NavigationDrawerParams) {
         )}
       </div>
     </div>
-  );
+  )
 }
 
-export default PhotoThumb;
+export default PhotoThumb

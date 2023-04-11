@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { AlbumListItem } from "../data/types";
-import photoTemporal from "../assets/fide.jpg";
+import React from "react"
+import { Link } from "react-router-dom"
+import { AlbumListItem } from "../data/types"
+import photoTemporal from "../assets/fide.jpg"
 
 interface AlbumParams {
-  album: AlbumListItem;
+  album: AlbumListItem
 }
 
 function AlbumThumb({ album }: AlbumParams) {
@@ -22,7 +22,7 @@ function AlbumThumb({ album }: AlbumParams) {
         </div>
       </Link>
     </div>
-  );
+  )
 }
 
-export default AlbumThumb;
+export default AlbumThumb

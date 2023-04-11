@@ -1,32 +1,32 @@
-import React from "react";
+import React from "react"
 
-import Photo from "../components/Photo";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import useApi from "../data";
+import Photo from "../components/Photo"
+import { useEffect } from "react"
+import { useParams } from "react-router-dom"
+import useApi from "../data"
 
 type PhotoPageProps = {
-  toggleHeader: React.Dispatch<React.SetStateAction<boolean>>;
-};
+  toggleHeader: React.Dispatch<React.SetStateAction<boolean>>
+}
 
 function PhotoPage({ toggleHeader }: PhotoPageProps) {
   useEffect(() => {
-    toggleHeader(false);
-    return () => toggleHeader(true);
-  }, [toggleHeader]);
+    toggleHeader(false)
+    return () => toggleHeader(true)
+  }, [toggleHeader])
 
-  const { photoId } = useParams<{ photoId: string }>();
-  const { photoQuery } = useApi();
+  const { photoId } = useParams<{ photoId: string }>()
+  const { photoQuery } = useApi()
 
-  const { data, error, isError, isLoading } = photoQuery(photoId);
-  console.log(data);
+  const { data, error, isError, isLoading } = photoQuery(photoId)
+  console.log(data)
 
   if (isLoading) {
-    return <h1>Its loading</h1>;
+    return <h1>Its loading</h1>
   }
 
   if (isError) {
-    return <div>{error ? error.message : "Unknown error"}</div>;
+    return <div>{error ? error.message : "Unknown error"}</div>
   }
 
   return data ? (
@@ -36,6 +36,6 @@ function PhotoPage({ toggleHeader }: PhotoPageProps) {
     </>
   ) : (
     <h1>No Photos here</h1>
-  );
+  )
 }
-export default PhotoPage;
+export default PhotoPage

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
-import logoAzul from "../assets/clogo.png";
+import logoAzul from "../assets/clogo.png"
 
 //import { Button, Container, Form, FormControl, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 function Header() {
   return (
@@ -26,7 +26,7 @@ function Header() {
         </Link>
       </ul>
     </section>
-  );
+  )
 }
 
-export default Header;
+export default Header
