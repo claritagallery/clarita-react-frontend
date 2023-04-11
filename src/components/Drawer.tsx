@@ -1,24 +1,38 @@
 import React from "react";
+import { useContext, useState, useEffect } from "react";
 import { PhotoData } from "../data/types";
+import { DrawerContext } from "../context/drawersContext";
 
 type DrawerProps = {
   photo: PhotoData;
-  toggleDrawer: boolean;
 };
 
-function Drawer({ photo, toggleDrawer }: DrawerProps) {
-  console.log(photo);
+function Drawer({ photo }: DrawerProps) {
+  const { isOpen } = useContext(DrawerContext);
+  const [windWidth, setWindWidth] = useState(window.innerWidth);
+  console.log(windWidth);
+  function isNavShowing() {
+    setWindWidth(window.innerWidth);
+    console.log(windWidth);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", isNavShowing);
+
+    return () => {
+      window.removeEventListener("resize", isNavShowing);
+    };
+  }, [windWidth]);
 
   return (
-    <div className={`drawer-container ${toggleDrawer ? "drawer-is-open-container" : ""}`}>
-      <div className={`title-container ${toggleDrawer ? "drawer-is-open-title" : ""}`}>
+    <div className={`drawer-container ${isOpen ? "drawer-is-open-container" : ""}`}>
+      <div className={`title-container ${isOpen ? "drawer-is-open-title" : ""}`}>
         <h4>{photo.name}</h4>
         <button className="toggle-drawer">
           <div className="toggle-line"></div>
         </button>
       </div>
 
-      {toggleDrawer && <DetailsDrawer photo={photo} />}
+      {(isOpen || windWidth > 900) && <DetailsDrawer photo={photo} />}
     </div>
   );
 }

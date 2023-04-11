@@ -14,7 +14,6 @@ interface PhotoParams {
 }
 
 function Photo({ photo, albumId }: PhotoParams) {
-  console.log(photo);
   const { isOpen, toggle } = useContext(DrawerContext);
   const [touchPosition, setTouchPosition] = useState(null);
   const navigate = useNavigate();
@@ -50,8 +49,7 @@ function Photo({ photo, albumId }: PhotoParams) {
   }
 
   if (photo && albumId) {
-    const { id, filename, name, date_and_time, image_url, breadcrumbs, prev, next } =
-      photo;
+    const { id, prev, next } = photo;
 
     const realPhotoLink = `${baseUrl}/api/v1/photo/${id}/file`;
 
@@ -78,7 +76,7 @@ function Photo({ photo, albumId }: PhotoParams) {
           </div>
         )}
 
-        <Drawer photo={photo} toggleDrawer={isOpen} />
+        <Drawer photo={photo} />
         <NavigationDrawer photo={photo} toggleDrawer={isOpen} albumId={albumId} />
       </div>
     );
@@ -95,7 +93,7 @@ function Photo({ photo, albumId }: PhotoParams) {
         onTouchMove={handleTouchMove}
       >
         <img className="full-photo" src={realPhotoLink} />
-        <Drawer photo={photo} toggleDrawer={isOpen} />
+        <Drawer photo={photo} />
       </div>
     );
   }

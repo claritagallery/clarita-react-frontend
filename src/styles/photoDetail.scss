@@ -164,6 +164,14 @@
 // }
 @media only screen and (min-width: 900px) {
   .full-photo-container {
+    .drawer-container {
+      transition: unset;
+      transform: translateY(0);
+    }
+    .drawer-is-open-container {
+      transition: unset;
+      transform: translateY(0);
+    }
     .full-photo {
       margin: 0 auto;
       width: 60%;

@@ -19,7 +19,6 @@ function PhotoInAlbumPage({ toggleHeader }: PhotoInAlbumProps) {
   useEffect(() => {
     window.addEventListener("resize", isNavShowing);
     if (windWidth > 900) {
-      console.log("si funciono");
       toggleHeader(true);
     } else {
       toggleHeader(false);
