@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { AlbumListItem } from "../data/types"
-import photoTemporal from "../assets/fide.jpg"
+import { ImageIcon } from "./Icons"
 
 interface AlbumParams {
   album: AlbumListItem
@@ -13,7 +13,7 @@ function AlbumThumb({ album }: AlbumParams) {
       <Link className="link" to={`/albums/${album.id}`}>
         <div className="front">
           <div className="wrapper">
-            <img src={photoTemporal} alt="fidel" />
+            <ImageIcon className="icon" />
           </div>
           <div className="card-content">
             <h2 className="name-card">{album.name}</h2>
