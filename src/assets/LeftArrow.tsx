@@ -1,7 +1,7 @@
 import React from "react"
 function LeftArrow() {
   return (
-    <button className="svg-arrow left">
+    <button className="svg-arrow svg-arrow-left">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="25px"
