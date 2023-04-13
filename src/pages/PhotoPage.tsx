@@ -1,9 +1,8 @@
 import React from "react"
-
-import Photo from "../components/Photo"
-import { useEffect } from "react"
 import { useParams } from "react-router-dom"
+import { useEffect } from "react"
 import useApi from "../data"
+import Photo from "../components/Photo"
 
 type PhotoPageProps = {
   toggleHeader: React.Dispatch<React.SetStateAction<boolean>>

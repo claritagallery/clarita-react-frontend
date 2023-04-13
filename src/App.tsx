@@ -1,10 +1,9 @@
 import React from "react"
-
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
 import { Route, Routes } from "react-router-dom"
 import "./App.scss"
-import DrawerProvider from "./context/drawersContext"
+import DrawerProvider from "./contexts/Drawer"
 import "./styles/albumList.scss"
 import { Footer, Header } from "./components"
 import {

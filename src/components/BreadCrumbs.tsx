@@ -28,7 +28,7 @@ function BreadCrumbs({ breadcrumbs, bg }: BreadcrumbsProps) {
                   <i className="fa fa-caret-right"></i>
                 </span>{" "}
                 <span className="breadcrumb">
-                  <Link className="bread-crumb-link" to={`/albums/${crumb.id}`}>
+                  <Link className="breadcrumb-link" to={`/albums/${crumb.id}`}>
                     {crumb.name}
                   </Link>
                 </span>

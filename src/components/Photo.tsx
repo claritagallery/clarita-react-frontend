@@ -3,10 +3,10 @@ import { Link, useNavigate } from "react-router-dom"
 import Drawer from "./Drawer"
 import NavigationDrawer from "./NavigationDrawer"
 import LeftArrow from "../assets/LeftArrow"
-import RigthArrow from "../assets/Rightarrow"
+import RightArrow from "../assets/RightArrow"
 import { PhotoData } from "../data/types"
 import { useState, useContext } from "react"
-import { DrawerContext } from "../context/drawersContext"
+import { DrawerContext } from "../contexts/Drawer"
 
 interface PhotoParams {
   photo?: PhotoData
@@ -71,7 +71,7 @@ function Photo({ photo, albumId }: PhotoParams) {
         {next && (
           <div onClick={(e) => stopPropagation(e)}>
             <Link to={`/albums/${albumId}/photos/${next.id}`}>
-              <RigthArrow />
+              <RightArrow />
             </Link>
           </div>
         )}

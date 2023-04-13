@@ -1,13 +1,13 @@
 import React from "react"
 import { PreviousOrNext } from "../data/types"
 import { Link } from "react-router-dom"
-interface NavigationDrawerParams {
+interface PhotoThumbParams {
   previous: PreviousOrNext
   next: PreviousOrNext
   albumId?: string
 }
 
-function PhotoThumb({ previous, next, albumId }: NavigationDrawerParams) {
+function PhotoThumb({ previous, next, albumId }: PhotoThumbParams) {
   console.log(albumId)
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation()

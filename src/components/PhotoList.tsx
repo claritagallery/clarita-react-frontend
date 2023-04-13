@@ -1,9 +1,10 @@
 import React from "react"
-import { PhotoListItem, APIError } from "../data/types"
-import getRandomPic from "../data/apiFoto"
 import PhotoAlbum from "react-photo-album"
 import { Link } from "react-router-dom"
 import photoUrl from "../utils/photoUrl"
+import { PhotoListItem, APIError } from "../data/types"
+import getRandomPic from "../data/apiPhoto"
+
 export interface PhotoListParams {
   albumId?: string
   data?: {
