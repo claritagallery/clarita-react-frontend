@@ -1,6 +1,6 @@
 @use "./mixins.scss" as mix;
-.bread-crumb-link,
-.bread-crumb-link:visited {
+.breadcrumb-link,
+.breadcrumb-link:visited {
   text-decoration: none;
   color: mix.$secondary-color;
   transition: color ease-in-out 0.3s, background ease-in-out 0.2s;

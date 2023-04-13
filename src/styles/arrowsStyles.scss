@@ -1,14 +1,3 @@
-button {
-  -webkit-appearance: none;
-  background: transparent;
-  border: 0;
-  outline: 0;
-}
-
-svg {
-  padding: 5px;
-}
-
 .svg-arrow {
   cursor: pointer;
   position: absolute;
@@ -18,18 +7,12 @@ svg {
   width: 70px;
   height: 90px;
 }
-.up {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-}
 
-.down {
-}
-.left {
+.svg-arrow-left {
   left: 5%;
 }
 
-.right {
+.svg-arrow-right {
   left: 95%;
 }
 
