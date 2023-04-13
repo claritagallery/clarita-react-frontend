@@ -1,13 +1,14 @@
 import React from "react"
 import { useContext, useState, useEffect } from "react"
 import { PhotoData } from "../data/types"
-import { DrawerContext } from "../context/drawersContext"
+import { DrawerContext } from "../contexts/Drawer"
 
 type DrawerProps = {
   photo: PhotoData
 }
 
 function Drawer({ photo }: DrawerProps) {
+  const desktopWidthThreshold = 900
   const { isOpen } = useContext(DrawerContext)
   const [windWidth, setWindWidth] = useState(window.innerWidth)
   console.log(windWidth)
@@ -26,7 +27,7 @@ function Drawer({ photo }: DrawerProps) {
   return (
     <div
       className={`drawer-container ${
-        isOpen || windWidth > 900 ? "drawer-is-open-container" : ""
+        isOpen || windWidth > desktopWidthThreshold ? "drawer-is-open-container" : ""
       }`}
     >
       <div className={`title-container ${isOpen ? "drawer-is-open-title" : ""}`}>
@@ -36,7 +37,7 @@ function Drawer({ photo }: DrawerProps) {
         </button>
       </div>
 
-      {(isOpen || windWidth > 900) && <DetailsDrawer photo={photo} />}
+      {(isOpen || windWidth > desktopWidthThreshold) && <DetailsDrawer photo={photo} />}
     </div>
   )
 }
