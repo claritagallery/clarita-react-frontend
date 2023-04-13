@@ -1,8 +1,5 @@
 import React from "react"
-
-import logoAzul from "../assets/clogo.png"
-
-//import { Button, Container, Form, FormControl, Nav, Navbar } from "react-bootstrap";
+import logo from "../assets/clogo.png"
 import { Link } from "react-router-dom"
 
 function Header() {
@@ -10,7 +7,7 @@ function Header() {
     <section className="top-nav">
       <Link to="/">
         {" "}
-        <img className="logo" src={logoAzul} alt="gallery-logo" width={60} height={60} />
+        <img className="logo" src={logo} alt="gallery-logo" width={60} height={60} />
       </Link>
       <input className="search-box" type="text" placeholder="search coming soon" />
       <input id="menu-toggle" type="checkbox" />

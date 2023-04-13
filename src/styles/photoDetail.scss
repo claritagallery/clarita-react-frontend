@@ -1,5 +1,5 @@
 @use "./mixins.scss" as mix;
-//rgba(167, 210, 203, 0.6);
+
 .full-photo-container {
   margin-top: -2rem;
   margin-bottom: -5rem;
@@ -98,15 +98,13 @@
   }
   .drawer-is-open-container {
     transform: translateY(0);
-    //transition: transform 0.6s ease-out; //New
   }
 }
 .footer-container {
   display: none;
 }
-////mobile landscape///
+
 @media only screen and (max-height: 575.98px) and (orientation: landscape) {
-  //enter code here
   .full-photo-container {
     .full-photo {
       width: 100%;
@@ -139,29 +137,12 @@
   }
 }
 
-//Tablets//////////////////////////////////////////////////////////////////
-// ##Device = Tablets, Ipads (portrait)
-//   ##Screen = B/w 768px to 1024px
-// */
-
 @media (min-width: 768px) and (max-width: 1024px) {
-  /* CSS */
 }
-
-/*
-  ##Device = Tablets, Ipads (landscape)
-  ##Screen = B/w 768px to 1024px
-*/
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  /* CSS */
 }
-//Laptops/////////////////////////////////////////////////////////////////
-// @media screen
-//   and (min-device-width: 1200px)
-//   and (max-device-width: 1600px)
-//   and (-webkit-min-device-pixel-ratio: 1) {
-// }
+
 @media only screen and (min-width: 900px) {
   .full-photo-container {
     .drawer-container {
@@ -182,7 +163,6 @@
         }
       }
       .info-open-drawer {
-        //  padding: 5rem; //esto mientrastanto
         height: 6vh;
         display: flex;
         justify-content: flex-start;

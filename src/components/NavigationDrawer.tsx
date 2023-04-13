@@ -10,7 +10,6 @@ type DrawerProps = {
 }
 
 function NavigationDrawer({ photo, toggleDrawer, albumId }: DrawerProps) {
-  console.log(photo.image_url)
   return (
     <div className={`navigation-drawer-container ${toggleDrawer ? "is-open" : ""}  `}>
       <PhotoThumb previous={photo.prev} next={photo.next} albumId={albumId} />
