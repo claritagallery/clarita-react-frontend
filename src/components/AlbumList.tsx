@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Row, Spinner } from "react-bootstrap"
+
 import AlbumThumb from "./AlbumThumb"
 import { APIError, AlbumListData } from "../data/types"
 import { UseQueryResult } from "react-query"
@@ -8,7 +8,7 @@ type AlbumListParams = UseQueryResult<AlbumListData, APIError>
 
 const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
   if (isLoading) {
-    return <Spinner />
+    return <h2>Its loading</h2>
   }
 
   if (isError) {
@@ -16,14 +16,16 @@ const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
   }
   if (data) {
     const albums = data.results
+    console.log(albums)
     return (
-      <div className="main-container">
-        <div className="row">
+      <>
+        <div className="main-container">
           {albums.map((album) => (
             <AlbumThumb key={album.id} album={album} />
           ))}
         </div>
-      </div>
+        {albums.length > 0 && <hr className="separator" />}
+      </>
     )
   } else {
     console.warn("empty render on Album List")

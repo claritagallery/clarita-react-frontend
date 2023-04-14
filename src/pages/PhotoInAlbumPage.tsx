@@ -1,13 +1,34 @@
 import React from "react"
-
-import { Image, Spinner } from "react-bootstrap"
-import { Link } from "react-router-dom"
-import Photo from "../components/Photo"
-import PhotoThumb from "../components/PhotoThumb"
 import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
+import Photo from "../components/Photo"
+
 import useApi from "../data"
 
-function PhotoInAlbumPage() {
+type PhotoInAlbumProps = {
+  toggleHeader: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+function PhotoInAlbumPage({ toggleHeader }: PhotoInAlbumProps) {
+  const [windWidth, setWindWidth] = useState(window.innerWidth)
+  console.log(windWidth)
+  function isNavShowing() {
+    setWindWidth(window.innerWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", isNavShowing)
+    if (windWidth > 900) {
+      toggleHeader(true)
+    } else {
+      toggleHeader(false)
+    }
+    return () => {
+      window.removeEventListener("resize", isNavShowing)
+      toggleHeader(true)
+    }
+  }, [toggleHeader, windWidth])
+
   const { albumId, photoId } = useParams()
   const { photoInAlbum } = useApi()
   if (!albumId || !photoId) {

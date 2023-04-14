@@ -8,17 +8,19 @@ interface AlbumParams {
 }
 
 function AlbumThumb({ album }: AlbumParams) {
-  console.log(album)
   return (
     <div className="singleAlbum stacked">
-      <ImageIcon className="icon" />
-      <div className="content">
-        <h1>{album.name}</h1>
-        <Link className="link" to={`/albums/${album.id}`}>
-          Take me to that album
-        </Link>
-        <h5>{album.date}</h5>
-      </div>
+      <Link className="link" to={`/albums/${album.id}`}>
+        <div className="front">
+          <div className="wrapper">
+            <ImageIcon className="icon" />
+          </div>
+          <div className="card-content">
+            <h2 className="name-card">{album.name}</h2>
+            <h3 className="date-card">{album.date}</h3>
+          </div>
+        </div>
+      </Link>
     </div>
   )
 }

@@ -1,4 +1,53 @@
-@use "../src/styles/albumList.scss";
-body {
+@use "./src/styles/mixins.scss";
+@use "./src/styles/albumList.scss";
+@use "./src/styles/navigation.scss";
+@use "./src/styles/photoList.scss";
+@use "./src/styles/photoDetail.scss";
+@use "./src/styles/arrowsStyles.scss";
+@use "./src/styles/navigationDrawer.scss";
+@use "./src/styles/breadCrumbs.scss";
+*,
+*::before,
+*:after {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+.routes-container {
+  height: 100%;
+}
+
+.footer-container {
+  position: absolute;
+  bottom: 0;
+  border: 1px solid blue;
+}
+
+.Main {
+  margin-top: 1.5rem;
+  box-sizing: border-box;
+}
+.subtitle {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+button {
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+
+svg {
+  padding: 5px;
+}
+@media only screen and (max-width: 500px) {
+  .main-container {
+    margin: 0 auto;
+  }
 }

@@ -1,0 +1,197 @@
+@use "./mixins.scss" as mix;
+
+.full-photo-container {
+  margin-top: -2rem;
+  margin-bottom: -5rem;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  .full-photo {
+    object-fit: contain;
+    object-position: top center;
+    width: 100%;
+  }
+  .drawer-container {
+    bottom: 0rem;
+    position: fixed;
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform 0.9s ease-in-out;
+    line-height: 1.5rem;
+    text-align: center;
+    .title-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: mix.$darker-background-color;
+      height: 6vh;
+      padding-bottom: 1rem;
+      flex-direction: column-reverse;
+      h4 {
+        font-size: 0.9rem;
+        color: mix.$secondary-color;
+      }
+      .toggle-drawer {
+        left: 1rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        height: 6rem;
+        width: 3rem;
+
+        .toggle-line {
+          border-bottom: 2px solid mix.$secondary-color;
+          padding-top: 1rem;
+          margin-bottom: 0.5rem;
+        }
+        .toggle-line:hover {
+          border-bottom: 4px solid #754f5d;
+        }
+      }
+      .toggle-drawer:focus {
+        outline: none;
+      }
+    }
+
+    .info-open-drawer {
+      height: 15vh;
+      background-color: mix.$drawerContainer-color;
+      padding: 1rem;
+      p,
+      span {
+        text-align: center;
+        font-size: 0.9rem;
+      }
+      .container-brick-items {
+        display: flex;
+        .date-container {
+          order: -1;
+        }
+        .brick-item {
+          width: 100%;
+
+          margin: 1rem 8px 8px 1rem;
+          h4 {
+            color: mix.$secondary-color;
+            font-size: 0.9rem;
+          }
+          .list-tags {
+            text-align: center;
+            span {
+              display: block;
+              text-align: center;
+            }
+          }
+        }
+      }
+      .container-brick-items::before {
+        content: "";
+        border: 0.5px solid mix.$secondary-color;
+        align-self: stretch;
+        border-image: linear-gradient(45deg, #c4859d, #6b3c4e) 1;
+      }
+    }
+  }
+  .drawer-is-open-container {
+    transform: translateY(0);
+  }
+}
+.footer-container {
+  display: none;
+}
+
+@media only screen and (max-height: 575.98px) and (orientation: landscape) {
+  .full-photo-container {
+    .full-photo {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-position: center;
+      object-fit: contain;
+    }
+    .drawer-container {
+      .title-container {
+        height: 10vh;
+        background-color: rgba(210, 228, 225, 0.6);
+      }
+      .info-open-drawer {
+        .container-brick-items {
+          .brick-item {
+            margin: 0;
+          }
+        }
+        height: 25vh;
+        p,
+        span {
+          text-align: center;
+        }
+      }
+    }
+  }
+  .footer-container {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+}
+
+@media only screen and (min-width: 900px) {
+  .full-photo-container {
+    .drawer-container {
+      transition: unset;
+      transform: translateY(0);
+    }
+    .drawer-is-open-container {
+      transition: unset;
+      transform: translateY(0);
+      .title-container {
+        flex-direction: row;
+        padding: 0;
+        height: 4, 5vh;
+        .toggle-drawer {
+          .toggle-line {
+            display: none;
+          }
+        }
+      }
+      .info-open-drawer {
+        height: 6vh;
+        display: flex;
+        justify-content: flex-start;
+        .description {
+          margin-right: 2rem;
+        }
+        .container-brick-items {
+          .brick-item {
+            margin: 0;
+            display: flex;
+            width: fit-content;
+            margin-right: 2rem;
+            h4::after {
+              content: ": ";
+            }
+            h4 {
+              margin-right: 0.5rem;
+            }
+          }
+        }
+        .container-brick-items::before {
+          display: none;
+        }
+      }
+    }
+    .full-photo {
+      margin: 0 auto;
+      width: 60%;
+      max-height: 80%;
+    }
+  }
+}

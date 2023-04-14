@@ -1,0 +1,38 @@
+@mixin input-styles($padding, $max-width, $width) {
+  padding: $padding;
+  box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.15);
+  border: 2px solid $secondary-color;
+  border-radius: 10px;
+  max-width: $max-width;
+  color: black;
+  text-align: center;
+  width: $width;
+}
+
+$main-background-color: rgba(101, 185, 171, 0.2);
+$darker-background-color: rgb(212, 236, 232);
+$secondary-color: #55303e;
+$third-color: #222020;
+$hovered-color: #c4859d;
+$drawerContainer-color: rgba(228, 217, 215, 08);
+$important-color: #ea73a1;
+$visited-color: rgb(22, 59, 53);
+$album-background-color: rgba(167 210 203 / 0.2);
+
+$main-font: "Verdana", sans-serif;
+
+@mixin button-hover() {
+  background-color: $hovered-color;
+  transition: 0.7s;
+}
+
+@mixin button-focus {
+  outline-color: transparent;
+  outline-style: solid;
+  box-shadow: 0 0 0 4px $secondary-color;
+  transition: 0.7s;
+}
+
+@mixin button-active {
+  background-color: $important-color;
+}

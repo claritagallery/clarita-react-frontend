@@ -1,11 +1,19 @@
 import React from "react"
-import { Image, Spinner } from "react-bootstrap"
-import Photo from "../components/Photo"
-import PhotoThumb from "../components/PhotoThumb"
 import { useParams } from "react-router-dom"
+import { useEffect } from "react"
 import useApi from "../data"
+import Photo from "../components/Photo"
 
-function PhotoPage() {
+type PhotoPageProps = {
+  toggleHeader: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+function PhotoPage({ toggleHeader }: PhotoPageProps) {
+  useEffect(() => {
+    toggleHeader(false)
+    return () => toggleHeader(true)
+  }, [toggleHeader])
+
   const { photoId } = useParams<{ photoId: string }>()
   const { photoQuery } = useApi()
 
@@ -13,7 +21,7 @@ function PhotoPage() {
   console.log(data)
 
   if (isLoading) {
-    return <Spinner />
+    return <h1>Its loading</h1>
   }
 
   if (isError) {

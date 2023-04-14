@@ -1,8 +1,9 @@
 import React from "react"
-import { Container, Row, Spinner } from "react-bootstrap"
+import PhotoAlbum from "react-photo-album"
+import { Link } from "react-router-dom"
+import photoUrl from "../utils/photoUrl"
 import { PhotoListItem, APIError } from "../data/types"
-
-import PhotoThumb from "./PhotoThumb"
+import getRandomPic from "../data/apiPhoto"
 
 export interface PhotoListParams {
   albumId?: string
@@ -28,22 +29,58 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
 
   if (data) {
     const photos = data.results
-    photos
-    return (
-      <div>
-        <Container>
-          <Row>
-            <h2>Aqui van fotos</h2>
 
-            {photos.map((photo) => {
-              return (
-                <div key={photo.id}>
-                  <PhotoThumb key={photo.id} photo={photo} albumId={albumId} />
+    const photosParameters = photos.map((photo) => {
+      const { imgSrc, height, width } = getRandomPic()
+      return {
+        src: imgSrc,
+        width: width,
+        height: height,
+        title: photo.name,
+        date: photo.date_and_time,
+        id: photo.id,
+      }
+    })
+
+    return (
+      <div className="gallery-container">
+        <PhotoAlbum
+          renderPhoto={({ photo, wrapperStyle, renderDefaultPhoto }) => (
+            <div
+              className="picture-cell"
+              style={{
+                position: "relative",
+                ...wrapperStyle,
+              }}
+            >
+              {renderDefaultPhoto({ wrapped: true })}
+
+              <Link to={photoUrl(photo.id, albumId)}>
+                <div className="picture-info">
+                  {photo.title && <h4 className="picture-title"> {photo.title}</h4>}
+                  <h5 className="picture-date">{photo.date}</h5>
                 </div>
-              )
-            })}
-          </Row>
-        </Container>
+              </Link>
+            </div>
+          )}
+          layout="rows"
+          photos={photosParameters}
+          defaultContainerWidth={50}
+          spacing={2}
+          padding={2}
+          targetRowHeight={(containerWidth) => {
+            if (containerWidth >= 300 && containerWidth < 600) {
+              return containerWidth / 2
+            }
+            if (containerWidth >= 600 && containerWidth < 1200) {
+              return containerWidth / 4
+            }
+            if (containerWidth >= 1200) {
+              return containerWidth / 8
+            }
+            return containerWidth / 4
+          }}
+        />
       </div>
     )
   } else {

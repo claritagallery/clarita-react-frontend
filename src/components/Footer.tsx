@@ -1,14 +1,9 @@
 import React from "react"
-import { Container, Row, Col } from "react-bootstrap"
 
 const Footer = () => (
-  <Container>
-    <Row>
-      <Col className="border-top text-center pt-2 mt-3">
-        Served by Clarita, the free-software self-hosted web gallery
-      </Col>
-    </Row>
-  </Container>
+  <div className="footer-container">
+    Served by Clarita, the free-software self-hosted web gallery
+  </div>
 )
 
 export default Footer

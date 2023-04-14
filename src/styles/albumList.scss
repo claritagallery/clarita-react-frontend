@@ -1,60 +1,97 @@
-//color:#5dbe7c
-//oscuro:#5dbe7c
+@use "./mixins.scss" as mix;
+
 .main-container {
-  width: 80%;
-  margin: 0 auto;
-  img {
-    width: 100%;
-    max-width: 100%;
-    object-fit: cover;
-    aspect-ratio: 1 / 1.25;
+  font-family: mix.$main-font;
+  display: grid;
+  column-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, max-content));
+  row-gap: 1rem;
+  justify-content: center;
+
+  .singleAlbum {
+    height: 14rem;
+    padding: 0;
+    transition: transform 0.5s;
+    transform-origin: center top;
+    margin: auto;
+    position: relative;
+    width: 10rem;
+    background-color: mix.$album-background-color;
+    .wrapper {
+      overflow: hidden;
+    }
+    .link {
+      text-decoration: none;
+      font-size: 0.5rem;
+    }
+
+    .icon {
+      max-width: 100%;
+      border-radius: 0.5em;
+      transition: transform 0.5s;
+      transform-origin: center;
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 1/1;
+    }
+    .card-content {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      font-family: mix.$main-font;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0.5rem;
+      height: 100%;
+      color: black;
+      .name-card,
+      .date-card {
+        font-size: 0.8rem;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: calc(100%);
+        text-align: left;
+        transition: all 0.3s ease;
+        color: mix.$secondary-color;
+      }
+      .name-card {
+        font-weight: 600;
+        font-size: 1rem;
+      }
+    }
   }
-  .row {
-    display: grid;
-    gap: 0.125rem;
-    margin: 0 auto;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
 
-    .singleAlbum {
-      text-align: center;
-      display: grid;
-      padding: 5% 10%;
-      border-radius: 1rem;
-      background-color: #f5f5f5a6;
-      box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
-      border: 5px solid black;
-      .icon {
-        height: 100%;
-        width: 100%;
-      }
-      .content {
-        color: black;
-        align-self: end;
-        margin: 0.5rem 0.5rem 2rem;
-        padding: 0.5rem;
-        //margin-top: 30px;
-        display: grid;
-        grid-template-rows: 1fr 1fr 1fr;
+@media only screen and (min-width: 600px) {
+  .main-container {
+    margin-right: 3rem;
+    justify-content: left;
+    column-gap: 3rem;
+    row-gap: 3rem;
+  }
+}
+@media only screen and (min-width: 700px) {
+  .singleAlbum:hover {
+    transform: scale(1.2);
+    z-index: 1;
+    background-color: mix.$darker-background-color;
 
-        .link {
-          color: black;
-          text-decoration: none;
-        }
-
-        h1 {
-          color: black;
-          font-size: 1.5rem;
-        }
-      }
+    .icon {
+      position: relative;
+      aspect-ratio: auto;
+      transform: scale(1);
     }
+    .card-content {
+      position: relative;
+      width: 100%;
 
-    .stacked {
-      display: grid;
-      aspect-ratio: 1 / 1.5;
-    }
-    .stacked > * {
-      grid-column: span 2;
-      grid-row: span 2;
+      .name-card,
+      .date-card {
+        transform: scale(1);
+        white-space: break-spaces;
+      }
     }
   }
 }

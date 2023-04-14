@@ -12,6 +12,7 @@ export interface PhotoListItem {
   filename: string
   name: string
   date_and_time: string
+  index?: number //esto puede fallar
 }
 
 export interface AlbumListItem {
@@ -34,18 +35,8 @@ export interface AlbumDetailItem {
 
 export type PhotoId = string | undefined
 
-export type PreviousOrNext = {
-  id: string
-  filename: string
-  name: string
-  date_and_time: string
-}
-export type Next = PreviousOrNext | null
-type BreadCrumbs = {
-  id: string
-  name: string
-  date?: string
-}
+export type PreviousOrNext = null | PhotoListItem
+
 type Caption = {
   language?: string
   text?: string
@@ -58,9 +49,9 @@ export interface PhotoData {
   date_and_time: null
   image_url: string
   caption: Caption[]
-  breadcrumbs: BreadCrumbs[]
+  breadcrumbs: AlbumListItem[]
   prev: PreviousOrNext
-  next: Next
+  next: PreviousOrNext
 }
 
 export type FetchPhotoInAlbumParams = {

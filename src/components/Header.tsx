@@ -1,38 +1,29 @@
 import React from "react"
-import { Button, Container, Form, FormControl, Nav, Navbar } from "react-bootstrap"
-
+import logo from "../assets/clogo.png"
 import { Link } from "react-router-dom"
-const Header = () => (
-  <Navbar bg="light" expand="md">
-    <Container>
+
+function Header() {
+  return (
+    <section className="top-nav">
       <Link to="/">
-        <Navbar.Brand href="/">Clarita</Navbar.Brand>
+        {" "}
+        <img className="logo" src={logo} alt="gallery-logo" width={60} height={60} />
       </Link>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="me-auto">
-          <Link to="/albums">
-            <Nav.Link>Albums</Nav.Link>
-          </Link>
-          <Link to="/photos">
-            <Nav.Link>Photos</Nav.Link>
-          </Link>
-        </Nav>
-      </Navbar.Collapse>
-      <Form className="d-flex">
-        <FormControl
-          type="search"
-          placeholder="Search (coming soon!)"
-          className="me-2"
-          aria-label="Search (coming soon!)"
-          disabled
-        />
-        <Button disabled variant="outline-success">
-          Search
-        </Button>
-      </Form>
-    </Container>
-  </Navbar>
-)
+      <input className="search-box" type="text" placeholder="search coming soon" />
+      <input id="menu-toggle" type="checkbox" />
+      <label className="menu-button-container" htmlFor="menu-toggle">
+        <div className="menu-button"></div>
+      </label>
+      <ul className="menu">
+        <Link className="links" to="/albums">
+          <li>Albums</li>
+        </Link>
+        <Link className="links" to="/photos">
+          <li>Photos</li>
+        </Link>
+      </ul>
+    </section>
+  )
+}
 
 export default Header

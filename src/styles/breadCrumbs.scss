@@ -1,0 +1,199 @@
+@use "./mixins.scss" as mix;
+.breadcrumb-link,
+.breadcrumb-link:visited {
+  text-decoration: none;
+  color: mix.$secondary-color;
+  transition: color ease-in-out 0.3s, background ease-in-out 0.2s;
+}
+
+.breadcrumbs-album {
+  .title-detail-album {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: mix.$secondary-color;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .album-description {
+    color: mix.$secondary-color;
+    text-align: left;
+    line-height: 1.3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+}
+.bread-crumb-link,
+.bread-crumb-link:hover {
+  color: mix.$hovered-color;
+}
+
+.main-crumb-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  margin-top: -1.5rem;
+}
+.crumb-nav-wrap {
+  padding-left: 1rem;
+  font-size: 0.9rem;
+  color: mix.$secondary-color;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.nav {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-right: 1rem;
+  align-items: center;
+}
+
+.breadcrumb-wrap:after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 1rem;
+  top: 36px;
+  width: 100%;
+  height: 1px;
+  background: mix.$secondary-color;
+  transform: scale3d(0, 1, 1);
+  transform-origin: 0% 50%;
+  transition: transform ease-in-out 0.15s 0.1s, opacity ease-in-out 0.25s;
+  opacity: 0.5;
+}
+
+.breadcrumb-wrap:hover:before {
+  transform: scalex(1);
+}
+
+.breadcrumb-wrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 0 auto;
+  flex-shrink: 1000;
+  display: inline-block;
+  padding: 10px 5px 15px 0;
+  border-bottom: 1px solid transparent;
+  color: mix.$secondary-color;
+  position: relative;
+  transition: transform ease-in-out 0.3s;
+
+  &:hover {
+    flex: 1 0 auto;
+    opacity: 1;
+    transform: translatey(-2px);
+    transition: none;
+
+    .sep {
+      i {
+        transform: translatex(8px);
+        color: mix.$hovered-color;
+        transition: transform ease-in-out 0.3s;
+      }
+    }
+    opacity: 1;
+    transition: transform ease-in-out 0.4s;
+
+    ~ .single-breadcrumb-wrap {
+      transition: transform ease-in-out 0.4s;
+    }
+  }
+
+  &:first-child {
+    flex: 0 0 auto;
+    flex-shrink: 0.5;
+    font-weight: normal;
+    opacity: 1;
+
+    &:after {
+      left: 0;
+    }
+    .sep {
+      display: none;
+    }
+  }
+
+  //Last Breadcrumb
+  &:last-child {
+    flex: 1 0 auto !important;
+    font-weight: normal;
+    width: 5%;
+
+    .bread-crumb-link {
+      color: mix.$important-color;
+      border-bottom: mix.$secondary-color;
+      text-decoration-line: revert;
+      text-underline-offset: 3.5px;
+    }
+    .bread-crumb-link:hover {
+      width: fit-content;
+    }
+
+    &:hover {
+      transform: translateY(0);
+      flex: 1 0 auto !important;
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+//Underline effect
+
+//hover effect
+.breadcrumb-wrap:hover:after {
+  transform: scale3d(1, 1, 1);
+  opacity: 1;
+  transition: opacity ease-in-out 0.1s, transform ease-in-out 0.2s;
+}
+
+.breadcrumb {
+  flex: 0 1 auto;
+}
+.sep {
+  padding-left: 10px;
+  padding-right: 10px;
+
+  i.fa:before {
+    transition: transform ease-in-out 0.2s;
+  }
+}
+
+.fa {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border: 7px solid transparent;
+  border-left-color: mix.$secondary-color;
+}
+.with-bg {
+  //margin-top: -1.5rem;
+  background-color: mix.$darker-background-color;
+}
+@media only screen and (max-height: 575.98px) and (orientation: landscape) {
+  .with-bg {
+    margin-top: 0;
+    .crumb-nav-wrap {
+      .nav {
+        .breadcrumb-wrap {
+          padding: 2px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .photo-thumb-container + .main-crumb-wrapper {
+    position: relative;
+    top: -6rem;
+    background-color: transparent;
+  }
+}
