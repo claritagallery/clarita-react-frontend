@@ -31,7 +31,7 @@ function Drawer({ photo }: DrawerProps) {
       }`}
     >
       <div className={`title-container ${isOpen ? "drawer-is-open-title" : ""}`}>
-        <h4>{photo.name}</h4>
+        <h4>{photo.title}</h4>
         <button className="toggle-drawer">
           <div className="toggle-line"></div>
         </button>
@@ -47,10 +47,11 @@ type DetailsDrawerProps = {
 }
 
 function DetailsDrawer({ photo }: DetailsDrawerProps) {
+  console.log(photo)
   return (
     <div className="info-open-drawer">
       <div className="description">
-        <p>This is the amazing description for this picture</p>
+        <p>{photo.description === "" && "A wonderful moment"}</p>
       </div>
       <div className="container-brick-items">
         <div className="date-container brick-item">
