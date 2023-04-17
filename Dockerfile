@@ -5,6 +5,10 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install
 COPY . ./
+ARG PUBLIC_URL
+ENV PUBLIC_URL=$PUBLIC_URL
+ARG REACT_APP_API_BASE_URL
+ENV REACT_APP_API_BASE_URL=$REACT_APP_API_BASE_URL
 RUN yarn run build
 
 FROM nginx:stable-alpine
