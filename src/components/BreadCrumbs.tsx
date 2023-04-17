@@ -29,7 +29,7 @@ function BreadCrumbs({ breadcrumbs, bg }: BreadcrumbsProps) {
                 </span>{" "}
                 <span className="breadcrumb">
                   <Link className="breadcrumb-link" to={`/albums/${crumb.id}`}>
-                    {crumb.name}
+                    {crumb.title}
                   </Link>
                 </span>
               </div>

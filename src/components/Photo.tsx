@@ -51,7 +51,7 @@ function Photo({ photo, albumId }: PhotoParams) {
   if (photo && albumId) {
     const { id, prev, next } = photo
 
-    const realPhotoLink = `${baseUrl}/api/v1/photo/${id}/file`
+    const realPhotoLink = `${baseUrl}/api/v1/photos/${id}/file`
 
     return (
       <div
@@ -75,7 +75,6 @@ function Photo({ photo, albumId }: PhotoParams) {
             </Link>
           </div>
         )}
-
         <Drawer photo={photo} />
         <NavigationDrawer photo={photo} toggleDrawer={isOpen} albumId={albumId} />
       </div>

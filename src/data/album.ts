@@ -16,7 +16,7 @@ function album() {
   const albumQuery = (albumId: string) => {
     return useQuery<AlbumDetailData, APIError>(["album", albumId], async () => {
       const res = await axios({
-        url: `${baseUrl}/api/v1/album/${albumId}`,
+        url: `${baseUrl}/api/v1/albums/${albumId}`,
       })
       return res.data
     })

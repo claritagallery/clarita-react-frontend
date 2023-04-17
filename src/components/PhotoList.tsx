@@ -36,7 +36,7 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
         src: imgSrc,
         width: width,
         height: height,
-        title: photo.name,
+        title: photo.title,
         date: photo.date_and_time,
         id: photo.id,
       }
