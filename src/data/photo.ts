@@ -14,7 +14,7 @@ function photo() {
 
   function fetchPhotoInAlbum({ albumId, photoId }: FetchPhotoInAlbumParams) {
     return axios({
-      url: `${baseUrl}/api/v1/album/${albumId}/photo/${photoId}`,
+      url: `${baseUrl}/api/v1/albums/${albumId}/photos/${photoId}`,
     }).then((res) => res.data)
   }
 
@@ -35,7 +35,7 @@ function photo() {
 
   function fetchPhoto(photoId: PhotoId) {
     return axios({
-      url: `${baseUrl}/api/v1/photo/${photoId}`,
+      url: `${baseUrl}/api/v1/photos/${photoId}`,
     }).then((res) => res.data)
   }
 
