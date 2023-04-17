@@ -37,11 +37,6 @@ export type PhotoId = string | undefined
 
 export type PreviousOrNext = null | PhotoListItem
 
-type Caption = {
-  language?: string
-  text?: string
-}
-
 export interface PhotoData {
   id: PhotoId
   filename: string
@@ -49,7 +44,6 @@ export interface PhotoData {
   description: string
   date_and_time: null
   image_url: string
-  caption: Caption[]
   breadcrumbs: AlbumListItem[]
   prev: PreviousOrNext
   next: PreviousOrNext

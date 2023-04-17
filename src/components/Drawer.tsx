@@ -47,7 +47,6 @@ type DetailsDrawerProps = {
 }
 
 function DetailsDrawer({ photo }: DetailsDrawerProps) {
-  console.log(photo)
   return (
     <div className="info-open-drawer">
       {photo.description && (
