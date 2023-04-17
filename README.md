@@ -30,6 +30,10 @@ Build the project for release:
 
     yarn build
 
+Using Docker:
+
+    docker build . -t clarita-frontend:latest
+
 ## License
 
 Clarita is licensed under the GNU Affero General Public License v3 (AGPLv3) or later.
