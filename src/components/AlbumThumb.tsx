@@ -16,7 +16,7 @@ function AlbumThumb({ album }: AlbumParams) {
             <ImageIcon className="icon" />
           </div>
           <div className="card-content">
-            <h2 className="name-card">{album.name}</h2>
+            <h2 className="name-card">{album.title}</h2>
             <h3 className="date-card">{album.date}</h3>
           </div>
         </div>

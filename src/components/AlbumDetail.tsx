@@ -22,7 +22,7 @@ const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => 
       <>
         <div className="breadcrumbs-album">
           <BreadCrumbs breadcrumbs={data.breadcrumbs} />
-          <h2 className="title-detail-album">{data.name}</h2>
+          <h2 className="title-detail-album">{data.title}</h2>
           <p className="album-description">{data.description}</p>
         </div>
       </>

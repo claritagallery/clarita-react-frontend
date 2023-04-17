@@ -20,7 +20,7 @@ function PhotoThumb({ previous, next, albumId }: PhotoThumbParams) {
         {previousId && (
           <Link to={`/albums/${albumId}/photos/${previousId}`}>
             {" "}
-            <button className="button-thumb">{previous ? previous.name : null}</button>
+            <button className="button-thumb">{previous ? previous.title : null}</button>
           </Link>
         )}
       </div>
@@ -28,7 +28,7 @@ function PhotoThumb({ previous, next, albumId }: PhotoThumbParams) {
         {nextId && (
           <Link to={`/albums/${albumId}/photos/${nextId}`}>
             {" "}
-            <button className="button-thumb">{next ? next.name : null}</button>
+            <button className="button-thumb">{next ? next.title : null}</button>
           </Link>
         )}
       </div>
