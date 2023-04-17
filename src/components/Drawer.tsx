@@ -50,9 +50,12 @@ function DetailsDrawer({ photo }: DetailsDrawerProps) {
   console.log(photo)
   return (
     <div className="info-open-drawer">
-      <div className="description">
-        <p>{photo.description === "" && "A wonderful moment"}</p>
-      </div>
+      {photo.description && (
+        <div className="description">
+          <p>{photo.description}</p>
+        </div>
+      )}
+
       <div className="container-brick-items">
         <div className="date-container brick-item">
           <h4 className="photo-drawer-date-title">Date</h4>
