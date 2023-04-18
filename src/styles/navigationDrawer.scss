@@ -7,55 +7,60 @@
   transform: translateY(-100%);
   transition: transform 0.9s ease-in-out;
 
-  .photo-thumb-container {
-    display: flex;
-    height: 100%;
-    text-align: center;
-    background-color: rgb(228, 217, 215);
-    .thumb {
-      width: 50%;
-      height: 15vh;
-      //border-right: 1px solid white;
+  .thumb-wrapper {
+    display: flex; //trabajando en esto`
+    .photo-thumb-container {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      text-align: center;
+      background-color: rgb(228, 217, 215);
+      width: 50%;
       position: relative;
-
-      .button-thumb {
-        background-color: mix.$darker-background-color;
-        color: mix.$secondary-color;
-        border: none;
-        border-radius: 2px;
-        padding: 1rem;
-        max-height: 30px;
-        max-width: 120px;
-        display: inline-flex;
+      .thumb {
+        // width: 50%;
+        height: 15vh;
+        //border-right: 1px solid white;
+        display: flex;
         justify-content: center;
         align-items: center;
-        cursor: pointer;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        //position: relative;
+        //position: absolute;
+
+        .button-thumb {
+          background-color: mix.$darker-background-color;
+          color: mix.$secondary-color;
+          border: none;
+          border-radius: 2px;
+          padding: 1rem;
+          max-height: 30px;
+          max-width: 120px;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .button-thumb:hover {
+          @include mix.button-hover;
+        }
+        .button-thumb:focus {
+          @include mix.button-focus;
+        }
+        .button-thumb:active {
+          @include mix.button-active;
+        }
       }
-      .button-thumb:hover {
-        @include mix.button-hover;
+      .thumb:before {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        background-color: mix.$secondary-color;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
       }
-      .button-thumb:focus {
-        @include mix.button-focus;
-      }
-      .button-thumb:active {
-        @include mix.button-active;
-      }
-    }
-    .thumb:before {
-      content: "";
-      position: absolute;
-      width: 1px;
-      height: 100%;
-      bottom: 0;
-      right: 0;
-      background-color: mix.$secondary-color;
-      -webkit-transform: scaleY(0.5);
-      transform: scaleY(0.5);
     }
   }
   /////////////////////////////
