@@ -39,3 +39,8 @@
 polyline {
   transition: all 250ms ease-in-out;
 }
+@media only screen and (min-width: 900px) {
+  .svg-arrow {
+    display: none;
+  }
+}

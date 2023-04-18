@@ -72,15 +72,17 @@
   .navigation-drawer-container {
     transition: unset;
     transform: translateY(0);
-    .photo-thumb-container {
+    .thumb-wrapper {
       transform: translateY(50vh);
       background-color: transparent;
       justify-content: space-between;
       .thumb {
         width: 15%;
-        background-color: beige;
         margin: 2rem;
         margin-top: 0;
+      }
+      .thumb:before {
+        border: none;
       }
     }
   }
