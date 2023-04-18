@@ -1,70 +1,63 @@
 @use "./mixins.scss" as mix;
 .navigation-drawer-container {
   position: absolute;
-
   width: 100%;
   top: -4vh;
   transform: translateY(-100%);
   transition: transform 0.9s ease-in-out;
 
   .thumb-wrapper {
-    display: flex; //trabajando en esto`
-    .photo-thumb-container {
+    display: flex;
+    .thumb {
+      height: 15vh;
       display: flex;
-      text-align: center;
-      background-color: rgb(228, 217, 215);
+      justify-content: center;
+      align-items: center;
       width: 50%;
+      background-color: mix.$clear-background-color;
       position: relative;
-      .thumb {
-        // width: 50%;
-        height: 15vh;
-        //border-right: 1px solid white;
-        display: flex;
+
+      .button-thumb {
+        background-color: mix.$darker-background-color;
+        color: mix.$secondary-color;
+        border: none;
+        border-radius: 2px;
+        padding: 1rem;
+        max-height: 30px;
+        max-width: 120px;
+        display: inline-flex;
         justify-content: center;
         align-items: center;
-        //position: relative;
-        //position: absolute;
-
-        .button-thumb {
-          background-color: mix.$darker-background-color;
-          color: mix.$secondary-color;
-          border: none;
-          border-radius: 2px;
-          padding: 1rem;
-          max-height: 30px;
-          max-width: 120px;
-          display: inline-flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        .button-thumb:hover {
-          @include mix.button-hover;
-        }
-        .button-thumb:focus {
-          @include mix.button-focus;
-        }
-        .button-thumb:active {
-          @include mix.button-active;
-        }
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
-      .thumb:before {
-        content: "";
-        position: absolute;
-        width: 1px;
-        height: 100%;
-        bottom: 0;
-        right: 0;
-        background-color: mix.$secondary-color;
-        -webkit-transform: scaleY(0.5);
-        transform: scaleY(0.5);
+      .button-thumb:hover {
+        @include mix.button-hover;
+      }
+      .button-thumb:focus {
+        @include mix.button-focus;
+      }
+      .button-thumb:active {
+        @include mix.button-active;
       }
     }
+    .thumb:before {
+      content: "";
+      border: 0.5px solid #55303e;
+      -webkit-transform: scaleY(1);
+      transform: scaleY(1);
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      bottom: 0;
+      right: 0;
+      border-image: linear-gradient(45deg, #c4859d, #6b3c4e) 1;
+    }
   }
-  /////////////////////////////
 }
+/////////////////////////////
+
 .is-open {
   transform: translateY(20%);
   transition: transform 0.6s ease-out; //New
@@ -88,6 +81,15 @@
         background-color: beige;
         margin: 2rem;
         margin-top: 0;
+      }
+    }
+  }
+}
+@media only screen and (max-height: 575.98px) and (orientation: landscape) {
+  .navigation-drawer-container {
+    .thumb-wrapper {
+      .thumb {
+        height: 20vh;
       }
     }
   }

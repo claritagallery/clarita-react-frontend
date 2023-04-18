@@ -12,14 +12,12 @@ function PhotoThumb({ photo, albumId }: PhotoThumbParams) {
   }
 
   return (
-    <div className="photo-thumb-container">
-      <div className="thumb" onClick={(e) => stopPropagation(e)}>
-        {photo && (
-          <Link to={`/albums/${albumId}/photos/${photo.id}`}>
-            <button className="button-thumb">{photo.title}</button>
-          </Link>
-        )}
-      </div>
+    <div className="thumb" onClick={(e) => stopPropagation(e)}>
+      {photo && (
+        <Link to={`/albums/${albumId}/photos/${photo.id}`}>
+          <button className="button-thumb">{photo.title}</button>
+        </Link>
+      )}
     </div>
   )
 }
