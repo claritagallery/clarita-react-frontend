@@ -36,6 +36,10 @@
   background-color: transparent;
   margin-top: -1.5rem;
 }
+.thumb-wrapper + .with-bg {
+  z-index: 1;
+  position: relative;
+}
 .crumb-nav-wrap {
   padding-left: 1rem;
   font-size: 0.9rem;
@@ -174,7 +178,6 @@
   border-left-color: mix.$secondary-color;
 }
 .with-bg {
-  //margin-top: -1.5rem;
   background-color: mix.$darker-background-color;
 }
 @media only screen and (max-height: 575.98px) and (orientation: landscape) {
@@ -191,9 +194,26 @@
 }
 
 @media only screen and (min-width: 900px) {
-  .photo-thumb-container + .main-crumb-wrapper {
+  .thumb-wrapper + .main-crumb-wrapper {
     position: relative;
     top: -6rem;
     background-color: transparent;
+    color: mix.$clear-background-color;
+    .crumb-nav-wrap {
+      .nav {
+        .breadcrumb-wrap {
+          .sep {
+            .fa {
+              border-left-color: mix.$darker-background-color;
+            }
+          }
+          .breadcrumb {
+            .breadcrumb-link {
+              color: mix.$darker-background-color;
+            }
+          }
+        }
+      }
+    }
   }
 }
