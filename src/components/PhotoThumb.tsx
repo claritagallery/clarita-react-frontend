@@ -7,16 +7,14 @@ interface PhotoThumbParams {
   albumId?: string
 }
 function PhotoThumb({ photo, albumId }: PhotoThumbParams) {
-  function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    e.stopPropagation()
+  if (!photo) {
+    return null
   }
-  const id = photo ? photo.id : ""
-  const title = photo ? photo.title : ""
-
+  const { id, title } = photo
   const url = albumId ? `/albums/${albumId}/photos/${id}` : `/photos/${id} `
 
   return (
-    <div className="thumb" onClick={(e) => stopPropagation(e)}>
+    <div className="thumb" onClick={(e) => e.stopPropagation()}>
       <Link to={url}>
         <button className="button-thumb">{title}</button>
       </Link>
