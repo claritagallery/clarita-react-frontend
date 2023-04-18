@@ -10,14 +10,16 @@ function PhotoThumb({ photo, albumId }: PhotoThumbParams) {
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation()
   }
+  const id = photo ? photo.id : ""
+  const title = photo ? photo.title : ""
+
+  const url = albumId ? `/albums/${albumId}/photos/${id}` : `/photos/${id} `
 
   return (
     <div className="thumb" onClick={(e) => stopPropagation(e)}>
-      {photo && (
-        <Link to={`/albums/${albumId}/photos/${photo.id}`}>
-          <button className="button-thumb">{photo.title}</button>
-        </Link>
-      )}
+      <Link to={url}>
+        <button className="button-thumb">{title}</button>
+      </Link>
     </div>
   )
 }
