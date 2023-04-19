@@ -48,11 +48,12 @@ function Photo({ photo, albumId }: PhotoParams) {
     e.stopPropagation()
   }
 
-  if (photo && albumId) {
+  if (photo) {
     const { id, prev, next } = photo
-
-    const realPhotoLink = `${baseUrl}/api/v1/photos/${id}/file`
-
+    const photoLink =
+      photo && albumId
+        ? `${baseUrl}/api/v1/photos/${id}/file`
+        : `${baseUrl}/api/v1/photo/${id}/file`
     return (
       <div
         className="full-photo-container"
@@ -67,7 +68,7 @@ function Photo({ photo, albumId }: PhotoParams) {
             </Link>
           </div>
         )}
-        <img className="full-photo" src={realPhotoLink} />
+        <img className="full-photo" src={photoLink} />
         {next && (
           <div onClick={(e) => stopPropagation(e)}>
             <Link to={`/albums/${albumId}/photos/${next.id}`}>
@@ -76,26 +77,13 @@ function Photo({ photo, albumId }: PhotoParams) {
           </div>
         )}
         <Drawer photo={photo} />
-        <NavigationDrawer photo={photo} toggleDrawer={isOpen} albumId={albumId} />
+        {albumId && (
+          <NavigationDrawer photo={photo} toggleDrawer={isOpen} albumId={albumId} />
+        )}
       </div>
     )
   }
 
-  if (photo && !albumId) {
-    const { id } = photo
-    const realPhotoLink = `${baseUrl}/api/v1/photo/${id}/file`
-    return (
-      <div
-        className="full-photo-container"
-        onClick={toggle}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-      >
-        <img className="full-photo" src={realPhotoLink} />
-        <Drawer photo={photo} />
-      </div>
-    )
-  }
   return <h1>No photos in this album</h1>
 }
 
