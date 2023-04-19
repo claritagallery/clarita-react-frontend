@@ -9,7 +9,7 @@ import { useState, useContext } from "react"
 import { DrawerContext } from "../contexts/Drawer"
 
 interface PhotoParams {
-  photo?: PhotoData
+  photo: PhotoData
   albumId?: string
 }
 
@@ -48,55 +48,35 @@ function Photo({ photo, albumId }: PhotoParams) {
     e.stopPropagation()
   }
 
-  if (photo && albumId) {
-    const { id, prev, next } = photo
+  const { id, prev, next } = photo
+  const photoLink = `${baseUrl}/api/v1/photos/${id}/file`
 
-    const realPhotoLink = `${baseUrl}/api/v1/photos/${id}/file`
-
-    return (
-      <div
-        className="full-photo-container"
-        onClick={toggle}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-      >
-        {prev && (
-          <div onClick={(e) => stopPropagation(e)}>
-            <Link to={`/albums/${albumId}/photos/${prev.id}`}>
-              <LeftArrow />
-            </Link>
-          </div>
-        )}
-        <img className="full-photo" src={realPhotoLink} />
-        {next && (
-          <div onClick={(e) => stopPropagation(e)}>
-            <Link to={`/albums/${albumId}/photos/${next.id}`}>
-              <RightArrow />
-            </Link>
-          </div>
-        )}
-        <Drawer photo={photo} />
-        <NavigationDrawer photo={photo} toggleDrawer={isOpen} albumId={albumId} />
-      </div>
-    )
-  }
-
-  if (photo && !albumId) {
-    const { id } = photo
-    const realPhotoLink = `${baseUrl}/api/v1/photo/${id}/file`
-    return (
-      <div
-        className="full-photo-container"
-        onClick={toggle}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-      >
-        <img className="full-photo" src={realPhotoLink} />
-        <Drawer photo={photo} />
-      </div>
-    )
-  }
-  return <h1>No photos in this album</h1>
+  return (
+    <div
+      className="full-photo-container"
+      onClick={toggle}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+    >
+      {prev && (
+        <div onClick={(e) => stopPropagation(e)}>
+          <Link to={`/albums/${albumId}/photos/${prev.id}`}>
+            <LeftArrow />
+          </Link>
+        </div>
+      )}
+      <img className="full-photo" src={photoLink} />
+      {next && (
+        <div onClick={(e) => stopPropagation(e)}>
+          <Link to={`/albums/${albumId}/photos/${next.id}`}>
+            <RightArrow />
+          </Link>
+        </div>
+      )}
+      <Drawer photo={photo} />
+      <NavigationDrawer photo={photo} toggleDrawer={isOpen} albumId={albumId} />
+    </div>
+  )
 }
 
 export default Photo

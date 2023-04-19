@@ -6,7 +6,7 @@ import BreadCrumbs from "./BreadCrumbs"
 type DrawerProps = {
   photo: PhotoData
   toggleDrawer: boolean
-  albumId: string
+  albumId?: string
 }
 
 function NavigationDrawer({ photo, toggleDrawer, albumId }: DrawerProps) {
