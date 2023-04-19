@@ -44,8 +44,10 @@ function PhotoInAlbumPage({ toggleHeader }: PhotoInAlbumProps) {
   if (isError) {
     return <div>{error ? error.message : "Unknown error"}</div>
   }
-
-  return <Photo photo={data} albumId={albumId} />
+  if (data) {
+    return <Photo photo={data} albumId={albumId} />
+  }
+  return <h1>No Photos here</h1>
 }
 
 export default PhotoInAlbumPage
