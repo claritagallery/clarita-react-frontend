@@ -9,7 +9,6 @@ import { Footer, Header } from "./components"
 import {
   AlbumDetailPage,
   AlbumListPage,
-  PhotoInAlbumPage,
   PhotoListPage,
   PhotoPage,
   NotFound,
@@ -35,7 +34,7 @@ function App() {
                     <Route path="/" element={<AlbumListPage />} />
                     <Route
                       path="/albums/:albumId/photos/:photoId"
-                      element={<PhotoInAlbumPage toggleHeader={setShowHeader} />}
+                      element={<PhotoPage toggleHeader={setShowHeader} />}
                     />
                     <Route path="/albums/:albumId" element={<AlbumDetailPage />} />
                     <Route path="/albums" element={<AlbumListPage />} />
