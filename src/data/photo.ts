@@ -45,7 +45,7 @@ function photo() {
     )
   }
 
-  const photoInAlbum = ({ albumId, photoId }: FetchPhotoInAlbumParams) => {
+  const photoInAlbumQuery = ({ albumId, photoId }: FetchPhotoInAlbumParams) => {
     return useQuery<PhotoData, APIError>(["photo-in-album", albumId, photoId], () =>
       fetchPhotoInAlbum({ albumId, photoId }),
     )
@@ -57,7 +57,7 @@ function photo() {
     })
   }
 
-  return { photosQuery, photoInAlbum, photoQuery }
+  return { photosQuery, photoInAlbumQuery, photoQuery }
 }
 
 export default photo
