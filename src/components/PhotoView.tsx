@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useDeferredValue, useEffect } from "react"
 import { PhotoData, BaseProps } from "../data/types"
 import { Link } from "react-router-dom"
 import LeftArrow from "../assets/LeftArrow"
@@ -10,7 +10,10 @@ interface PhotoViewProps extends BaseProps {
 
 function PhotoView({ photo, albumId, isLoading }: PhotoViewProps) {
   const baseUrl = process.env.REACT_APP_API_BASE_URL
-
+  const [deferredPhoto, setDeferredPhoto] = useState(
+    "https://loremflickr.com/cache/resized/65535_52214085447_8f528b2c61_z_640_360_nofilter.jpg",
+  )
+  const deferredQuery = useDeferredValue(deferredPhoto)
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation()
   }
@@ -22,11 +25,16 @@ function PhotoView({ photo, albumId, isLoading }: PhotoViewProps) {
     next = photo.next
   }
 
-  const photoLink = `${baseUrl}/api/v1/photos/${id}/file`
+  const photoLink = isLoading ? deferredQuery : `${baseUrl}/api/v1/photos/${id}/file`
   return (
     <>
       {prev && (
-        <div onClick={(e) => stopPropagation(e)}>
+        <div
+          onClick={(e) => {
+            stopPropagation(e)
+            setDeferredPhoto(photoLink)
+          }}
+        >
           <Link to={`/albums/${albumId}/photos/${prev.id}`}>
             <LeftArrow />
           </Link>
@@ -34,7 +42,12 @@ function PhotoView({ photo, albumId, isLoading }: PhotoViewProps) {
       )}
       <img className="full-photo" src={photoLink} />
       {next && (
-        <div onClick={(e) => stopPropagation(e)}>
+        <div
+          onClick={(e) => {
+            stopPropagation(e)
+            setDeferredPhoto(photoLink)
+          }}
+        >
           <Link to={`/albums/${albumId}/photos/${next.id}`}>
             <RightArrow />
           </Link>
