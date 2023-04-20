@@ -4,16 +4,16 @@ import Drawer from "./Drawer"
 import NavigationDrawer from "./NavigationDrawer"
 import LeftArrow from "../assets/LeftArrow"
 import RightArrow from "../assets/RightArrow"
-import { PhotoData } from "../data/types"
+import { PhotoData, BaseProps } from "../data/types"
 import { useState, useContext } from "react"
 import { DrawerContext } from "../contexts/Drawer"
 
-interface PhotoParams {
-  photo: PhotoData
+interface PhotoProps extends BaseProps {
+  photo?: PhotoData
   albumId?: string
 }
 
-function Photo({ photo, albumId }: PhotoParams) {
+function Photo({ photo, albumId, isLoading }: PhotoProps) {
   const { isOpen, toggle } = useContext(DrawerContext)
   const [touchPosition, setTouchPosition] = useState(null)
   const navigate = useNavigate()
@@ -48,7 +48,13 @@ function Photo({ photo, albumId }: PhotoParams) {
     e.stopPropagation()
   }
 
-  const { id, prev, next } = photo
+  let id, prev, next
+  if (photo) {
+    id = photo.id
+    prev = photo.prev
+    next = photo.next
+  }
+  // const { id, prev, next } = photo
   const photoLink = `${baseUrl}/api/v1/photos/${id}/file`
 
   return (
@@ -73,8 +79,13 @@ function Photo({ photo, albumId }: PhotoParams) {
           </Link>
         </div>
       )}
-      <Drawer photo={photo} />
-      <NavigationDrawer photo={photo} toggleDrawer={isOpen} albumId={albumId} />
+      <Drawer photo={photo} isLoading={isLoading} />
+      <NavigationDrawer
+        photo={photo}
+        toggleDrawer={isOpen}
+        albumId={albumId}
+        isLoading={isLoading}
+      />
     </div>
   )
 }

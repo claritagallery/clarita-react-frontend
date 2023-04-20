@@ -21,6 +21,7 @@ function BreadCrumbs({ breadcrumbs, bg }: BreadcrumbsProps) {
               <img src={homeIcon} alt="home-icon" width={25} height={25} />
             </Link>
           </div>
+
           {breadcrumbs.map((crumb) => {
             return (
               <div key={crumb.id} className="breadcrumb-wrap">

@@ -38,7 +38,7 @@ export type PhotoId = string | undefined
 export type PreviousOrNext = null | PhotoListItem
 
 export interface PhotoData {
-  id: PhotoId
+  id?: PhotoId
   filename: string
   title: string
   description: string
@@ -64,6 +64,9 @@ export interface fetchAlbumsParams {
   parent?: string
 }
 
+export interface BaseProps {
+  isLoading?: boolean
+}
 export type PhotoListData = ListData<PhotoListItem>
 export type AlbumDetailData = AlbumDetailItem
 export type AlbumListData = ListData<AlbumListItem>

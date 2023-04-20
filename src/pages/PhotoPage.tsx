@@ -37,21 +37,10 @@ function PhotoPage({ toggleHeader }: PhotoPageProps) {
     ? photoInAlbumQuery({ albumId, photoId })
     : photoQuery(photoId)
 
-  if (isLoading) {
-    return <h1>Its loading</h1>
-  }
-
   if (isError) {
     return <div>{error ? error.message : "Unknown error"}</div>
   }
 
-  return data ? (
-    <>
-      {" "}
-      <Photo photo={data} albumId={albumId} />{" "}
-    </>
-  ) : (
-    <h1>No Photos here</h1>
-  )
+  return <Photo photo={data} albumId={albumId} isLoading={isLoading} />
 }
 export default PhotoPage
