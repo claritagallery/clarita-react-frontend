@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useDeferredValue, useState, useEffect } from "react"
 
 import AlbumThumb from "./AlbumThumb"
 import { APIError, AlbumListData } from "../data/types"
@@ -7,8 +7,21 @@ import { UseQueryResult } from "react-query"
 type AlbumListParams = UseQueryResult<AlbumListData, APIError>
 
 const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
+  const [deferredAlbums, setDeferredAlbums] = useState(data)
+  const deferredQuery = useDeferredValue(deferredAlbums)
+  useEffect(() => setDeferredAlbums(data), [isLoading])
   if (isLoading) {
-    return <h2>Its loading</h2>
+    const albums = deferredQuery ? deferredQuery.results : []
+
+    return (
+      <>
+        <div className="main-container" style={{ opacity: "0.5" }}>
+          {albums.map((album) => (
+            <AlbumThumb key={album.id} album={album} />
+          ))}
+        </div>
+      </>
+    )
   }
 
   if (isError) {
@@ -16,7 +29,7 @@ const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
   }
   if (data) {
     const albums = data.results
-    console.log(albums)
+
     return (
       <>
         <div className="main-container">

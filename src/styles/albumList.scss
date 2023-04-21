@@ -8,6 +8,9 @@
   row-gap: 1rem;
   justify-content: center;
 
+  .deferredAlbum {
+    opacity: 0.5;
+  }
   .singleAlbum {
     height: 14rem;
     padding: 0;

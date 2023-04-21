@@ -11,7 +11,11 @@ export interface AlbumDetailParams {
 
 const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => {
   if (isLoading) {
-    return <h2>Its loading</h2>
+    return (
+      <div className="breadcrumbs-album">
+        <BreadCrumbs breadcrumbs={[]} bg={false} isLoading={isLoading} />
+      </div>
+    )
   }
 
   if (isError) {

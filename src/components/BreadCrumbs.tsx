@@ -11,7 +11,6 @@ interface BreadcrumbsProps extends BaseProps {
 
 function BreadCrumbs({ breadcrumbs, bg, isLoading }: BreadcrumbsProps) {
   if (isLoading) {
-    console.log("el pana")
     return (
       <div className={`main-crumb-wrapper ${bg && "with-bg"}`}>
         <div className="crumb-nav-wrap">
@@ -26,22 +25,8 @@ function BreadCrumbs({ breadcrumbs, bg, isLoading }: BreadcrumbsProps) {
               <span className="sep">
                 <i className="fa fa-caret-right"></i>
               </span>{" "}
-              <span className="breadcrumb">. . .</span>
+              <span className="breadcrumb">. . . .</span>
             </div>
-            {/* {breadcrumbs.map((crumb) => {
-              return (
-                <div key={crumb.id} className="breadcrumb-wrap">
-                  <span className="sep">
-                    <i className="fa fa-caret-right"></i>
-                  </span>{" "}
-                  <span className="breadcrumb">
-                    <Link className="breadcrumb-link" to={`/albums/${crumb.id}`}>
-                      {crumb.title}
-                    </Link>
-                  </span>
-                </div>
-              )
-            })} */}
           </nav>
         </div>
       </div>
