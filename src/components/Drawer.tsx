@@ -25,7 +25,7 @@ function Drawer({ photo, isLoading }: DrawerProps) {
   }, [windWidth])
 
   if (isLoading) {
-    return <h1>si carga drawer</h1>
+    console.log("drawer loading")
   } else if (photo) {
     return (
       <div
@@ -44,7 +44,7 @@ function Drawer({ photo, isLoading }: DrawerProps) {
       </div>
     )
   }
-  return <h1>No drawer to show</h1>
+  return <h1 style={{ display: "none" }}>No drawer to show</h1>
 }
 
 type DetailsDrawerProps = {

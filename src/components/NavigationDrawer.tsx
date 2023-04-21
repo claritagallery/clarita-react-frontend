@@ -16,7 +16,7 @@ function NavigationDrawer({
   isLoading,
 }: NavigationDrawerProps) {
   if (isLoading) {
-    return <h1>Navigation Drawer loading</h1>
+    console.log("navigation drawer loading")
   } else if (photo) {
     return (
       <div className={`navigation-drawer-container ${toggleDrawer ? "is-open" : ""}  `}>
@@ -28,7 +28,7 @@ function NavigationDrawer({
       </div>
     )
   }
-  return <h1>No navigation drawer to show</h1>
+  return <h1 style={{ display: "none" }}>No navigation drawer to show</h1>
 }
 
 export default NavigationDrawer
