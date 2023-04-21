@@ -16,7 +16,12 @@ function NavigationDrawer({
   isLoading,
 }: NavigationDrawerProps) {
   if (isLoading) {
-    console.log("navigation drawer loading")
+    return (
+      <div className={`navigation-drawer-container ${toggleDrawer ? "is-open" : ""}  `}>
+        <div className="thumb-wrapper"></div>
+        <BreadCrumbs breadcrumbs={[]} bg={true} isLoading={isLoading} />
+      </div>
+    )
   } else if (photo) {
     return (
       <div className={`navigation-drawer-container ${toggleDrawer ? "is-open" : ""}  `}>

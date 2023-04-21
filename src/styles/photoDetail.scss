@@ -15,6 +15,9 @@
     object-position: top center;
     width: 100%;
   }
+  .blurred-picture {
+    filter: blur(3px);
+  }
   .drawer-container {
     bottom: 0rem;
     position: fixed;

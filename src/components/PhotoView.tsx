@@ -1,4 +1,4 @@
-import React, { useState, useDeferredValue, useEffect } from "react"
+import React, { useState, useDeferredValue } from "react"
 import { PhotoData, BaseProps } from "../data/types"
 import { Link } from "react-router-dom"
 import LeftArrow from "../assets/LeftArrow"
@@ -10,9 +10,7 @@ interface PhotoViewProps extends BaseProps {
 
 function PhotoView({ photo, albumId, isLoading }: PhotoViewProps) {
   const baseUrl = process.env.REACT_APP_API_BASE_URL
-  const [deferredPhoto, setDeferredPhoto] = useState(
-    "https://loremflickr.com/cache/resized/65535_52214085447_8f528b2c61_z_640_360_nofilter.jpg",
-  )
+  const [deferredPhoto, setDeferredPhoto] = useState("")
   const deferredQuery = useDeferredValue(deferredPhoto)
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation()
@@ -40,7 +38,7 @@ function PhotoView({ photo, albumId, isLoading }: PhotoViewProps) {
           </Link>
         </div>
       )}
-      <img className="full-photo" src={photoLink} />
+      <img className={`full-photo ${isLoading && "blurred-picture"}`} src={photoLink} />
       {next && (
         <div
           onClick={(e) => {
