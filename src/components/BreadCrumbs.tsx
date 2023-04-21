@@ -22,7 +22,12 @@ function BreadCrumbs({ breadcrumbs, bg, isLoading }: BreadcrumbsProps) {
                 <img src={homeIcon} alt="home-icon" width={25} height={25} />
               </Link>
             </div>
-
+            <div className="breadcrumb-wrap">
+              <span className="sep">
+                <i className="fa fa-caret-right"></i>
+              </span>{" "}
+              <span className="breadcrumb">. . .</span>
+            </div>
             {/* {breadcrumbs.map((crumb) => {
               return (
                 <div key={crumb.id} className="breadcrumb-wrap">
