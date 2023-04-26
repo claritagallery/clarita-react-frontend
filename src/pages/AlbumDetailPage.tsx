@@ -14,13 +14,13 @@ function AlbumDetailPage() {
   const { albumQuery, albumsQuery, photosQuery } = useApi()
 
   const singleAlbumQuery = albumQuery(albumId)
-  const childAlbumsQuery = albumsQuery({ parent: albumId, limit: 100 })
+  const childrenAlbumsQuery = albumsQuery({ parent: albumId, limit: 100 })
   const photos = photosQuery({ album: albumId, limit: 50 })
 
   return (
     <>
       <AlbumDetail {...singleAlbumQuery} />
-      <AlbumList {...childAlbumsQuery} />
+      <AlbumList {...childrenAlbumsQuery} />
       <PhotoList albumId={albumId} {...photos} />
     </>
   )
