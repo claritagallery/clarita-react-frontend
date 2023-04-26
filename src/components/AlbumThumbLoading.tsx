@@ -1,21 +1,22 @@
 import React from "react"
 import { ImageIcon } from "./Icons"
 function AlbumThumbLoading() {
-  return (
-    <div className="main-container">
-      <div className="singleAlbum stacked">
-        <div className="front">
-          <div className="wrapper">
-            <ImageIcon className="icon" />
-          </div>
-          <div className="card-content">
-            <h2 className="name-card">Album Name</h2>
-            <h3 className="date-card">Album Date</h3>
-          </div>
+  const LoadingAlbums = Array(4).fill(
+    <div className="singleAlbum stacked">
+      <div className="front">
+        <div className="wrapper">
+          <ImageIcon className="icon is-loading-img" />
+        </div>
+        <div className="card-content">
+          <div className="animation-name"></div>
+          <div className="animation-date"></div>
         </div>
       </div>
-    </div>
+    </div>,
+    0,
   )
+
+  return <div className="main-container">{LoadingAlbums.map((album) => album)} </div>
 }
 
 export default AlbumThumbLoading
