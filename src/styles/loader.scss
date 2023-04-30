@@ -1,3 +1,4 @@
+@use "./mixins.scss" as mix;
 .dots-wrapper {
   margin: 0 auto; //puse el auto
   margin-top: 3rem;
@@ -9,37 +10,36 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    .yellow {
-      background-color: yellow;
+    .one {
+      background-color: mix.$secondary-color;
     }
 
-    .red {
-      background-color: red;
+    .two {
+      background-color: mix.$important-color;
       animation-delay: 0.1s;
     }
 
-    .blue {
-      background-color: blue;
+    .three {
+      background-color: mix.$visited-color;
       animation-delay: 0.2s;
     }
 
-    .violet {
-      background-color: violet;
+    .four {
+      background-color: rgb(218, 171, 218);
       animation-delay: 0.3s;
     }
-  }
-
-  .dots-container > .dot {
-    width: 3vw;
-    height: 3vw;
-    border-radius: 100%;
-    margin: 2vw;
-    background-image: linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.5) 0%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    animation: bounce 1.5s 0.5s linear infinite;
+    .dot {
+      width: 3vw;
+      height: 3vw;
+      border-radius: 100%;
+      margin: 2vw;
+      background-image: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      animation: bounce 1.5s 0.5s linear infinite;
+    }
   }
 }
 
@@ -58,7 +58,18 @@
     transform: scale(1);
   }
   100% {
-    transform: scale(0.4);
+    transform: scale(1.2);
     filter: blur(0px);
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .dots-wrapper {
+    .dots-container {
+      .dot {
+        width: 1.2vw;
+        height: 1.2vw;
+      }
+    }
   }
 }
