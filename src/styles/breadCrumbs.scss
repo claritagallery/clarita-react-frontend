@@ -24,6 +24,18 @@
     margin-bottom: 1rem;
     font-size: 0.9rem;
   }
+  .loading-info {
+    width: 70%;
+    margin: 1rem auto;
+    .animation-album-name,
+    .animation-album-description {
+      @include mix.animation-loading(40%);
+      margin: 1rem auto;
+    }
+    .animation-album-description {
+      width: 60%;
+    }
+  }
 }
 .bread-crumb-link,
 .bread-crumb-link:hover {
@@ -194,6 +206,11 @@
 }
 
 @media only screen and (min-width: 900px) {
+  .breadcrumbs-album {
+    .loading-info {
+      width: 25%;
+    }
+  }
   .thumb-wrapper + .main-crumb-wrapper {
     position: relative;
     top: -4rem;
@@ -214,6 +231,21 @@
           }
         }
       }
+    }
+  }
+}
+
+@media only screen and (min-device-width: 600px) and (max-device-width: 900px) {
+  .breadcrumbs-album {
+    .loading-info {
+      width: 50%;
+    }
+  }
+}
+@media only screen and (min-width: 1900px) {
+  .breadcrumbs-album {
+    .loading-info {
+      width: 15%;
     }
   }
 }

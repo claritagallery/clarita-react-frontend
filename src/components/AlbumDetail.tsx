@@ -13,6 +13,12 @@ const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => 
   if (isLoading) {
     return (
       <div className="breadcrumbs-album">
+        <div className="loading-info">
+          {" "}
+          <div className="animation-album-name"></div>
+          <div className="animation-album-description"></div>
+        </div>
+
         <BreadCrumbs breadcrumbs={[]} bg={false} isLoading={isLoading} />
       </div>
     )

@@ -65,9 +65,10 @@
       }
       .animation-name,
       .animation-date {
-        animation: pulse 2s infinite;
-        width: 80%;
-        height: 1rem;
+        @include mix.animation-loading(80%);
+        // animation: pulse 2s infinite;
+        // width: 80%;
+        // height: 1rem;
       }
       .animation-date {
         margin-top: 0.9rem;
