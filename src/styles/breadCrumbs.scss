@@ -6,7 +6,7 @@
   transition: color ease-in-out 0.3s, background ease-in-out 0.2s;
 }
 
-.breadcrumbs-album {
+.album-detail-wrap {
   .title-detail-album {
     text-align: center;
     margin-bottom: 1rem;
@@ -206,7 +206,7 @@
 }
 
 @media only screen and (min-width: 900px) {
-  .breadcrumbs-album {
+  .album-detail-wrap {
     .loading-info {
       width: 25%;
     }
@@ -236,14 +236,14 @@
 }
 
 @media only screen and (min-device-width: 600px) and (max-device-width: 900px) {
-  .breadcrumbs-album {
+  .album-detail-wrap {
     .loading-info {
       width: 50%;
     }
   }
 }
 @media only screen and (min-width: 1900px) {
-  .breadcrumbs-album {
+  .album-detail-wrap {
     .loading-info {
       width: 15%;
     }
