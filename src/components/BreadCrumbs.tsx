@@ -10,29 +10,6 @@ interface BreadcrumbsProps extends BaseProps {
 }
 
 function BreadCrumbs({ breadcrumbs, bg, isLoading }: BreadcrumbsProps) {
-  if (isLoading) {
-    return (
-      <div className={`main-crumb-wrapper ${bg && "with-bg"}`}>
-        <div className="crumb-nav-wrap">
-          <nav className="nav">
-            <div className="breadcrumb-wrap">
-              <Link to="/">
-                {" "}
-                <img src={homeIcon} alt="home-icon" width={25} height={25} />
-              </Link>
-            </div>
-            <div className="breadcrumb-wrap">
-              <span className="sep">
-                <i className="fa fa-caret-right"></i>
-              </span>{" "}
-              <span className="breadcrumb">. . . .</span>
-            </div>
-          </nav>
-        </div>
-      </div>
-    )
-  }
-  // if (!breadcrumbs.length) return null
   return (
     <div className={`main-crumb-wrapper ${bg && "with-bg"}`}>
       <div className="crumb-nav-wrap">
@@ -44,20 +21,29 @@ function BreadCrumbs({ breadcrumbs, bg, isLoading }: BreadcrumbsProps) {
             </Link>
           </div>
 
-          {breadcrumbs.map((crumb) => {
-            return (
-              <div key={crumb.id} className="breadcrumb-wrap">
-                <span className="sep">
-                  <i className="fa fa-caret-right"></i>
-                </span>{" "}
-                <span className="breadcrumb">
-                  <Link className="breadcrumb-link" to={`/albums/${crumb.id}`}>
-                    {crumb.title}
-                  </Link>
-                </span>
-              </div>
-            )
-          })}
+          {isLoading ? (
+            <div className="breadcrumb-wrap">
+              <span className="sep">
+                <i className="fa fa-caret-right"></i>
+              </span>{" "}
+              <span className="breadcrumb">. . . .</span>
+            </div>
+          ) : (
+            breadcrumbs.map((crumb) => {
+              return (
+                <div key={crumb.id} className="breadcrumb-wrap">
+                  <span className="sep">
+                    <i className="fa fa-caret-right"></i>
+                  </span>{" "}
+                  <span className="breadcrumb">
+                    <Link className="breadcrumb-link" to={`/albums/${crumb.id}`}>
+                      {crumb.title}
+                    </Link>
+                  </span>
+                </div>
+              )
+            })
+          )}
         </nav>
       </div>
     </div>
