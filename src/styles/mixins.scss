@@ -9,6 +9,19 @@
   width: $width;
 }
 
+@mixin animation-loading($width) {
+  animation: pulse 2s infinite;
+  width: $width;
+  height: 1rem;
+}
+@keyframes pulse {
+  0% {
+    background-color: rgb(156, 155, 155);
+  }
+  100% {
+    background-color: rgb(217, 213, 213);
+  }
+}
 $main-background-color: rgba(101, 185, 171, 0.2);
 $darker-background-color: rgb(212, 236, 232);
 $clear-background-color: rgb(242, 243, 247);

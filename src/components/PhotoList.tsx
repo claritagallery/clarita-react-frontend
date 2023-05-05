@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import photoUrl from "../utils/photoUrl"
 import { PhotoListItem, APIError } from "../data/types"
 import getRandomPic from "../data/apiPhoto"
+import Loader from "./Loader"
 
 export interface PhotoListParams {
   albumId?: string
@@ -20,7 +21,7 @@ export interface PhotoListParams {
 const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams) => {
   data
   if (isLoading) {
-    return <h1>its charging boy</h1>
+    return <Loader />
   }
 
   if (isError) {

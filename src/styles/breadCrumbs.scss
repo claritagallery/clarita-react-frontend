@@ -6,7 +6,7 @@
   transition: color ease-in-out 0.3s, background ease-in-out 0.2s;
 }
 
-.breadcrumbs-album {
+.album-detail-wrap {
   .title-detail-album {
     text-align: center;
     margin-bottom: 1rem;
@@ -23,6 +23,18 @@
     padding-right: 1rem;
     margin-bottom: 1rem;
     font-size: 0.9rem;
+  }
+  .loading-info {
+    width: 70%;
+    margin: 1rem auto;
+    .animation-album-name,
+    .animation-album-description {
+      @include mix.animation-loading(40%);
+      margin: 1rem auto;
+    }
+    .animation-album-description {
+      width: 60%;
+    }
   }
 }
 .bread-crumb-link,
@@ -194,9 +206,14 @@
 }
 
 @media only screen and (min-width: 900px) {
+  .album-detail-wrap {
+    .loading-info {
+      width: 25%;
+    }
+  }
   .thumb-wrapper + .main-crumb-wrapper {
     position: relative;
-    top: -6rem;
+    top: -4rem;
     background-color: transparent;
     color: mix.$clear-background-color;
     .crumb-nav-wrap {
@@ -214,6 +231,21 @@
           }
         }
       }
+    }
+  }
+}
+
+@media only screen and (min-device-width: 600px) and (max-device-width: 900px) {
+  .album-detail-wrap {
+    .loading-info {
+      width: 50%;
+    }
+  }
+}
+@media only screen and (min-width: 1900px) {
+  .album-detail-wrap {
+    .loading-info {
+      width: 15%;
     }
   }
 }

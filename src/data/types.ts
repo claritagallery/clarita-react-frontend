@@ -64,6 +64,9 @@ export interface fetchAlbumsParams {
   parent?: string
 }
 
+export interface BaseProps {
+  isLoading?: boolean
+}
 export type PhotoListData = ListData<PhotoListItem>
 export type AlbumDetailData = AlbumDetailItem
 export type AlbumListData = ListData<AlbumListItem>
