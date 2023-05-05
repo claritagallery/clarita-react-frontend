@@ -26,13 +26,15 @@
         border-radius: 2px;
         padding: 1rem;
         max-height: 30px;
-        max-width: 120px;
+        width: 120px;
         display: inline-flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         cursor: pointer;
         overflow: hidden;
         text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
       }
       .button-thumb:hover {
         @include mix.button-hover;
