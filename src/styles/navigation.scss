@@ -111,7 +111,7 @@
     @include mix.input-styles(0.2rem, 80%, 60%);
   }
   .links {
-    color: mix.$main-background-color;
+    color: mix.$clear-background-color;
   }
 
   .links:hover,
