@@ -66,21 +66,10 @@
       .animation-name,
       .animation-date {
         @include mix.animation-loading(80%);
-        // animation: pulse 2s infinite;
-        // width: 80%;
-        // height: 1rem;
       }
       .animation-date {
         margin-top: 0.9rem;
         width: 60%;
-      }
-      @keyframes pulse {
-        0% {
-          background-color: rgb(156, 155, 155);
-        }
-        100% {
-          background-color: rgb(217, 213, 213);
-        }
       }
     }
   }

@@ -10,7 +10,7 @@ type AlbumListParams = UseQueryResult<AlbumListData, APIError>
 
 const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
   if (isLoading) {
-    return <AlbumThumbLoading />
+    return <AlbumThumbLoading num={4} />
   }
 
   if (isError) {

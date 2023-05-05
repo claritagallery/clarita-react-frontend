@@ -1,7 +1,8 @@
 import React from "react"
 import { ImageIcon } from "./Icons"
-function AlbumThumbLoading() {
-  const LoadingAlbums = Array(4).fill(
+
+function AlbumThumbPlaceHolder() {
+  return (
     <div className="singleAlbum stacked">
       <div className="front">
         <div className="wrapper">
@@ -12,11 +13,18 @@ function AlbumThumbLoading() {
           <div className="animation-date"></div>
         </div>
       </div>
-    </div>,
-    0,
+    </div>
   )
+}
 
-  return <div className="main-container">{LoadingAlbums.map((album) => album)} </div>
+function AlbumThumbLoading({ num }: { num: number }) {
+  return (
+    <div className="main-container">
+      {Array(num)
+        .fill(<AlbumThumbPlaceHolder />, 0)
+        .map((album) => album)}
+    </div>
+  )
 }
 
 export default AlbumThumbLoading
