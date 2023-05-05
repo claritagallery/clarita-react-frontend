@@ -38,7 +38,7 @@ export type PhotoId = string | undefined
 export type PreviousOrNext = null | PhotoListItem
 
 export interface PhotoData {
-  id?: PhotoId
+  id: PhotoId
   filename: string
   title: string
   description: string
