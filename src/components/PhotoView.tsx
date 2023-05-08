@@ -42,7 +42,7 @@ function PhotoView({ photo, albumId, isLoading, isBigScreen }: PhotoViewProps) {
       )}
 
       {isBigScreen ? (
-        <PhotoZoom photoLink={photoLink} isLoading={isLoading} />
+        <PhotoZoom image={photoLink} isLoading={isLoading} />
       ) : (
         <img className={`full-photo ${isLoading && "blurred-picture"}`} src={photoLink} />
       )}
