@@ -34,13 +34,23 @@ function App() {
                     <Route path="/" element={<AlbumListPage />} />
                     <Route
                       path="/albums/:albumId/photos/:photoId"
-                      element={<PhotoPage toggleHeader={setShowHeader} />}
+                      element={
+                        <PhotoPage
+                          isBigScreen={showHeader}
+                          toggleHeader={setShowHeader}
+                        />
+                      }
                     />
                     <Route path="/albums/:albumId" element={<AlbumDetailPage />} />
                     <Route path="/albums" element={<AlbumListPage />} />
                     <Route
                       path="/photos/:photoId"
-                      element={<PhotoPage toggleHeader={setShowHeader} />}
+                      element={
+                        <PhotoPage
+                          isBigScreen={showHeader}
+                          toggleHeader={setShowHeader}
+                        />
+                      }
                     />
                     <Route path="/photos" element={<PhotoListPage />} />
                     <Route element={<NotFound />} />

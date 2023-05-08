@@ -6,12 +6,13 @@ import Photo from "../components/Photo"
 
 type PhotoPageProps = {
   toggleHeader: React.Dispatch<React.SetStateAction<boolean>>
+  isBigScreen: boolean
 }
 type PhotoDetailParams = {
   photoId: string
   albumId?: string
 }
-function PhotoPage({ toggleHeader }: PhotoPageProps) {
+function PhotoPage({ toggleHeader, isBigScreen }: PhotoPageProps) {
   const [windWidth, setWindWidth] = useState(window.innerWidth)
   function isNavShowing() {
     setWindWidth(window.innerWidth)
@@ -41,6 +42,13 @@ function PhotoPage({ toggleHeader }: PhotoPageProps) {
     return <div>{error ? error.message : "Unknown error"}</div>
   }
 
-  return <Photo photo={data} albumId={albumId} isLoading={isLoading} />
+  return (
+    <Photo
+      photo={data}
+      albumId={albumId}
+      isLoading={isLoading}
+      isBigScreen={isBigScreen}
+    />
+  )
 }
 export default PhotoPage

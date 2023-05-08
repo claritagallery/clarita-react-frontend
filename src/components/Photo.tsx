@@ -10,9 +10,10 @@ import { PhotoData, BaseProps } from "../data/types"
 interface PhotoProps extends BaseProps {
   photo?: PhotoData
   albumId?: string
+  isBigScreen: boolean
 }
 
-function Photo({ photo, albumId, isLoading }: PhotoProps) {
+function Photo({ photo, albumId, isLoading, isBigScreen }: PhotoProps) {
   const { isOpen, toggle } = useContext(DrawerContext)
   const [touchPosition, setTouchPosition] = useState(null)
   const navigate = useNavigate()
@@ -48,7 +49,12 @@ function Photo({ photo, albumId, isLoading }: PhotoProps) {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
     >
-      <PhotoView photo={photo} albumId={albumId} isLoading={isLoading} />
+      <PhotoView
+        photo={photo}
+        albumId={albumId}
+        isLoading={isLoading}
+        isBigScreen={isBigScreen}
+      />
       <Drawer photo={photo} isLoading={isLoading} />
       <NavigationDrawer
         photo={photo}

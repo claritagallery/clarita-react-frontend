@@ -3,12 +3,14 @@ import { PhotoData, BaseProps } from "../data/types"
 import { Link } from "react-router-dom"
 import LeftArrow from "../assets/LeftArrow"
 import RightArrow from "../assets/RightArrow"
+import PhotoZoom from "./PhotoZoom"
 interface PhotoViewProps extends BaseProps {
   photo?: PhotoData
   albumId?: string
+  isBigScreen: boolean
 }
 
-function PhotoView({ photo, albumId, isLoading }: PhotoViewProps) {
+function PhotoView({ photo, albumId, isLoading, isBigScreen }: PhotoViewProps) {
   const baseUrl = process.env.REACT_APP_API_BASE_URL
   const [deferredPhoto, setDeferredPhoto] = useState("")
   const deferredQuery = useDeferredValue(deferredPhoto)
@@ -38,7 +40,12 @@ function PhotoView({ photo, albumId, isLoading }: PhotoViewProps) {
           </Link>
         </div>
       )}
-      <img className={`full-photo ${isLoading && "blurred-picture"}`} src={photoLink} />
+
+      {isBigScreen ? (
+        <PhotoZoom photoLink={photoLink} isLoading={isLoading} />
+      ) : (
+        <img className={`full-photo ${isLoading && "blurred-picture"}`} src={photoLink} />
+      )}
       {next && (
         <div
           onClick={(e) => {
