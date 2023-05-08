@@ -45,11 +45,12 @@
       justify-content: center;
       align-items: flex-start;
       padding: 0.5rem;
+      padding-top: 0;
       height: 100%;
       color: black;
       .name-card,
       .date-card {
-        font-size: 0.8rem;
+        font-size: 0.6rem;
         font-weight: 500;
         white-space: nowrap;
         overflow: hidden;
@@ -61,7 +62,7 @@
       }
       .name-card {
         font-weight: 600;
-        font-size: 1rem;
+        font-size: 0.8rem;
       }
       .animation-name,
       .animation-date {
@@ -84,24 +85,27 @@
   }
 }
 @media only screen and (min-width: 700px) {
-  .singleAlbum:hover {
-    transform: scale(1.2);
-    z-index: 1;
-    background-color: mix.$darker-background-color;
+  .main-container {
+    .singleAlbum:hover {
+      transform: scale(1.2);
+      height: fit-content;
+      z-index: 1;
+      background-color: mix.$darker-background-color;
 
-    .icon {
-      position: relative;
-      aspect-ratio: auto;
-      transform: scale(1);
-    }
-    .card-content {
-      position: relative;
-      width: 100%;
-
-      .name-card,
-      .date-card {
+      .icon {
+        position: relative;
+        aspect-ratio: auto;
         transform: scale(1);
-        white-space: break-spaces;
+      }
+      .card-content {
+        position: relative;
+        width: 100%;
+
+        .name-card,
+        .date-card {
+          transform: scale(1);
+          white-space: break-spaces;
+        }
       }
     }
   }

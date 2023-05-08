@@ -26,7 +26,6 @@ const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
           <AlbumThumb key={album.id} album={album} />
         ))}
       </div>
-      {albums.length > 0 && <hr className="separator" />}
     </>
   )
 }

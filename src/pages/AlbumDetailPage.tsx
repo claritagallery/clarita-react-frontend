@@ -21,6 +21,7 @@ function AlbumDetailPage() {
     <>
       <AlbumDetail {...singleAlbumQuery} />
       <AlbumList {...childrenAlbumsQuery} />
+      {photos.isSuccess && childrenAlbumsQuery.isSuccess && <hr className="separator" />}
       <PhotoList albumId={albumId} {...photos} />
     </>
   )

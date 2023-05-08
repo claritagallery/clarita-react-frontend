@@ -54,9 +54,9 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
                 ...wrapperStyle,
               }}
             >
-              {renderDefaultPhoto({ wrapped: true })}
-
               <Link to={photoUrl(photo.id, albumId)}>
+                {renderDefaultPhoto({ wrapped: true })}
+
                 <div className="picture-info">
                   {photo.title && <h4 className="picture-title"> {photo.title}</h4>}
                   <h5 className="picture-date">{photo.date}</h5>
