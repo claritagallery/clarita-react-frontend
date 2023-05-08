@@ -16,7 +16,7 @@ function AlbumDetailPage() {
   const singleAlbumQuery = albumQuery(albumId)
   const childrenAlbumsQuery = albumsQuery({ parent: albumId, limit: 100 })
   const photos = photosQuery({ album: albumId, limit: 50 })
-  console.log(childrenAlbumsQuery)
+
   return (
     <>
       <AlbumDetail {...singleAlbumQuery} />
@@ -28,7 +28,3 @@ function AlbumDetailPage() {
 }
 
 export default AlbumDetailPage
-
-// {
-//   albums.length === 0 && <hr className="separator" />
-// }
