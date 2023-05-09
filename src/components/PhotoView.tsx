@@ -1,4 +1,4 @@
-import React, { useState, useDeferredValue } from "react"
+import React, { useState, useDeferredValue, useEffect } from "react"
 import { PhotoData, BaseProps } from "../data/types"
 import { Link } from "react-router-dom"
 import LeftArrow from "../assets/LeftArrow"
@@ -11,6 +11,7 @@ interface PhotoViewProps extends BaseProps {
 }
 
 function PhotoView({ photo, albumId, isLoading, isBigScreen }: PhotoViewProps) {
+  const [isBeenClicked, setIsBeenClicked] = useState(false)
   const baseUrl = process.env.REACT_APP_API_BASE_URL
   const [deferredPhoto, setDeferredPhoto] = useState("")
   const deferredQuery = useDeferredValue(deferredPhoto)
@@ -23,6 +24,12 @@ function PhotoView({ photo, albumId, isLoading, isBigScreen }: PhotoViewProps) {
     id = photo.id
     prev = photo.prev
     next = photo.next
+  }
+
+  useEffect(() => setIsBeenClicked(false), [id])
+
+  function zoomItUp() {
+    setIsBeenClicked(true)
   }
 
   const photoLink = isLoading ? deferredQuery : `${baseUrl}/api/v1/photos/${id}/file`
@@ -41,10 +48,14 @@ function PhotoView({ photo, albumId, isLoading, isBigScreen }: PhotoViewProps) {
         </div>
       )}
 
-      {isBigScreen ? (
+      {isBigScreen && isBeenClicked ? (
         <PhotoZoom image={photoLink} isLoading={isLoading} />
       ) : (
-        <img className={`full-photo ${isLoading && "blurred-picture"}`} src={photoLink} />
+        <img
+          onClick={zoomItUp}
+          className={`full-photo ${isLoading && "blurred-picture"}`}
+          src={photoLink}
+        />
       )}
       {next && (
         <div

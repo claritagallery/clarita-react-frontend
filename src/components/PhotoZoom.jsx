@@ -123,13 +123,16 @@ function PhotoZoom({ image, isLoading }) {
     draw()
   }, [zoom])
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} className="full-photo-container">
       <canvas
-        onWheel={handleWheel}
+        style={{ border: "2px solid red" }}
+        className="full-photo"
+        // style={{ position: "absolute", top: 0, left: 0 }}
+        // onWheel={handleWheel}
         ref={canvasRef}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
+        // onMouseDown={handleMouseDown}
+        // onMouseUp={handleMouseUp}
+        // onMouseMove={handleMouseMove}
       />
     </div>
   )
