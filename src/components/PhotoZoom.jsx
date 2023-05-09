@@ -1,5 +1,6 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
 import { BaseProps } from "../data/types"
+import useScrollBlock from "../hooks/useScrollBlock"
 // type PhotoZoomParams = {
 //   image: string
 //   isLoading: boolean | undefined
@@ -10,6 +11,7 @@ const MAX_ZOOM = 5
 const MIN_ZOOM = 0.1
 
 function PhotoZoom({ image, isLoading }) {
+  const [blockScroll, allowScroll] = useScrollBlock()
   const [zoom, setZoom] = useState(1)
   const [offset, setOffset] = useState({ x: 0, y: 0 })
   const [dragging, setDragging] = useState(false) //
