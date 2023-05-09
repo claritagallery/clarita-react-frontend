@@ -11,7 +11,7 @@ function Drawer({ photo, isLoading }: DrawerProps) {
   const desktopWidthThreshold = 900
   const { isOpen } = useContext(DrawerContext)
   const [windWidth, setWindWidth] = useState(window.innerWidth)
-  console.log(windWidth)
+
   function isNavShowing() {
     setWindWidth(window.innerWidth)
     console.log(windWidth)

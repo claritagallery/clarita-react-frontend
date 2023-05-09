@@ -10,7 +10,7 @@ const SCROLL_SENSITIVITY = 0.0005
 const MAX_ZOOM = 5
 const MIN_ZOOM = 0.1
 
-function PhotoZoom({ image, isLoading }) {
+function PhotoZoom({ image, isLoading, exit }) {
   const [blockScroll, allowScroll] = useScrollBlock()
   const [zoom, setZoom] = useState(1)
   const [offset, setOffset] = useState({ x: 0, y: 0 })
@@ -21,40 +21,38 @@ function PhotoZoom({ image, isLoading }) {
   const containerRef = useRef(null)
   const observer = useRef(null)
   const background = useMemo(() => new Image(), [image])
-  console.log(background)
 
   const clamp = (num, min, max) => Math.min(Math.max(num, min), max)
 
   function handleWheel(event) {
     const { deltaY } = event
-    console.log(deltaY)
-    if (!dragging) {
-      setZoom((zoom) =>
-        clamp(zoom + deltaY * SCROLL_SENSITIVITY * -1, MIN_ZOOM, MAX_ZOOM),
-      )
-    }
+    blockScroll()
+    setZoom((zoom) => clamp(zoom + deltaY * SCROLL_SENSITIVITY * -1, MIN_ZOOM, MAX_ZOOM))
   }
 
   function handleMouseMove(event) {
     if (dragging) {
+      blockScroll()
       console.log(touch)
       console.log(event)
+
       const { x, y } = touch.current
       const { clientX, clientY } = event
-      setOffset((prev) => ({
-        ...prev,
-        x: prev.x + (x - clientX),
-        y: prev.y + (y - clientY),
-      }))
+      setOffset({
+        x: offset.x + (x - clientX),
+        y: offset.y + (y - clientY),
+      })
       touch.current = { x: clientX, y: clientY }
     }
   }
 
   function handleMouseDown(event) {
-    console.log(event)
+    blockScroll()
     const { clientX, clientY } = event
+
     touch.current = { x: clientX, y: clientY }
     setDragging(true)
+    console.log(touch.current)
   }
 
   const handleMouseUp = () => setDragging(false)
@@ -128,13 +126,13 @@ function PhotoZoom({ image, isLoading }) {
     <div ref={containerRef} className="full-photo-container">
       <canvas
         style={{ border: "2px solid red" }}
-        className="full-photo"
-        // style={{ position: "absolute", top: 0, left: 0 }}
-        // onWheel={handleWheel}
+        onClick={exit}
+        className="full-photo-zoomed"
+        onWheel={handleWheel}
         ref={canvasRef}
-        // onMouseDown={handleMouseDown}
-        // onMouseUp={handleMouseUp}
-        // onMouseMove={handleMouseMove}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
       />
     </div>
   )

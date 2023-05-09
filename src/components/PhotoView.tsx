@@ -26,7 +26,9 @@ function PhotoView({ photo, albumId, isLoading, isBigScreen }: PhotoViewProps) {
     next = photo.next
   }
 
-  useEffect(() => setIsBeenClicked(false), [id])
+  function exitZoom() {
+    setIsBeenClicked(false)
+  }
 
   function zoomItUp() {
     setIsBeenClicked(true)
@@ -49,7 +51,7 @@ function PhotoView({ photo, albumId, isLoading, isBigScreen }: PhotoViewProps) {
       )}
 
       {isBigScreen && isBeenClicked ? (
-        <PhotoZoom image={photoLink} isLoading={isLoading} />
+        <PhotoZoom image={photoLink} isLoading={isLoading} exit={exitZoom} />
       ) : (
         <img
           onClick={zoomItUp}
