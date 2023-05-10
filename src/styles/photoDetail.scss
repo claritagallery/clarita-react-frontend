@@ -196,12 +196,17 @@
       width: 60%;
       max-height: 80%;
     }
-  }
-  .full-photo-zoomed {
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 1;
-    border: 1px solid red;
+    .canvas-container {
+      width: 100vw;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+      .full-photo-zoomed {
+        position: relative;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 1;
+      }
+    }
   }
 }

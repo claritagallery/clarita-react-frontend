@@ -125,7 +125,7 @@ function PhotoZoom({ image, isLoading, exit, toggleHeader }) {
     draw()
   }, [zoom])
   return (
-    <div ref={containerRef} className="full-photo-container">
+    <div ref={containerRef} className="canvas-container">
       <canvas
         onClick={exit}
         className="full-photo-zoomed"
