@@ -47,6 +47,7 @@ function PhotoPage({ toggleHeader, isBigScreen }: PhotoPageProps) {
       photo={data}
       albumId={albumId}
       isLoading={isLoading}
+      toggleHeader={toggleHeader}
       isBigScreen={isBigScreen}
     />
   )

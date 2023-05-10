@@ -10,7 +10,9 @@ const SCROLL_SENSITIVITY = 0.0005
 const MAX_ZOOM = 5
 const MIN_ZOOM = 0.1
 
-function PhotoZoom({ image, isLoading, exit }) {
+function PhotoZoom({ image, isLoading, exit, toggleHeader }) {
+  // useEffect(() => toggleHeader(false), [])
+
   const [blockScroll, allowScroll] = useScrollBlock()
   const [zoom, setZoom] = useState(1)
   const [offset, setOffset] = useState({ x: 0, y: 0 })
@@ -125,7 +127,6 @@ function PhotoZoom({ image, isLoading, exit }) {
   return (
     <div ref={containerRef} className="full-photo-container">
       <canvas
-        style={{ border: "2px solid red" }}
         onClick={exit}
         className="full-photo-zoomed"
         onWheel={handleWheel}

@@ -8,13 +8,22 @@ interface PhotoViewProps extends BaseProps {
   photo?: PhotoData
   albumId?: string
   isBigScreen: boolean
+  toggleHeader: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function PhotoView({ photo, albumId, isLoading, isBigScreen }: PhotoViewProps) {
-  const [isBeenClicked, setIsBeenClicked] = useState(false)
-  const baseUrl = process.env.REACT_APP_API_BASE_URL
+function PhotoView({
+  photo,
+  albumId,
+  isLoading,
+  isBigScreen,
+  toggleHeader,
+}: PhotoViewProps) {
   const [deferredPhoto, setDeferredPhoto] = useState("")
+  const [isBeenClicked, setIsBeenClicked] = useState(false)
+
+  const baseUrl = process.env.REACT_APP_API_BASE_URL
   const deferredQuery = useDeferredValue(deferredPhoto)
+
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation()
   }
@@ -51,7 +60,12 @@ function PhotoView({ photo, albumId, isLoading, isBigScreen }: PhotoViewProps) {
       )}
 
       {isBigScreen && isBeenClicked ? (
-        <PhotoZoom image={photoLink} isLoading={isLoading} exit={exitZoom} />
+        <PhotoZoom
+          image={photoLink}
+          isLoading={isLoading}
+          exit={exitZoom}
+          toggleHeader={toggleHeader}
+        />
       ) : (
         <img
           onClick={zoomItUp}

@@ -11,9 +11,10 @@ interface PhotoProps extends BaseProps {
   photo?: PhotoData
   albumId?: string
   isBigScreen: boolean
+  toggleHeader: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function Photo({ photo, albumId, isLoading, isBigScreen }: PhotoProps) {
+function Photo({ photo, albumId, isLoading, isBigScreen, toggleHeader }: PhotoProps) {
   const { isOpen, toggle } = useContext(DrawerContext)
   const [touchPosition, setTouchPosition] = useState(null)
   const navigate = useNavigate()
@@ -54,6 +55,7 @@ function Photo({ photo, albumId, isLoading, isBigScreen }: PhotoProps) {
         albumId={albumId}
         isLoading={isLoading}
         isBigScreen={isBigScreen}
+        toggleHeader={toggleHeader}
       />
       <Drawer photo={photo} isLoading={isLoading} />
       <NavigationDrawer
