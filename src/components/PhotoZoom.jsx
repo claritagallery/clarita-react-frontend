@@ -8,7 +8,7 @@ import useScrollBlock from "../hooks/useScrollBlock"
 
 const SCROLL_SENSITIVITY = 0.0005
 const MAX_ZOOM = 5
-const MIN_ZOOM = 0.1
+const MIN_ZOOM = 0.2
 
 function PhotoZoom({ image, isLoading, exit, setIsBigScreen }) {
   // useEffect(() =>setIsBigScreen(false), [])

@@ -14,6 +14,7 @@
     object-fit: contain;
     object-position: top center;
     width: 100%;
+    z-index: 1;
   }
   .blurred-picture {
     opacity: 0.2;
@@ -31,11 +32,11 @@
       justify-content: center;
       align-items: center;
       background-color: mix.$darker-background-color;
-      height: 6vh;
+      height: 3vh;
       padding-bottom: 1rem;
       flex-direction: column-reverse;
       h4 {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
         color: mix.$secondary-color;
       }
       .toggle-drawer {
@@ -63,7 +64,7 @@
     .info-open-drawer {
       height: 15vh;
       background-color: mix.$clear-background-color;
-      padding: 1rem;
+      padding: 0.5rem;
       p,
       span {
         text-align: center;
@@ -166,7 +167,7 @@
         }
       }
       .info-open-drawer {
-        height: 6vh;
+        height: 4vh;
         display: flex;
         justify-content: flex-start;
         .description {
@@ -193,8 +194,8 @@
     }
     .full-photo {
       margin: 0 auto;
-      width: 60%;
-      max-height: 80%;
+      width: 70%;
+      max-height: 60%;
     }
     .canvas-container {
       width: 100vw;

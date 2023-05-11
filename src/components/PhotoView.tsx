@@ -12,6 +12,9 @@ interface PhotoViewProps extends BaseProps {
   setDeferredPhoto: React.Dispatch<React.SetStateAction<string>>
   deferredQuery: string
   photoLink: string
+  // zoomItUp: () => void
+  // exitZoom: () => void
+  // isBeenClicked: boolean
 }
 
 function PhotoView({
@@ -23,7 +26,10 @@ function PhotoView({
   setDeferredPhoto,
   deferredQuery,
   photoLink,
-}: PhotoViewProps) {
+}: // zoomItUp,
+// exitZoom,
+// isBeenClicked,
+PhotoViewProps) {
   const [isBeenClicked, setIsBeenClicked] = useState(false)
 
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
@@ -42,6 +48,7 @@ function PhotoView({
   }
 
   function zoomItUp() {
+    console.log("porque tardo?")
     setIsBeenClicked(true)
   }
 
