@@ -5,8 +5,10 @@ import { Link } from "react-router-dom"
 interface PhotoThumbParams {
   photo: PreviousOrNext
   albumId?: string
+  setDeferredPhoto: React.Dispatch<React.SetStateAction<string>>
+  photoLink: string
 }
-function PhotoThumb({ photo, albumId }: PhotoThumbParams) {
+function PhotoThumb({ photo, albumId, setDeferredPhoto, photoLink }: PhotoThumbParams) {
   if (!photo) {
     return null
   }
@@ -16,7 +18,9 @@ function PhotoThumb({ photo, albumId }: PhotoThumbParams) {
   return (
     <div className="thumb" onClick={(e) => e.stopPropagation()}>
       <Link to={url}>
-        <button className="button-thumb">{title}</button>
+        <button onClick={() => setDeferredPhoto(photoLink)} className="button-thumb">
+          {title}
+        </button>
       </Link>
     </div>
   )

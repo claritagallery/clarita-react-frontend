@@ -19,11 +19,11 @@ const queryClient = new QueryClient({
 })
 
 function App() {
-  const [showHeader, setShowHeader] = React.useState<boolean>(true)
+  const [isBigScreen, setIsBigScreen] = React.useState<boolean>(true)
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        {showHeader && <Header />}
+        {isBigScreen && <Header />}
 
         <div className="Main">
           <div>
@@ -36,8 +36,8 @@ function App() {
                       path="/albums/:albumId/photos/:photoId"
                       element={
                         <PhotoPage
-                          isBigScreen={showHeader}
-                          toggleHeader={setShowHeader}
+                          isBigScreen={isBigScreen}
+                          setIsBigScreen={setIsBigScreen}
                         />
                       }
                     />
@@ -47,8 +47,8 @@ function App() {
                       path="/photos/:photoId"
                       element={
                         <PhotoPage
-                          isBigScreen={showHeader}
-                          toggleHeader={setShowHeader}
+                          isBigScreen={isBigScreen}
+                          setIsBigScreen={setIsBigScreen}
                         />
                       }
                     />

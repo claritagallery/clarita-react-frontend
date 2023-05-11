@@ -1,4 +1,4 @@
-import React, { useState, useDeferredValue, useEffect } from "react"
+import React, { useState } from "react"
 import { PhotoData, BaseProps } from "../data/types"
 import { Link } from "react-router-dom"
 import LeftArrow from "../assets/LeftArrow"
@@ -8,7 +8,10 @@ interface PhotoViewProps extends BaseProps {
   photo?: PhotoData
   albumId?: string
   isBigScreen: boolean
-  toggleHeader: React.Dispatch<React.SetStateAction<boolean>>
+  setIsBigScreen: React.Dispatch<React.SetStateAction<boolean>>
+  setDeferredPhoto: React.Dispatch<React.SetStateAction<string>>
+  deferredQuery: string
+  photoLink: string
 }
 
 function PhotoView({
@@ -16,13 +19,12 @@ function PhotoView({
   albumId,
   isLoading,
   isBigScreen,
-  toggleHeader,
+  setIsBigScreen,
+  setDeferredPhoto,
+  deferredQuery,
+  photoLink,
 }: PhotoViewProps) {
-  const [deferredPhoto, setDeferredPhoto] = useState("")
   const [isBeenClicked, setIsBeenClicked] = useState(false)
-
-  const baseUrl = process.env.REACT_APP_API_BASE_URL
-  const deferredQuery = useDeferredValue(deferredPhoto)
 
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation()
@@ -43,7 +45,6 @@ function PhotoView({
     setIsBeenClicked(true)
   }
 
-  const photoLink = isLoading ? deferredQuery : `${baseUrl}/api/v1/photos/${id}/file`
   return (
     <>
       {prev && (
@@ -64,7 +65,7 @@ function PhotoView({
           image={photoLink}
           isLoading={isLoading}
           exit={exitZoom}
-          toggleHeader={toggleHeader}
+          setIsBigScreen={setIsBigScreen}
         />
       ) : (
         <img

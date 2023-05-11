@@ -10,15 +10,15 @@ const SCROLL_SENSITIVITY = 0.0005
 const MAX_ZOOM = 5
 const MIN_ZOOM = 0.1
 
-function PhotoZoom({ image, isLoading, exit, toggleHeader }) {
-  // useEffect(() => toggleHeader(false), [])
+function PhotoZoom({ image, isLoading, exit, setIsBigScreen }) {
+  // useEffect(() =>setIsBigScreen(false), [])
 
   const [blockScroll, allowScroll] = useScrollBlock()
   const [zoom, setZoom] = useState(1)
   const [offset, setOffset] = useState({ x: 0, y: 0 })
-  const [dragging, setDragging] = useState(false) //
+  // const [dragging, setDragging] = useState(false) //
 
-  const touch = useRef({ x: 0, y: 0 })
+  // const touch = useRef({ x: 0, y: 0 })
   const canvasRef = useRef(null)
   const containerRef = useRef(null)
   const observer = useRef(null)
@@ -32,32 +32,32 @@ function PhotoZoom({ image, isLoading, exit, toggleHeader }) {
     setZoom((zoom) => clamp(zoom + deltaY * SCROLL_SENSITIVITY * -1, MIN_ZOOM, MAX_ZOOM))
   }
 
-  function handleMouseMove(event) {
-    if (dragging) {
-      blockScroll()
-      console.log(touch)
-      console.log(event)
+  // function handleMouseMove(event) {
+  //   if (dragging) {
+  //     blockScroll()
+  //     console.log(touch)
+  //     console.log(event)
 
-      const { x, y } = touch.current
-      const { clientX, clientY } = event
-      setOffset({
-        x: offset.x + (x - clientX),
-        y: offset.y + (y - clientY),
-      })
-      touch.current = { x: clientX, y: clientY }
-    }
-  }
+  //     const { x, y } = touch.current
+  //     const { clientX, clientY } = event
+  //     setOffset({
+  //       x: offset.x + (x - clientX),
+  //       y: offset.y + (y - clientY),
+  //     })
+  //     touch.current = { x: clientX, y: clientY }
+  //   }
+  // }
 
-  function handleMouseDown(event) {
-    blockScroll()
-    const { clientX, clientY } = event
+  // function handleMouseDown(event) {
+  //   blockScroll()
+  //   const { clientX, clientY } = event
 
-    touch.current = { x: clientX, y: clientY }
-    setDragging(true)
-    console.log(touch.current)
-  }
+  //   touch.current = { x: clientX, y: clientY }
+  //   setDragging(true)
+  //   console.log(touch.current)
+  // }
 
-  const handleMouseUp = () => setDragging(false)
+  // const handleMouseUp = () => setDragging(false)
 
   function draw() {
     if (canvasRef.current) {
@@ -128,16 +128,15 @@ function PhotoZoom({ image, isLoading, exit, toggleHeader }) {
     <div ref={containerRef} className="canvas-container">
       <canvas
         onClick={exit}
-        className="full-photo-zoomed"
+        className={`full-photo-zoomed ${isLoading && "blurred-picture"}`}
         onWheel={handleWheel}
         ref={canvasRef}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
+        // onMouseDown={handleMouseDown}
+        // onMouseMove={handleMouseMove}
+        // onMouseUp={handleMouseUp}
       />
     </div>
   )
 }
 
 export default PhotoZoom
-//className = "full-photo"

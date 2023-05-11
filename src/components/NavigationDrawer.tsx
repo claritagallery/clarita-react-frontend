@@ -7,6 +7,9 @@ interface NavigationDrawerProps extends BaseProps {
   photo?: PhotoData
   toggleDrawer?: boolean
   albumId?: string
+  setDeferredPhoto: React.Dispatch<React.SetStateAction<string>>
+  deferredQuery: string
+  photoLink: string
 }
 
 function NavigationDrawer({
@@ -14,6 +17,9 @@ function NavigationDrawer({
   toggleDrawer,
   albumId,
   isLoading,
+  setDeferredPhoto,
+  deferredQuery,
+  photoLink,
 }: NavigationDrawerProps) {
   if (isLoading) {
     return (
@@ -26,8 +32,22 @@ function NavigationDrawer({
     return (
       <div className={`navigation-drawer-container ${toggleDrawer ? "is-open" : ""}  `}>
         <div className="thumb-wrapper">
-          {photo.prev && <PhotoThumb photo={photo.prev} albumId={albumId} />}
-          {photo.next && <PhotoThumb photo={photo.next} albumId={albumId} />}
+          {photo.prev && (
+            <PhotoThumb
+              photo={photo.prev}
+              albumId={albumId}
+              setDeferredPhoto={setDeferredPhoto}
+              photoLink={photoLink}
+            />
+          )}
+          {photo.next && (
+            <PhotoThumb
+              photo={photo.next}
+              albumId={albumId}
+              setDeferredPhoto={setDeferredPhoto}
+              photoLink={photoLink}
+            />
+          )}
         </div>
         <BreadCrumbs breadcrumbs={photo.breadcrumbs} bg={true} />
       </div>

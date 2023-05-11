@@ -5,32 +5,32 @@ import useApi from "../data"
 import Photo from "../components/Photo"
 
 type PhotoPageProps = {
-  toggleHeader: React.Dispatch<React.SetStateAction<boolean>>
+  setIsBigScreen: React.Dispatch<React.SetStateAction<boolean>>
   isBigScreen: boolean
 }
 type PhotoDetailParams = {
   photoId: string
   albumId?: string
 }
-function PhotoPage({ toggleHeader, isBigScreen }: PhotoPageProps) {
+function PhotoPage({ setIsBigScreen, isBigScreen }: PhotoPageProps) {
   const [windWidth, setWindWidth] = useState(window.innerWidth)
   function isNavShowing() {
     setWindWidth(window.innerWidth)
   }
 
   useEffect(() => {
-    toggleHeader(false)
+    // setIsBigScreen(false)
     window.addEventListener("resize", isNavShowing)
     if (windWidth > 900) {
-      toggleHeader(true)
+      setIsBigScreen(true)
     } else {
-      toggleHeader(false)
+      setIsBigScreen(false)
     }
     return () => {
-      toggleHeader(true)
+      setIsBigScreen(true)
       window.removeEventListener("resize", isNavShowing)
     }
-  }, [toggleHeader, windWidth])
+  }, [setIsBigScreen, windWidth, isNavShowing])
 
   const { albumId, photoId } = useParams<keyof PhotoDetailParams>() as PhotoDetailParams
   const { photoInAlbumQuery, photoQuery } = useApi()
@@ -47,7 +47,7 @@ function PhotoPage({ toggleHeader, isBigScreen }: PhotoPageProps) {
       photo={data}
       albumId={albumId}
       isLoading={isLoading}
-      toggleHeader={toggleHeader}
+      setIsBigScreen={setIsBigScreen}
       isBigScreen={isBigScreen}
     />
   )
