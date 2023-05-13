@@ -17,7 +17,7 @@
     z-index: 1;
   }
   .blurred-picture {
-    opacity: 0.2;
+    opacity: 0.1;
   }
   .drawer-container {
     bottom: 0rem;
@@ -149,6 +149,52 @@
 
 @media only screen and (min-width: 900px) {
   .full-photo-container {
+    //////////////////////////
+    ///
+    ///
+    ///
+    .full-photo-zoomed {
+      //position: relative;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: scale-down;
+      object-position: center;
+      z-index: 1;
+    }
+    .animation-wrapper {
+      // margin-top: -2rem;
+      // margin-bottom: -5rem;
+      // background-color: black;
+      // width: 100vw;
+      // height: 100vh;
+      // display: flex;
+      // align-items: center;
+      // justify-items: center;
+      // position: relative;
+      -webkit-transition: opacity 1s ease-in-out;
+      -moz-transition: opacity 1s ease-in-out;
+      -o-transition: opacity 1s ease-in-out;
+      transition: opacity 1s ease-in-out;
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    }
+
+    /////////////////////////////
     .drawer-container {
       transition: unset;
       transform: translateY(0);
@@ -196,18 +242,38 @@
       margin: 0 auto;
       width: 70%;
       max-height: 60%;
+      // -webkit-transition: opacity 1s ease-in-out;
+      // -moz-transition: opacity 1s ease-in-out;
+      // -o-transition: opacity 1s ease-in-out;
+      // transition: opacity 1s ease-in-out;
     }
+
+    .pic-opacity {
+      opacity: 0;
+    }
+
     .canvas-container {
       width: 100vw;
       background-color: rgba(0, 0, 0, 0.7);
       z-index: 1;
       .full-photo-zoomed {
-        position: relative;
-        width: 100%;
+        //position: relative;
+        max-width: 100%;
+        max-height: 100%;
         object-fit: cover;
         object-position: center;
         z-index: 1;
+        ///////////////////////////////////////
+        /// ////////////////////////////////////////
+        /// //////////////////////////////////////////
+        // -moz-transition: opacity 1s ease-in-out;
+        // -o-transition: opacity 1s ease-in-out;
+        // transition: opacity 1s ease-in-out;
+        /// //////////////////////////////////////////
       }
+      // .pic-opacity {
+      //   opacity: 0;
+      // }
     }
   }
 }

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom"
 import LeftArrow from "../assets/LeftArrow"
 import RightArrow from "../assets/RightArrow"
 import PhotoZoom from "./PhotoZoom"
+import { createNoSubstitutionTemplateLiteral } from "typescript"
+
 interface PhotoViewProps extends BaseProps {
   photo?: PhotoData
   albumId?: string
@@ -12,9 +14,6 @@ interface PhotoViewProps extends BaseProps {
   setDeferredPhoto: React.Dispatch<React.SetStateAction<string>>
   deferredQuery: string
   photoLink: string
-  // zoomItUp: () => void
-  // exitZoom: () => void
-  // isBeenClicked: boolean
 }
 
 function PhotoView({
@@ -26,30 +25,15 @@ function PhotoView({
   setDeferredPhoto,
   deferredQuery,
   photoLink,
-}: // zoomItUp,
-// exitZoom,
-// isBeenClicked,
-PhotoViewProps) {
-  const [isBeenClicked, setIsBeenClicked] = useState(false)
-
+}: PhotoViewProps) {
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation()
   }
 
   let id, prev, next
   if (photo) {
-    id = photo.id
     prev = photo.prev
     next = photo.next
-  }
-
-  function exitZoom() {
-    setIsBeenClicked(false)
-  }
-
-  function zoomItUp() {
-    console.log("porque tardo?")
-    setIsBeenClicked(true)
   }
 
   return (
@@ -67,20 +51,16 @@ PhotoViewProps) {
         </div>
       )}
 
-      {isBigScreen && isBeenClicked ? (
-        <PhotoZoom
-          image={photoLink}
-          isLoading={isLoading}
-          exit={exitZoom}
-          setIsBigScreen={setIsBigScreen}
-        />
+      {isBigScreen ? (
+        <PhotoZoom photo={photoLink} isLoading={isLoading} />
       ) : (
         <img
-          onClick={zoomItUp}
-          className={`full-photo ${isLoading && "blurred-picture"}`}
+          className={`full-photo ${isLoading && "blurred-picture"} 
+          }`}
           src={photoLink}
         />
       )}
+
       {next && (
         <div
           onClick={(e) => {
