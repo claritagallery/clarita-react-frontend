@@ -67,7 +67,6 @@ function Photo({ photo, albumId, isLoading, isBigScreen, setShowHeader }: PhotoP
         isBigScreen={isBigScreen}
         setShowHeader={setShowHeader}
         setDeferredPhoto={setDeferredPhoto}
-        deferredQuery={deferredQuery}
         photoLink={photoLink}
       />
       <Drawer photo={photo} isLoading={isLoading} isBigScreen={isBigScreen} />

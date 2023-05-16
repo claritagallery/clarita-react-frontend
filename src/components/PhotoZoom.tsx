@@ -1,16 +1,12 @@
 import React, { useMemo, useEffect, useState, useCallback } from "react"
-//import { BaseProps } from "../data/types"
 import useScrollBlock from "../hooks/useScrollBlock"
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
-// const SCROLL_SENSITIVITY = 0.0005
-// const MAX_ZOOM = 5
-// const MIN_ZOOM = 1
-import { PhotoData, BaseProps } from "../data/types"
+
+import { BaseProps } from "../data/types"
 interface PhotoZoomProps extends BaseProps {
   photo: string
   isLoading: boolean | undefined
   exit: () => void
-
   isTransitioningIn: boolean
   isTransitioningOut: boolean
 }
@@ -104,6 +100,7 @@ function PhotoZoom({
             wrapperStyle={{
               width: "100%",
               height: "100%",
+              cursor: "zoom-out",
             }}
           >
             <img alt={alt} src={photo} className={`${isLoading && "blurred-picture"}`} />

@@ -14,10 +14,10 @@
     object-fit: contain;
     object-position: top center;
     width: 100%;
-    z-index: 1;
+    // z-index: 1;
   }
   .blurred-picture {
-    opacity: 0.1;
+    opacity: 0.2;
   }
   .drawer-container {
     bottom: 0rem;
@@ -159,13 +159,6 @@
       z-index: 10;
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
-
-      img {
-        opacity: 1;
-        transform: scale(0.5);
-        transition: transform 0.5s ease-in-out;
-        z-index: 20;
-      }
     }
 
     .transition-enter {
@@ -181,7 +174,7 @@
     }
 
     .transition-finish img {
-      transform: scale(0.5);
+      transform: scale(1);
     }
 
     .drawer-container {
@@ -231,10 +224,10 @@
       margin: 0 auto;
       width: 70%;
       max-height: 60%;
-    }
-
-    .pic-opacity {
-      opacity: 0;
+      // transform: scale(1);
+      //transition: transform 1s ease-in-out;
+      z-index: 20;
+      cursor: zoom-in;
     }
   }
 }

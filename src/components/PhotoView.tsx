@@ -11,7 +11,6 @@ interface PhotoViewProps extends BaseProps {
   isBigScreen: boolean
   setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
   setDeferredPhoto: React.Dispatch<React.SetStateAction<string>>
-  deferredQuery: string
   photoLink: string
 }
 
@@ -42,7 +41,6 @@ function PhotoView({
   isBigScreen,
   setShowHeader,
   setDeferredPhoto,
-  deferredQuery,
   photoLink,
 }: PhotoViewProps) {
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
@@ -59,13 +57,11 @@ function PhotoView({
   const showZoomedPicture = useCallback(() => {
     if (isBigScreen) {
       setIsZoomed(true)
-      //      setShowHeader(false)
     }
   }, [isBigScreen, setIsZoomed, setShowHeader])
 
   const exitZoomedPicture = useCallback(() => {
     setIsZoomed(false)
-    //    setShowHeader(true)
   }, [isBigScreen, setIsZoomed, setShowHeader])
 
   return (
