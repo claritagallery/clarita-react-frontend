@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useEffect, useState, useCallback } from "react"
+import React, { useMemo, useEffect, useState, useCallback } from "react"
 //import { BaseProps } from "../data/types"
 import useScrollBlock from "../hooks/useScrollBlock"
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
@@ -10,43 +10,18 @@ interface PhotoZoomProps extends BaseProps {
   photo: string
   isLoading: boolean | undefined
   exit: () => void
+
+  isTransitioningIn: boolean
+  isTransitioningOut: boolean
 }
 
-// const normalizeArgs = (args: { [key: string]: any }): any => {
-//   const newArgs = {}
-
-//   Object.keys(args).forEach((key) => {
-//     const normalizedKey = key.split(".")
-//     const isNested = normalizedKey.length === 2
-
-//     if (isNested) {
-//       if (!newArgs[normalizedKey[0]]) {
-//         newArgs[normalizedKey[0]] = {}
-//       }
-//       newArgs[normalizedKey[0]][normalizedKey[1]] = args[key]
-//     } else {
-//       newArgs[key] = args[key]
-//     }
-//   })
-
-//   return {
-//     ...newArgs,
-//     onTransformed: undefined,
-//     onWheelStart: undefined,
-//     onWheel: undefined,
-//     onWheelStop: undefined,
-//     onZoomStart: undefined,
-//     onZoom: undefined,
-//     onZoomStop: undefined,
-//     onPanningStart: undefined,
-//     onPanning: undefined,
-//     onPanningStop: undefined,
-//     onPinchStart: undefined,
-//     onPinch: undefined,
-//     onPinchStop: undefined,
-//   }
-// }
-function PhotoZoom({ photo, isLoading, exit }: PhotoZoomProps) {
+function PhotoZoom({
+  photo,
+  isLoading,
+  exit,
+  isTransitioningIn,
+  isTransitioningOut,
+}: PhotoZoomProps) {
   const [blockScroll, allowScroll] = useScrollBlock()
   const [container, setContainer] = useState<HTMLDivElement | null>(null)
 
@@ -106,6 +81,10 @@ function PhotoZoom({ photo, isLoading, exit }: PhotoZoomProps) {
 
   return (
     <div
+      className={`zoom-wrapper
+      ${isTransitioningIn && "transition-enter"}
+      ${isTransitioningOut && "transition-finish"} `}
+      onClick={exit}
       style={{
         width: "100%",
         height: "100%",
@@ -114,41 +93,22 @@ function PhotoZoom({ photo, isLoading, exit }: PhotoZoomProps) {
       ref={(el: HTMLDivElement | null) => setContainer(el)}
     >
       {imageScale > 0 && (
-        <div
-          onClick={exit}
-          style={{
-            width: "100%",
-            height: "100%",
-            position: "absolute",
-            top: 0,
-            left: 0,
-            backgroundColor: "#000000ff",
-            zIndex: 10,
-          }}
+        <TransformWrapper
+          key={`${containerWidth}x${containerHeight}`}
+          initialScale={imageScale}
+          minScale={imageScale}
+          maxScale={imageScale * zoomFactor}
+          centerOnInit
         >
-          <TransformWrapper
-            key={`${containerWidth}x${containerHeight}`}
-            initialScale={imageScale}
-            minScale={imageScale}
-            maxScale={imageScale * zoomFactor}
-            centerOnInit
-
-            // {...normalizeArgs(args)}
+          <TransformComponent
+            wrapperStyle={{
+              width: "100%",
+              height: "100%",
+            }}
           >
-            <TransformComponent
-              wrapperStyle={{
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <img
-                alt={alt}
-                src={photo}
-                className={` animation-wrapper ${isLoading && "blurred-picture"}`}
-              />
-            </TransformComponent>
-          </TransformWrapper>
-        </div>
+            <img alt={alt} src={photo} className={`${isLoading && "blurred-picture"}`} />
+          </TransformComponent>
+        </TransformWrapper>
       )}
     </div>
   )

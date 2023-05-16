@@ -215,10 +215,10 @@
     position: relative;
     top: -4rem;
     background-color: transparent;
-    background-color: rgba(0, 0, 0, 0.3);
     color: mix.$clear-background-color;
+    transition: unset; //
+    transform: translateY(10%); //
     .crumb-nav-wrap {
-      //  background-color: rgba(0, 0, 0, 0.3);
       .nav {
         .breadcrumb-wrap {
           .sep {

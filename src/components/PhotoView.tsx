@@ -1,10 +1,9 @@
-import React, { useCallback, useState } from "react"
+import React, { useCallback, useState, useEffect } from "react"
 import { PhotoData, BaseProps } from "../data/types"
 import { Link } from "react-router-dom"
 import LeftArrow from "../assets/LeftArrow"
 import RightArrow from "../assets/RightArrow"
 import PhotoZoom from "./PhotoZoom"
-import { createNoSubstitutionTemplateLiteral } from "typescript"
 
 interface PhotoViewProps extends BaseProps {
   photo?: PhotoData
@@ -14,6 +13,26 @@ interface PhotoViewProps extends BaseProps {
   setDeferredPhoto: React.Dispatch<React.SetStateAction<string>>
   deferredQuery: string
   photoLink: string
+}
+
+const useMountTransition = (isMounted: boolean, unmountDelay: number) => {
+  const [hasTransitionedIn, setHasTransitionedIn] = useState(false)
+
+  useEffect(() => {
+    let timeoutId: string | number | NodeJS.Timeout | undefined
+
+    if (isMounted && !hasTransitionedIn) {
+      setHasTransitionedIn(true)
+    } else if (!isMounted && hasTransitionedIn) {
+      timeoutId = setTimeout(() => setHasTransitionedIn(false), unmountDelay)
+    }
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId)
+    }
+  }, [unmountDelay, isMounted, hasTransitionedIn])
+
+  return hasTransitionedIn
 }
 
 function PhotoView({
@@ -29,20 +48,24 @@ function PhotoView({
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation()
   }
+
   const [isZoomed, setIsZoomed] = useState(false)
+  const isTransitioning = useMountTransition(isZoomed, 400)
+  const isTransitioningIn = isZoomed && isTransitioning
+  const isTransitioningOut = !isZoomed && isTransitioning
   const prev = photo?.prev
   const next = photo?.next
 
   const showZoomedPicture = useCallback(() => {
     if (isBigScreen) {
       setIsZoomed(true)
-      setShowHeader(false)
+      //      setShowHeader(false)
     }
   }, [isBigScreen, setIsZoomed, setShowHeader])
 
   const exitZoomedPicture = useCallback(() => {
     setIsZoomed(false)
-    setShowHeader(true)
+    //    setShowHeader(true)
   }, [isBigScreen, setIsZoomed, setShowHeader])
 
   return (
@@ -60,8 +83,14 @@ function PhotoView({
         </div>
       )}
 
-      {isBigScreen && isZoomed ? (
-        <PhotoZoom photo={photoLink} isLoading={isLoading} exit={exitZoomedPicture} />
+      {isZoomed || isTransitioning ? (
+        <PhotoZoom
+          photo={photoLink}
+          isLoading={isLoading}
+          exit={exitZoomedPicture}
+          isTransitioningIn={isTransitioningIn}
+          isTransitioningOut={isTransitioningOut}
+        />
       ) : (
         <img
           onClick={showZoomedPicture}

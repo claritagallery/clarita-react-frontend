@@ -23,7 +23,6 @@ function Photo({ photo, albumId, isLoading, isBigScreen, setShowHeader }: PhotoP
   const baseUrl = process.env.REACT_APP_API_BASE_URL
 
   useEffect(() => {
-    console.log("useEffect setShowHeader=", isBigScreen)
     setShowHeader(isBigScreen)
   }, [isBigScreen, setShowHeader])
 

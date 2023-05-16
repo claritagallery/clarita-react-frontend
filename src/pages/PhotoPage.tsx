@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react"
+import React, { useCallback } from "react"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import useApi from "../data"
