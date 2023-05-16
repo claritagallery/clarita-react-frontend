@@ -49,7 +49,7 @@
   margin-top: -1.5rem;
 }
 .thumb-wrapper + .with-bg {
-  z-index: 1;
+  z-index: 2;
   position: relative;
 }
 .crumb-nav-wrap {
@@ -215,8 +215,10 @@
     position: relative;
     top: -4rem;
     background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.3);
     color: mix.$clear-background-color;
     .crumb-nav-wrap {
+      //  background-color: rgba(0, 0, 0, 0.3);
       .nav {
         .breadcrumb-wrap {
           .sep {

@@ -1,37 +1,31 @@
-import React from "react"
+import React, { useCallback, useMemo } from "react"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import useApi from "../data"
 import Photo from "../components/Photo"
 
 type PhotoPageProps = {
-  setIsBigScreen: React.Dispatch<React.SetStateAction<boolean>>
-  isBigScreen: boolean
+  setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
 }
 type PhotoDetailParams = {
   photoId: string
   albumId?: string
 }
-function PhotoPage({ setIsBigScreen, isBigScreen }: PhotoPageProps) {
+function PhotoPage({ setShowHeader }: PhotoPageProps) {
   const [windWidth, setWindWidth] = useState(window.innerWidth)
-  function isNavShowing() {
+
+  const setCurrentWindowWidth = useCallback(() => {
     setWindWidth(window.innerWidth)
-  }
+  }, [window, setWindWidth])
 
   useEffect(() => {
-    // setIsBigScreen(false)
-    window.addEventListener("resize", isNavShowing)
-    if (windWidth > 900) {
-      setIsBigScreen(true)
-    } else {
-      setIsBigScreen(false)
-    }
+    window.addEventListener("resize", setCurrentWindowWidth)
     return () => {
-      setIsBigScreen(true)
-      window.removeEventListener("resize", isNavShowing)
+      window.removeEventListener("resize", setCurrentWindowWidth)
     }
-  }, [setIsBigScreen, windWidth, isNavShowing])
+  }, [window, setCurrentWindowWidth])
 
+  const isBigScreen = windWidth > 900
   const { albumId, photoId } = useParams<keyof PhotoDetailParams>() as PhotoDetailParams
   const { photoInAlbumQuery, photoQuery } = useApi()
   const { data, error, isError, isLoading } = albumId
@@ -47,8 +41,8 @@ function PhotoPage({ setIsBigScreen, isBigScreen }: PhotoPageProps) {
       photo={data}
       albumId={albumId}
       isLoading={isLoading}
-      setIsBigScreen={setIsBigScreen}
       isBigScreen={isBigScreen}
+      setShowHeader={setShowHeader}
     />
   )
 }

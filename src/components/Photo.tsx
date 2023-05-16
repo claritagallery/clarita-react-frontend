@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useState, useContext, useDeferredValue } from "react"
 import { DrawerContext } from "../contexts/Drawer"
@@ -11,16 +11,21 @@ interface PhotoProps extends BaseProps {
   photo?: PhotoData
   albumId?: string
   isBigScreen: boolean
-  setIsBigScreen: React.Dispatch<React.SetStateAction<boolean>>
+  setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function Photo({ photo, albumId, isLoading, isBigScreen, setIsBigScreen }: PhotoProps) {
+function Photo({ photo, albumId, isLoading, isBigScreen, setShowHeader }: PhotoProps) {
   const { isOpen, toggle } = useContext(DrawerContext)
   const [touchPosition, setTouchPosition] = useState(null)
   const [deferredPhoto, setDeferredPhoto] = useState("")
   const deferredQuery = useDeferredValue(deferredPhoto)
   const navigate = useNavigate()
   const baseUrl = process.env.REACT_APP_API_BASE_URL
+
+  useEffect(() => {
+    console.log("useEffect setShowHeader=", isBigScreen)
+    setShowHeader(isBigScreen)
+  }, [isBigScreen, setShowHeader])
 
   function handleTouchStart(e: any) {
     const touchDown = e.touches[0].clientX
@@ -47,11 +52,8 @@ function Photo({ photo, albumId, isLoading, isBigScreen, setIsBigScreen }: Photo
     }
     setTouchPosition(null)
   }
-  let id
-  if (photo) {
-    id = photo.id
-  }
-  const photoLink = isLoading ? deferredQuery : `${baseUrl}/api/v1/photos/${id}/file`
+  const photoLink =
+    isLoading || !photo ? deferredQuery : `${baseUrl}/api/v1/photos/${photo.id}/file`
   return (
     <div
       className="full-photo-container"
@@ -64,12 +66,12 @@ function Photo({ photo, albumId, isLoading, isBigScreen, setIsBigScreen }: Photo
         albumId={albumId}
         isLoading={isLoading}
         isBigScreen={isBigScreen}
-        setIsBigScreen={setIsBigScreen}
+        setShowHeader={setShowHeader}
         setDeferredPhoto={setDeferredPhoto}
         deferredQuery={deferredQuery}
         photoLink={photoLink}
       />
-      <Drawer photo={photo} isLoading={isLoading} />
+      <Drawer photo={photo} isLoading={isLoading} isBigScreen={isBigScreen} />
       <NavigationDrawer
         photo={photo}
         toggleDrawer={isOpen}

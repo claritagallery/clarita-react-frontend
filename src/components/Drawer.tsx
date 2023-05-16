@@ -5,24 +5,12 @@ import { DrawerContext } from "../contexts/Drawer"
 
 interface DrawerProps extends BaseProps {
   photo?: PhotoData
+  isBigScreen: boolean
 }
 
-function Drawer({ photo, isLoading }: DrawerProps) {
+function Drawer({ photo, isLoading, isBigScreen }: DrawerProps) {
   const desktopWidthThreshold = 900
   const { isOpen } = useContext(DrawerContext)
-  const [windWidth, setWindWidth] = useState(window.innerWidth)
-
-  function isNavShowing() {
-    setWindWidth(window.innerWidth)
-    console.log(windWidth)
-  }
-  useEffect(() => {
-    window.addEventListener("resize", isNavShowing)
-
-    return () => {
-      window.removeEventListener("resize", isNavShowing)
-    }
-  }, [windWidth])
 
   if (isLoading) {
     console.log("drawer loading")
@@ -30,7 +18,7 @@ function Drawer({ photo, isLoading }: DrawerProps) {
     return (
       <div
         className={`drawer-container ${
-          isOpen || windWidth > desktopWidthThreshold ? "drawer-is-open-container" : ""
+          isOpen || isBigScreen ? "drawer-is-open-container" : ""
         }`}
       >
         <div className={`title-container ${isOpen ? "drawer-is-open-title" : ""}`}>
@@ -40,7 +28,7 @@ function Drawer({ photo, isLoading }: DrawerProps) {
           </button>
         </div>
 
-        {(isOpen || windWidth > desktopWidthThreshold) && <DetailsDrawer photo={photo} />}
+        {(isOpen || isBigScreen) && <DetailsDrawer photo={photo} />}
       </div>
     )
   }

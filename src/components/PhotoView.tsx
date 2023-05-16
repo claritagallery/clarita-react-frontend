@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
 import { PhotoData, BaseProps } from "../data/types"
 import { Link } from "react-router-dom"
 import LeftArrow from "../assets/LeftArrow"
@@ -10,7 +10,7 @@ interface PhotoViewProps extends BaseProps {
   photo?: PhotoData
   albumId?: string
   isBigScreen: boolean
-  setIsBigScreen: React.Dispatch<React.SetStateAction<boolean>>
+  setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
   setDeferredPhoto: React.Dispatch<React.SetStateAction<string>>
   deferredQuery: string
   photoLink: string
@@ -21,7 +21,7 @@ function PhotoView({
   albumId,
   isLoading,
   isBigScreen,
-  setIsBigScreen,
+  setShowHeader,
   setDeferredPhoto,
   deferredQuery,
   photoLink,
@@ -29,12 +29,21 @@ function PhotoView({
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation()
   }
+  const [isZoomed, setIsZoomed] = useState(false)
+  const prev = photo?.prev
+  const next = photo?.next
 
-  let id, prev, next
-  if (photo) {
-    prev = photo.prev
-    next = photo.next
-  }
+  const showZoomedPicture = useCallback(() => {
+    if (isBigScreen) {
+      setIsZoomed(true)
+      setShowHeader(false)
+    }
+  }, [isBigScreen, setIsZoomed, setShowHeader])
+
+  const exitZoomedPicture = useCallback(() => {
+    setIsZoomed(false)
+    setShowHeader(true)
+  }, [isBigScreen, setIsZoomed, setShowHeader])
 
   return (
     <>
@@ -51,10 +60,11 @@ function PhotoView({
         </div>
       )}
 
-      {isBigScreen ? (
-        <PhotoZoom photo={photoLink} isLoading={isLoading} />
+      {isBigScreen && isZoomed ? (
+        <PhotoZoom photo={photoLink} isLoading={isLoading} exit={exitZoomedPicture} />
       ) : (
         <img
+          onClick={showZoomedPicture}
           className={`full-photo ${isLoading && "blurred-picture"} 
           }`}
           src={photoLink}

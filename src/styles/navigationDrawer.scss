@@ -77,10 +77,10 @@
     transition: unset;
     transform: translateY(0);
     .thumb-wrapper {
-      transform: translateY(50vh);
       background-color: transparent;
       justify-content: space-between;
       .thumb {
+        transform: translateY(50vh);
         width: 12%;
         margin: 2rem;
         margin-top: 0;

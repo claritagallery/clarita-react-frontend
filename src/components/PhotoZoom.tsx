@@ -9,6 +9,7 @@ import { PhotoData, BaseProps } from "../data/types"
 interface PhotoZoomProps extends BaseProps {
   photo: string
   isLoading: boolean | undefined
+  exit: () => void
 }
 
 // const normalizeArgs = (args: { [key: string]: any }): any => {
@@ -45,7 +46,7 @@ interface PhotoZoomProps extends BaseProps {
 //     onPinchStop: undefined,
 //   }
 // }
-function PhotoZoom({ photo, isLoading }: PhotoZoomProps) {
+function PhotoZoom({ photo, isLoading, exit }: PhotoZoomProps) {
   const [blockScroll, allowScroll] = useScrollBlock()
   const [container, setContainer] = useState<HTMLDivElement | null>(null)
 
@@ -113,28 +114,41 @@ function PhotoZoom({ photo, isLoading }: PhotoZoomProps) {
       ref={(el: HTMLDivElement | null) => setContainer(el)}
     >
       {imageScale > 0 && (
-        <TransformWrapper
-          key={`${containerWidth}x${containerHeight}`}
-          initialScale={imageScale}
-          minScale={imageScale}
-          maxScale={imageScale * zoomFactor}
-          centerOnInit
-
-          // {...normalizeArgs(args)}
+        <div
+          onClick={exit}
+          style={{
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            backgroundColor: "#000000ff",
+            zIndex: 10,
+          }}
         >
-          <TransformComponent
-            wrapperStyle={{
-              width: "100%",
-              height: "100%",
-            }}
+          <TransformWrapper
+            key={`${containerWidth}x${containerHeight}`}
+            initialScale={imageScale}
+            minScale={imageScale}
+            maxScale={imageScale * zoomFactor}
+            centerOnInit
+
+            // {...normalizeArgs(args)}
           >
-            <img
-              alt={alt}
-              src={photo}
-              className={` animation-wrapper ${isLoading && "blurred-picture"}`}
-            />
-          </TransformComponent>
-        </TransformWrapper>
+            <TransformComponent
+              wrapperStyle={{
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <img
+                alt={alt}
+                src={photo}
+                className={` animation-wrapper ${isLoading && "blurred-picture"}`}
+              />
+            </TransformComponent>
+          </TransformWrapper>
+        </div>
       )}
     </div>
   )
