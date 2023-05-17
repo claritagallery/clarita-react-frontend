@@ -32,7 +32,7 @@
       justify-content: center;
       align-items: center;
       background-color: mix.$darker-background-color;
-      height: 3vh;
+      height: 4.5vh;
       padding-bottom: 1rem;
       flex-direction: column-reverse;
       h4 {
@@ -48,9 +48,8 @@
         width: 3rem;
 
         .toggle-line {
-          border-bottom: 2px solid mix.$secondary-color;
+          border-bottom: 4px solid mix.$secondary-color;
           padding-top: 1rem;
-          margin-bottom: 0.5rem;
         }
         .toggle-line:hover {
           border-bottom: 4px solid #754f5d;

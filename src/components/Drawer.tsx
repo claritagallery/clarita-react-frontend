@@ -9,30 +9,30 @@ interface DrawerProps extends BaseProps {
 }
 
 function Drawer({ photo, isLoading, isBigScreen }: DrawerProps) {
-  const desktopWidthThreshold = 900
   const { isOpen } = useContext(DrawerContext)
 
-  if (isLoading) {
-    console.log("drawer loading")
-  } else if (photo) {
-    return (
-      <div
-        className={`drawer-container ${
-          isOpen || isBigScreen ? "drawer-is-open-container" : ""
-        }`}
-      >
-        <div className={`title-container ${isOpen ? "drawer-is-open-title" : ""}`}>
-          <h4>{photo.title}</h4>
-          <button className="toggle-drawer">
-            <div className="toggle-line"></div>
-          </button>
-        </div>
-
-        {(isOpen || isBigScreen) && <DetailsDrawer photo={photo} />}
+  return (
+    <div
+      className={`drawer-container ${
+        isOpen || isBigScreen ? "drawer-is-open-container" : ""
+      }`}
+    >
+      <div className={`title-container ${isOpen ? "drawer-is-open-title" : ""}`}>
+        <h4>{isLoading || !photo ? "Title" : photo.title}</h4>
+        <button className="toggle-drawer toggle-line">
+          <div className="toggle-line"></div>
+        </button>
       </div>
-    )
-  }
-  return <h1 style={{ display: "none" }}>No drawer to show</h1>
+
+      {(isOpen || isBigScreen) && photo ? (
+        <DetailsDrawer photo={photo} />
+      ) : (
+        <div className="info-open-drawer">
+          <h4 style={{ color: "#55303e", fontSize: "0.9rem" }}>Photo details ...</h4>
+        </div>
+      )}
+    </div>
+  )
 }
 
 type DetailsDrawerProps = {

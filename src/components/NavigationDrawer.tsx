@@ -31,7 +31,7 @@ function NavigationDrawer({
   } else if (photo) {
     return (
       <div className={`navigation-drawer-container ${toggleDrawer ? "is-open" : ""}  `}>
-        <div className="thumb-wrapper" onClick={() => console.log("popis")}>
+        <div className="thumb-wrapper">
           {photo.prev && (
             <PhotoThumb
               photo={photo.prev}
