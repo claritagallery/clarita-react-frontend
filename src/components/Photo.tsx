@@ -10,11 +10,11 @@ import { PhotoData, BaseProps } from "../data/types"
 interface PhotoProps extends BaseProps {
   photo?: PhotoData
   albumId?: string
-  isBigScreen: boolean
+  isDesktop: boolean
   setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function Photo({ photo, albumId, isLoading, isBigScreen, setShowHeader }: PhotoProps) {
+function Photo({ photo, albumId, isLoading, isDesktop, setShowHeader }: PhotoProps) {
   const { isOpen, toggle } = useContext(DrawerContext)
   const [touchPosition, setTouchPosition] = useState(null)
   const [deferredPhoto, setDeferredPhoto] = useState("")
@@ -23,8 +23,8 @@ function Photo({ photo, albumId, isLoading, isBigScreen, setShowHeader }: PhotoP
   const baseUrl = process.env.REACT_APP_API_BASE_URL
 
   useEffect(() => {
-    setShowHeader(isBigScreen)
-  }, [isBigScreen, setShowHeader])
+    setShowHeader(isDesktop)
+  }, [isDesktop, setShowHeader])
 
   function handleTouchStart(e: any) {
     const touchDown = e.touches[0].clientX
@@ -64,12 +64,12 @@ function Photo({ photo, albumId, isLoading, isBigScreen, setShowHeader }: PhotoP
         photo={photo}
         albumId={albumId}
         isLoading={isLoading}
-        isBigScreen={isBigScreen}
+        isDesktop={isDesktop}
         setShowHeader={setShowHeader}
         setDeferredPhoto={setDeferredPhoto}
         photoLink={photoLink}
       />
-      <Drawer photo={photo} isLoading={isLoading} isBigScreen={isBigScreen} />
+      <Drawer photo={photo} isLoading={isLoading} isDesktop={isDesktop} />
       <NavigationDrawer
         photo={photo}
         toggleDrawer={isOpen}
