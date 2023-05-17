@@ -14,10 +14,10 @@
     object-fit: contain;
     object-position: top center;
     width: 100%;
-    // z-index: 1;
   }
   .blurred-picture {
-    opacity: 0.2;
+    opacity: 0.4;
+    transition: opacity 4s;
   }
   .drawer-container {
     bottom: 0rem;
