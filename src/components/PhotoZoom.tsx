@@ -1,5 +1,4 @@
 import React, { useMemo, useEffect, useState, useCallback } from "react"
-import useScrollBlock from "../hooks/useScrollBlock"
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
 
 import { BaseProps } from "../data/types"
@@ -9,6 +8,7 @@ interface PhotoZoomProps extends BaseProps {
   exit: () => void
   isTransitioningIn: boolean
   isTransitioningOut: boolean
+  alt: string | undefined
 }
 
 function PhotoZoom({
@@ -17,17 +17,15 @@ function PhotoZoom({
   exit,
   isTransitioningIn,
   isTransitioningOut,
+  alt,
 }: PhotoZoomProps) {
-  const [blockScroll, allowScroll] = useScrollBlock()
   const [container, setContainer] = useState<HTMLDivElement | null>(null)
-
   const [containerWidth, setContainerWidth] = useState<number>(0)
   const [containerHeight, setContainerHeight] = useState<number>(0)
 
   const [imageNaturalWidth, setImageNaturalWidth] = useState<number>(0)
   const [imageNaturalHeight, setImageNaturalHeight] = useState<number>(0)
-  const alt = "example"
-  const backgroundColor = "black"
+
   const scaleUp = true
   const zoomFactor = 8
 
@@ -81,11 +79,6 @@ function PhotoZoom({
       ${isTransitioningIn && "transition-enter"}
       ${isTransitioningOut && "transition-finish"} `}
       onClick={exit}
-      style={{
-        width: "100%",
-        height: "100%",
-        backgroundColor,
-      }}
       ref={(el: HTMLDivElement | null) => setContainer(el)}
     >
       {imageScale > 0 && (

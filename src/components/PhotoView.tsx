@@ -1,9 +1,10 @@
-import React, { useCallback, useState, useEffect } from "react"
+import React, { useCallback, useState } from "react"
 import { PhotoData, BaseProps } from "../data/types"
 import { Link } from "react-router-dom"
 import LeftArrow from "../assets/LeftArrow"
 import RightArrow from "../assets/RightArrow"
 import PhotoZoom from "./PhotoZoom"
+import useMountTransition from "../hooks/useMountTransition"
 
 interface PhotoViewProps extends BaseProps {
   photo?: PhotoData
@@ -12,26 +13,6 @@ interface PhotoViewProps extends BaseProps {
   setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
   setDeferredPhoto: React.Dispatch<React.SetStateAction<string>>
   photoLink: string
-}
-
-const useMountTransition = (isMounted: boolean, unmountDelay: number) => {
-  const [hasTransitionedIn, setHasTransitionedIn] = useState(false)
-
-  useEffect(() => {
-    let timeoutId: string | number | NodeJS.Timeout | undefined
-
-    if (isMounted && !hasTransitionedIn) {
-      setHasTransitionedIn(true)
-    } else if (!isMounted && hasTransitionedIn) {
-      timeoutId = setTimeout(() => setHasTransitionedIn(false), unmountDelay)
-    }
-
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId)
-    }
-  }, [unmountDelay, isMounted, hasTransitionedIn])
-
-  return hasTransitionedIn
 }
 
 function PhotoView({
@@ -53,7 +34,7 @@ function PhotoView({
   const isTransitioningOut = !isZoomed && isTransitioning
   const prev = photo?.prev
   const next = photo?.next
-
+  const photoName = photo?.filename
   const showZoomedPicture = useCallback(() => {
     if (isBigScreen) {
       setIsZoomed(true)
@@ -86,6 +67,7 @@ function PhotoView({
           exit={exitZoomedPicture}
           isTransitioningIn={isTransitioningIn}
           isTransitioningOut={isTransitioningOut}
+          alt={photoName}
         />
       ) : (
         <img
