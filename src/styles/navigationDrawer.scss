@@ -18,6 +18,7 @@
       width: 50%;
       background-color: mix.$clear-background-color;
       position: relative;
+      z-index: 2;
 
       .button-thumb {
         background-color: mix.$darker-background-color;
@@ -76,10 +77,10 @@
     transition: unset;
     transform: translateY(0);
     .thumb-wrapper {
-      transform: translateY(50vh);
       background-color: transparent;
       justify-content: space-between;
       .thumb {
+        transform: translateY(50vh);
         width: 12%;
         margin: 2rem;
         margin-top: 0;

@@ -1,29 +1,50 @@
-import React, { useState, useDeferredValue } from "react"
+import React, { useCallback, useState } from "react"
 import { PhotoData, BaseProps } from "../data/types"
 import { Link } from "react-router-dom"
 import LeftArrow from "../assets/LeftArrow"
 import RightArrow from "../assets/RightArrow"
+import PhotoZoom from "./PhotoZoom"
+import useMountTransition from "../hooks/useMountTransition"
+
 interface PhotoViewProps extends BaseProps {
   photo?: PhotoData
   albumId?: string
+  isBigScreen: boolean
+  setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
+  setDeferredPhoto: React.Dispatch<React.SetStateAction<string>>
+  photoLink: string
 }
 
-function PhotoView({ photo, albumId, isLoading }: PhotoViewProps) {
-  const baseUrl = process.env.REACT_APP_API_BASE_URL
-  const [deferredPhoto, setDeferredPhoto] = useState("")
-  const deferredQuery = useDeferredValue(deferredPhoto)
+function PhotoView({
+  photo,
+  albumId,
+  isLoading,
+  isBigScreen,
+  setShowHeader,
+  setDeferredPhoto,
+  photoLink,
+}: PhotoViewProps) {
   function stopPropagation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation()
   }
 
-  let id, prev, next
-  if (photo) {
-    id = photo.id
-    prev = photo.prev
-    next = photo.next
-  }
+  const [isZoomed, setIsZoomed] = useState(false)
+  const isTransitioning = useMountTransition(isZoomed, 400)
+  const isTransitioningIn = isZoomed && isTransitioning
+  const isTransitioningOut = !isZoomed && isTransitioning
+  const prev = photo?.prev
+  const next = photo?.next
+  const photoName = photo?.filename
+  const showZoomedPicture = useCallback(() => {
+    if (isBigScreen) {
+      setIsZoomed(true)
+    }
+  }, [isBigScreen, setIsZoomed, setShowHeader])
 
-  const photoLink = isLoading ? deferredQuery : `${baseUrl}/api/v1/photos/${id}/file`
+  const exitZoomedPicture = useCallback(() => {
+    setIsZoomed(false)
+  }, [isBigScreen, setIsZoomed, setShowHeader])
+
   return (
     <>
       {prev && (
@@ -38,7 +59,25 @@ function PhotoView({ photo, albumId, isLoading }: PhotoViewProps) {
           </Link>
         </div>
       )}
-      <img className={`full-photo ${isLoading && "blurred-picture"}`} src={photoLink} />
+
+      {isZoomed || isTransitioning ? (
+        <PhotoZoom
+          photo={photoLink}
+          isLoading={isLoading}
+          exit={exitZoomedPicture}
+          isTransitioningIn={isTransitioningIn}
+          isTransitioningOut={isTransitioningOut}
+          alt={photoName}
+        />
+      ) : (
+        <img
+          onClick={showZoomedPicture}
+          className={`full-photo ${isLoading && "blurred-picture"} 
+          }`}
+          src={photoLink}
+        />
+      )}
+
       {next && (
         <div
           onClick={(e) => {

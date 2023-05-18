@@ -49,7 +49,7 @@
   margin-top: -1.5rem;
 }
 .thumb-wrapper + .with-bg {
-  z-index: 1;
+  z-index: 2;
   position: relative;
 }
 .crumb-nav-wrap {
@@ -216,6 +216,8 @@
     top: -4rem;
     background-color: transparent;
     color: mix.$clear-background-color;
+    transition: unset; //
+    transform: translateY(10%); //
     .crumb-nav-wrap {
       .nav {
         .breadcrumb-wrap {

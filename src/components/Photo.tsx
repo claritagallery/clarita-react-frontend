@@ -1,6 +1,6 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { useState, useContext } from "react"
+import { useState, useContext, useDeferredValue } from "react"
 import { DrawerContext } from "../contexts/Drawer"
 import Drawer from "./Drawer"
 import PhotoView from "./PhotoView"
@@ -10,12 +10,21 @@ import { PhotoData, BaseProps } from "../data/types"
 interface PhotoProps extends BaseProps {
   photo?: PhotoData
   albumId?: string
+  isBigScreen: boolean
+  setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function Photo({ photo, albumId, isLoading }: PhotoProps) {
+function Photo({ photo, albumId, isLoading, isBigScreen, setShowHeader }: PhotoProps) {
   const { isOpen, toggle } = useContext(DrawerContext)
   const [touchPosition, setTouchPosition] = useState(null)
+  const [deferredPhoto, setDeferredPhoto] = useState("")
+  const deferredQuery = useDeferredValue(deferredPhoto)
   const navigate = useNavigate()
+  const baseUrl = process.env.REACT_APP_API_BASE_URL
+
+  useEffect(() => {
+    setShowHeader(isBigScreen)
+  }, [isBigScreen, setShowHeader])
 
   function handleTouchStart(e: any) {
     const touchDown = e.touches[0].clientX
@@ -31,6 +40,7 @@ function Photo({ photo, albumId, isLoading }: PhotoProps) {
       console.warn("photo not defined")
       return
     }
+
     const currentTouch = e.touches[0].clientX
     const diff = touchDown - currentTouch
     if (diff > 5 && photo.next) {
@@ -41,6 +51,8 @@ function Photo({ photo, albumId, isLoading }: PhotoProps) {
     }
     setTouchPosition(null)
   }
+  const photoLink =
+    isLoading || !photo ? deferredQuery : `${baseUrl}/api/v1/photos/${photo.id}/file`
   return (
     <div
       className="full-photo-container"
@@ -48,13 +60,24 @@ function Photo({ photo, albumId, isLoading }: PhotoProps) {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
     >
-      <PhotoView photo={photo} albumId={albumId} isLoading={isLoading} />
-      <Drawer photo={photo} isLoading={isLoading} />
+      <PhotoView
+        photo={photo}
+        albumId={albumId}
+        isLoading={isLoading}
+        isBigScreen={isBigScreen}
+        setShowHeader={setShowHeader}
+        setDeferredPhoto={setDeferredPhoto}
+        photoLink={photoLink}
+      />
+      <Drawer photo={photo} isLoading={isLoading} isBigScreen={isBigScreen} />
       <NavigationDrawer
         photo={photo}
         toggleDrawer={isOpen}
         albumId={albumId}
         isLoading={isLoading}
+        setDeferredPhoto={setDeferredPhoto}
+        deferredQuery={deferredQuery}
+        photoLink={photoLink}
       />
     </div>
   )

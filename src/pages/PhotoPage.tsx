@@ -1,36 +1,31 @@
-import React from "react"
+import React, { useCallback } from "react"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import useApi from "../data"
 import Photo from "../components/Photo"
 
 type PhotoPageProps = {
-  toggleHeader: React.Dispatch<React.SetStateAction<boolean>>
+  setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
 }
 type PhotoDetailParams = {
   photoId: string
   albumId?: string
 }
-function PhotoPage({ toggleHeader }: PhotoPageProps) {
+function PhotoPage({ setShowHeader }: PhotoPageProps) {
   const [windWidth, setWindWidth] = useState(window.innerWidth)
-  function isNavShowing() {
+
+  const setCurrentWindowWidth = useCallback(() => {
     setWindWidth(window.innerWidth)
-  }
+  }, [window, setWindWidth])
 
   useEffect(() => {
-    toggleHeader(false)
-    window.addEventListener("resize", isNavShowing)
-    if (windWidth > 900) {
-      toggleHeader(true)
-    } else {
-      toggleHeader(false)
-    }
+    window.addEventListener("resize", setCurrentWindowWidth)
     return () => {
-      toggleHeader(true)
-      window.removeEventListener("resize", isNavShowing)
+      window.removeEventListener("resize", setCurrentWindowWidth)
     }
-  }, [toggleHeader, windWidth])
+  }, [window, setCurrentWindowWidth])
 
+  const isBigScreen = windWidth > 900
   const { albumId, photoId } = useParams<keyof PhotoDetailParams>() as PhotoDetailParams
   const { photoInAlbumQuery, photoQuery } = useApi()
   const { data, error, isError, isLoading } = albumId
@@ -41,6 +36,14 @@ function PhotoPage({ toggleHeader }: PhotoPageProps) {
     return <div>{error ? error.message : "Unknown error"}</div>
   }
 
-  return <Photo photo={data} albumId={albumId} isLoading={isLoading} />
+  return (
+    <Photo
+      photo={data}
+      albumId={albumId}
+      isLoading={isLoading}
+      isBigScreen={isBigScreen}
+      setShowHeader={setShowHeader}
+    />
+  )
 }
 export default PhotoPage
