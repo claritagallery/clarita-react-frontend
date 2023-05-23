@@ -1,5 +1,5 @@
 import React from "react"
-import logo from "../assets/clogo.png"
+import logo from "../assets/clarita_logoscaled.png"
 import { Link } from "react-router-dom"
 
 function Header() {
@@ -7,7 +7,7 @@ function Header() {
     <section className="top-nav">
       <Link to="/">
         {" "}
-        <img className="logo" src={logo} alt="gallery-logo" width={60} height={60} />
+        <img className="logo" src={logo} alt="gallery-logo" width={60} height={40} />
       </Link>
       <input className="search-box" type="text" placeholder="search coming soon" />
       <input id="menu-toggle" type="checkbox" />
