@@ -7,7 +7,7 @@ function Header() {
     <section className="top-nav">
       <Link to="/">
         {" "}
-        <img className="logo" src={logo} alt="gallery-logo" width={60} height={40} />
+        <img className="logo" src={logo} alt="gallery-logo" width={70} height={50} />
       </Link>
       <input className="search-box" type="text" placeholder="search coming soon" />
       <input id="menu-toggle" type="checkbox" />
