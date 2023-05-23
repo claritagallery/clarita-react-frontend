@@ -31,6 +31,12 @@ function Photo({ photo, albumId, isLoading, isDesktop, setShowHeader }: PhotoPro
     setTouchPosition(touchDown)
   }
 
+  function handleToggle() {
+    if (!isDesktop) {
+      toggle()
+    }
+  }
+
   function handleTouchMove(e: any) {
     const touchDown = touchPosition
     if (touchDown === null) {
@@ -56,7 +62,7 @@ function Photo({ photo, albumId, isLoading, isDesktop, setShowHeader }: PhotoPro
   return (
     <div
       className="full-photo-container"
-      onClick={toggle}
+      onClick={handleToggle}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
     >
