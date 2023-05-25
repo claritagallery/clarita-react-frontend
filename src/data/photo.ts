@@ -1,3 +1,4 @@
+import React, { useEffect } from "react"
 import {
   APIError,
   fetchPhotosParams,
@@ -7,7 +8,7 @@ import {
   PhotoId,
 } from "./types"
 import axios from "axios"
-import { useQuery } from "react-query"
+import { useQuery, useInfiniteQuery } from "react-query"
 
 function photo() {
   const baseUrl = process.env.REACT_APP_API_BASE_URL
@@ -28,11 +29,40 @@ function photo() {
         ...obj,
         date_and_time: new Date(obj.date_and_time).toISOString().substring(0, 10),
       }))
-      console.log(parsedResults)
+
       return { ...res.data, results: parsedResults }
     })
   }
+  ////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////
+  const photosQueryInfinite = (params: fetchPhotosParams) => {
+    return useInfiniteQuery<PhotoListData, APIError>(
+      ["photos", params.limit, params.album, params.offset],
+      () => fetchPhotos({ album: params.album, limit: 50, offset: params.offset }),
+    )
+  }
 
+  useEffect(() => {
+    function onScroll(event: any) {
+      console.log("si llego")
+      let fetching = false
+      // eslint-disable-next-line no-unsafe-optional-chaining
+      const { scrollHeight, scrollTop, clientHeight } = event?.target.scrollingElement
+      if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.5) {
+        fetching = true
+        console.log("hola don pepito")
+        fetching = false
+      }
+    }
+
+    document.addEventListener("scroll", onScroll)
+    return () => {
+      document.removeEventListener("scroll", onScroll)
+    }
+  }, [])
+
+  ///////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////
   function fetchPhoto(photoId: PhotoId) {
     return axios({
       url: `${baseUrl}/api/v1/photos/${photoId}`,
@@ -41,7 +71,7 @@ function photo() {
 
   const photosQuery = (params: fetchPhotosParams) => {
     return useQuery<PhotoListData, APIError>(["photos", params.limit, params.album], () =>
-      fetchPhotos({ album: params.album, limit: 50 }),
+      fetchPhotos({ album: params.album, limit: params.limit }),
     )
   }
 
@@ -57,7 +87,7 @@ function photo() {
     })
   }
 
-  return { photosQuery, photoInAlbumQuery, photoQuery }
+  return { photosQuery, photoInAlbumQuery, photoQuery, photosQueryInfinite }
 }
 
 export default photo

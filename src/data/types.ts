@@ -57,6 +57,7 @@ export type FetchPhotoInAlbumParams = {
 export type fetchPhotosParams = {
   album?: string
   limit: number
+  offset?: number
 }
 
 export interface fetchAlbumsParams {
