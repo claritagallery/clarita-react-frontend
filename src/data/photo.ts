@@ -35,31 +35,15 @@ function photo() {
   }
   ////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////
-  const photosQueryInfinite = (params: fetchPhotosParams) => {
+  const photosQueryInfinite = ({ album, limit, offset }: fetchPhotosParams) => {
     return useInfiniteQuery<PhotoListData, APIError>(
-      ["photos", params.limit, params.album, params.offset],
-      () => fetchPhotos({ album: params.album, limit: 50, offset: params.offset }),
+      ["photos", album, limit, offset],
+      ({ pageParam }) => fetchPhotos({ album, limit, offset: pageParam }),
+      {
+        getNextPageParam: (lastPage, allPages) => lastPage.next,
+      },
     )
   }
-
-  useEffect(() => {
-    function onScroll(event: any) {
-      console.log("si llego")
-      let fetching = false
-      // eslint-disable-next-line no-unsafe-optional-chaining
-      const { scrollHeight, scrollTop, clientHeight } = event?.target.scrollingElement
-      if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.5) {
-        fetching = true
-        console.log("hola don pepito")
-        fetching = false
-      }
-    }
-
-    document.addEventListener("scroll", onScroll)
-    return () => {
-      document.removeEventListener("scroll", onScroll)
-    }
-  }, [])
 
   ///////////////////////////////////////////////////////
   //////////////////////////////////////////////////////

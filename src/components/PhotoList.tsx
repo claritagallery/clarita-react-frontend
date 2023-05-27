@@ -9,9 +9,12 @@ import Loader from "./Loader"
 export interface PhotoListParams {
   albumId?: string
   data?: {
-    next: boolean | null | string
-    total: number
-    results: PhotoListItem[]
+    pages: {
+      next: boolean | null | string
+      total: number
+      results: PhotoListItem[]
+    }[]
+    pageParams: number | undefined[]
   }
   error: APIError
   isError: boolean
@@ -29,19 +32,23 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
   }
 
   if (data) {
-    const photos = data.results
-
-    const photosParameters = photos.map((photo) => {
-      const { imgSrc, height, width } = getRandomPic()
-      return {
-        src: imgSrc,
-        width: width,
-        height: height,
-        title: photo.title,
-        date: photo.date_and_time,
-        id: photo.id,
-      }
-    })
+    const photos = data.pages
+    const photosParameters = photos
+      .map((obj) => {
+        return obj.results.map((photo) => {
+          const { imgSrc, height, width } = getRandomPic()
+          return {
+            src: imgSrc,
+            width: width,
+            height: height,
+            title: photo.title,
+            date: photo.date_and_time,
+            id: photo.id,
+          }
+        })
+      })
+      .flat()
+    console.log(photosParameters)
 
     return (
       <div className="gallery-container">

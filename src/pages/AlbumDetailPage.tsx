@@ -1,10 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
 import AlbumDetail from "../components/AlbumDetail"
 import AlbumList from "../components/AlbumList"
 import PhotoList from "../components/PhotoList"
 import { useParams } from "react-router-dom"
 import useApi from "../data"
-import { AlbumListData } from "../data/types"
+
 type AlbumDetailParams = {
   albumId: string
 }
@@ -16,27 +16,38 @@ function AlbumDetailPage() {
   const singleAlbumQuery = albumQuery(albumId)
   const childrenAlbumsQuery = albumsQuery({ parent: albumId, limit: 100 })
   const photos = photosQuery({ album: albumId, limit: 5 })
-  const photosStartingPoint = photos.data ? photos.data.results.length : 0
   const infinitePhotos = photosQueryInfinite({
     album: albumId,
-    limit: 50,
-    offset: photosStartingPoint,
+    limit: 20,
+    offset: 0,
   })
-  const infinitePhotosData = infinitePhotos.data
-    ? infinitePhotos.data.pages[0].results
-    : undefined
+  useEffect(() => {
+    function onScroll(event: any) {
+      const { scrollHeight, scrollTop, clientHeight } = event.target.scrollingElement
+      if (scrollHeight - scrollTop <= clientHeight * 1.5) {
+        if (infinitePhotos.hasNextPage) {
+          infinitePhotos.fetchNextPage()
+        }
+      }
+    }
 
+    document.addEventListener("scroll", onScroll)
+
+    return () => {
+      document.removeEventListener("scroll", onScroll)
+    }
+  }, [infinitePhotos])
+
+  console.log(infinitePhotos)
   console.log(photos)
-  // console.log(infinitePhotos)
-  console.log(photosStartingPoint)
-  console.log(infinitePhotosData)
 
   return (
     <>
       <AlbumDetail {...singleAlbumQuery} />
       <AlbumList {...childrenAlbumsQuery} />
       {photos.isSuccess && childrenAlbumsQuery.isSuccess && <hr className="separator" />}
-      <PhotoList albumId={albumId} {...photos} />
+
+      <PhotoList albumId={albumId} {...infinitePhotos} />
     </>
   )
 }
