@@ -1,28 +1,35 @@
-import React from "react"
+import React, { useEffect } from "react"
 import PhotoAlbum from "react-photo-album"
 import { Link } from "react-router-dom"
 import photoUrl from "../utils/photoUrl"
-import { PhotoListItem, APIError } from "../data/types"
+import { APIError, PhotoListData } from "../data/types"
 import getRandomPic from "../data/apiPhoto"
 import Loader from "./Loader"
+import { UseInfiniteQueryResult } from "react-query"
 
 export interface PhotoListParams {
+  photoQuery: UseInfiniteQueryResult<PhotoListData, APIError>
   albumId?: string
-  data?: {
-    pages: {
-      next: boolean | null | string
-      total: number
-      results: PhotoListItem[]
-    }[]
-    pageParams: number | undefined[]
-  }
-  error: APIError
-  isError: boolean
-  isLoading: boolean
 }
 
-const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams) => {
-  data
+const PhotoList = ({ photoQuery, albumId }: PhotoListParams) => {
+  const { data, error, isError, isLoading } = photoQuery
+  useEffect(() => {
+    function onScroll(event: any) {
+      const { scrollHeight, scrollTop, clientHeight } = event.target.scrollingElement
+      if (scrollHeight - scrollTop <= clientHeight * 1.5) {
+        if (photoQuery.hasNextPage) {
+          console.log("I have another page")
+          photoQuery.fetchNextPage()
+        }
+      }
+    }
+    document.addEventListener("scroll", onScroll)
+    return () => {
+      document.removeEventListener("scroll", onScroll)
+    }
+  }, [photoQuery])
+
   if (isLoading) {
     return <Loader />
   }
@@ -48,7 +55,6 @@ const PhotoList = ({ albumId, data, error, isError, isLoading }: PhotoListParams
         })
       })
       .flat()
-    console.log(photosParameters)
 
     return (
       <div className="gallery-container">

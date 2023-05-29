@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import {
   APIError,
   fetchPhotosParams,
@@ -33,9 +33,8 @@ function photo() {
       return { ...res.data, results: parsedResults }
     })
   }
-  ////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////
-  const photosQueryInfinite = ({ album, limit, offset }: fetchPhotosParams) => {
+
+  const photosQuery = ({ album, limit, offset }: fetchPhotosParams) => {
     return useInfiniteQuery<PhotoListData, APIError>(
       ["photos", album, limit, offset],
       ({ pageParam }) => fetchPhotos({ album, limit, offset: pageParam }),
@@ -45,18 +44,10 @@ function photo() {
     )
   }
 
-  ///////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////
   function fetchPhoto(photoId: PhotoId) {
     return axios({
       url: `${baseUrl}/api/v1/photos/${photoId}`,
     }).then((res) => res.data)
-  }
-
-  const photosQuery = (params: fetchPhotosParams) => {
-    return useQuery<PhotoListData, APIError>(["photos", params.limit, params.album], () =>
-      fetchPhotos({ album: params.album, limit: params.limit }),
-    )
   }
 
   const photoInAlbumQuery = ({ albumId, photoId }: FetchPhotoInAlbumParams) => {
@@ -71,7 +62,7 @@ function photo() {
     })
   }
 
-  return { photosQuery, photoInAlbumQuery, photoQuery, photosQueryInfinite }
+  return { photosQuery, photoInAlbumQuery, photoQuery }
 }
 
 export default photo
