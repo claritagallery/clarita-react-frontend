@@ -40,6 +40,7 @@ function photo() {
       ({ pageParam }) => fetchPhotos({ album, limit, offset: pageParam }),
       {
         getNextPageParam: (lastPage, allPages) => lastPage.next,
+        refetchOnWindowFocus: false,
       },
     )
   }

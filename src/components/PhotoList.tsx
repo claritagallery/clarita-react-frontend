@@ -83,7 +83,7 @@ const PhotoList = ({ photosQuery, albumId }: PhotoListParams) => {
 
                 <div className="picture-info" ref={photo.isLast ? setObserver : null}>
                   {photo.title && <h4 className="picture-title"> {photo.title}</h4>}
-                  <h5 className="picture-dat?random=2e">{photo.date}</h5>
+                  <h5 className="picture-date">{photo.date}</h5>
                 </div>
               </Link>
             </div>
