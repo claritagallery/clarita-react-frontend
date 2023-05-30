@@ -10,7 +10,7 @@ const PhotoListPage = () => {
     offset: 0,
   })
 
-  return <PhotoList photoQuery={photos} />
+  return <PhotoList photosQuery={photos} />
 }
 
 export default PhotoListPage
