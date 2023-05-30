@@ -1,7 +1,6 @@
 @use "./mixins.scss" as mix;
 .dots-wrapper {
-  margin: 0 auto; //puse el auto
-  margin-top: 3rem;
+  margin: 3rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
