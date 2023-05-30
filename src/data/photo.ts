@@ -1,3 +1,4 @@
+import React from "react"
 import {
   APIError,
   fetchPhotosParams,
@@ -7,7 +8,7 @@ import {
   PhotoId,
 } from "./types"
 import axios from "axios"
-import { useQuery } from "react-query"
+import { useQuery, useInfiniteQuery } from "react-query"
 
 function photo() {
   const baseUrl = process.env.REACT_APP_API_BASE_URL
@@ -28,21 +29,26 @@ function photo() {
         ...obj,
         date_and_time: new Date(obj.date_and_time).toISOString().substring(0, 10),
       }))
-      console.log(parsedResults)
+
       return { ...res.data, results: parsedResults }
     })
+  }
+
+  const photosQuery = ({ album, limit, offset }: fetchPhotosParams) => {
+    return useInfiniteQuery<PhotoListData, APIError>(
+      ["photos", album, limit, offset],
+      ({ pageParam }) => fetchPhotos({ album, limit, offset: pageParam }),
+      {
+        getNextPageParam: (lastPage, allPages) => lastPage.next,
+        refetchOnWindowFocus: false,
+      },
+    )
   }
 
   function fetchPhoto(photoId: PhotoId) {
     return axios({
       url: `${baseUrl}/api/v1/photos/${photoId}`,
     }).then((res) => res.data)
-  }
-
-  const photosQuery = (params: fetchPhotosParams) => {
-    return useQuery<PhotoListData, APIError>(["photos", params.limit, params.album], () =>
-      fetchPhotos({ album: params.album, limit: 50 }),
-    )
   }
 
   const photoInAlbumQuery = ({ albumId, photoId }: FetchPhotoInAlbumParams) => {

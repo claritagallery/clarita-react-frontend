@@ -4,7 +4,8 @@ import AlbumList from "../components/AlbumList"
 import PhotoList from "../components/PhotoList"
 import { useParams } from "react-router-dom"
 import useApi from "../data"
-import { AlbumListData } from "../data/types"
+import useDeviceDetector from "../hooks/useDeviceDetector"
+
 type AlbumDetailParams = {
   albumId: string
 }
@@ -12,17 +13,22 @@ type AlbumDetailParams = {
 function AlbumDetailPage() {
   const { albumId } = useParams<keyof AlbumDetailParams>() as AlbumDetailParams
   const { albumQuery, albumsQuery, photosQuery } = useApi()
-
+  const isDesktop = useDeviceDetector()
+  const numberOfPhotos = isDesktop ? 50 : 20
   const singleAlbumQuery = albumQuery(albumId)
   const childrenAlbumsQuery = albumsQuery({ parent: albumId, limit: 100 })
-  const photos = photosQuery({ album: albumId, limit: 50 })
+  const photos = photosQuery({
+    album: albumId,
+    limit: numberOfPhotos,
+    offset: 0,
+  })
 
   return (
     <>
       <AlbumDetail {...singleAlbumQuery} />
       <AlbumList {...childrenAlbumsQuery} />
-      {photos.isSuccess && childrenAlbumsQuery.isSuccess && <hr className="separator" />}
-      <PhotoList albumId={albumId} {...photos} />
+      {childrenAlbumsQuery.isSuccess && <hr className="separator" />}
+      <PhotoList albumId={albumId} photosQuery={photos} />
     </>
   )
 }
