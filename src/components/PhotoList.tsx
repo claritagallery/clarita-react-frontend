@@ -25,7 +25,6 @@ const PhotoList = ({ photosQuery, albumId }: PhotoListParams) => {
   const intObserver = useRef<IntersectionObserver | null>(null)
   const setObserver = useCallback(
     (photo: HTMLElement | null) => {
-      console.log(photo)
       if (isLoading) {
         return
       }
@@ -67,11 +66,7 @@ const PhotoList = ({ photosQuery, albumId }: PhotoListParams) => {
         }
       })
     })
-    // const lastPhoto = photos[photos.length - 1]
 
-    console.log(photos)
-
-    //console.log(lastPhoto)
     return (
       <div className="gallery-container">
         <PhotoAlbum
