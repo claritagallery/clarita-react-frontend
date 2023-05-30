@@ -1,20 +1,20 @@
 import React from "react"
-import { useContext, useState, useEffect } from "react"
+import { useContext } from "react"
 import { PhotoData, BaseProps } from "../data/types"
 import { DrawerContext } from "../contexts/Drawer"
 
 interface DrawerProps extends BaseProps {
   photo?: PhotoData
-  isBigScreen: boolean
+  isDesktop: boolean
 }
 
-function Drawer({ photo, isLoading, isBigScreen }: DrawerProps) {
+function Drawer({ photo, isLoading, isDesktop }: DrawerProps) {
   const { isOpen } = useContext(DrawerContext)
 
   return (
     <div
       className={`drawer-container ${
-        isOpen || isBigScreen ? "drawer-is-open-container" : ""
+        isOpen || isDesktop ? "drawer-is-open-container" : ""
       }`}
     >
       <div className={`title-container ${isOpen ? "drawer-is-open-title" : ""}`}>
@@ -24,7 +24,7 @@ function Drawer({ photo, isLoading, isBigScreen }: DrawerProps) {
         </button>
       </div>
 
-      {(isOpen || isBigScreen) && photo ? (
+      {(isOpen || !isDesktop) && photo ? (
         <DetailsDrawer photo={photo} />
       ) : (
         <DetailsDrawer />

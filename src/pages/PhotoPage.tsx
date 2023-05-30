@@ -1,8 +1,8 @@
-import React, { useCallback } from "react"
+import React from "react"
 import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react"
 import useApi from "../data"
 import Photo from "../components/Photo"
+import useDeviceDetector from "../hooks/useDeviceDetector"
 
 type PhotoPageProps = {
   setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
@@ -12,20 +12,8 @@ type PhotoDetailParams = {
   albumId?: string
 }
 function PhotoPage({ setShowHeader }: PhotoPageProps) {
-  const [windWidth, setWindWidth] = useState(window.innerWidth)
+  const isDesktop = useDeviceDetector()
 
-  const setCurrentWindowWidth = useCallback(() => {
-    setWindWidth(window.innerWidth)
-  }, [window, setWindWidth])
-
-  useEffect(() => {
-    window.addEventListener("resize", setCurrentWindowWidth)
-    return () => {
-      window.removeEventListener("resize", setCurrentWindowWidth)
-    }
-  }, [window, setCurrentWindowWidth])
-
-  const isBigScreen = windWidth > 900
   const { albumId, photoId } = useParams<keyof PhotoDetailParams>() as PhotoDetailParams
   const { photoInAlbumQuery, photoQuery } = useApi()
   const { data, error, isError, isLoading } = albumId
@@ -41,7 +29,7 @@ function PhotoPage({ setShowHeader }: PhotoPageProps) {
       photo={data}
       albumId={albumId}
       isLoading={isLoading}
-      isBigScreen={isBigScreen}
+      isDesktop={isDesktop}
       setShowHeader={setShowHeader}
     />
   )

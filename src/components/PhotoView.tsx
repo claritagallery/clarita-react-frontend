@@ -9,7 +9,7 @@ import useMountTransition from "../hooks/useMountTransition"
 interface PhotoViewProps extends BaseProps {
   photo?: PhotoData
   albumId?: string
-  isBigScreen: boolean
+  isDesktop: boolean
   setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
   setDeferredPhoto: React.Dispatch<React.SetStateAction<string>>
   photoLink: string
@@ -19,7 +19,7 @@ function PhotoView({
   photo,
   albumId,
   isLoading,
-  isBigScreen,
+  isDesktop,
   setShowHeader,
   setDeferredPhoto,
   photoLink,
@@ -36,14 +36,14 @@ function PhotoView({
   const next = photo?.next
   const photoName = photo?.filename
   const showZoomedPicture = useCallback(() => {
-    if (isBigScreen) {
+    if (isDesktop) {
       setIsZoomed(true)
     }
-  }, [isBigScreen, setIsZoomed, setShowHeader])
+  }, [isDesktop, setIsZoomed, setShowHeader])
 
   const exitZoomedPicture = useCallback(() => {
     setIsZoomed(false)
-  }, [isBigScreen, setIsZoomed, setShowHeader])
+  }, [isDesktop, setIsZoomed, setShowHeader])
 
   return (
     <>
