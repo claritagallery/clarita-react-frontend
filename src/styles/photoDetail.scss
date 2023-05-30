@@ -16,17 +16,18 @@
     width: 100%;
   }
   .blurred-picture {
-    opacity: 0.4;
+    opacity: 0.2;
     transition: opacity 4s;
   }
   .drawer-container {
-    bottom: 0rem;
+    bottom: 0;
     position: fixed;
     width: 100%;
     transform: translateY(100%);
     transition: transform 0.9s ease-in-out;
     line-height: 1.5rem;
     text-align: center;
+    z-index: 100;
     .title-container {
       display: flex;
       justify-content: center;
@@ -122,12 +123,15 @@
         background-color: rgba(210, 228, 225, 0.6);
       }
       .info-open-drawer {
+        height: 25vh;
+        position: relative; //nuevo
+        bottom: 0; //nuevo
         .container-brick-items {
           .brick-item {
             margin: 0;
           }
         }
-        height: 25vh;
+
         p,
         span {
           text-align: center;
