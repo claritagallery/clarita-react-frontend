@@ -19,8 +19,8 @@ function AlbumDetailPage() {
   const childrenAlbumsQuery = albumsQuery({ parent: albumId, limit: 100 })
   const photos = photosQuery({
     album: albumId,
-    limit: 20,
-    offset: numberOfPhotos,
+    limit: numberOfPhotos,
+    offset: 0,
   })
 
   return (

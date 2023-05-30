@@ -7,8 +7,8 @@ const PhotoListPage = () => {
   const { photosQuery } = useApi()
   const numberOfPhotos = isDesktop ? 50 : 20
   const photos = photosQuery({
-    limit: 20,
-    offset: numberOfPhotos,
+    limit: numberOfPhotos,
+    offset: 0,
   })
 
   return <PhotoList photosQuery={photos} />
