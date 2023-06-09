@@ -13,9 +13,9 @@ const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
     return <AlbumThumbLoading num={4} />
   }
 
-  if (isError) {
-    return <div>{error ? error.message : "Unknown error"}</div>
-  }
+  // if (isError) {
+  //   return <div>{error ? error.message : "Unknown error"}</div>
+  // }
 
   const albums = !isLoading && data ? data.results : []
 

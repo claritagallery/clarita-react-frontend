@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import useApi from "../data"
 import Photo from "../components/Photo"
 import useDeviceDetector from "../hooks/useDeviceDetector"
-import { toast, ToastContainer } from "react-toastify"
+
 type PhotoPageProps = {
   setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -16,18 +16,9 @@ function PhotoPage({ setShowHeader }: PhotoPageProps) {
 
   const { albumId, photoId } = useParams<keyof PhotoDetailParams>() as PhotoDetailParams
   const { photoInAlbumQuery, photoQuery } = useApi()
-  const { data, error, isError, isLoading } = albumId
+  const { data, isLoading } = albumId
     ? photoInAlbumQuery({ albumId, photoId })
     : photoQuery(photoId)
-
-  if (isError) {
-    const notifyError = () => {
-      const errorMessage = error ? error.message : "Unknown error"
-      return toast(errorMessage)
-    }
-    notifyError()
-    return <ToastContainer />
-  }
 
   return (
     <Photo

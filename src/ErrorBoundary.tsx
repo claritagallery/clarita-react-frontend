@@ -52,8 +52,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 
   render() {
     if (this.state.hasError) {
-      const errorToast = useError({ message: this.state.message || "Unknown error" })
-      // return <h1>{this.state.message}</h1>
+      const errorToast = useError({ message: this.state.message })
       return errorToast
     }
     return this.props.children

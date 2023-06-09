@@ -13,7 +13,7 @@ function album() {
 
   const fetchAlbums = async (params: fetchAlbumsParams) => {
     const res = await axios({
-      url: `${baseUrl}/api/v1/albums`,
+      url: `${baseUrl}/api/v2/albums`, //cambie 2 en vez de uno, uno correcto
       params: params,
     })
     return res.data
@@ -22,7 +22,7 @@ function album() {
   const albumQuery = (albumId: string) => {
     const query = useQuery<AlbumDetailData, APIError>(["album", albumId], async () => {
       const res = await axios({
-        url: `${baseUrl}/api/v1/albums/${albumId}`,
+        url: `${baseUrl}/api/v2/albums/${albumId}`, //cambie 2 en vez de 1
       })
       return res.data
     })
@@ -33,10 +33,14 @@ function album() {
   }
 
   const albumsQuery = (params: fetchAlbumsParams) => {
-    return useQuery<AlbumListData, APIError>(
+    const query = useQuery<AlbumListData, APIError>(
       ["albums", params.limit, params.parent],
       () => fetchAlbums(params),
     )
+    if (query.isError) {
+      throw new DataError(query.error?.message || "Unknown error")
+    }
+    return query
   }
 
   return { albumQuery, albumsQuery }

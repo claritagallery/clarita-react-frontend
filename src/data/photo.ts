@@ -22,7 +22,7 @@ function photo() {
 
   function fetchPhotos(params: fetchPhotosParams) {
     return axios({
-      url: `${baseUrl}/api/v2/photos`, //puse 2 en vez de uno para debugrar error
+      url: `${baseUrl}/api/v1/photos`,
       params: params,
     }).then((res) => {
       const data = res.data as PhotoListData
@@ -53,20 +53,29 @@ function photo() {
 
   function fetchPhoto(photoId: PhotoId) {
     return axios({
-      url: `${baseUrl}/api/v1/photos/${photoId}`,
+      url: `${baseUrl}/api/v1/photos/${photoId}`, //puse 2 en vez de 1 pa debugear
     }).then((res) => res.data)
   }
 
   const photoInAlbumQuery = ({ albumId, photoId }: FetchPhotoInAlbumParams) => {
-    return useQuery<PhotoData, APIError>(["photo-in-album", albumId, photoId], () =>
-      fetchPhotoInAlbum({ albumId, photoId }),
+    const query = useQuery<PhotoData, APIError>(
+      ["photo-in-album", albumId, photoId],
+      () => fetchPhotoInAlbum({ albumId, photoId }),
     )
+    if (query.isError) {
+      throw new DataError(query.error?.message || "Unknown error")
+    }
+    return query
   }
 
   const photoQuery = (photoId: PhotoId) => {
-    return useQuery<PhotoData, APIError>(["photo", photoId], () => {
+    const query = useQuery<PhotoData, APIError>(["photo", photoId], () => {
       return fetchPhoto(photoId)
     })
+    if (query.isError) {
+      throw new DataError(query.error?.message || "Unknown error")
+    }
+    return query
   }
 
   return { photosQuery, photoInAlbumQuery, photoQuery }

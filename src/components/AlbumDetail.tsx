@@ -24,9 +24,9 @@ const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => 
     )
   }
 
-  if (isError) {
-    return <div>{error ? error.message : "Unknown error"}</div>
-  }
+  // if (isError) {
+  //   return <div>{error ? error.message : "Unknown error"}</div>
+  // }
   if (data) {
     return (
       <>

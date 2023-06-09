@@ -6,22 +6,14 @@ import { APIError, PhotoListData } from "../data/types"
 import getRandomPic from "../data/apiPhoto"
 import Loader from "./Loader"
 import { UseInfiniteQueryResult } from "react-query"
-import useError from "../hooks/useError"
+
 export interface PhotoListParams {
   photosQuery: UseInfiniteQueryResult<PhotoListData, APIError>
   albumId?: string
 }
 
 const PhotoList = ({ photosQuery, albumId }: PhotoListParams) => {
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isError,
-    isLoading,
-    isFetchingNextPage,
-  } = photosQuery
+  const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } = photosQuery
   const intObserver = useRef<IntersectionObserver | null>(null)
   const setObserver = useCallback(
     (photo: HTMLElement | null) => {
@@ -46,11 +38,6 @@ const PhotoList = ({ photosQuery, albumId }: PhotoListParams) => {
   if (isLoading) {
     return <Loader />
   }
-
-  // if (isError) {
-  //   //const errorComponent = useError({ message: error?.message || "Unknown error" })
-  //   //return errorComponent
-  // }
 
   if (data) {
     const photos = data.pages.flatMap((obj) => {
