@@ -1,3 +1,5 @@
+export class DataError extends Error {}
+
 export type APIError = {
   message: string
 } | null

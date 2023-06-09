@@ -6,6 +6,7 @@ import {
   FetchPhotoInAlbumParams,
   PhotoData,
   PhotoId,
+  DataError,
 } from "./types"
 import axios from "axios"
 import { useQuery, useInfiniteQuery } from "react-query"
@@ -21,10 +22,11 @@ function photo() {
 
   function fetchPhotos(params: fetchPhotosParams) {
     return axios({
-      url: `${baseUrl}/api/v1/photos`,
+      url: `${baseUrl}/api/v2/photos`, //puse 2 en vez de uno para debugrar error
       params: params,
     }).then((res) => {
       const data = res.data as PhotoListData
+
       const parsedResults = data.results.map((obj) => ({
         ...obj,
         date_and_time: new Date(obj.date_and_time).toISOString().substring(0, 10),
@@ -35,7 +37,7 @@ function photo() {
   }
 
   const photosQuery = ({ album, limit, offset }: fetchPhotosParams) => {
-    return useInfiniteQuery<PhotoListData, APIError>(
+    const query = useInfiniteQuery<PhotoListData, APIError>(
       ["photos", album, limit, offset],
       ({ pageParam }) => fetchPhotos({ album, limit, offset: pageParam }),
       {
@@ -43,6 +45,10 @@ function photo() {
         refetchOnWindowFocus: false,
       },
     )
+    if (query.isError) {
+      throw new DataError(query.error?.message || "Unknown error")
+    }
+    return query
   }
 
   function fetchPhoto(photoId: PhotoId) {

@@ -1,6 +1,12 @@
 import axios from "axios"
 import { useQuery } from "react-query"
-import { APIError, AlbumDetailData, AlbumListData, fetchAlbumsParams } from "./types"
+import {
+  APIError,
+  AlbumDetailData,
+  AlbumListData,
+  DataError,
+  fetchAlbumsParams,
+} from "./types"
 
 function album() {
   const baseUrl = process.env.REACT_APP_API_BASE_URL
@@ -14,12 +20,16 @@ function album() {
   }
 
   const albumQuery = (albumId: string) => {
-    return useQuery<AlbumDetailData, APIError>(["album", albumId], async () => {
+    const query = useQuery<AlbumDetailData, APIError>(["album", albumId], async () => {
       const res = await axios({
         url: `${baseUrl}/api/v1/albums/${albumId}`,
       })
       return res.data
     })
+    if (query.isError) {
+      throw new DataError(query.error?.message || "Unknown error")
+    }
+    return query
   }
 
   const albumsQuery = (params: fetchAlbumsParams) => {

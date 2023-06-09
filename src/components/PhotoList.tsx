@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useRef } from "react"
+import React, { useCallback, useRef } from "react"
 import PhotoAlbum from "react-photo-album"
 import { Link } from "react-router-dom"
 import photoUrl from "../utils/photoUrl"
@@ -6,7 +6,7 @@ import { APIError, PhotoListData } from "../data/types"
 import getRandomPic from "../data/apiPhoto"
 import Loader from "./Loader"
 import { UseInfiniteQueryResult } from "react-query"
-
+import useError from "../hooks/useError"
 export interface PhotoListParams {
   photosQuery: UseInfiniteQueryResult<PhotoListData, APIError>
   albumId?: string
@@ -47,9 +47,10 @@ const PhotoList = ({ photosQuery, albumId }: PhotoListParams) => {
     return <Loader />
   }
 
-  if (isError) {
-    return <div>{error ? error.message : "Unknown error"}</div>
-  }
+  // if (isError) {
+  //   //const errorComponent = useError({ message: error?.message || "Unknown error" })
+  //   //return errorComponent
+  // }
 
   if (data) {
     const photos = data.pages.flatMap((obj) => {

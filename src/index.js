@@ -6,10 +6,13 @@ import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 const container = document.getElementById("root")
 const root = createRoot(container)
+import ErrorBoundary from "./ErrorBoundary"
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
     </BrowserRouter>
   </React.StrictMode>,
 )

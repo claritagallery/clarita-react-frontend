@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import useApi from "../data"
 import Photo from "../components/Photo"
 import useDeviceDetector from "../hooks/useDeviceDetector"
-
+import { toast, ToastContainer } from "react-toastify"
 type PhotoPageProps = {
   setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -21,7 +21,12 @@ function PhotoPage({ setShowHeader }: PhotoPageProps) {
     : photoQuery(photoId)
 
   if (isError) {
-    return <div>{error ? error.message : "Unknown error"}</div>
+    const notifyError = () => {
+      const errorMessage = error ? error.message : "Unknown error"
+      return toast(errorMessage)
+    }
+    notifyError()
+    return <ToastContainer />
   }
 
   return (
