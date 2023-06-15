@@ -6,6 +6,7 @@ import "./App.scss"
 import DrawerProvider from "./contexts/Drawer"
 import "./styles/albumList.scss"
 import { Footer, Header } from "./components"
+import ErrorBoundaryComponent from "./ErrorBoundaryComponent"
 import {
   AlbumDetailPage,
   AlbumListPage,
@@ -31,18 +32,55 @@ function App() {
               <div className="routes-container">
                 <DrawerProvider>
                   <Routes>
-                    <Route path="/" element={<AlbumListPage />} />
+                    <Route
+                      path="/"
+                      element={
+                        <ErrorBoundaryComponent>
+                          <AlbumListPage />{" "}
+                        </ErrorBoundaryComponent>
+                      }
+                    />
+
                     <Route
                       path="/albums/:albumId/photos/:photoId"
-                      element={<PhotoPage setShowHeader={setShowHeader} />}
+                      element={
+                        <ErrorBoundaryComponent>
+                          <PhotoPage setShowHeader={setShowHeader} />
+                        </ErrorBoundaryComponent>
+                      }
                     />
-                    <Route path="/albums/:albumId" element={<AlbumDetailPage />} />
-                    <Route path="/albums" element={<AlbumListPage />} />
+                    <Route
+                      path="/albums/:albumId"
+                      element={
+                        <ErrorBoundaryComponent>
+                          <AlbumDetailPage />
+                        </ErrorBoundaryComponent>
+                      }
+                    />
+                    <Route
+                      path="/albums"
+                      element={
+                        <ErrorBoundaryComponent>
+                          <AlbumListPage />
+                        </ErrorBoundaryComponent>
+                      }
+                    />
                     <Route
                       path="/photos/:photoId"
-                      element={<PhotoPage setShowHeader={setShowHeader} />}
+                      element={
+                        <ErrorBoundaryComponent>
+                          <PhotoPage setShowHeader={setShowHeader} />
+                        </ErrorBoundaryComponent>
+                      }
                     />
-                    <Route path="/photos" element={<PhotoListPage />} />
+                    <Route
+                      path="/photos"
+                      element={
+                        <ErrorBoundaryComponent>
+                          <PhotoListPage />
+                        </ErrorBoundaryComponent>
+                      }
+                    />
                     <Route element={<NotFound />} />
                   </Routes>
                 </DrawerProvider>

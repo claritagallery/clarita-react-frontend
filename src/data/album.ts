@@ -13,7 +13,7 @@ function album() {
 
   const fetchAlbums = async (params: fetchAlbumsParams) => {
     const res = await axios({
-      url: `${baseUrl}/api/v2/albums`, //cambie 2 en vez de uno, uno correcto
+      url: `${baseUrl}/api/v1/albums`, //dos en vez de uno
       params: params,
     })
     return res.data
@@ -22,7 +22,7 @@ function album() {
   const albumQuery = (albumId: string) => {
     const query = useQuery<AlbumDetailData, APIError>(["album", albumId], async () => {
       const res = await axios({
-        url: `${baseUrl}/api/v2/albums/${albumId}`, //cambie 2 en vez de 1
+        url: `${baseUrl}/api/v1/albums/${albumId}`,
       })
       return res.data
     })

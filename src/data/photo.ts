@@ -41,7 +41,7 @@ function photo() {
       ["photos", album, limit, offset],
       ({ pageParam }) => fetchPhotos({ album, limit, offset: pageParam }),
       {
-        getNextPageParam: (lastPage, allPages) => lastPage.next,
+        getNextPageParam: (lastPage) => lastPage.next,
         refetchOnWindowFocus: false,
       },
     )
@@ -53,7 +53,7 @@ function photo() {
 
   function fetchPhoto(photoId: PhotoId) {
     return axios({
-      url: `${baseUrl}/api/v1/photos/${photoId}`, //puse 2 en vez de 1 pa debugear
+      url: `${baseUrl}/api/v1/photos/${photoId}`,
     }).then((res) => res.data)
   }
 
