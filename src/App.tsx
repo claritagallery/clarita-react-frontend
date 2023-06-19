@@ -1,12 +1,14 @@
 import React from "react"
-import { QueryClient, QueryClientProvider } from "react-query"
+import { QueryCache, QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
 import { Route, Routes } from "react-router-dom"
 import "./App.scss"
 import DrawerProvider from "./contexts/Drawer"
 import "./styles/albumList.scss"
 import { Footer, Header } from "./components"
-import ErrorBoundaryComponent from "./ErrorBoundaryComponent"
+import { toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+
 import {
   AlbumDetailPage,
   AlbumListPage,
@@ -16,7 +18,7 @@ import {
 } from "./pages"
 
 const queryClient = new QueryClient({
-  defaultOptions: {},
+  queryCache: new QueryCache({}),
 })
 
 function App() {
@@ -25,62 +27,25 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="App">
         {showHeader && <Header />}
-
         <div className="Main">
           <div>
             <main>
               <div className="routes-container">
                 <DrawerProvider>
                   <Routes>
-                    <Route
-                      path="/"
-                      element={
-                        <ErrorBoundaryComponent>
-                          <AlbumListPage />{" "}
-                        </ErrorBoundaryComponent>
-                      }
-                    />
+                    <Route path="/" element={<AlbumListPage />} />
 
                     <Route
                       path="/albums/:albumId/photos/:photoId"
-                      element={
-                        <ErrorBoundaryComponent>
-                          <PhotoPage setShowHeader={setShowHeader} />
-                        </ErrorBoundaryComponent>
-                      }
+                      element={<PhotoPage setShowHeader={setShowHeader} />}
                     />
-                    <Route
-                      path="/albums/:albumId"
-                      element={
-                        <ErrorBoundaryComponent>
-                          <AlbumDetailPage />
-                        </ErrorBoundaryComponent>
-                      }
-                    />
-                    <Route
-                      path="/albums"
-                      element={
-                        <ErrorBoundaryComponent>
-                          <AlbumListPage />
-                        </ErrorBoundaryComponent>
-                      }
-                    />
+                    <Route path="/albums/:albumId" element={<AlbumDetailPage />} />
+                    <Route path="/albums" element={<AlbumListPage />} />
                     <Route
                       path="/photos/:photoId"
-                      element={
-                        <ErrorBoundaryComponent>
-                          <PhotoPage setShowHeader={setShowHeader} />
-                        </ErrorBoundaryComponent>
-                      }
+                      element={<PhotoPage setShowHeader={setShowHeader} />}
                     />
-                    <Route
-                      path="/photos"
-                      element={
-                        <ErrorBoundaryComponent>
-                          <PhotoListPage />
-                        </ErrorBoundaryComponent>
-                      }
-                    />
+                    <Route path="/photos" element={<PhotoListPage />} />
                     <Route element={<NotFound />} />
                   </Routes>
                 </DrawerProvider>

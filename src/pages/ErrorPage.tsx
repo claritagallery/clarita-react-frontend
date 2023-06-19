@@ -1,7 +1,8 @@
 import React from "react"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { Header, Footer } from "./components"
+import { Header, Footer } from "../components"
+
 export interface ErrorParams {
   message: string
 }
@@ -25,7 +26,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     if (error instanceof Error) {
       message = error.message
     }
-    console.log(error)
+
     return { hasError: true, message }
   }
 

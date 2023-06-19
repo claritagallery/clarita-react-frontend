@@ -3,19 +3,25 @@ import React from "react"
 import AlbumThumb from "./AlbumThumb"
 import { APIError, AlbumListData } from "../data/types"
 import { UseQueryResult } from "react-query"
-import { ImageIcon } from "./Icons"
 import AlbumThumbLoading from "./AlbumThumbLoading"
+import ErrorBox from "./ErrorBox"
 
 type AlbumListParams = UseQueryResult<AlbumListData, APIError>
 
-const AlbumList = ({ data, error, isError, isLoading }: AlbumListParams) => {
+const AlbumList = ({ data, error, isError, isLoading, refetch }: AlbumListParams) => {
   if (isLoading) {
     return <AlbumThumbLoading num={4} />
   }
 
-  // if (isError) {
-  //   return <div>{error ? error.message : "Unknown error"}</div>
-  // }
+  if (isError) {
+    return (
+      <ErrorBox
+        title="An error ocurred while loading albums"
+        error={error}
+        refetch={refetch}
+      />
+    )
+  }
 
   const albums = !isLoading && data ? data.results : []
 

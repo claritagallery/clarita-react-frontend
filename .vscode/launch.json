@@ -1,0 +1,34 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach to Chrome",
+      "port": 9222,
+      "request": "attach",
+      "type": "chrome",
+      "webRoot": "${workspaceFolder}/src"
+    },
+    {
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      "name": "Launch Firefox",
+      "firefoxExecutable": "/snap/bin/firefox",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/src",
+      "timeout": 10000,
+      "tmpDir": "/home/natalie/.local/tmp"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "runtimeExecutable": "/snap/bin/chromium",
+      "name": "Launch Chrome",
+      "urlFilter": "http://localhost:3000/*",
+      "webRoot": "${workspaceFolder}/src"
+    }
+  ]
+}

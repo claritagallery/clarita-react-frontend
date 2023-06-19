@@ -45,9 +45,6 @@ function photo() {
         refetchOnWindowFocus: false,
       },
     )
-    if (query.isError) {
-      throw new DataError(query.error?.message || "Unknown error")
-    }
     return query
   }
 
@@ -62,9 +59,6 @@ function photo() {
       ["photo-in-album", albumId, photoId],
       () => fetchPhotoInAlbum({ albumId, photoId }),
     )
-    if (query.isError) {
-      throw new DataError(query.error?.message || "Unknown error")
-    }
     return query
   }
 
@@ -72,9 +66,6 @@ function photo() {
     const query = useQuery<PhotoData, APIError>(["photo", photoId], () => {
       return fetchPhoto(photoId)
     })
-    if (query.isError) {
-      throw new DataError(query.error?.message || "Unknown error")
-    }
     return query
   }
 

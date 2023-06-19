@@ -6,13 +6,25 @@ import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 const container = document.getElementById("root")
 const root = createRoot(container)
-import ErrorBoundary from "./ErrorBoundary"
+import ErrorPage from "./pages/ErrorPage"
+import { ToastContainer } from "react-toastify"
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ErrorBoundary>
+      <ErrorPage>
         <App />
-      </ErrorBoundary>
+      </ErrorPage>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+      />
     </BrowserRouter>
   </React.StrictMode>,
 )

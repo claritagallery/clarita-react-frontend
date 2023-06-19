@@ -1,12 +1,6 @@
 import axios from "axios"
 import { useQuery } from "react-query"
-import {
-  APIError,
-  AlbumDetailData,
-  AlbumListData,
-  DataError,
-  fetchAlbumsParams,
-} from "./types"
+import { APIError, AlbumDetailData, AlbumListData, fetchAlbumsParams } from "./types"
 
 function album() {
   const baseUrl = process.env.REACT_APP_API_BASE_URL
@@ -26,9 +20,6 @@ function album() {
       })
       return res.data
     })
-    if (query.isError) {
-      throw new DataError(query.error?.message || "Unknown error")
-    }
     return query
   }
 
@@ -37,9 +28,6 @@ function album() {
       ["albums", params.limit, params.parent],
       () => fetchAlbums(params),
     )
-    if (query.isError) {
-      throw new DataError(query.error?.message || "Unknown error")
-    }
     return query
   }
 
