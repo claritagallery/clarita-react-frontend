@@ -16,13 +16,13 @@ function photo() {
 
   function fetchPhotoInAlbum({ albumId, photoId }: FetchPhotoInAlbumParams) {
     return axios({
-      url: `${baseUrl}/api/v1/albums/${albumId}/photos/${photoId}`,
+      url: `${baseUrl}/api/v1/albums/${albumId}/photos/${photoId}`, //2 en vez de uno
     }).then((res) => res.data)
   }
 
   function fetchPhotos(params: fetchPhotosParams) {
     return axios({
-      url: `${baseUrl}/api/v1/photos`,
+      url: `${baseUrl}/api/v2/photos`,
       params: params,
     }).then((res) => {
       const data = res.data as PhotoListData

@@ -6,9 +6,12 @@ import { UseQueryResult } from "react-query"
 import AlbumThumbLoading from "./AlbumThumbLoading"
 import ErrorBox from "./ErrorBox"
 
-type AlbumListParams = UseQueryResult<AlbumListData, APIError>
+interface AlbumListParams {
+  query: UseQueryResult<AlbumListData, APIError>
+}
 
-const AlbumList = ({ data, error, isError, isLoading, refetch }: AlbumListParams) => {
+const AlbumList = ({ query }: AlbumListParams) => {
+  const { data, error, isError, isLoading, refetch } = query
   if (isLoading) {
     return <AlbumThumbLoading num={4} />
   }

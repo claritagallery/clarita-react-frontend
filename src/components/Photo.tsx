@@ -5,16 +5,18 @@ import { DrawerContext } from "../contexts/Drawer"
 import Drawer from "./Drawer"
 import PhotoView from "./PhotoView"
 import NavigationDrawer from "./NavigationDrawer"
-import { PhotoData, BaseProps } from "../data/types"
+import { PhotoData, BaseProps, APIError } from "../data/types"
+import { UseQueryResult } from "react-query"
 
 interface PhotoProps extends BaseProps {
-  photo?: PhotoData
+  query: UseQueryResult<PhotoData, APIError>
   albumId?: string
   isDesktop: boolean
   setShowHeader: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function Photo({ photo, albumId, isLoading, isDesktop, setShowHeader }: PhotoProps) {
+function Photo({ query, albumId, isDesktop, setShowHeader }: PhotoProps) {
+  const { data, error, isError, isLoading } = query
   const { isOpen, toggle } = useContext(DrawerContext)
   const [touchPosition, setTouchPosition] = useState(null)
   const [deferredPhoto, setDeferredPhoto] = useState("")
@@ -42,23 +44,23 @@ function Photo({ photo, albumId, isLoading, isDesktop, setShowHeader }: PhotoPro
     if (touchDown === null) {
       return
     }
-    if (!photo) {
+    if (!data) {
       console.warn("photo not defined")
       return
     }
 
     const currentTouch = e.touches[0].clientX
     const diff = touchDown - currentTouch
-    if (diff > 5 && photo.next) {
-      navigate(`/albums/${albumId}/photos/${photo.next.id}`)
+    if (diff > 5 && data.next) {
+      navigate(`/albums/${albumId}/photos/${data.next.id}`)
     }
-    if (diff < -5 && photo.prev) {
-      navigate(`/albums/${albumId}/photos/${photo.prev.id}`)
+    if (diff < -5 && data.prev) {
+      navigate(`/albums/${albumId}/photos/${data.prev.id}`)
     }
     setTouchPosition(null)
   }
   const photoLink =
-    isLoading || !photo ? deferredQuery : `${baseUrl}/api/v1/photos/${photo.id}/file`
+    isLoading || !data ? deferredQuery : `${baseUrl}/api/v1/photos/${data.id}/file`
   return (
     <div
       className="full-photo-container"
@@ -67,7 +69,7 @@ function Photo({ photo, albumId, isLoading, isDesktop, setShowHeader }: PhotoPro
       onTouchMove={handleTouchMove}
     >
       <PhotoView
-        photo={photo}
+        photo={data}
         albumId={albumId}
         isLoading={isLoading}
         isDesktop={isDesktop}
@@ -75,9 +77,9 @@ function Photo({ photo, albumId, isLoading, isDesktop, setShowHeader }: PhotoPro
         setDeferredPhoto={setDeferredPhoto}
         photoLink={photoLink}
       />
-      <Drawer photo={photo} isLoading={isLoading} isDesktop={isDesktop} />
+      <Drawer photo={data} isLoading={isLoading} isDesktop={isDesktop} />
       <NavigationDrawer
-        photo={photo}
+        photo={data}
         toggleDrawer={isOpen}
         albumId={albumId}
         isLoading={isLoading}

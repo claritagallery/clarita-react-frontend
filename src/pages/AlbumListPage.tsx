@@ -6,7 +6,7 @@ const AlbumListPage = () => {
   const { albumsQuery } = useApi()
   const query = albumsQuery({ limit: 100 })
 
-  return <AlbumList {...query} />
+  return <AlbumList query={query} />
 }
 
 export default AlbumListPage

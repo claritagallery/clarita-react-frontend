@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-extra-semi */
 import React, { useCallback, useRef } from "react"
 import PhotoAlbum from "react-photo-album"
 import { Link } from "react-router-dom"
@@ -6,6 +7,7 @@ import { APIError, PhotoListData } from "../data/types"
 import getRandomPic from "../data/apiPhoto"
 import Loader from "./Loader"
 import { UseInfiniteQueryResult } from "react-query"
+import ErrorBox from "./ErrorBox"
 
 export interface PhotoListParams {
   photosQuery: UseInfiniteQueryResult<PhotoListData, APIError>
@@ -13,7 +15,16 @@ export interface PhotoListParams {
 }
 
 const PhotoList = ({ photosQuery, albumId }: PhotoListParams) => {
-  const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } = photosQuery
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isLoading,
+    isFetchingNextPage,
+    isError,
+    error,
+    refetch,
+  } = photosQuery
   const intObserver = useRef<IntersectionObserver | null>(null)
   const setObserver = useCallback(
     (photo: HTMLElement | null) => {
@@ -37,6 +48,16 @@ const PhotoList = ({ photosQuery, albumId }: PhotoListParams) => {
 
   if (isLoading) {
     return <Loader />
+  }
+
+  if (isError) {
+    return (
+      <ErrorBox
+        title="An error ocurred while loading photos"
+        error={error}
+        refetch={refetch}
+      />
+    )
   }
 
   if (data) {

@@ -7,7 +7,7 @@ function album() {
 
   const fetchAlbums = async (params: fetchAlbumsParams) => {
     const res = await axios({
-      url: `${baseUrl}/api/v1/albums`, //dos en vez de uno
+      url: `${baseUrl}/api/v1/albums`,
       params: params,
     })
     return res.data

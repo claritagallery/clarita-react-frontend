@@ -34,7 +34,10 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
       return (
         <div className="error-page-container">
           <Header />
-          <div className="error-page-message">{this.state.message}</div>
+          <div className="error-page-message">
+            An error ocurred while loading this page: <br />
+            {this.state.message}
+          </div>
           <Footer />
         </div>
       )

@@ -8,6 +8,7 @@ export interface ListData<T> {
   next: boolean | null | string
   total: number
   results: T[]
+  refetch: () => void
 }
 export interface PhotoListItem {
   id: string
