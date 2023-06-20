@@ -6,8 +6,6 @@ import "./App.scss"
 import DrawerProvider from "./contexts/Drawer"
 import "./styles/albumList.scss"
 import { Footer, Header } from "./components"
-import { toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
 
 import {
   AlbumDetailPage,

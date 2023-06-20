@@ -27,9 +27,9 @@ const AlbumDetail = ({ query }: AlbumDetailParams) => {
   if (isError) {
     return (
       <ErrorBox
-        title="An error ocurred while loading this album"
+        title="An error ocurred while loading this album:"
         error={error}
-        refetch={refetch}
+        retry={refetch}
       />
     )
   }

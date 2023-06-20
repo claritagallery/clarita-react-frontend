@@ -24,7 +24,7 @@ function Photo({ query, albumId, isDesktop, setShowHeader }: PhotoProps) {
   const deferredQuery = useDeferredValue(deferredPhoto)
   const navigate = useNavigate()
   const baseUrl = process.env.REACT_APP_API_BASE_URL
-  console.log(isError)
+
   useEffect(() => {
     setShowHeader(isDesktop)
   }, [isDesktop, setShowHeader])
@@ -63,9 +63,9 @@ function Photo({ query, albumId, isDesktop, setShowHeader }: PhotoProps) {
   if (isError) {
     return (
       <ErrorBox
-        title="An error ocurred while loading this photo"
+        title="An error ocurred while loading this photo:"
         error={error}
-        refetch={refetch}
+        retry={refetch}
       />
     )
   }

@@ -6,7 +6,6 @@ import {
   FetchPhotoInAlbumParams,
   PhotoData,
   PhotoId,
-  DataError,
 } from "./types"
 import axios from "axios"
 import { useQuery, useInfiniteQuery } from "react-query"

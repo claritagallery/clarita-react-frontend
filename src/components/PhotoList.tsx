@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-extra-semi */
 import React, { useCallback, useRef } from "react"
 import PhotoAlbum from "react-photo-album"
 import { Link } from "react-router-dom"
@@ -53,9 +52,9 @@ const PhotoList = ({ photosQuery, albumId }: PhotoListParams) => {
   if (isError) {
     return (
       <ErrorBox
-        title="An error ocurred while loading photos"
+        title="An error ocurred while loading photos:"
         error={error}
-        refetch={refetch}
+        retry={refetch}
       />
     )
   }

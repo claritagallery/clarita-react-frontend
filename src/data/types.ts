@@ -1,5 +1,3 @@
-export class DataError extends Error {}
-
 export type APIError = {
   message: string
 } | null
@@ -8,14 +6,13 @@ export interface ListData<T> {
   next: boolean | null | string
   total: number
   results: T[]
-  refetch: () => void
 }
 export interface PhotoListItem {
   id: string
   filename: string
   title: string
   date_and_time: string
-  index?: number //esto puede fallar
+  index?: number
 }
 
 export interface AlbumListItem {
