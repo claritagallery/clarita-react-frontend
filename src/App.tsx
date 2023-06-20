@@ -1,11 +1,12 @@
 import React from "react"
-import { QueryClient, QueryClientProvider } from "react-query"
+import { QueryCache, QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
 import { Route, Routes } from "react-router-dom"
 import "./App.scss"
 import DrawerProvider from "./contexts/Drawer"
 import "./styles/albumList.scss"
 import { Footer, Header } from "./components"
+
 import {
   AlbumDetailPage,
   AlbumListPage,
@@ -15,7 +16,7 @@ import {
 } from "./pages"
 
 const queryClient = new QueryClient({
-  defaultOptions: {},
+  queryCache: new QueryCache({}),
 })
 
 function App() {
@@ -24,7 +25,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="App">
         {showHeader && <Header />}
-
         <div className="Main">
           <div>
             <main>
@@ -32,6 +32,7 @@ function App() {
                 <DrawerProvider>
                   <Routes>
                     <Route path="/" element={<AlbumListPage />} />
+
                     <Route
                       path="/albums/:albumId/photos/:photoId"
                       element={<PhotoPage setShowHeader={setShowHeader} />}

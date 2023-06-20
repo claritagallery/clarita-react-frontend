@@ -6,10 +6,14 @@ import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 const container = document.getElementById("root")
 const root = createRoot(container)
+import ErrorPage from "./pages/ErrorPage"
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ErrorPage>
+        <App />
+      </ErrorPage>
     </BrowserRouter>
   </React.StrictMode>,
 )

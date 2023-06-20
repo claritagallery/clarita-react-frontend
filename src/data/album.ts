@@ -14,19 +14,21 @@ function album() {
   }
 
   const albumQuery = (albumId: string) => {
-    return useQuery<AlbumDetailData, APIError>(["album", albumId], async () => {
+    const query = useQuery<AlbumDetailData, APIError>(["album", albumId], async () => {
       const res = await axios({
         url: `${baseUrl}/api/v1/albums/${albumId}`,
       })
       return res.data
     })
+    return query
   }
 
   const albumsQuery = (params: fetchAlbumsParams) => {
-    return useQuery<AlbumListData, APIError>(
+    const query = useQuery<AlbumListData, APIError>(
       ["albums", params.limit, params.parent],
       () => fetchAlbums(params),
     )
+    return query
   }
 
   return { albumQuery, albumsQuery }

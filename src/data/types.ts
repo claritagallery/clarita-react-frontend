@@ -1,6 +1,4 @@
-export type APIError = {
-  message: string
-} | null
+export class APIError extends Error {}
 
 export interface ListData<T> {
   next: boolean | null | string
@@ -12,7 +10,7 @@ export interface PhotoListItem {
   filename: string
   title: string
   date_and_time: string
-  index?: number //esto puede fallar
+  index?: number
 }
 
 export interface AlbumListItem {

@@ -1,15 +1,15 @@
 import React from "react"
 import BreadCrumbs from "./BreadCrumbs"
-
+import ErrorBox from "./ErrorBox"
 import { APIError, AlbumDetailItem } from "../data/types"
-export interface AlbumDetailParams {
-  data?: AlbumDetailItem
-  error: APIError
-  isError: boolean
-  isLoading: boolean
+import { UseQueryResult } from "react-query"
+
+interface AlbumDetailParams {
+  query: UseQueryResult<AlbumDetailItem, APIError>
 }
 
-const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => {
+const AlbumDetail = ({ query }: AlbumDetailParams) => {
+  const { data, error, isError, isLoading, refetch } = query
   if (isLoading) {
     return (
       <div className="album-detail-wrap">
@@ -25,7 +25,13 @@ const AlbumDetail = ({ data, error, isError, isLoading }: AlbumDetailParams) => 
   }
 
   if (isError) {
-    return <div>{error ? error.message : "Unknown error"}</div>
+    return (
+      <ErrorBox
+        title="An error ocurred while loading this album:"
+        error={error}
+        retry={refetch}
+      />
+    )
   }
   if (data) {
     return (

@@ -2,6 +2,7 @@ import React from "react"
 import PhotoList from "../components/PhotoList"
 import useApi from "../data"
 import useDeviceDetector from "../hooks/useDeviceDetector"
+
 const PhotoListPage = () => {
   const isDesktop = useDeviceDetector()
   const { photosQuery } = useApi()

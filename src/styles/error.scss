@@ -1,0 +1,77 @@
+@use "./mixins.scss" as mix;
+
+.error-container {
+  width: 80%;
+  text-align: center;
+  z-index: 0;
+  background-color: mix.$clear-background-color;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  margin: 2rem auto;
+  box-shadow: 3px 3px 6px #27414c;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  h1,
+  h2 {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    text-align: center;
+    margin: auto;
+    color: #395d6d;
+    letter-spacing: 0.1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-weight: 400;
+    font-size: 0.9rem;
+    padding-bottom: 1.5rem;
+  }
+  .error-button {
+    width: 6rem;
+    border: 3px solid mix.$hovered-color;
+    margin: auto;
+    text-align: center;
+    padding: 0.5rem;
+    color: mix.$secondary-color;
+    cursor: pointer;
+  }
+}
+
+//Error page
+.error-page-message {
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  width: 80%;
+  margin: 20% auto;
+  color: #395d6d;
+  text-align: center;
+}
+@media only screen and (min-width: 700px) {
+  .error-container {
+    width: 30%;
+    h1,
+    h2 {
+      font-size: 1.6rem;
+    }
+    h2 {
+      font-size: 1rem;
+    }
+  }
+
+  .error-page-message {
+    margin-top: 5%;
+    width: 50%;
+  }
+}
+@media only screen and (min-width: 700px) and (max-width: 1200px) {
+  .error-container {
+    width: 50%;
+  }
+}

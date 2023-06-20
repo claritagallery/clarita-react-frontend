@@ -16,19 +16,12 @@ function PhotoPage({ setShowHeader }: PhotoPageProps) {
 
   const { albumId, photoId } = useParams<keyof PhotoDetailParams>() as PhotoDetailParams
   const { photoInAlbumQuery, photoQuery } = useApi()
-  const { data, error, isError, isLoading } = albumId
-    ? photoInAlbumQuery({ albumId, photoId })
-    : photoQuery(photoId)
-
-  if (isError) {
-    return <div>{error ? error.message : "Unknown error"}</div>
-  }
+  const query = albumId ? photoInAlbumQuery({ albumId, photoId }) : photoQuery(photoId)
 
   return (
     <Photo
-      photo={data}
+      query={query}
       albumId={albumId}
-      isLoading={isLoading}
       isDesktop={isDesktop}
       setShowHeader={setShowHeader}
     />
