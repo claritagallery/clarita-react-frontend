@@ -1,15 +1,14 @@
 import React from "react"
-import { APIError } from "../data/types"
 
 interface ErrorBoxParams {
   title: string
   retry: () => void
-  error: APIError
+  error: Error | string
 }
 
 function ErrorBox({ title, error, retry }: ErrorBoxParams) {
-  const message = error instanceof Error ? error.message : "Unknown error"
-  const retryFetch = (e: { stopPropagation: () => void }) => {
+  const message = error instanceof Error ? error.message : error || "Unknown error"
+  const retryFetch = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
     retry()
   }

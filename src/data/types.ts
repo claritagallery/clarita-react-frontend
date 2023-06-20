@@ -1,6 +1,4 @@
-export type APIError = {
-  message: string
-} | null
+export class APIError extends Error {}
 
 export interface ListData<T> {
   next: boolean | null | string

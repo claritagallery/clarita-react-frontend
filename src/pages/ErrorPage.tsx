@@ -1,5 +1,4 @@
 import React from "react"
-import "react-toastify/dist/ReactToastify.css"
 import { Header, Footer } from "../components"
 
 export interface ErrorParams {
