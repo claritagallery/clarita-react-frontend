@@ -20,7 +20,7 @@
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}/src",
       "timeout": 10000,
-      "tmpDir": "/home/natalie/.local/tmp"
+      "tmpDir": "${userHome}/.local/tmp"
     },
     {
       "type": "chrome",
