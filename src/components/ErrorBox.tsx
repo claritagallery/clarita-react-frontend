@@ -11,7 +11,7 @@ function ErrorBox({ title, error, refetch }: ErrorBoxParams) {
   const message = error instanceof Error ? error.message : "Unknown error"
 
   return (
-    <div className="error-page">
+    <div className="error-box-container">
       <div className="error-container">
         <h1>Oh no!</h1>
         <h2>{title}</h2>

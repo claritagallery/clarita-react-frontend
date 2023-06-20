@@ -22,6 +22,7 @@ function AlbumDetailPage() {
     limit: numberOfPhotos,
     offset: 0,
   })
+  throw new Error("asd lo seinto muchisino pero esto fallo con esta")
 
   return (
     <>

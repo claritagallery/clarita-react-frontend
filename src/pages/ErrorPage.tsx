@@ -1,5 +1,4 @@
 import React from "react"
-import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { Header, Footer } from "../components"
 
@@ -33,11 +32,11 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   render() {
     if (this.state.hasError) {
       return (
-        <>
+        <div className="error-page-container">
           <Header />
-          <div>{this.state.message}</div>
+          <div className="error-page-message">{this.state.message}</div>
           <Footer />
-        </>
+        </div>
       )
     }
     return this.props.children

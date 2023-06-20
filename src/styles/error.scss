@@ -1,8 +1,5 @@
 @use "./mixins.scss" as mix;
-.error-page {
-  //   width: 100vw;
-  //   height: 100vh;
-  //   background-color: rgb(152, 152, 160);
+.error-box-container {
   .error-container {
     width: 80%;
     text-align: center;
@@ -47,8 +44,19 @@
     }
   }
 }
+//Error page
+.error-page-message {
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  width: 80%;
+  margin: 20% auto;
+  color: #395d6d;
+  text-align: center;
+}
 @media only screen and (min-width: 700px) {
-  .error-page {
+  .error-box-container {
     .error-container {
       width: 30%;
       h1,
@@ -60,9 +68,13 @@
       }
     }
   }
+  .error-page-message {
+    margin-top: 5%;
+    width: 50%;
+  }
 }
 @media only screen and (min-width: 700px) and (max-width: 1200px) {
-  .error-page {
+  .error-box-container {
     .error-container {
       width: 50%;
     }
