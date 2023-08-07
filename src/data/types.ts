@@ -5,6 +5,13 @@ export interface ListData<T> {
   total: number
   results: T[]
 }
+
+export interface BreadcrumbItem {
+  id: string
+  title: string
+  date: string
+}
+
 export interface PhotoListItem {
   id: string
   filename: string
@@ -24,11 +31,7 @@ export interface AlbumDetailItem {
   title: string
   date: string
   description: string
-  breadcrumbs: {
-    id: string
-    title: string
-    date: string
-  }[]
+  breadcrumbs: BreadcrumbItem[]
 }
 
 export type PhotoId = string | undefined
