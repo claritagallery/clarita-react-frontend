@@ -1,7 +1,7 @@
 import React from "react"
 import {
   APIError,
-  fetchPhotosParams,
+  FetchPhotosParams,
   PhotoListData,
   FetchPhotoInAlbumParams,
   PhotoData,
@@ -19,7 +19,7 @@ function photo() {
     }).then((res) => res.data)
   }
 
-  function fetchPhotos(params: fetchPhotosParams) {
+  function fetchPhotos(params: FetchPhotosParams) {
     return axios({
       url: `${baseUrl}/api/v1/photos`,
       params: params,
@@ -35,7 +35,7 @@ function photo() {
     })
   }
 
-  const photosQuery = ({ album, limit, offset }: fetchPhotosParams) => {
+  const photosQuery = ({ album, limit, offset }: FetchPhotosParams) => {
     const query = useInfiniteQuery<PhotoListData, APIError>(
       ["photos", album, limit, offset],
       ({ pageParam }) => fetchPhotos({ album, limit, offset: pageParam }),
