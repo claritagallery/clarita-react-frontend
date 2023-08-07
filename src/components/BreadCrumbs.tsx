@@ -1,11 +1,10 @@
 import React from "react"
-import { AlbumListItem } from "../data/types"
 import { Link } from "react-router-dom"
 import homeIcon from "../assets/icon-color.png"
-import { BaseProps } from "../data/types"
+import { BaseProps, BreadcrumbItem } from "../data/types"
 
 interface BreadcrumbsProps extends BaseProps {
-  breadcrumbs: AlbumListItem[]
+  breadcrumbs: BreadcrumbItem[]
   bg?: boolean
 }
 
