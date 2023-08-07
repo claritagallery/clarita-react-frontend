@@ -52,13 +52,13 @@ export type FetchPhotoInAlbumParams = {
   photoId: string
 }
 
-export type fetchPhotosParams = {
+export type FetchPhotosParams = {
   album?: string
   limit: number
   offset?: number
 }
 
-export interface fetchAlbumsParams {
+export interface FetchAlbumsParams {
   limit: number
   parent?: string
 }
